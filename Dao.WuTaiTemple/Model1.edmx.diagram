@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8e3c80d5b47145b2a789bc6a04db3ea3" Name="关系图1" ZoomLevel="67">
+        <EntityTypeShape EntityType="WuTaiTempleModel.bsEmployee" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WuTaiTempleModel.bsRole" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WuTaiTempleModel.bsUser" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WuTaiTempleModel.CheckRecord" Width="1.5" PointX="7.5" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WuTaiTempleModel.DialyEventRecord" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WuTaiTempleModel.Duty" Width="1.5" PointX="5.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WuTaiTempleModel.DutyType" Width="1.5" PointX="3" PointY="36.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WuTaiTempleModel.FileChangeRecord" Width="1.5" PointX="3" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WuTaiTempleModel.FireAlarm" Width="1.5" PointX="3" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WuTaiTempleModel.FirePlan" Width="1.5" PointX="3" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WuTaiTempleModel.Instituation" Width="1.5" PointX="3" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WuTaiTempleModel.VisitorTotal" Width="1.5" PointX="3" PointY="28.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WuTaiTempleModel.VistorLog" Width="1.5" PointX="3" PointY="32" IsExpanded="true" />
+        <AssociationConnector Association="WuTaiTempleModel.FK_DUTY_RELATIONS_BSEMPLOY" ManuallyRouted="false" />
+        <AssociationConnector Association="WuTaiTempleModel.FK_CHECKREC_RELATIONS_BSUSER" ManuallyRouted="false" />
+        <AssociationConnector Association="WuTaiTempleModel.FK_DUTY_RELATIONS_DUTYTYPE" ManuallyRouted="false" />
+        <AssociationConnector Association="WuTaiTempleModel.Relationship_10" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="WuTaiTempleModel.bsFunConf" Width="1.5" PointX="11.247077459118831" PointY="1.8373941489669468" />
+        <EntityTypeShape EntityType="WuTaiTempleModel.bsFunInterface" Width="1.5" PointX="11.55173700840759" PointY="10.343645473170861" />
+        <AssociationConnector Association="WuTaiTempleModel.FK_bsFunInt_RELATIONS_BSFUNCON" />
+        <EntityTypeShape EntityType="WuTaiTempleModel.bsOrganize" Width="1.5" PointX="8.03927544878762" PointY="9.513143335242356" />
+        <AssociationConnector Association="WuTaiTempleModel.FK_BSEMPLOY_RELATIONS_BSORGANI" />
+        <AssociationConnector Association="WuTaiTempleModel.FK_BSROLE_RELATIONS_BSORGANI" />
+        <AssociationConnector Association="WuTaiTempleModel.FK_CHECKREC_RELATIONS_BSORGANI" />
+        <AssociationConnector Association="WuTaiTempleModel.FK_DIALYEVE_RELATIONS_BSORGANI" />
+        <AssociationConnector Association="WuTaiTempleModel.FK_DUTY_RELATIONS_BSORGANI" />
+        <AssociationConnector Association="WuTaiTempleModel.FK_FILECHAN_RELATIONS_BSORGANI" />
+        <AssociationConnector Association="WuTaiTempleModel.FK_FIREALAR_RELATIONS_BSORGANI" />
+        <AssociationConnector Association="WuTaiTempleModel.FK_FIREPLAN_RELATIONS_BSORGANI" />
+        <AssociationConnector Association="WuTaiTempleModel.FK_INSTITUA_RELATIONS_BSORGANI" />
+        <AssociationConnector Association="WuTaiTempleModel.FK_VISITORT_RELATIONS_BSORGANI" />
+        <AssociationConnector Association="WuTaiTempleModel.FK_VISTORLO_RELATIONS_BSORGANI" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,1405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WuTaiTempleModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="WuTaiTempleModelStoreContainer">
+          <EntitySet Name="bsEmployee" EntityType="WuTaiTempleModel.Store.bsEmployee" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsFunConf" EntityType="WuTaiTempleModel.Store.bsFunConf" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsFunInterface" EntityType="WuTaiTempleModel.Store.bsFunInterface" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsOrganize" EntityType="WuTaiTempleModel.Store.bsOrganize" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsRole" EntityType="WuTaiTempleModel.Store.bsRole" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsUser" EntityType="WuTaiTempleModel.Store.bsUser" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CheckRecord" EntityType="WuTaiTempleModel.Store.CheckRecord" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DialyEventRecord" EntityType="WuTaiTempleModel.Store.DialyEventRecord" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Duty" EntityType="WuTaiTempleModel.Store.Duty" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DutyType" EntityType="WuTaiTempleModel.Store.DutyType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FileChangeRecord" EntityType="WuTaiTempleModel.Store.FileChangeRecord" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FireAlarm" EntityType="WuTaiTempleModel.Store.FireAlarm" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FirePlan" EntityType="WuTaiTempleModel.Store.FirePlan" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Instituation" EntityType="WuTaiTempleModel.Store.Instituation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Relationship_10" EntityType="WuTaiTempleModel.Store.Relationship_10" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VisitorTotal" EntityType="WuTaiTempleModel.Store.VisitorTotal" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VistorLog" EntityType="WuTaiTempleModel.Store.VistorLog" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_BSEMPLOY_RELATIONS_BSORGANI" Association="WuTaiTempleModel.Store.FK_BSEMPLOY_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="bsEmployee" EntitySet="bsEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bsFunInt_RELATIONS_BSFUNCON" Association="WuTaiTempleModel.Store.FK_bsFunInt_RELATIONS_BSFUNCON">
+            <End Role="bsFunConf" EntitySet="bsFunConf" />
+            <End Role="bsFunInterface" EntitySet="bsFunInterface" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSROLE_RELATIONS_BSORGANI" Association="WuTaiTempleModel.Store.FK_BSROLE_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="bsRole" EntitySet="bsRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHECKREC_RELATIONS_BSORGANI" Association="WuTaiTempleModel.Store.FK_CHECKREC_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="CheckRecord" EntitySet="CheckRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHECKREC_RELATIONS_BSUSER" Association="WuTaiTempleModel.Store.FK_CHECKREC_RELATIONS_BSUSER">
+            <End Role="bsUser" EntitySet="bsUser" />
+            <End Role="CheckRecord" EntitySet="CheckRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DIALYEVE_RELATIONS_BSORGANI" Association="WuTaiTempleModel.Store.FK_DIALYEVE_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="DialyEventRecord" EntitySet="DialyEventRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DUTY_RELATIONS_BSEMPLOY" Association="WuTaiTempleModel.Store.FK_DUTY_RELATIONS_BSEMPLOY">
+            <End Role="bsEmployee" EntitySet="bsEmployee" />
+            <End Role="Duty" EntitySet="Duty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DUTY_RELATIONS_BSORGANI" Association="WuTaiTempleModel.Store.FK_DUTY_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="Duty" EntitySet="Duty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DUTY_RELATIONS_DUTYTYPE" Association="WuTaiTempleModel.Store.FK_DUTY_RELATIONS_DUTYTYPE">
+            <End Role="DutyType" EntitySet="DutyType" />
+            <End Role="Duty" EntitySet="Duty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FILECHAN_RELATIONS_BSORGANI" Association="WuTaiTempleModel.Store.FK_FILECHAN_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="FileChangeRecord" EntitySet="FileChangeRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FIREALAR_RELATIONS_BSORGANI" Association="WuTaiTempleModel.Store.FK_FIREALAR_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="FireAlarm" EntitySet="FireAlarm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FIREPLAN_RELATIONS_BSORGANI" Association="WuTaiTempleModel.Store.FK_FIREPLAN_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="FirePlan" EntitySet="FirePlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INSTITUA_RELATIONS_BSORGANI" Association="WuTaiTempleModel.Store.FK_INSTITUA_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="Instituation" EntitySet="Instituation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RELATION_RELATIONS_BSROLE" Association="WuTaiTempleModel.Store.FK_RELATION_RELATIONS_BSROLE">
+            <End Role="bsRole" EntitySet="bsRole" />
+            <End Role="Relationship_10" EntitySet="Relationship_10" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RELATION_RELATIONS_BSUSER" Association="WuTaiTempleModel.Store.FK_RELATION_RELATIONS_BSUSER">
+            <End Role="bsUser" EntitySet="bsUser" />
+            <End Role="Relationship_10" EntitySet="Relationship_10" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VISITORT_RELATIONS_BSORGANI" Association="WuTaiTempleModel.Store.FK_VISITORT_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="VisitorTotal" EntitySet="VisitorTotal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VISTORLO_RELATIONS_BSORGANI" Association="WuTaiTempleModel.Store.FK_VISTORLO_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="VistorLog" EntitySet="VistorLog" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="bsEmployee">
+          <Key>
+            <PropertyRef Name="bsE_Id" />
+          </Key>
+          <Property Name="bsE_Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="bsO_Id" Type="bigint" Nullable="false" />
+          <Property Name="NaviName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="JobNo" Type="varchar" MaxLength="50" />
+          <Property Name="IdCard" Type="varchar" MaxLength="50" />
+          <Property Name="MinZu" Type="varchar" MaxLength="50" />
+          <Property Name="JiGuan" Type="varchar" MaxLength="50" />
+          <Property Name="ZhengZhiMm" Type="varchar" MaxLength="50" />
+          <Property Name="BirthDt" Type="datetime" />
+          <Property Name="Tel" Type="varchar" MaxLength="20" />
+          <Property Name="Sex" Type="varchar" MaxLength="20" />
+          <Property Name="XueLi" Type="varchar" MaxLength="50" />
+          <Property Name="OrgName" Type="varchar" MaxLength="50" />
+          <Property Name="Position" Type="varchar" MaxLength="50" />
+          <Property Name="IsUpper" Type="bit" />
+          <Property Name="IMDI" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="bsFunConf">
+          <Key>
+            <PropertyRef Name="bsFC_Id" />
+          </Key>
+          <Property Name="bsFC_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsN_Id" Type="uniqueidentifier" />
+          <Property Name="pId" Type="uniqueidentifier" />
+          <Property Name="FunCode" Type="varchar" MaxLength="50" />
+          <Property Name="FunName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="FunDesp" Type="varchar" MaxLength="100" />
+          <Property Name="FunType" Type="varchar" MaxLength="100" />
+          <Property Name="FunUrl" Type="varchar" MaxLength="50" />
+          <Property Name="FunLayout" Type="int" />
+          <Property Name="TName" Type="varchar" MaxLength="100" />
+          <Property Name="TPk" Type="varchar" MaxLength="100" />
+          <Property Name="NotNullField" Type="varchar" MaxLength="50" />
+          <Property Name="OrderBySql" Type="varchar" MaxLength="500" />
+          <Property Name="FilterField" Type="varchar" MaxLength="100" />
+          <Property Name="FilterValue" Type="varchar" MaxLength="100" />
+          <Property Name="ChildTName" Type="varchar" MaxLength="50" />
+          <Property Name="ChildTPk" Type="varchar" MaxLength="50" />
+          <Property Name="PFk" Type="varchar" MaxLength="100" />
+          <Property Name="Operartor" Type="varchar" MaxLength="50" />
+          <Property Name="UpdateDt" Type="datetime" />
+          <Property Name="UseStatus" Type="int" />
+          <Property Name="VisibleInList" Type="varchar" MaxLength="50" />
+          <Property Name="ListDispType" Type="varchar" MaxLength="20" />
+          <Property Name="UseUserPolicy" Type="bit" />
+          <Property Name="UseRoleFields" Type="bit" />
+        </EntityType>
+        <EntityType Name="bsFunInterface">
+          <Key>
+            <PropertyRef Name="bsFI_Id" />
+          </Key>
+          <Property Name="bsFI_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsFC_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="InterfaceName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="InterfaceUrl" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="UrlServerEx" Type="varchar" MaxLength="100" />
+          <Property Name="LinkController" Type="varchar" MaxLength="50" />
+          <Property Name="LinkAction" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="bsOrganize">
+          <Key>
+            <PropertyRef Name="bsO_Id" />
+          </Key>
+          <Property Name="bsO_Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Desp" Type="varchar" />
+          <Property Name="PId" Type="bigint" Nullable="false" />
+          <Property Name="OrgType" Type="varchar" MaxLength="100" />
+          <Property Name="LongLati_Gcj" Type="varchar" MaxLength="50" />
+          <Property Name="LongLati_Bd" Type="varchar" MaxLength="50" />
+          <Property Name="Operater" Type="varchar" MaxLength="20" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="SaveTime" Type="datetime" />
+          <Property Name="EmpCount" Type="smallint" />
+          <Property Name="Mananger" Type="varchar" MaxLength="20" />
+          <Property Name="BorderPic" Type="varchar" MaxLength="50" />
+          <Property Name="PicContent" Type="varchar" MaxLength="500" />
+          <Property Name="SpeechContent" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="bsRole">
+          <Key>
+            <PropertyRef Name="bsR_Id" />
+          </Key>
+          <Property Name="bsR_Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="bsO_Id" Type="bigint" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Desp" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="bsUser">
+          <Key>
+            <PropertyRef Name="bsU_Id" />
+          </Key>
+          <Property Name="bsU_Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="bsE_Id" Type="bigint" Nullable="false" />
+          <Property Name="AccoType" Type="varchar" MaxLength="20" />
+          <Property Name="UserName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="LoginName" Type="varchar" MaxLength="50" />
+          <Property Name="LoginPwd" Type="varchar" MaxLength="50" />
+          <Property Name="NickName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ContactTel" Type="varchar" MaxLength="50" />
+          <Property Name="IsSysUser" Type="bit" />
+          <Property Name="RegDt" Type="datetime" Nullable="false" />
+          <Property Name="ValidDate" Type="datetime" Nullable="false" />
+          <Property Name="AccountStatus" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="LoginDt" Type="datetime" />
+          <Property Name="IsOnline" Type="bit" />
+          <Property Name="PhoneIMEIs" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="CheckRecord">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="bsO_Id" Type="bigint" Nullable="false" />
+          <Property Name="bsU_Id" Type="bigint" Nullable="false" />
+          <Property Name="CheckType" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="CheckDt" Type="datetime" Nullable="false" />
+          <Property Name="CheckRegion" Type="varchar" MaxLength="50" />
+          <Property Name="CheckDesp" Type="varchar" MaxLength="200" />
+          <Property Name="CheckPic" Type="varchar" MaxLength="100" />
+          <Property Name="CheckMemo" Type="varchar" MaxLength="500" />
+          <Property Name="CheckUser" Type="varchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="DialyEventRecord">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="bsO_Id" Type="bigint" Nullable="false" />
+          <Property Name="RecoType" Type="varchar" MaxLength="20" />
+          <Property Name="ActionName" Type="varchar" MaxLength="100" />
+          <Property Name="BeginDt" Type="datetime" />
+          <Property Name="EndDt" Type="datetime" />
+          <Property Name="Addr" Type="varchar" MaxLength="100" />
+          <Property Name="PicsList" Type="varchar" MaxLength="500" />
+          <Property Name="FilesList" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Duty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Dut_Id" Type="bigint" Nullable="false" />
+          <Property Name="bsO_Id" Type="bigint" Nullable="false" />
+          <Property Name="bsE_Id" Type="bigint" Nullable="false" />
+          <Property Name="DutyType" Type="varchar" MaxLength="20" />
+          <Property Name="DutyArea" Type="varchar" MaxLength="50" />
+          <Property Name="DutyName" Type="varchar" MaxLength="20" />
+          <Property Name="DutyDate" Type="datetime" />
+          <Property Name="PlanBeginDt" Type="datetime" />
+          <Property Name="PlanEndDt" Type="datetime" />
+          <Property Name="FactName" Type="varchar" MaxLength="20" />
+          <Property Name="DutyDt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DutyType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DutyType" Type="varchar" MaxLength="20" />
+          <Property Name="DutyName" Type="varchar" MaxLength="50" />
+          <Property Name="DutyClassCount" Type="smallint" />
+          <Property Name="Class1Desp" Type="varchar" MaxLength="50" />
+          <Property Name="Class1DtRange" Type="varchar" MaxLength="50" />
+          <Property Name="Class2Desp" Type="varchar" MaxLength="50" />
+          <Property Name="Class2DtRange" Type="varchar" MaxLength="50" />
+          <Property Name="Class3Desp" Type="varchar" MaxLength="50" />
+          <Property Name="Class3DtRange" Type="varchar" MaxLength="50" />
+          <Property Name="Class4Desp" Type="varchar" MaxLength="50" />
+          <Property Name="Class4DtRange" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FileChangeRecord">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="bsO_Id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FireAlarm">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="bsO_Id" Type="bigint" Nullable="false" />
+          <Property Name="PubMessType" Type="varchar" MaxLength="20" />
+          <Property Name="Title" Type="varchar" MaxLength="100" />
+          <Property Name="Content" Type="varchar" MaxLength="100" />
+          <Property Name="PubDt" Type="datetime" />
+          <Property Name="ValidBegin" Type="datetime" />
+          <Property Name="ValidEnd" Type="datetime" />
+          <Property Name="bsUName" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="FirePlan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="bsO_Id" Type="bigint" Nullable="false" />
+          <Property Name="bsO_Name" Type="varchar" MaxLength="20" />
+          <Property Name="EmerPlanType" Type="varchar" MaxLength="20" />
+          <Property Name="EmerPlanName" Type="varchar" MaxLength="50" />
+          <Property Name="EmerPanFileName" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Instituation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="bsO_Id" Type="bigint" Nullable="false" />
+          <Property Name="InstiType" Type="varchar" MaxLength="20" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="FName" Type="varchar" MaxLength="100" />
+          <Property Name="InstiMemo" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Relationship_10">
+          <Key>
+            <PropertyRef Name="bsU_Id" />
+            <PropertyRef Name="bsR_Id" />
+          </Key>
+          <Property Name="bsU_Id" Type="bigint" Nullable="false" />
+          <Property Name="bsR_Id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VisitorTotal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="bsO_Id" Type="bigint" Nullable="false" />
+          <Property Name="TotalType" Type="varchar" MaxLength="20" />
+          <Property Name="TotalDate" Type="datetime" />
+          <Property Name="TempName" Type="varchar" MaxLength="50" />
+          <Property Name="DownCount" Type="bigint" />
+          <Property Name="VisitCount" Type="bigint" />
+          <Property Name="VisitMinutes" Type="bigint" />
+        </EntityType>
+        <EntityType Name="VistorLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="bsO_Id" Type="bigint" Nullable="false" />
+          <Property Name="PhoneIMEI" Type="varchar" MaxLength="20" />
+          <Property Name="PhoneNo" Type="varchar" MaxLength="20" />
+          <Property Name="VisitType" Type="varchar" MaxLength="20" />
+          <Property Name="VisitDt" Type="varchar" MaxLength="20" />
+          <Property Name="VisitPage" Type="varchar" MaxLength="100" />
+          <Property Name="LongLati" Type="varchar" MaxLength="50" />
+          <Property Name="PhoneSize" Type="varchar" MaxLength="20" />
+          <Property Name="PhoneType" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK_BSEMPLOY_RELATIONS_BSORGANI">
+          <End Role="bsOrganize" Type="WuTaiTempleModel.Store.bsOrganize" Multiplicity="1" />
+          <End Role="bsEmployee" Type="WuTaiTempleModel.Store.bsEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="bsEmployee">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bsFunInt_RELATIONS_BSFUNCON">
+          <End Role="bsFunConf" Type="WuTaiTempleModel.Store.bsFunConf" Multiplicity="1" />
+          <End Role="bsFunInterface" Type="WuTaiTempleModel.Store.bsFunInterface" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsFunConf">
+              <PropertyRef Name="bsFC_Id" />
+            </Principal>
+            <Dependent Role="bsFunInterface">
+              <PropertyRef Name="bsFC_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSROLE_RELATIONS_BSORGANI">
+          <End Role="bsOrganize" Type="WuTaiTempleModel.Store.bsOrganize" Multiplicity="1" />
+          <End Role="bsRole" Type="WuTaiTempleModel.Store.bsRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="bsRole">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHECKREC_RELATIONS_BSORGANI">
+          <End Role="bsOrganize" Type="WuTaiTempleModel.Store.bsOrganize" Multiplicity="1" />
+          <End Role="CheckRecord" Type="WuTaiTempleModel.Store.CheckRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="CheckRecord">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHECKREC_RELATIONS_BSUSER">
+          <End Role="bsUser" Type="WuTaiTempleModel.Store.bsUser" Multiplicity="1" />
+          <End Role="CheckRecord" Type="WuTaiTempleModel.Store.CheckRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsUser">
+              <PropertyRef Name="bsU_Id" />
+            </Principal>
+            <Dependent Role="CheckRecord">
+              <PropertyRef Name="bsU_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DIALYEVE_RELATIONS_BSORGANI">
+          <End Role="bsOrganize" Type="WuTaiTempleModel.Store.bsOrganize" Multiplicity="1" />
+          <End Role="DialyEventRecord" Type="WuTaiTempleModel.Store.DialyEventRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="DialyEventRecord">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DUTY_RELATIONS_BSEMPLOY">
+          <End Role="bsEmployee" Type="WuTaiTempleModel.Store.bsEmployee" Multiplicity="1" />
+          <End Role="Duty" Type="WuTaiTempleModel.Store.Duty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsEmployee">
+              <PropertyRef Name="bsE_Id" />
+            </Principal>
+            <Dependent Role="Duty">
+              <PropertyRef Name="bsE_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DUTY_RELATIONS_BSORGANI">
+          <End Role="bsOrganize" Type="WuTaiTempleModel.Store.bsOrganize" Multiplicity="1" />
+          <End Role="Duty" Type="WuTaiTempleModel.Store.Duty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="Duty">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DUTY_RELATIONS_DUTYTYPE">
+          <End Role="DutyType" Type="WuTaiTempleModel.Store.DutyType" Multiplicity="1" />
+          <End Role="Duty" Type="WuTaiTempleModel.Store.Duty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DutyType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Duty">
+              <PropertyRef Name="Dut_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FILECHAN_RELATIONS_BSORGANI">
+          <End Role="bsOrganize" Type="WuTaiTempleModel.Store.bsOrganize" Multiplicity="1" />
+          <End Role="FileChangeRecord" Type="WuTaiTempleModel.Store.FileChangeRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="FileChangeRecord">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FIREALAR_RELATIONS_BSORGANI">
+          <End Role="bsOrganize" Type="WuTaiTempleModel.Store.bsOrganize" Multiplicity="1" />
+          <End Role="FireAlarm" Type="WuTaiTempleModel.Store.FireAlarm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="FireAlarm">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FIREPLAN_RELATIONS_BSORGANI">
+          <End Role="bsOrganize" Type="WuTaiTempleModel.Store.bsOrganize" Multiplicity="1" />
+          <End Role="FirePlan" Type="WuTaiTempleModel.Store.FirePlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="FirePlan">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INSTITUA_RELATIONS_BSORGANI">
+          <End Role="bsOrganize" Type="WuTaiTempleModel.Store.bsOrganize" Multiplicity="1" />
+          <End Role="Instituation" Type="WuTaiTempleModel.Store.Instituation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="Instituation">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RELATION_RELATIONS_BSROLE">
+          <End Role="bsRole" Type="WuTaiTempleModel.Store.bsRole" Multiplicity="1" />
+          <End Role="Relationship_10" Type="WuTaiTempleModel.Store.Relationship_10" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsRole">
+              <PropertyRef Name="bsR_Id" />
+            </Principal>
+            <Dependent Role="Relationship_10">
+              <PropertyRef Name="bsR_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RELATION_RELATIONS_BSUSER">
+          <End Role="bsUser" Type="WuTaiTempleModel.Store.bsUser" Multiplicity="1" />
+          <End Role="Relationship_10" Type="WuTaiTempleModel.Store.Relationship_10" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsUser">
+              <PropertyRef Name="bsU_Id" />
+            </Principal>
+            <Dependent Role="Relationship_10">
+              <PropertyRef Name="bsU_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VISITORT_RELATIONS_BSORGANI">
+          <End Role="bsOrganize" Type="WuTaiTempleModel.Store.bsOrganize" Multiplicity="1" />
+          <End Role="VisitorTotal" Type="WuTaiTempleModel.Store.VisitorTotal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="VisitorTotal">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VISTORLO_RELATIONS_BSORGANI">
+          <End Role="bsOrganize" Type="WuTaiTempleModel.Store.bsOrganize" Multiplicity="1" />
+          <End Role="VistorLog" Type="WuTaiTempleModel.Store.VistorLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="VistorLog">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WuTaiTempleModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="WuTaiTempleEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="bsEmployee" EntityType="WuTaiTempleModel.bsEmployee" />
+          <EntitySet Name="bsRole" EntityType="WuTaiTempleModel.bsRole" />
+          <EntitySet Name="bsUser" EntityType="WuTaiTempleModel.bsUser" />
+          <EntitySet Name="CheckRecord" EntityType="WuTaiTempleModel.CheckRecord" />
+          <EntitySet Name="DialyEventRecord" EntityType="WuTaiTempleModel.DialyEventRecord" />
+          <EntitySet Name="Duty" EntityType="WuTaiTempleModel.Duty" />
+          <EntitySet Name="DutyType" EntityType="WuTaiTempleModel.DutyType" />
+          <EntitySet Name="FileChangeRecord" EntityType="WuTaiTempleModel.FileChangeRecord" />
+          <EntitySet Name="FireAlarm" EntityType="WuTaiTempleModel.FireAlarm" />
+          <EntitySet Name="FirePlan" EntityType="WuTaiTempleModel.FirePlan" />
+          <EntitySet Name="Instituation" EntityType="WuTaiTempleModel.Instituation" />
+          <EntitySet Name="VisitorTotal" EntityType="WuTaiTempleModel.VisitorTotal" />
+          <EntitySet Name="VistorLog" EntityType="WuTaiTempleModel.VistorLog" />
+          <AssociationSet Name="FK_DUTY_RELATIONS_BSEMPLOY" Association="WuTaiTempleModel.FK_DUTY_RELATIONS_BSEMPLOY">
+            <End Role="bsEmployee" EntitySet="bsEmployee" />
+            <End Role="Duty" EntitySet="Duty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHECKREC_RELATIONS_BSUSER" Association="WuTaiTempleModel.FK_CHECKREC_RELATIONS_BSUSER">
+            <End Role="bsUser" EntitySet="bsUser" />
+            <End Role="CheckRecord" EntitySet="CheckRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DUTY_RELATIONS_DUTYTYPE" Association="WuTaiTempleModel.FK_DUTY_RELATIONS_DUTYTYPE">
+            <End Role="DutyType" EntitySet="DutyType" />
+            <End Role="Duty" EntitySet="Duty" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship_10" Association="WuTaiTempleModel.Relationship_10">
+            <End Role="bsRole" EntitySet="bsRole" />
+            <End Role="bsUser" EntitySet="bsUser" />
+          </AssociationSet>
+          <EntitySet Name="bsFunConf" EntityType="WuTaiTempleModel.bsFunConf" />
+          <EntitySet Name="bsFunInterface" EntityType="WuTaiTempleModel.bsFunInterface" />
+          <AssociationSet Name="FK_bsFunInt_RELATIONS_BSFUNCON" Association="WuTaiTempleModel.FK_bsFunInt_RELATIONS_BSFUNCON">
+            <End Role="bsFunConf" EntitySet="bsFunConf" />
+            <End Role="bsFunInterface" EntitySet="bsFunInterface" />
+          </AssociationSet>
+          <EntitySet Name="bsOrganize" EntityType="WuTaiTempleModel.bsOrganize" />
+          <AssociationSet Name="FK_BSEMPLOY_RELATIONS_BSORGANI" Association="WuTaiTempleModel.FK_BSEMPLOY_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="bsEmployee" EntitySet="bsEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSROLE_RELATIONS_BSORGANI" Association="WuTaiTempleModel.FK_BSROLE_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="bsRole" EntitySet="bsRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHECKREC_RELATIONS_BSORGANI" Association="WuTaiTempleModel.FK_CHECKREC_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="CheckRecord" EntitySet="CheckRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DIALYEVE_RELATIONS_BSORGANI" Association="WuTaiTempleModel.FK_DIALYEVE_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="DialyEventRecord" EntitySet="DialyEventRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DUTY_RELATIONS_BSORGANI" Association="WuTaiTempleModel.FK_DUTY_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="Duty" EntitySet="Duty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FILECHAN_RELATIONS_BSORGANI" Association="WuTaiTempleModel.FK_FILECHAN_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="FileChangeRecord" EntitySet="FileChangeRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FIREALAR_RELATIONS_BSORGANI" Association="WuTaiTempleModel.FK_FIREALAR_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="FireAlarm" EntitySet="FireAlarm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FIREPLAN_RELATIONS_BSORGANI" Association="WuTaiTempleModel.FK_FIREPLAN_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="FirePlan" EntitySet="FirePlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INSTITUA_RELATIONS_BSORGANI" Association="WuTaiTempleModel.FK_INSTITUA_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="Instituation" EntitySet="Instituation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VISITORT_RELATIONS_BSORGANI" Association="WuTaiTempleModel.FK_VISITORT_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="VisitorTotal" EntitySet="VisitorTotal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VISTORLO_RELATIONS_BSORGANI" Association="WuTaiTempleModel.FK_VISTORLO_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="VistorLog" EntitySet="VistorLog" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="bsEmployee">
+          <Key>
+            <PropertyRef Name="bsE_Id" />
+          </Key>
+          <Property Name="bsE_Id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="bsO_Id" Type="Int64" Nullable="false" />
+          <Property Name="NaviName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="JobNo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="IdCard" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="MinZu" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="JiGuan" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ZhengZhiMm" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BirthDt" Type="DateTime" Precision="3" />
+          <Property Name="Tel" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Sex" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="XueLi" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="OrgName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Position" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="IsUpper" Type="Boolean" />
+          <Property Name="IMDI" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Duty" Relationship="WuTaiTempleModel.FK_DUTY_RELATIONS_BSEMPLOY" FromRole="bsEmployee" ToRole="Duty" />
+          <NavigationProperty Name="bsOrganize" Relationship="WuTaiTempleModel.FK_BSEMPLOY_RELATIONS_BSORGANI" FromRole="bsEmployee" ToRole="bsOrganize" />
+        </EntityType>
+        <EntityType Name="bsRole">
+          <Key>
+            <PropertyRef Name="bsR_Id" />
+          </Key>
+          <Property Name="bsR_Id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="bsO_Id" Type="Int64" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Desp" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="bsUser" Relationship="WuTaiTempleModel.Relationship_10" FromRole="bsRole" ToRole="bsUser" />
+          <NavigationProperty Name="bsOrganize" Relationship="WuTaiTempleModel.FK_BSROLE_RELATIONS_BSORGANI" FromRole="bsRole" ToRole="bsOrganize" />
+        </EntityType>
+        <EntityType Name="bsUser">
+          <Key>
+            <PropertyRef Name="bsU_Id" />
+          </Key>
+          <Property Name="bsU_Id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="bsE_Id" Type="Int64" Nullable="false" />
+          <Property Name="AccoType" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LoginName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LoginPwd" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="NickName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ContactTel" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="IsSysUser" Type="Boolean" />
+          <Property Name="RegDt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ValidDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AccountStatus" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="LoginDt" Type="DateTime" Precision="3" />
+          <Property Name="IsOnline" Type="Boolean" />
+          <Property Name="PhoneIMEIs" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="CheckRecord" Relationship="WuTaiTempleModel.FK_CHECKREC_RELATIONS_BSUSER" FromRole="bsUser" ToRole="CheckRecord" />
+          <NavigationProperty Name="bsRole" Relationship="WuTaiTempleModel.Relationship_10" FromRole="bsUser" ToRole="bsRole" />
+        </EntityType>
+        <EntityType Name="CheckRecord">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="bsO_Id" Type="Int64" Nullable="false" />
+          <Property Name="bsU_Id" Type="Int64" Nullable="false" />
+          <Property Name="CheckType" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CheckDt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CheckRegion" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CheckDesp" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="CheckPic" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CheckMemo" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="CheckUser" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="bsUser" Relationship="WuTaiTempleModel.FK_CHECKREC_RELATIONS_BSUSER" FromRole="CheckRecord" ToRole="bsUser" />
+          <NavigationProperty Name="bsOrganize" Relationship="WuTaiTempleModel.FK_CHECKREC_RELATIONS_BSORGANI" FromRole="CheckRecord" ToRole="bsOrganize" />
+        </EntityType>
+        <EntityType Name="DialyEventRecord">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="bsO_Id" Type="Int64" Nullable="false" />
+          <Property Name="RecoType" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="ActionName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="BeginDt" Type="DateTime" Precision="3" />
+          <Property Name="EndDt" Type="DateTime" Precision="3" />
+          <Property Name="Addr" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="PicsList" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="FilesList" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="bsOrganize" Relationship="WuTaiTempleModel.FK_DIALYEVE_RELATIONS_BSORGANI" FromRole="DialyEventRecord" ToRole="bsOrganize" />
+        </EntityType>
+        <EntityType Name="Duty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Dut_Id" Type="Int64" Nullable="false" />
+          <Property Name="bsO_Id" Type="Int64" Nullable="false" />
+          <Property Name="bsE_Id" Type="Int64" Nullable="false" />
+          <Property Name="DutyType" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="DutyArea" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DutyName" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="DutyDate" Type="DateTime" Precision="3" />
+          <Property Name="PlanBeginDt" Type="DateTime" Precision="3" />
+          <Property Name="PlanEndDt" Type="DateTime" Precision="3" />
+          <Property Name="FactName" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="DutyDt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="bsEmployee" Relationship="WuTaiTempleModel.FK_DUTY_RELATIONS_BSEMPLOY" FromRole="Duty" ToRole="bsEmployee" />
+          <NavigationProperty Name="DutyType1" Relationship="WuTaiTempleModel.FK_DUTY_RELATIONS_DUTYTYPE" FromRole="Duty" ToRole="DutyType" />
+          <NavigationProperty Name="bsOrganize" Relationship="WuTaiTempleModel.FK_DUTY_RELATIONS_BSORGANI" FromRole="Duty" ToRole="bsOrganize" />
+        </EntityType>
+        <EntityType Name="DutyType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="DutyType1" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="DutyName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DutyClassCount" Type="Int16" />
+          <Property Name="Class1Desp" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Class1DtRange" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Class2Desp" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Class2DtRange" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Class3Desp" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Class3DtRange" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Class4Desp" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Class4DtRange" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Duty" Relationship="WuTaiTempleModel.FK_DUTY_RELATIONS_DUTYTYPE" FromRole="DutyType" ToRole="Duty" />
+        </EntityType>
+        <EntityType Name="FileChangeRecord">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="bsO_Id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="bsOrganize" Relationship="WuTaiTempleModel.FK_FILECHAN_RELATIONS_BSORGANI" FromRole="FileChangeRecord" ToRole="bsOrganize" />
+        </EntityType>
+        <EntityType Name="FireAlarm">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="bsO_Id" Type="Int64" Nullable="false" />
+          <Property Name="PubMessType" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Title" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Content" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="PubDt" Type="DateTime" Precision="3" />
+          <Property Name="ValidBegin" Type="DateTime" Precision="3" />
+          <Property Name="ValidEnd" Type="DateTime" Precision="3" />
+          <Property Name="bsUName" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="bsOrganize" Relationship="WuTaiTempleModel.FK_FIREALAR_RELATIONS_BSORGANI" FromRole="FireAlarm" ToRole="bsOrganize" />
+        </EntityType>
+        <EntityType Name="FirePlan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="bsO_Id" Type="Int64" Nullable="false" />
+          <Property Name="bsO_Name" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="EmerPlanType" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="EmerPlanName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="EmerPanFileName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="bsOrganize" Relationship="WuTaiTempleModel.FK_FIREPLAN_RELATIONS_BSORGANI" FromRole="FirePlan" ToRole="bsOrganize" />
+        </EntityType>
+        <EntityType Name="Instituation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="bsO_Id" Type="Int64" Nullable="false" />
+          <Property Name="InstiType" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="FName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="InstiMemo" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="bsOrganize" Relationship="WuTaiTempleModel.FK_INSTITUA_RELATIONS_BSORGANI" FromRole="Instituation" ToRole="bsOrganize" />
+        </EntityType>
+        <EntityType Name="VisitorTotal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="bsO_Id" Type="Int64" Nullable="false" />
+          <Property Name="TotalType" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="TotalDate" Type="DateTime" Precision="3" />
+          <Property Name="TempName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DownCount" Type="Int64" />
+          <Property Name="VisitCount" Type="Int64" />
+          <Property Name="VisitMinutes" Type="Int64" />
+          <NavigationProperty Name="bsOrganize" Relationship="WuTaiTempleModel.FK_VISITORT_RELATIONS_BSORGANI" FromRole="VisitorTotal" ToRole="bsOrganize" />
+        </EntityType>
+        <EntityType Name="VistorLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="bsO_Id" Type="Int64" Nullable="false" />
+          <Property Name="PhoneIMEI" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="PhoneNo" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="VisitType" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="VisitDt" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="VisitPage" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="LongLati" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="PhoneSize" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="PhoneType" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="bsOrganize" Relationship="WuTaiTempleModel.FK_VISTORLO_RELATIONS_BSORGANI" FromRole="VistorLog" ToRole="bsOrganize" />
+        </EntityType>
+        <Association Name="FK_DUTY_RELATIONS_BSEMPLOY">
+          <End Role="bsEmployee" Type="WuTaiTempleModel.bsEmployee" Multiplicity="1" />
+          <End Role="Duty" Type="WuTaiTempleModel.Duty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsEmployee">
+              <PropertyRef Name="bsE_Id" />
+            </Principal>
+            <Dependent Role="Duty">
+              <PropertyRef Name="bsE_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHECKREC_RELATIONS_BSUSER">
+          <End Role="bsUser" Type="WuTaiTempleModel.bsUser" Multiplicity="1" />
+          <End Role="CheckRecord" Type="WuTaiTempleModel.CheckRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsUser">
+              <PropertyRef Name="bsU_Id" />
+            </Principal>
+            <Dependent Role="CheckRecord">
+              <PropertyRef Name="bsU_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DUTY_RELATIONS_DUTYTYPE">
+          <End Role="DutyType" Type="WuTaiTempleModel.DutyType" Multiplicity="1" />
+          <End Role="Duty" Type="WuTaiTempleModel.Duty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DutyType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Duty">
+              <PropertyRef Name="Dut_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship_10">
+          <End Role="bsRole" Type="WuTaiTempleModel.bsRole" Multiplicity="*" />
+          <End Role="bsUser" Type="WuTaiTempleModel.bsUser" Multiplicity="*" />
+        </Association>
+        <EntityType Name="bsFunConf">
+          <Key>
+            <PropertyRef Name="bsFC_Id" />
+          </Key>
+          <Property Type="Guid" Name="bsFC_Id" Nullable="false" />
+          <Property Type="Guid" Name="bsN_Id" />
+          <Property Type="Guid" Name="pId" />
+          <Property Type="String" Name="FunCode" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FunName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FunDesp" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FunType" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FunUrl" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="FunLayout" />
+          <Property Type="String" Name="TName" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TPk" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NotNullField" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OrderBySql" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FilterField" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FilterValue" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ChildTName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ChildTPk" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PFk" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Operartor" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UpdateDt" Precision="3" />
+          <Property Type="Int32" Name="UseStatus" />
+          <Property Type="String" Name="VisibleInList" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ListDispType" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="UseUserPolicy" />
+          <Property Type="Boolean" Name="UseRoleFields" />
+          <NavigationProperty Name="bsFunInterface" Relationship="WuTaiTempleModel.FK_bsFunInt_RELATIONS_BSFUNCON" FromRole="bsFunConf" ToRole="bsFunInterface" />
+        </EntityType>
+        <EntityType Name="bsFunInterface">
+          <Key>
+            <PropertyRef Name="bsFI_Id" />
+          </Key>
+          <Property Type="Guid" Name="bsFI_Id" Nullable="false" />
+          <Property Type="Guid" Name="bsFC_Id" Nullable="false" />
+          <Property Type="String" Name="InterfaceName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="InterfaceUrl" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UrlServerEx" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LinkController" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LinkAction" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="bsFunConf" Relationship="WuTaiTempleModel.FK_bsFunInt_RELATIONS_BSFUNCON" FromRole="bsFunInterface" ToRole="bsFunConf" />
+        </EntityType>
+        <Association Name="FK_bsFunInt_RELATIONS_BSFUNCON">
+          <End Type="WuTaiTempleModel.bsFunConf" Role="bsFunConf" Multiplicity="1" />
+          <End Type="WuTaiTempleModel.bsFunInterface" Role="bsFunInterface" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsFunConf">
+              <PropertyRef Name="bsFC_Id" />
+            </Principal>
+            <Dependent Role="bsFunInterface">
+              <PropertyRef Name="bsFC_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="bsOrganize">
+          <Key>
+            <PropertyRef Name="bsO_Id" />
+          </Key>
+          <Property Type="Int64" Name="bsO_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Desp" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="PId" Nullable="false" />
+          <Property Type="String" Name="OrgType" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LongLati_Gcj" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LongLati_Bd" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Operater" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreateTime" Precision="3" />
+          <Property Type="DateTime" Name="SaveTime" Precision="3" />
+          <Property Type="Int16" Name="EmpCount" />
+          <Property Type="String" Name="Mananger" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BorderPic" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PicContent" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SpeechContent" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="bsEmployee" Relationship="WuTaiTempleModel.FK_BSEMPLOY_RELATIONS_BSORGANI" FromRole="bsOrganize" ToRole="bsEmployee" />
+          <NavigationProperty Name="bsRole" Relationship="WuTaiTempleModel.FK_BSROLE_RELATIONS_BSORGANI" FromRole="bsOrganize" ToRole="bsRole" />
+          <NavigationProperty Name="CheckRecord" Relationship="WuTaiTempleModel.FK_CHECKREC_RELATIONS_BSORGANI" FromRole="bsOrganize" ToRole="CheckRecord" />
+          <NavigationProperty Name="DialyEventRecord" Relationship="WuTaiTempleModel.FK_DIALYEVE_RELATIONS_BSORGANI" FromRole="bsOrganize" ToRole="DialyEventRecord" />
+          <NavigationProperty Name="Duty" Relationship="WuTaiTempleModel.FK_DUTY_RELATIONS_BSORGANI" FromRole="bsOrganize" ToRole="Duty" />
+          <NavigationProperty Name="FileChangeRecord" Relationship="WuTaiTempleModel.FK_FILECHAN_RELATIONS_BSORGANI" FromRole="bsOrganize" ToRole="FileChangeRecord" />
+          <NavigationProperty Name="FireAlarm" Relationship="WuTaiTempleModel.FK_FIREALAR_RELATIONS_BSORGANI" FromRole="bsOrganize" ToRole="FireAlarm" />
+          <NavigationProperty Name="FirePlan" Relationship="WuTaiTempleModel.FK_FIREPLAN_RELATIONS_BSORGANI" FromRole="bsOrganize" ToRole="FirePlan" />
+          <NavigationProperty Name="Instituation" Relationship="WuTaiTempleModel.FK_INSTITUA_RELATIONS_BSORGANI" FromRole="bsOrganize" ToRole="Instituation" />
+          <NavigationProperty Name="VisitorTotal" Relationship="WuTaiTempleModel.FK_VISITORT_RELATIONS_BSORGANI" FromRole="bsOrganize" ToRole="VisitorTotal" />
+          <NavigationProperty Name="VistorLog" Relationship="WuTaiTempleModel.FK_VISTORLO_RELATIONS_BSORGANI" FromRole="bsOrganize" ToRole="VistorLog" />
+        </EntityType>
+        <Association Name="FK_BSEMPLOY_RELATIONS_BSORGANI">
+          <End Type="WuTaiTempleModel.bsOrganize" Role="bsOrganize" Multiplicity="1" />
+          <End Type="WuTaiTempleModel.bsEmployee" Role="bsEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="bsEmployee">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSROLE_RELATIONS_BSORGANI">
+          <End Type="WuTaiTempleModel.bsOrganize" Role="bsOrganize" Multiplicity="1" />
+          <End Type="WuTaiTempleModel.bsRole" Role="bsRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="bsRole">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHECKREC_RELATIONS_BSORGANI">
+          <End Type="WuTaiTempleModel.bsOrganize" Role="bsOrganize" Multiplicity="1" />
+          <End Type="WuTaiTempleModel.CheckRecord" Role="CheckRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="CheckRecord">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DIALYEVE_RELATIONS_BSORGANI">
+          <End Type="WuTaiTempleModel.bsOrganize" Role="bsOrganize" Multiplicity="1" />
+          <End Type="WuTaiTempleModel.DialyEventRecord" Role="DialyEventRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="DialyEventRecord">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DUTY_RELATIONS_BSORGANI">
+          <End Type="WuTaiTempleModel.bsOrganize" Role="bsOrganize" Multiplicity="1" />
+          <End Type="WuTaiTempleModel.Duty" Role="Duty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="Duty">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FILECHAN_RELATIONS_BSORGANI">
+          <End Type="WuTaiTempleModel.bsOrganize" Role="bsOrganize" Multiplicity="1" />
+          <End Type="WuTaiTempleModel.FileChangeRecord" Role="FileChangeRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="FileChangeRecord">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FIREALAR_RELATIONS_BSORGANI">
+          <End Type="WuTaiTempleModel.bsOrganize" Role="bsOrganize" Multiplicity="1" />
+          <End Type="WuTaiTempleModel.FireAlarm" Role="FireAlarm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="FireAlarm">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FIREPLAN_RELATIONS_BSORGANI">
+          <End Type="WuTaiTempleModel.bsOrganize" Role="bsOrganize" Multiplicity="1" />
+          <End Type="WuTaiTempleModel.FirePlan" Role="FirePlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="FirePlan">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INSTITUA_RELATIONS_BSORGANI">
+          <End Type="WuTaiTempleModel.bsOrganize" Role="bsOrganize" Multiplicity="1" />
+          <End Type="WuTaiTempleModel.Instituation" Role="Instituation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="Instituation">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VISITORT_RELATIONS_BSORGANI">
+          <End Type="WuTaiTempleModel.bsOrganize" Role="bsOrganize" Multiplicity="1" />
+          <End Type="WuTaiTempleModel.VisitorTotal" Role="VisitorTotal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="VisitorTotal">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VISTORLO_RELATIONS_BSORGANI">
+          <End Type="WuTaiTempleModel.bsOrganize" Role="bsOrganize" Multiplicity="1" />
+          <End Type="WuTaiTempleModel.VistorLog" Role="VistorLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="VistorLog">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WuTaiTempleModelStoreContainer" CdmEntityContainer="WuTaiTempleEntities">
+          <EntitySetMapping Name="bsEmployee">
+            <EntityTypeMapping TypeName="WuTaiTempleModel.bsEmployee">
+              <MappingFragment StoreEntitySet="bsEmployee">
+                <ScalarProperty Name="bsE_Id" ColumnName="bsE_Id" />
+                <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
+                <ScalarProperty Name="NaviName" ColumnName="NaviName" />
+                <ScalarProperty Name="JobNo" ColumnName="JobNo" />
+                <ScalarProperty Name="IdCard" ColumnName="IdCard" />
+                <ScalarProperty Name="MinZu" ColumnName="MinZu" />
+                <ScalarProperty Name="JiGuan" ColumnName="JiGuan" />
+                <ScalarProperty Name="ZhengZhiMm" ColumnName="ZhengZhiMm" />
+                <ScalarProperty Name="BirthDt" ColumnName="BirthDt" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="XueLi" ColumnName="XueLi" />
+                <ScalarProperty Name="OrgName" ColumnName="OrgName" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="IsUpper" ColumnName="IsUpper" />
+                <ScalarProperty Name="IMDI" ColumnName="IMDI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsRole">
+            <EntityTypeMapping TypeName="WuTaiTempleModel.bsRole">
+              <MappingFragment StoreEntitySet="bsRole">
+                <ScalarProperty Name="bsR_Id" ColumnName="bsR_Id" />
+                <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Desp" ColumnName="Desp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsUser">
+            <EntityTypeMapping TypeName="WuTaiTempleModel.bsUser">
+              <MappingFragment StoreEntitySet="bsUser">
+                <ScalarProperty Name="bsU_Id" ColumnName="bsU_Id" />
+                <ScalarProperty Name="bsE_Id" ColumnName="bsE_Id" />
+                <ScalarProperty Name="AccoType" ColumnName="AccoType" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="LoginPwd" ColumnName="LoginPwd" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="ContactTel" ColumnName="ContactTel" />
+                <ScalarProperty Name="IsSysUser" ColumnName="IsSysUser" />
+                <ScalarProperty Name="RegDt" ColumnName="RegDt" />
+                <ScalarProperty Name="ValidDate" ColumnName="ValidDate" />
+                <ScalarProperty Name="AccountStatus" ColumnName="AccountStatus" />
+                <ScalarProperty Name="LoginDt" ColumnName="LoginDt" />
+                <ScalarProperty Name="IsOnline" ColumnName="IsOnline" />
+                <ScalarProperty Name="PhoneIMEIs" ColumnName="PhoneIMEIs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CheckRecord">
+            <EntityTypeMapping TypeName="WuTaiTempleModel.CheckRecord">
+              <MappingFragment StoreEntitySet="CheckRecord">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
+                <ScalarProperty Name="bsU_Id" ColumnName="bsU_Id" />
+                <ScalarProperty Name="CheckType" ColumnName="CheckType" />
+                <ScalarProperty Name="CheckDt" ColumnName="CheckDt" />
+                <ScalarProperty Name="CheckRegion" ColumnName="CheckRegion" />
+                <ScalarProperty Name="CheckDesp" ColumnName="CheckDesp" />
+                <ScalarProperty Name="CheckPic" ColumnName="CheckPic" />
+                <ScalarProperty Name="CheckMemo" ColumnName="CheckMemo" />
+                <ScalarProperty Name="CheckUser" ColumnName="CheckUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DialyEventRecord">
+            <EntityTypeMapping TypeName="WuTaiTempleModel.DialyEventRecord">
+              <MappingFragment StoreEntitySet="DialyEventRecord">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
+                <ScalarProperty Name="RecoType" ColumnName="RecoType" />
+                <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+                <ScalarProperty Name="BeginDt" ColumnName="BeginDt" />
+                <ScalarProperty Name="EndDt" ColumnName="EndDt" />
+                <ScalarProperty Name="Addr" ColumnName="Addr" />
+                <ScalarProperty Name="PicsList" ColumnName="PicsList" />
+                <ScalarProperty Name="FilesList" ColumnName="FilesList" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Duty">
+            <EntityTypeMapping TypeName="WuTaiTempleModel.Duty">
+              <MappingFragment StoreEntitySet="Duty">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Dut_Id" ColumnName="Dut_Id" />
+                <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
+                <ScalarProperty Name="bsE_Id" ColumnName="bsE_Id" />
+                <ScalarProperty Name="DutyType" ColumnName="DutyType" />
+                <ScalarProperty Name="DutyArea" ColumnName="DutyArea" />
+                <ScalarProperty Name="DutyName" ColumnName="DutyName" />
+                <ScalarProperty Name="DutyDate" ColumnName="DutyDate" />
+                <ScalarProperty Name="PlanBeginDt" ColumnName="PlanBeginDt" />
+                <ScalarProperty Name="PlanEndDt" ColumnName="PlanEndDt" />
+                <ScalarProperty Name="FactName" ColumnName="FactName" />
+                <ScalarProperty Name="DutyDt" ColumnName="DutyDt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DutyType">
+            <EntityTypeMapping TypeName="WuTaiTempleModel.DutyType">
+              <MappingFragment StoreEntitySet="DutyType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DutyType1" ColumnName="DutyType" />
+                <ScalarProperty Name="DutyName" ColumnName="DutyName" />
+                <ScalarProperty Name="DutyClassCount" ColumnName="DutyClassCount" />
+                <ScalarProperty Name="Class1Desp" ColumnName="Class1Desp" />
+                <ScalarProperty Name="Class1DtRange" ColumnName="Class1DtRange" />
+                <ScalarProperty Name="Class2Desp" ColumnName="Class2Desp" />
+                <ScalarProperty Name="Class2DtRange" ColumnName="Class2DtRange" />
+                <ScalarProperty Name="Class3Desp" ColumnName="Class3Desp" />
+                <ScalarProperty Name="Class3DtRange" ColumnName="Class3DtRange" />
+                <ScalarProperty Name="Class4Desp" ColumnName="Class4Desp" />
+                <ScalarProperty Name="Class4DtRange" ColumnName="Class4DtRange" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FileChangeRecord">
+            <EntityTypeMapping TypeName="WuTaiTempleModel.FileChangeRecord">
+              <MappingFragment StoreEntitySet="FileChangeRecord">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FireAlarm">
+            <EntityTypeMapping TypeName="WuTaiTempleModel.FireAlarm">
+              <MappingFragment StoreEntitySet="FireAlarm">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
+                <ScalarProperty Name="PubMessType" ColumnName="PubMessType" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="PubDt" ColumnName="PubDt" />
+                <ScalarProperty Name="ValidBegin" ColumnName="ValidBegin" />
+                <ScalarProperty Name="ValidEnd" ColumnName="ValidEnd" />
+                <ScalarProperty Name="bsUName" ColumnName="bsUName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FirePlan">
+            <EntityTypeMapping TypeName="WuTaiTempleModel.FirePlan">
+              <MappingFragment StoreEntitySet="FirePlan">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
+                <ScalarProperty Name="bsO_Name" ColumnName="bsO_Name" />
+                <ScalarProperty Name="EmerPlanType" ColumnName="EmerPlanType" />
+                <ScalarProperty Name="EmerPlanName" ColumnName="EmerPlanName" />
+                <ScalarProperty Name="EmerPanFileName" ColumnName="EmerPanFileName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Instituation">
+            <EntityTypeMapping TypeName="WuTaiTempleModel.Instituation">
+              <MappingFragment StoreEntitySet="Instituation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
+                <ScalarProperty Name="InstiType" ColumnName="InstiType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="InstiMemo" ColumnName="InstiMemo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VisitorTotal">
+            <EntityTypeMapping TypeName="WuTaiTempleModel.VisitorTotal">
+              <MappingFragment StoreEntitySet="VisitorTotal">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
+                <ScalarProperty Name="TotalType" ColumnName="TotalType" />
+                <ScalarProperty Name="TotalDate" ColumnName="TotalDate" />
+                <ScalarProperty Name="TempName" ColumnName="TempName" />
+                <ScalarProperty Name="DownCount" ColumnName="DownCount" />
+                <ScalarProperty Name="VisitCount" ColumnName="VisitCount" />
+                <ScalarProperty Name="VisitMinutes" ColumnName="VisitMinutes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VistorLog">
+            <EntityTypeMapping TypeName="WuTaiTempleModel.VistorLog">
+              <MappingFragment StoreEntitySet="VistorLog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
+                <ScalarProperty Name="PhoneIMEI" ColumnName="PhoneIMEI" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="VisitType" ColumnName="VisitType" />
+                <ScalarProperty Name="VisitDt" ColumnName="VisitDt" />
+                <ScalarProperty Name="VisitPage" ColumnName="VisitPage" />
+                <ScalarProperty Name="LongLati" ColumnName="LongLati" />
+                <ScalarProperty Name="PhoneSize" ColumnName="PhoneSize" />
+                <ScalarProperty Name="PhoneType" ColumnName="PhoneType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Relationship_10" TypeName="WuTaiTempleModel.Relationship_10" StoreEntitySet="Relationship_10">
+            <EndProperty Name="bsRole">
+              <ScalarProperty Name="bsR_Id" ColumnName="bsR_Id" />
+            </EndProperty>
+            <EndProperty Name="bsUser">
+              <ScalarProperty Name="bsU_Id" ColumnName="bsU_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="bsFunConf">
+            <EntityTypeMapping TypeName="WuTaiTempleModel.bsFunConf">
+              <MappingFragment StoreEntitySet="bsFunConf">
+                <ScalarProperty Name="UseRoleFields" ColumnName="UseRoleFields" />
+                <ScalarProperty Name="UseUserPolicy" ColumnName="UseUserPolicy" />
+                <ScalarProperty Name="ListDispType" ColumnName="ListDispType" />
+                <ScalarProperty Name="VisibleInList" ColumnName="VisibleInList" />
+                <ScalarProperty Name="UseStatus" ColumnName="UseStatus" />
+                <ScalarProperty Name="UpdateDt" ColumnName="UpdateDt" />
+                <ScalarProperty Name="Operartor" ColumnName="Operartor" />
+                <ScalarProperty Name="PFk" ColumnName="PFk" />
+                <ScalarProperty Name="ChildTPk" ColumnName="ChildTPk" />
+                <ScalarProperty Name="ChildTName" ColumnName="ChildTName" />
+                <ScalarProperty Name="FilterValue" ColumnName="FilterValue" />
+                <ScalarProperty Name="FilterField" ColumnName="FilterField" />
+                <ScalarProperty Name="OrderBySql" ColumnName="OrderBySql" />
+                <ScalarProperty Name="NotNullField" ColumnName="NotNullField" />
+                <ScalarProperty Name="TPk" ColumnName="TPk" />
+                <ScalarProperty Name="TName" ColumnName="TName" />
+                <ScalarProperty Name="FunLayout" ColumnName="FunLayout" />
+                <ScalarProperty Name="FunUrl" ColumnName="FunUrl" />
+                <ScalarProperty Name="FunType" ColumnName="FunType" />
+                <ScalarProperty Name="FunDesp" ColumnName="FunDesp" />
+                <ScalarProperty Name="FunName" ColumnName="FunName" />
+                <ScalarProperty Name="FunCode" ColumnName="FunCode" />
+                <ScalarProperty Name="pId" ColumnName="pId" />
+                <ScalarProperty Name="bsN_Id" ColumnName="bsN_Id" />
+                <ScalarProperty Name="bsFC_Id" ColumnName="bsFC_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsFunInterface">
+            <EntityTypeMapping TypeName="WuTaiTempleModel.bsFunInterface">
+              <MappingFragment StoreEntitySet="bsFunInterface">
+                <ScalarProperty Name="LinkAction" ColumnName="LinkAction" />
+                <ScalarProperty Name="LinkController" ColumnName="LinkController" />
+                <ScalarProperty Name="UrlServerEx" ColumnName="UrlServerEx" />
+                <ScalarProperty Name="InterfaceUrl" ColumnName="InterfaceUrl" />
+                <ScalarProperty Name="InterfaceName" ColumnName="InterfaceName" />
+                <ScalarProperty Name="bsFC_Id" ColumnName="bsFC_Id" />
+                <ScalarProperty Name="bsFI_Id" ColumnName="bsFI_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsOrganize">
+            <EntityTypeMapping TypeName="WuTaiTempleModel.bsOrganize">
+              <MappingFragment StoreEntitySet="bsOrganize">
+                <ScalarProperty Name="SpeechContent" ColumnName="SpeechContent" />
+                <ScalarProperty Name="PicContent" ColumnName="PicContent" />
+                <ScalarProperty Name="BorderPic" ColumnName="BorderPic" />
+                <ScalarProperty Name="Mananger" ColumnName="Mananger" />
+                <ScalarProperty Name="EmpCount" ColumnName="EmpCount" />
+                <ScalarProperty Name="SaveTime" ColumnName="SaveTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Operater" ColumnName="Operater" />
+                <ScalarProperty Name="LongLati_Bd" ColumnName="LongLati_Bd" />
+                <ScalarProperty Name="LongLati_Gcj" ColumnName="LongLati_Gcj" />
+                <ScalarProperty Name="OrgType" ColumnName="OrgType" />
+                <ScalarProperty Name="PId" ColumnName="PId" />
+                <ScalarProperty Name="Desp" ColumnName="Desp" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="默认值" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
