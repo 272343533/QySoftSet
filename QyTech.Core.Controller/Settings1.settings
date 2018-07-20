@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="QyTech.Core.ExController" GeneratedClassName="Settings1">
+  <Profiles />
+  <Settings>
+    <Setting Name="BaseDbEntitiesName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">QyTech_AuthEntities</Value>
+    </Setting>
+    <Setting Name="BaseDbEntitiesConnString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">"metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;provider connection string=&amp;quot;data source=122.114.38.213,2433\SqlExpress;initial catalog=QyTech_Auth;user id=sa;password=Qy_ltd414;MultipleActiveResultSets=True;App=EntityFramework&amp;quot;" providerName="System.Data.EntityClient</Value>
+    </Setting>
+    <Setting Name="AppDbEntitiesName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">WuTaiTempleEntities</Value>
+    </Setting>
+    <Setting Name="AppDbEntitiesConnString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;provider connection string=&amp;quot;data source=122.114.38.213,2433;initial catalog=WuTaiTemple;persist security info=True;user id=wtsuser;password=wtsuser;MultipleActiveResultSets=True;App=EntityFramework&amp;quot;" providerName="System.Data.EntityClient</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

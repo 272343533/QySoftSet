@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>QyTech.Json</name>
+    </assembly>
+    <members>
+        <member name="T:QyTech.Json.JsonHelper">
+            <summary>
+            Json帮助类
+            </summary>
+        </member>
+        <member name="M:QyTech.Json.JsonHelper.SerializeObject(System.Object)">
+            <summary>
+            序列化对象为Json字符串
+            </summary>
+            <param name="o">操作对象</param>
+            <returns>Json字符串 or null</returns>
+        </member>
+        <member name="M:QyTech.Json.JsonHelper.SerializeObject``1(System.Collections.Generic.List{``0})">
+            <summary>
+            序列化对象为Json字符串
+            </summary>
+            <param name="o">操作对象</param>
+            <returns>Json字符串 or null</returns>
+        </member>
+        <member name="M:QyTech.Json.JsonHelper.SerializeObject``1(System.Collections.Generic.List{``0},System.Type)">
+            <summary>
+            序列化对象为Json字符串
+            </summary>
+            <param name="o">操作对象</param>
+            <returns>Json字符串 or null</returns>
+        </member>
+        <member name="M:QyTech.Json.JsonHelper.SerializeObject``1(``0,System.Collections.Generic.List{System.String})">
+            <summary>
+            序列化对象为Json字符串
+            </summary>
+            <param name="o">操作对象</param>
+            <returns>Json字符串 or null</returns>
+        </member>
+        <member name="M:QyTech.Json.JsonHelper.SerializeObject``1(System.Collections.Generic.List{``0},System.Collections.Generic.List{System.String})">
+            <summary>
+            序列化对象为Json字符串
+            </summary>
+            <param name="o">操作对象</param>
+            <returns>Json字符串 or null</returns>
+        </member>
+        <member name="M:QyTech.Json.JsonHelper.SerializeObjectNoLimit``1(System.Collections.Generic.List{``0},System.String@,System.Boolean,System.Boolean,System.String)">
+            <summary>
+            序列化简单对象,没有属性限制。一般适用于自定义对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="o">要序列化的对象</param>
+            <param name="errinfo">错误信息,正确返回则为默认为null</param>
+            <param name="isFormat">是否排版返回json数据</param>
+            <param name="isIgnoreNullValue">Null值是否忽略</param>
+            <param name="FormatDt">日期类型格式化字符串</param>
+            <returns>Json字符串,返回null为出错</returns>
+        </member>
+        <member name="M:QyTech.Json.JsonHelper.DeserializeFormtJsonToObject``1(System.String)">
+            <summary>
+            解析含格式化的JSON字符串生成对象实体
+            </summary>
+            <typeparam name="T">对象类型</typeparam>
+            <param name="json">json字符串</param>
+            <returns>对象实体</returns>
+        </member>
+        <member name="M:QyTech.Json.JsonHelper.DeserializeJsonToObject``1(System.String)">
+            <summary>
+            解析JSON字符串生成对象实体
+            </summary>
+            <typeparam name="T">对象类型</typeparam>
+            <param name="json">json字符串(eg.{"ID":"112","Name":"石子儿"})</param>
+            <returns>对象实体</returns>
+        </member>
+        <member name="M:QyTech.Json.JsonHelper.DeserializeJsonToList``1(System.String)">
+            <summary>
+            解析JSON数组生成对象实体集合
+            </summary>
+            <typeparam name="T">对象类型</typeparam>
+            <param name="json">json数组字符串(eg.[{"ID":"112","Name":"石子儿"}])</param>
+            <returns>对象实体集合</returns>
+        </member>
+        <member name="M:QyTech.Json.JsonHelper.DeserializeAnonymousType``1(System.String,``0)">
+            <summary>
+            反序列化JSON到给定的匿名对象.
+            </summary>
+            <typeparam name="T">匿名对象类型</typeparam>
+            <param name="json">json字符串</param>
+            <param name="anonymousTypeObject">匿名对象</param>
+            <returns>匿名对象</returns>
+        </member>
+        <member name="M:QyTech.Json.LimitPropsContractResolver.#ctor(System.String[],System.Boolean)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="props">传入的属性数组</param>
+            <param name="retain">true:表示props是需要保留的字段  false：表示props是要排除的字段</param>
+        </member>
+    </members>
+</doc>
