@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <LastUsedBuildConfiguration>Release</LastUsedBuildConfiguration>
+    <LastUsedPlatform>Any CPU</LastUsedPlatform>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="api/Home/Index.html">
+      <publishTime>01/05/2017 11:53:09</publishTime>
+    </File>
+    <File Include="api/HtmlPage1.html">
+      <publishTime>01/05/2017 11:59:49</publishTime>
+    </File>
+    <File Include="api/TestRoute/Index.html">
+      <publishTime>01/04/2017 23:59:07</publishTime>
+    </File>
+    <File Include="api/Web.config">
+      <publishTime>01/05/2017 11:59:53</publishTime>
+    </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>06/03/2016 17:22:52</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>01/04/2017 20:16:29</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>01/04/2017 20:16:30</publishTime>
+    </File>
+    <File Include="bin/QyTech.Auth.Dao.dll">
+      <publishTime>02/13/2017 15:54:29</publishTime>
+    </File>
+    <File Include="bin/QyTech.Auth.dll">
+      <publishTime>03/21/2017 11:44:41</publishTime>
+    </File>
+    <File Include="bin/QyTech.Core.dll">
+      <publishTime>03/21/2017 09:49:45</publishTime>
+    </File>
+    <File Include="bin/QyTech.Core.ExController.dll">
+      <publishTime>03/21/2017 09:49:45</publishTime>
+    </File>
+    <File Include="bin/QyTech.Core.Helpers.dll">
+      <publishTime>02/16/2017 00:43:48</publishTime>
+    </File>
+    <File Include="bin/QyTech.DbFac.dll">
+      <publishTime>03/21/2017 09:49:42</publishTime>
+    </File>
+    <File Include="bin/QyTech.Json.dll">
+      <publishTime>02/15/2017 12:09:51</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>01/04/2017 20:16:32</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>01/04/2017 20:16:30</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>01/04/2017 20:16:32</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>01/04/2017 20:16:33</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>01/04/2017 20:16:31</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>01/04/2017 20:16:30</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>01/04/2017 20:16:30</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>01/04/2017 20:16:31</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>01/04/2017 20:16:31</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Net.Http.Formatting.resources.dll">
+      <publishTime>01/04/2017 20:16:40</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Helpers.resources.dll">
+      <publishTime>01/04/2017 20:16:39</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.resources.dll">
+      <publishTime>01/04/2017 20:16:39</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.WebHost.resources.dll">
+      <publishTime>01/04/2017 20:16:40</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Mvc.resources.dll">
+      <publishTime>01/04/2017 20:16:39</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Razor.resources.dll">
+      <publishTime>01/04/2017 20:16:38</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Deployment.resources.dll">
+      <publishTime>01/04/2017 20:16:39</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Razor.resources.dll">
+      <publishTime>01/04/2017 20:16:39</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.resources.dll">
+      <publishTime>01/04/2017 20:16:39</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>01/04/2017 20:18:37</publishTime>
+    </File>
+    <File Include="index.html">
+      <publishTime>03/19/2017 10:04:38</publishTime>
+    </File>
+    <File Include="log4net.config">
+      <publishTime>07/22/2016 17:04:38</publishTime>
+    </File>
+    <File Include="Login.html">
+      <publishTime>01/13/2017 21:25:45</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>01/04/2017 20:18:39</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>01/12/2017 23:50:39</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>03/21/2017 11:44:44</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
