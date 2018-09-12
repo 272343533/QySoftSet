@@ -7,7 +7,9 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Reflection;
 using System.Web.Script.Serialization;
-
+using System.Data;
+using System.Text;
+using System.Collections;
 using Newtonsoft.Json.Linq;
 
 namespace QyTech.Json
@@ -24,7 +26,7 @@ namespace QyTech.Json
     public class JsonHelper
     {
         /// <summary>
-        /// 序列化所有属性
+        /// 序列化对象，直接序列化所有属性
         /// </summary>
         /// <param name="o"></param>
         /// <returns></returns>
@@ -64,6 +66,7 @@ namespace QyTech.Json
         /// 序列化对象为Json字符串
         /// </summary>
         /// <param name="o">操作对象</param>
+        /// <param name="ItemName">需要序列化的属性</param>
         /// <returns>Json字符串 or null</returns>
         public static string SerializeObject(object o, List<string> ItemName)
         {
@@ -97,7 +100,7 @@ namespace QyTech.Json
                 }
                 str = ItemName.ToArray();
                 jsetting.ContractResolver = new LimitPropsContractResolver(str, true);
-                
+
                 jsetting.MissingMemberHandling = MissingMemberHandling.Ignore;
                 //设置对null值的处理 Include为保留，Ignore为忽略
                 jsetting.NullValueHandling = NullValueHandling.Include;
@@ -129,6 +132,7 @@ namespace QyTech.Json
         /// 序列化对象为Json字符串
         /// </summary>
         /// <param name="o">操作对象</param>
+        /// <param name="ItemName">需要序列化的属性</param>
         /// <returns>Json字符串 or null</returns>
         public static string SerializeObject<T>(T o, List<string> ItemName)
         {
@@ -197,7 +201,7 @@ namespace QyTech.Json
         /// 序列化数组
         /// </summary>
         /// <param name="o"></param>
-        /// <param name="listitemtype"></param>
+        /// <param name="listitemtype">项类型</param>
         /// <param name="ItemName"></param>
         /// <returns></returns>
         public static string SerializeObject(object o, Type listitemtype, List<string> ItemName)
@@ -217,13 +221,13 @@ namespace QyTech.Json
                     {
                         //获取属性类型(a)
                         Type t = p.PropertyType;
-                        if (t.FullName.Contains("System")&& !t.Name.Contains("Entity"))// !t.Name.Contains("EntityState") && !t.Name.Contains("EntityReference"))//排除类型为System.Data.EntityState的属性
+                        if (t.FullName.Contains("System") && !t.Name.Contains("Entity"))// !t.Name.Contains("EntityState") && !t.Name.Contains("EntityReference"))//排除类型为System.Data.EntityState的属性
                         {
                             ////如果属性类型是数值型及string则进行保留
                             //导航含items所以if不能有，------------------------------2017-01-19
                             //if (t.IsValueType || t == typeof(string))
                             //{
-                                ItemName.Add(p.Name);
+                            ItemName.Add(p.Name);
                             //}
                         }
                     }
@@ -234,7 +238,7 @@ namespace QyTech.Json
                 jsetting.MissingMemberHandling = MissingMemberHandling.Ignore;
                 //设置对null值的处理 Include为保留，Ignore为忽略
                 jsetting.NullValueHandling = NullValueHandling.Include;
-               // 增加一个转换器，以便枚举值与枚举名间的转换
+                // 增加一个转换器，以便枚举值与枚举名间的转换
                 jsetting.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
                 // 增加一个转换器，以方便时间格式的序列化和饭序列化
                 var dateTimeConverter = new Newtonsoft.Json.Converters.IsoDateTimeConverter();
@@ -256,7 +260,7 @@ namespace QyTech.Json
             return json;
         }
         /// <summary>
-        /// 序列化对象为Json字符串
+        /// 序列化集合对象为Json字符串
         /// </summary>
         /// <param name="o">操作对象</param>
         /// <returns>Json字符串 or null</returns>
@@ -319,7 +323,7 @@ namespace QyTech.Json
         /// </summary>
         /// <param name="o">操作对象</param>
         /// <returns>Json字符串 or null</returns>
-        public static string SerializeObjects<T>(List<T> o,Type tp)
+        public static string SerializeObjects<T>(List<T> o, Type tp)
         {
             string json = null;
             try
@@ -345,8 +349,8 @@ namespace QyTech.Json
                 }
                 string[] str = listStr.ToArray();
 
-                jsetting.MissingMemberHandling = MissingMemberHandling.Ignore;  
-           
+                jsetting.MissingMemberHandling = MissingMemberHandling.Ignore;
+
                 //设置对null值的处理 Include为保留，Ignore为忽略
                 jsetting.NullValueHandling = NullValueHandling.Include;
                 //设置序列化属性的清单
@@ -358,7 +362,7 @@ namespace QyTech.Json
                 dateTimeConverter.DateTimeFormat = "yyyy-MM-dd HH:mm:ss";
                 jsetting.Converters.Add(dateTimeConverter);
                 // 排版返回的 json 数据，使其具有缩进格式，以方便裸眼查看
-                 jsetting.Formatting = Newtonsoft.Json.Formatting.Indented;
+                jsetting.Formatting = Newtonsoft.Json.Formatting.Indented;
                 //序列化
                 json = JsonConvert.SerializeObject(o, jsetting);
             }
@@ -394,7 +398,7 @@ namespace QyTech.Json
                     Type type = o[0].GetType();
                     PropertyInfo[] _PropertyInfo = type.GetProperties();
                     List<string> listStr = new List<string>();
-               
+
                     foreach (PropertyInfo p in _PropertyInfo)
                     {
                         //获取属性类型(a)
@@ -416,7 +420,7 @@ namespace QyTech.Json
                 //设置序列化属性的清单
                 jsetting.ContractResolver = new LimitPropsContractResolver(str, true);
 
-                jsetting.MissingMemberHandling = MissingMemberHandling.Ignore;  
+                jsetting.MissingMemberHandling = MissingMemberHandling.Ignore;
                 //设置对null值的处理 Include为保留，Ignore为忽略
                 jsetting.NullValueHandling = NullValueHandling.Include;
 
@@ -452,7 +456,7 @@ namespace QyTech.Json
         /// <param name="isIgnoreNullValue">Null值是否忽略</param>
         /// <param name="FormatDt">日期类型格式化字符串</param>
         /// <returns>Json字符串,返回null为出错</returns>
-        public static string SerializeObjectsNoLimit<T>(List<T> o,out string errinfo,bool isFormat = true,bool isIgnoreNullValue = false, string FormatDt = "yyyy-MM-dd HH:mm:ss")
+        public static string SerializeObjectsNoLimit<T>(List<T> o, out string errinfo, bool isFormat = true, bool isIgnoreNullValue = false, string FormatDt = "yyyy-MM-dd HH:mm:ss")
         {
             string json = null;
             try
@@ -495,9 +499,9 @@ namespace QyTech.Json
             json = json.Replace("\\r", "");
             json = json.Replace("\"{", "{");
             json = json.Replace("}\"", "}");
-            json = json.Replace("\\\"","\"");
+            json = json.Replace("\\\"", "\"");
             StringReader sr = new StringReader(json);
-            object o = serializer.Deserialize(new JsonTextReader(sr),typeof(T));
+            object o = serializer.Deserialize(new JsonTextReader(sr), typeof(T));
             T t = o as T;
             return t;
         }
@@ -529,13 +533,13 @@ namespace QyTech.Json
             //StringReader sr = new StringReader(json);
             //object o = serializer.Deserialize(new JsonTextReader(sr), typeof(List<T>));
             //List<T> list = o as List<T>;
-          
+
             JavaScriptSerializer Serializer = new JavaScriptSerializer();
             List<T> list = Serializer.Deserialize<List<T>>(json);
             return list;
         }
 
-        public static List<keyVal> DeserializeJsonToKeyValList(string json) 
+        public static List<keyVal> DeserializeJsonToKeyValList(string json)
         {
             List<keyVal> kvlist = new List<keyVal>();
             JArray item = (JArray)JsonConvert.DeserializeObject(json);
@@ -564,6 +568,102 @@ namespace QyTech.Json
             return t;
         }
 
+
+
+
+        #region 对DataTable的序列话
+
+        public string SerializeDataTableToJsonWithJsonNet(DataTable table)
+        {
+            string JsonString = string.Empty;
+            JsonString = JsonConvert.SerializeObject(table);
+            return JsonString;
+        }
+
+
+        public string SerializeDataTableToJsonWithJavaScriptSerializer(DataTable table)
+        {
+            JavaScriptSerializer jsSerializer = new JavaScriptSerializer();
+            List<Dictionary<string, object>> parentRow = new List<Dictionary<string, object>>();
+            Dictionary<string, object> childRow;
+            foreach (DataRow row in table.Rows)
+            {
+                childRow = new Dictionary<string, object>();
+                foreach (DataColumn col in table.Columns)
+                {
+                    childRow.Add(col.ColumnName, row[col]);
+                }
+                parentRow.Add(childRow);
+            }
+            return jsSerializer.Serialize(parentRow);
+
+        }
+        public DataTable DeserializerTableWithJavaScriptSerializer(string strJson)
+        {
+            DataTable dt = new DataTable();
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            // var obj = serializer.DeserializeObject(strJson);//反序列化
+            ArrayList arralList = serializer.Deserialize<ArrayList>(strJson);//反序列化ArrayList类型
+            if (arralList.Count > 0)//反序列化后ArrayList个数不为0
+            {
+                foreach (Dictionary<string, object> row in arralList)
+                {
+                    if (dt.Columns.Count == 0)//新建的DataTable中无任何信息，为其添加列名及类型
+                    {
+                        foreach (string key in row.Keys)
+                        {
+                            dt.Columns.Add(key, row[key].GetType());//添加dt的列名
+                        }
+                    }
+                    DataRow dr = dt.NewRow();
+                    foreach (string key in row.Keys)//讲arrayList中的值添加到DataTable中
+                    {
+
+                        dr[key] = row[key];//添加列值
+                    }
+                    dt.Rows.Add(dr);//添加一行
+                }
+            }
+
+            return dt;
+        }
+
+        public string SerializeDataTableToJson(DataTable table)
+        {
+            var JsonString = new StringBuilder();
+            if (table.Rows.Count > 0)
+            {
+                JsonString.Append("[");
+                for (int i = 0; i < table.Rows.Count; i++)
+                {
+                    JsonString.Append("{");
+                    for (int j = 0; j < table.Columns.Count; j++)
+                    {
+                        if (j < table.Columns.Count - 1)
+                        {
+                            JsonString.Append("\"" + table.Columns[j].ColumnName.ToString() + "\":" + "\"" + table.Rows[i][j].ToString() + "\",");
+                        }
+                        else if (j == table.Columns.Count - 1)
+                        {
+                            JsonString.Append("\"" + table.Columns[j].ColumnName.ToString() + "\":" + "\"" + table.Rows[i][j].ToString() + "\"");
+                        }
+                    }
+                    if (i == table.Rows.Count - 1)
+                    {
+                        JsonString.Append("}");
+                    }
+                    else
+                    {
+                        JsonString.Append("},");
+                    }
+                }
+                JsonString.Append("]");
+            }
+            return JsonString.ToString();
+        }
+
+
+        #endregion
 
     }
 }

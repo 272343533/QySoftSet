@@ -278,8 +278,30 @@ namespace QyTech.Core.BLL
                 return errmsg;
             }
         }
+        public string Add<T>(List<T> ts)
+        {
+            try
+            {
+                if (ts.Count > 0)
+                {
 
-      
+                    entityName = db.GetType().GetProperties().Where(p => p.Name == ts[0].GetType().Name || p.Name == ts[0].GetType().Name + "s" || p.Name == ts[0].GetType().Name + "es").Single().Name;
+                    foreach (T t in ts)
+                    {
+                        db.AddObject(entityName, t);
+                    }
+                    db.SaveChanges();
+                }
+                return "";
+            }
+            catch (Exception ex)
+            {
+                string errmsg = ExceptionMessage.Parse(ex);
+                LogHelper.Error(ex);
+                return errmsg;
+            }
+        }
+
         /// <summary>
         /// 新增实体
         /// </summary>
