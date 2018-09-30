@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{09B7032A-CD91-4AD6-924E-57AA71DBD60C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>QyTech.UICreate</RootNamespace>
+    <AssemblyName>QyTech.UICreate</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\..\..\..\PublicReference\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="QyTech.Auth.Dao">
+      <HintPath>..\WebPub\QyTech.Auth.Dao.dll</HintPath>
+    </Reference>
+    <Reference Include="QyTech.Core">
+      <HintPath>..\WebPub\QyTech.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="QyTech.SkinForm">
+      <HintPath>..\Debug\QyTech.SkinForm.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="qyfAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="qyfAdd.Designer.cs">
+      <DependentUpon>qyfAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="qyfLayout\qyfLayoutList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="qyfLayout\qyfLayoutList.Designer.cs">
+      <DependentUpon>qyfLayoutList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="qyfLayout\qyfLayoutListParent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="qyfLayout\qyfLayoutListParent.Designer.cs">
+      <DependentUpon>qyfLayoutListParent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="qyfLayout\qyfLayoutListWithLeft.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="qyfLayout\qyfLayoutListWithLeft.Designer.cs">
+      <DependentUpon>qyfLayoutListWithLeft.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UIUtils\InputValidator.cs" />
+    <Compile Include="UIUtils\qyDgvListUtil.cs" />
+    <Compile Include="UIUtils\qyLayoutUtil.cs" />
+    <Compile Include="UIUtils\QyTechReflection.cs" />
+    <Compile Include="UIUtils\qyUICreate.cs" />
+    <Compile Include="Utils\SqlUtils.cs" />
+    <EmbeddedResource Include="qyfAdd.resx">
+      <DependentUpon>qyfAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="qyfLayout\qyfLayoutList.resx">
+      <DependentUpon>qyfLayoutList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="qyfLayout\qyfLayoutListParent.resx">
+      <DependentUpon>qyfLayoutListParent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="qyfLayout\qyfLayoutListWithLeft.resx">
+      <DependentUpon>qyfLayoutListWithLeft.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

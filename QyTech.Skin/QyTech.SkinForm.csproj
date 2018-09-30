@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{712E014E-BC82-4094-8078-CB0636993DE0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QyTech.SkinForm</RootNamespace>
+    <AssemblyName>QyTech.SkinForm</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\WebPub\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="QyTech.Auth.Dao, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\QySoftSet\branches\zhwsun\WebPub\QyTech.Auth.Dao.dll</HintPath>
+    </Reference>
+    <Reference Include="QyTech.Core, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WebPub\QyTech.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AsyncHttp\CommFun.cs" />
+    <Compile Include="Component\qyBtn_Query.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Component\qyBtn_ok.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Component\qyDgvPager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Component\qyDgvPager.Designer.cs">
+      <DependentUpon>qyDgvPager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Component\qyImagelist.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Component\qyImagelist.Designer.cs">
+      <DependentUpon>qyImagelist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Component\qyTvOrg.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\qyControEvents.cs" />
+    <Compile Include="Controls\qyDynGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\qyTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Form\qyFormContainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\qyFormContainer.Designer.cs">
+      <DependentUpon>qyFormContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\qyFormWithTitle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\qyFormWithTitle.Designer.cs">
+      <DependentUpon>qyFormWithTitle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="qyResources.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\qyDgv.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\qyBtn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Form\qyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\qyForm.Designer.cs">
+      <DependentUpon>qyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Component\qyBtn_cancel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Form\qyFormUtil.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Controls\qyPbr.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Component\qyDgvPager.resx">
+      <DependentUpon>qyDgvPager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Component\qyImagelist.resx">
+      <DependentUpon>qyImagelist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\qyFormContainer.resx">
+      <DependentUpon>qyFormContainer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\qyFormWithTitle.resx">
+      <DependentUpon>qyFormWithTitle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\qyForm.resx">
+      <DependentUpon>qyForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\add_16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Alarm_16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\cancel_16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\caution_16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\chat_16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\colorize_16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\csgh.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\del_16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ditu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\edit_16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Excel_16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\exit_16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\FWJZ.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\LNPC.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\map_16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ok_16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\position_16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\print_16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\print_16_Red.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\rent_16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\save_16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\save_16_black.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\search_16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\TDGH.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\TDXZ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\weixing.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Component\readme.txt" />
+    <None Include="Resources\noimage.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
