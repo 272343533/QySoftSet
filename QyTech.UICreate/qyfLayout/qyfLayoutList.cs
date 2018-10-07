@@ -8,26 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using QyTech.Core.BLL;
+using System.Data.Objects;
 
-using QyTech.Auth.Dao;
-using QyTech.SkinForm;
-using QyTech.SkinForm.Component;
-using QyTech.SkinForm.Controls;
-using QyTech.UICreate.Util;
 
 namespace QyTech.UICreate
 {
-    public partial class qyfLayoutList : qyfLayoutListParent
+    public partial class qyfLayoutList:qyfLayoutListParent
     {
 
-       
         /// <summary>
         /// 子类界面不显示，需要加这个构造函数
         /// </summary>
         public qyfLayoutList()
         {
             InitializeComponent();
+            this.scForm.SplitterDistance = 0;
         }
         /// <summary>
         /// 
@@ -38,11 +33,10 @@ namespace QyTech.UICreate
         /// <param name="tname">表或视图对象</param>
         /// <param name="where"></param>
         /// <param name="orderby"></param>
-        public qyfLayoutList(EntityManager em_Base, EntityManager em_App,SqlConnection conn,Guid bsFC_Id,string where="",string orderby="")
-            :base(em_Base, em_App, conn, bsFC_Id, where, orderby)
+        public qyfLayoutList(ObjectContext em_Base, ObjectContext em_App, SqlConnection conn, Guid bsFC_Id, string where = "")
+            : base(em_Base, em_App, conn, bsFC_Id)
         {
             InitializeComponent();
-
             this.scForm.SplitterDistance = 0;
         }
 

@@ -6,7 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using QyTech.Auth.Dao;
+
 using QyTech.SkinForm.Controls;
 
 using log4net;

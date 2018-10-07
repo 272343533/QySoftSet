@@ -255,59 +255,8 @@ namespace QyTech.Core.ExController.Bll
         public bool FRequired { get; set; }
 
     }
-    /// <summary>
-    /// 数据项的设定，包括表格头各列的设定
-    /// </summary>
-    public class DataItemSet
-   {
-    ////    /// <summary>
-    ////    /// 项描述
-    ////    /// </summary>
-    ////    public string FDesp { get; set; }
 
-    ////    public ColumnType columnType { get; set; }
-        /// <summary>
-        /// 项字段名
-        /// </summary>
-        public string FName { get; set; }
-        /////// <summary>
-        /////// 项宽度
-        /////// </summary>
-        ////public int FWidth { get; set; }
-
-        /////// <summary>
-        /////// 数据类型
-        /////// </summary>
-        ////public FDataType FDatatype { get; set; }
-
-        /////// <summary>
-        /////// 是否可编辑
-        /////// </summary>
-        ////public bool FEditable { get; set; }
-
-        /////// <summary>
-        /////// 默认值,尤其用于不可编辑时的值
-        /////// </summary>
-        ////public string DefaultValue { get; set; }
-
-        /////// <summary>
-        /////// 编辑方式类型组：Hidden,Text,MText,DatePicker,CheckBox,RadioButton,
-        /////// </summary>
-        ////public FDataEditType FEditType { get; set; } //包括
-
-        /////// <summary>
-        /////// 非输入时的数据源（值-显示）： select(男:男;女:女),checkBox（足球:足球;篮球:篮球）,radiobutton,ajax_url(/bsOrganize/TreeDis)
-        /////// </summary>
-        ////public string FEditValueEx { get; set; }
-
-
-        //////主要用于提示主键，外键类的guid不显示，但是要传递到前端
-        ////public bool FVisible { get; set; }
-
-        ////public bool FRequired { get; set; }
-
-        ////public List<FunOperation> RowOpers { get; set; }
-    }
+  
 
 
 

@@ -18,12 +18,12 @@ namespace QyTech.UICreate.Util
     {
         // public static event qyControlEvents.delegateProgressHandler ProgressChangeddEvent;
 
-        public static DataTable RefreshDgv(qyDgv qyDgvList, SqlConnection sqlConn, string tName, string where, string orderby = "")
+        public static DataTable RefreshDgv(qyDgv qyDgvList, SqlConnection sqlConn, string tName, string selectfields,string where, string orderby = "")
         {
             DataTable dtList = null;
             try
             {
-                dtList = QyTech.DbUtils.SqlUtils.GetDataTable(sqlConn, tName, where, orderby);
+                dtList = QyTech.DbUtils.SqlUtils.GetDataTable(sqlConn, tName, selectfields,where, orderby);
                 qyDgvList.DataSource = dtList;
                 return dtList;
             }

@@ -39,7 +39,7 @@
       <HintPath>..\WebPub\QyTech.Auth.Dao.dll</HintPath>
     </Reference>
     <Reference Include="QyTech.Core">
-      <HintPath>..\Debug\QyTech.Core.dll</HintPath>
+      <HintPath>..\WebPub\QyTech.Core.dll</HintPath>
     </Reference>
     <Reference Include="QyTech.SkinForm">
       <HintPath>..\Debug\QyTech.SkinForm.dll</HintPath>
@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\commEnums.cs" />
     <Compile Include="BLL\commService.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -71,58 +72,136 @@
     <Compile Include="GlobalVaribles.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UIList\frmApp.cs">
+    <Compile Include="UIBase\frmBtnStyle.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UIList\frmApp.Designer.cs">
+    <Compile Include="UIBase\frmBtnStyle.Designer.cs">
+      <DependentUpon>frmBtnStyle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIBase\frmIcon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIBase\frmIcon.Designer.cs">
+      <DependentUpon>frmIcon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIBLL\frmbsOrg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIBLL\frmbsOrg.Designer.cs">
+      <DependentUpon>frmbsOrg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIBLL\frmbsRole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIBLL\frmbsRole.Designer.cs">
+      <DependentUpon>frmbsRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIBLL\frmbsUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIBLL\frmbsUser.Designer.cs">
+      <DependentUpon>frmbsUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIBLL\frmRights.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIBLL\frmRights.Designer.cs">
+      <DependentUpon>frmRights.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIDb\frmExcelColMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIDb\frmExcelColMap.Designer.cs">
+      <DependentUpon>frmExcelColMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIDb\frmDtInterface.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIDb\frmDtInterface.Designer.cs">
+      <DependentUpon>frmDtInterface.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIFun\UIAdd\qyfFunFieldfAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIFun\UIAdd\qyfFunFieldfAdd.Designer.cs">
+      <DependentUpon>qyfFunFieldfAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIFun\UIAdd\qyfFunConfAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIFun\UIAdd\qyfFunConfAdd.Designer.cs">
+      <DependentUpon>qyfFunConfAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIFun\frmApp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIFun\frmApp.Designer.cs">
       <DependentUpon>frmApp.cs</DependentUpon>
     </Compile>
-    <Compile Include="UIList\frmFunQuery.cs">
+    <Compile Include="UIFun\frmSoftCustInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UIList\frmFunQuery.Designer.cs">
+    <Compile Include="UIFun\frmSoftCustInfo.Designer.cs">
+      <DependentUpon>frmSoftCustInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIDb\frmDb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIDb\frmDb.Designer.cs">
+      <DependentUpon>frmDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIFun\frmArea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIFun\frmArea.Designer.cs">
+      <DependentUpon>frmArea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIFun\frmFunQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIFun\frmFunQuery.Designer.cs">
       <DependentUpon>frmFunQuery.cs</DependentUpon>
     </Compile>
-    <Compile Include="UIList\frmFunInterface.cs">
+    <Compile Include="UIFun\frmFunInterface.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UIList\frmFunInterface.Designer.cs">
+    <Compile Include="UIFun\frmFunInterface.Designer.cs">
       <DependentUpon>frmFunInterface.cs</DependentUpon>
     </Compile>
-    <Compile Include="UIList\frmFunOper.cs">
+    <Compile Include="UIFun\frmFunOper.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UIList\frmFunOper.Designer.cs">
+    <Compile Include="UIFun\frmFunOper.Designer.cs">
       <DependentUpon>frmFunOper.cs</DependentUpon>
     </Compile>
-    <Compile Include="UIList\frmFunField.cs">
+    <Compile Include="UIFun\frmFunField.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UIList\frmFunField.Designer.cs">
+    <Compile Include="UIFun\frmFunField.Designer.cs">
       <DependentUpon>frmFunField.cs</DependentUpon>
     </Compile>
-    <Compile Include="UIList\frmFunConf.cs">
+    <Compile Include="UIFun\frmFunConf.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UIList\frmFunConf.Designer.cs">
+    <Compile Include="UIFun\frmFunConf.Designer.cs">
       <DependentUpon>frmFunConf.cs</DependentUpon>
     </Compile>
-    <Compile Include="UIList\frmNaviagtion.cs">
+    <Compile Include="UIFun\frmNaviagtion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UIList\frmNaviagtion.Designer.cs">
+    <Compile Include="UIFun\frmNaviagtion.Designer.cs">
       <DependentUpon>frmNaviagtion.cs</DependentUpon>
     </Compile>
-    <Compile Include="UIList\frmDtField.cs">
+    <Compile Include="UIDb\frmDtField.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UIList\frmDtField.Designer.cs">
+    <Compile Include="UIDb\frmDtField.Designer.cs">
       <DependentUpon>frmDtField.cs</DependentUpon>
     </Compile>
-    <Compile Include="UIList\frmDtTable.cs">
+    <Compile Include="UIDb\frmDtTable.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UIList\frmDtTable.Designer.cs">
+    <Compile Include="UIDb\frmDtTable.Designer.cs">
       <DependentUpon>frmDtTable.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="frmMain.resx">
@@ -137,31 +216,61 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UIList\frmApp.resx">
+    <EmbeddedResource Include="UIBLL\frmbsOrg.resx">
+      <DependentUpon>frmbsOrg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIBLL\frmbsRole.resx">
+      <DependentUpon>frmbsRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIBLL\frmbsUser.resx">
+      <DependentUpon>frmbsUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIBLL\frmRights.resx">
+      <DependentUpon>frmRights.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIDb\frmDtInterface.resx">
+      <DependentUpon>frmDtInterface.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIFun\UIAdd\qyfFunFieldfAdd.resx">
+      <DependentUpon>qyfFunFieldfAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIFun\UIAdd\qyfFunConfAdd.resx">
+      <DependentUpon>qyfFunConfAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIFun\frmApp.resx">
       <DependentUpon>frmApp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UIList\frmFunQuery.resx">
+    <EmbeddedResource Include="UIFun\frmSoftCustInfo.resx">
+      <DependentUpon>frmSoftCustInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIDb\frmDb.resx">
+      <DependentUpon>frmDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIFun\frmArea.resx">
+      <DependentUpon>frmArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIFun\frmFunQuery.resx">
       <DependentUpon>frmFunQuery.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UIList\frmFunInterface.resx">
+    <EmbeddedResource Include="UIFun\frmFunInterface.resx">
       <DependentUpon>frmFunInterface.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UIList\frmFunOper.resx">
+    <EmbeddedResource Include="UIFun\frmFunOper.resx">
       <DependentUpon>frmFunOper.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UIList\frmFunField.resx">
+    <EmbeddedResource Include="UIFun\frmFunField.resx">
       <DependentUpon>frmFunField.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UIList\frmFunConf.resx">
+    <EmbeddedResource Include="UIFun\frmFunConf.resx">
       <DependentUpon>frmFunConf.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UIList\frmNaviagtion.resx">
+    <EmbeddedResource Include="UIFun\frmNaviagtion.resx">
       <DependentUpon>frmNaviagtion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UIList\frmDtField.resx">
+    <EmbeddedResource Include="UIDb\frmDtField.resx">
       <DependentUpon>frmDtField.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UIList\frmDtTable.resx">
+    <EmbeddedResource Include="UIDb\frmDtTable.resx">
       <DependentUpon>frmDtTable.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -178,7 +287,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="UIAdd\" />
     <Folder Include="UISource\" />
     <Folder Include="Utils\" />
   </ItemGroup>

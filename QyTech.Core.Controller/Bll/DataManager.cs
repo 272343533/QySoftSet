@@ -45,17 +45,16 @@ namespace QyTech.Core.ExController.Bll
         /// <returns></returns>
         public object GetObjects(string where = "", string orderby = "")
         {
-            object dbobj, objs;
-            Type dbtype;
-            MethodInfo miObj;
-            Type typeEm = typeof(EntityManager);
-            try
+             try
             {
-                dbtype = Type.GetType(objClassFullName);
+                Type typeEm = typeof(EntityManager);
 
-                dbobj = dbtype.Assembly.CreateInstance(dbtype.FullName);
-                miObj = typeEm.GetMethod("GetListNoPaging").MakeGenericMethod(dbtype);
-                objs = miObj.Invoke(EManager_, new object[] { where, orderby });
+                Type dbtype = Type.GetType(objClassFullName);
+
+                object dbobj = dbtype.Assembly.CreateInstance(dbtype.FullName);
+                //MethodInfo[] mis=typeEm.GetMethods();
+                MethodInfo miObj = typeEm.GetMethod("GetListNoPaging",new Type[] { typeof(String), typeof(String)}).MakeGenericMethod(dbtype);//获取泛型类方法,不能有重名的，否则找不到，2018-10-06有一个错误，就是一个实例，一个静态，报错了
+                object objs = miObj.Invoke(EManager_, new object[] { where, orderby });
 
                 return objs;
             }

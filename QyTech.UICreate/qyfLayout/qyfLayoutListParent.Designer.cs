@@ -87,7 +87,7 @@
             // scQuery
             // 
             this.scQuery.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scQuery.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.scQuery.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.scQuery.Location = new System.Drawing.Point(0, 0);
             this.scQuery.Name = "scQuery";
             this.scQuery.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -108,7 +108,7 @@
             // 
             // qyBtn_Refresh
             // 
-            this.qyBtn_Refresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.qyBtn_Refresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.qyBtn_Refresh.Image = ((System.Drawing.Image)(resources.GetObject("qyBtn_Refresh.Image")));
             this.qyBtn_Refresh.Location = new System.Drawing.Point(600, 8);
             this.qyBtn_Refresh.Name = "qyBtn_Refresh";
@@ -163,6 +163,7 @@
             this.dgvList.Size = new System.Drawing.Size(688, 350);
             this.dgvList.TabIndex = 0;
             this.dgvList.eventColumnOrderByChanged += new QyTech.SkinForm.Controls.deldgvColumnOrderByChangedhandeler(this.dgvList_eventColumnOrderByChanged);
+            this.dgvList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvList_CellClick);
             // 
             // qyfLayoutListParent
             // 
@@ -172,6 +173,7 @@
             this.Controls.Add(this.scForm);
             this.Name = "qyfLayoutListParent";
             this.Text = "frmList";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.qyfLayoutListParent_FormClosed);
             this.Load += new System.EventHandler(this.frmListWithLeft_Load);
             this.Controls.SetChildIndex(this.scForm, 0);
             this.scForm.Panel2.ResumeLayout(false);

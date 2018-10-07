@@ -51,27 +51,6 @@ namespace QyTech.Core.BLL
             }
         }
 
-        public static int GetIntBySql(ObjectContext dbcontext,string sql)
-        {
-            try
-            {
-                List<intObject> objs = dbcontext.ExecuteStoreQuery<intObject>(sql).ToList<intObject>();
-                return objs[0].intData;
-            }
-            catch (Exception ex)
-            {
-                string errmsg = ExceptionMessage.Parse(ex);
-                LogHelper.Error(ex);
-                return -9999;
-            }
-        }
-
-        public void SaveToDb(ObjectContext db)
-        {
-            db.SaveChanges();
-        }
-
-
         /// <summary>
         /// 
         /// </summary>
@@ -89,6 +68,7 @@ namespace QyTech.Core.BLL
                 return -1;
             }
         }
+
 
         /// <summary>
         /// 
@@ -149,6 +129,7 @@ namespace QyTech.Core.BLL
             }
         }
 
+
         /// <summary>
         /// 
         /// </summary>
@@ -196,6 +177,7 @@ namespace QyTech.Core.BLL
             }
         }
 
+
         /// <summary>
         /// 没有返回参数的执行
         /// </summary>
@@ -236,7 +218,6 @@ namespace QyTech.Core.BLL
             }
         }
 
-   
         public List<T> GetPagingByStorProcedure<T>(string spName, string paramvalues, int pageNum, int numPerPage, out int totalCount)
         {
             totalCount = 0;
@@ -257,6 +238,8 @@ namespace QyTech.Core.BLL
                 return new List<T>();
             }
         }
+  
+
         /// <summary>
         /// 新增实体
         /// </summary>
@@ -278,6 +261,8 @@ namespace QyTech.Core.BLL
                 return errmsg;
             }
         }
+
+ 
         public string Add<T>(List<T> ts)
         {
             try
@@ -301,7 +286,6 @@ namespace QyTech.Core.BLL
                 return errmsg;
             }
         }
-
         /// <summary>
         /// 新增实体
         /// </summary>
@@ -326,7 +310,7 @@ namespace QyTech.Core.BLL
                 return default(T);
             }
         }
-
+   
         /// <summary>
         /// 修改实体
         /// </summary>
@@ -379,7 +363,7 @@ namespace QyTech.Core.BLL
                 return errmsg;
             }
         }
-    
+
         /// <summary>
         /// 删除实体
         /// </summary>
@@ -406,27 +390,27 @@ namespace QyTech.Core.BLL
             try
             {
                 string tablename = typeof(T).Name;
-                string CommandText="";
+                string CommandText = "";
                 Guid guid;
 
-                if (Guid.TryParse(PkValue.ToString(),out guid)) //Guid)
+                if (Guid.TryParse(PkValue.ToString(), out guid)) //Guid)
                 {
-                     CommandText = "delete  from " + tablename + " where " + PkName + "='" + PkValue.ToString() + "'";
+                    CommandText = "delete  from " + tablename + " where " + PkName + "='" + PkValue.ToString() + "'";
                 }
                 else
                 {
                     int intid;
 
-                    if (int.TryParse(PkValue.ToString(),out intid))
+                    if (int.TryParse(PkValue.ToString(), out intid))
                         CommandText = "delete  from " + tablename + " where " + PkName + "=" + PkValue.ToString();
                     else
                     {
                         CommandText = "delete  from " + tablename + " where " + PkName + "='" + PkValue.ToString() + "'";
                     }
                 }
-               
 
-                int i=ExecuteSql(CommandText);
+
+                int i = ExecuteSql(CommandText);
 
                 return "";
             }
@@ -436,11 +420,7 @@ namespace QyTech.Core.BLL
                 return ex.Message;
             }
         }
-
-
-
-
-
+ 
         //public T GetByGuidPk<T>( string PkName, Guid PkValue)
         //{
         //    try
@@ -490,7 +470,7 @@ namespace QyTech.Core.BLL
                 return default(T);
             }
         }
-
+ 
         public T GetByPk<T>( string PkName, object PkValue) where T : EntityObject
         {
             try
@@ -521,8 +501,8 @@ namespace QyTech.Core.BLL
                 return default(T);
             }
         }
-
-        public T GetBySql<T>( string conditionSql) where T : EntityObject 
+ 
+        public T GetBySql<T>(string conditionSql) where T : EntityObject
         {
             try
             {
@@ -543,7 +523,7 @@ namespace QyTech.Core.BLL
                 return default(T);
             }
         }
-
+  
         public List<T> GetListwithPaging<T>( string conditions, string orderbys, int pageNum, int numPerPage, out int totalCount) where T : class,new()
         {
             totalCount = 0;
@@ -569,8 +549,7 @@ namespace QyTech.Core.BLL
                 return null;
             }
         }
-
-        /// <summary>
+       /// <summary>
         /// 
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -599,6 +578,6 @@ namespace QyTech.Core.BLL
                 return null;
             }
         }
-       
+ 
     }
 }

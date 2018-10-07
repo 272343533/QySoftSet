@@ -22,11 +22,11 @@ namespace QyTech.Auth
         public QyTechCommonController()
             : base()
         {
-            //从xml文件中获取子类对应的信息，从而文件不需要进行配置
+            //从xml文件中获取子类对应的信息，从而文件不需要进行配置//还没有配置 zhwsun on 2018-10-06
 
-            StrDbContext = "wj_GisDbEntities";
-            objNameSpace = "Dao.WuTaiTemple";
-            ObjectClassFullName = StrForReplaceObject + ", Dao.WuTaiTemple, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null";
+            StrDbContext = "QyTech_BLLEntities";
+            objNameSpace = "Dao.QyTech_BLL";
+            ObjectClassFullName = StrForReplaceObject + ", Dao.QyTech_BLL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null";
         }
 
 

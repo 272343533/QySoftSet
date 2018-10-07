@@ -6,6 +6,9 @@ using System.Data.Objects.DataClasses;
 using System.Data.Objects;
 using System.Data.Entity;
 
+
+//zhwsun
+//218-10-06 note:暂时没有使用
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", Watch = true)]
 namespace SunMvcExpress.Core.BLL
 {

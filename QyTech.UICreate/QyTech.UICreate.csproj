@@ -37,7 +37,8 @@
     <Reference Include="log4net">
       <HintPath>..\..\..\..\PublicReference\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="QyTech.Auth.Dao">
+    <Reference Include="QyTech.Auth.Dao, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\WebPub\QyTech.Auth.Dao.dll</HintPath>
     </Reference>
     <Reference Include="QyTech.Core">
@@ -49,6 +50,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -66,11 +68,47 @@
     <Compile Include="qyfAdd.Designer.cs">
       <DependentUpon>qyfAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="qyfAddComponent\IaddComponent.cs" />
+    <Compile Include="qyfAddComponent\qyGroupMulTextbox.cs" />
+    <Compile Include="qyfAddComponent\qyGroupCheckBox.cs" />
+    <Compile Include="qyfAddComponent\qyGroupCombox.cs" />
+    <Compile Include="qyfAddComponent\qyGroupFactory.cs" />
+    <Compile Include="qyfAddComponent\qyGroupTextbox.cs" />
+    <Compile Include="qyfLayout\qyfLayListWithLeftTree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="qyfLayout\qyfLayListWithLeftTree.Designer.cs">
+      <DependentUpon>qyfLayListWithLeftTree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="qyfLayout\qyfLayListWithLeftOrg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="qyfLayout\qyfLayListWithLeftOrg.Designer.cs">
+      <DependentUpon>qyfLayListWithLeftOrg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="qyfLayout\qyfLayList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="qyfLayout\qyfLayList.Designer.cs">
+      <DependentUpon>qyfLayList.cs</DependentUpon>
+    </Compile>
     <Compile Include="qyfLayout\qyfLayoutList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="qyfLayout\qyfLayoutList.Designer.cs">
       <DependentUpon>qyfLayoutList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="qyfLayout\qyfLayListParent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="qyfLayout\qyfLayListParent.Designer.cs">
+      <DependentUpon>qyfLayListParent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="qyfLayout\qyfLayTreeEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="qyfLayout\qyfLayTreeEdit.Designer.cs">
+      <DependentUpon>qyfLayTreeEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="qyfLayout\qyfLayoutListParent.cs">
       <SubType>Form</SubType>
@@ -94,8 +132,23 @@
     <EmbeddedResource Include="qyfAdd.resx">
       <DependentUpon>qyfAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="qyfLayout\qyfLayListWithLeftTree.resx">
+      <DependentUpon>qyfLayListWithLeftTree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="qyfLayout\qyfLayListWithLeftOrg.resx">
+      <DependentUpon>qyfLayListWithLeftOrg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="qyfLayout\qyfLayList.resx">
+      <DependentUpon>qyfLayList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="qyfLayout\qyfLayoutList.resx">
       <DependentUpon>qyfLayoutList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="qyfLayout\qyfLayListParent.resx">
+      <DependentUpon>qyfLayListParent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="qyfLayout\qyfLayTreeEdit.resx">
+      <DependentUpon>qyfLayTreeEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="qyfLayout\qyfLayoutListParent.resx">
       <DependentUpon>qyfLayoutListParent.cs</DependentUpon>

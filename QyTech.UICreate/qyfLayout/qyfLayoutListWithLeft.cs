@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 
 using System.Windows.Forms;
-
+using System.Data.Objects;
 using System.Data.SqlClient;
 using QyTech.Core.BLL;
 using QyTech.Auth.Dao;
@@ -36,8 +36,8 @@ namespace QyTech.UICreate
         /// <param name="where"></param>
         /// <param name="orderby"></param>
         /// <summary>
-        public qyfLayoutListWithLeft(EntityManager em_Base, EntityManager em_App, SqlConnection conn, Guid bsFC_Id, string where = "", string orderby = "")
-            :base(em_Base,em_App,conn,bsFC_Id,where,orderby)
+        public qyfLayoutListWithLeft(ObjectContext db_Base, ObjectContext db_App, SqlConnection conn, Guid bsFC_Id, string where = "")
+            :base(db_Base,db_App,conn,bsFC_Id,where)
         {
             InitializeComponent();
         }

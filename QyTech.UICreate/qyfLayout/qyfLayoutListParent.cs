@@ -5,6 +5,7 @@ using System.Data;
 
 using System.Windows.Forms;
 
+using System.Data.Objects;
 using System.Data.SqlClient;
 using QyTech.Core.BLL;
 using QyTech.Auth.Dao;
@@ -21,9 +22,11 @@ namespace QyTech.UICreate
     public partial class qyfLayoutListParent : qyFormWithTitle
     {
         protected bsFunConf bsFc;
-        protected List<bsFunField> bffs;
+        protected List<bsFunField> bffs;//按照noinlist排序的
+        protected List<bsFunField> bffs_byFormNo;//按照formno排序的
         protected Dictionary<string, bsFunField> dicBFFs;
         protected bsTable bstable;
+        protected string selectfields = "*";
 
 
         protected object currRowTPkId;//行主键  一般不是guid就是int 行主键
@@ -32,8 +35,8 @@ namespace QyTech.UICreate
         protected string TPkType = "Guid";
 
 
-        protected EntityManager EM_Base;
-        protected EntityManager EM_App;
+        protected ObjectContext DB_Base;
+        protected ObjectContext DB_App;
         protected SqlConnection sqlConn;
 
         protected DataTable dtList;
@@ -47,8 +50,15 @@ namespace QyTech.UICreate
         protected int PbrMax = 100;
 
         protected qyDgv _qyDgvList;
+        protected Dictionary<string, Control> dicQueryControls=new Dictionary<string, Control>();
         
- 
+        private qyfAdd frmaddobj=new qyfAdd();//用用新增和修改的界面调用
+        protected qyfAdd subfrmAdd
+        {
+            get { return frmaddobj; }
+            set { frmaddobj = value; }
+        }
+
         public qyfLayoutListParent()
         {
             InitializeComponent();
@@ -63,39 +73,73 @@ namespace QyTech.UICreate
         /// <param name="where"></param>
         /// <param name="orderby"></param>
         /// <summary>
-        public qyfLayoutListParent(EntityManager em_Base, EntityManager em_App, SqlConnection conn, Guid bsFC_Id, string where = "", string orderby = "")
+        public qyfLayoutListParent(ObjectContext db_Base, ObjectContext db_App, SqlConnection conn, 
+            Guid bsFC_Id, string where = "")
         {
             InitializeComponent();
 
-            EM_Base = em_Base;
-            EM_App = em_App;
-            sqlConn = conn;
-            bsFc = EM_Base.GetByPk<bsFunConf>("bsFC_ID", bsFC_Id);
+            try
+            {
+                DB_Base = db_Base;
+                DB_App = db_App;
+                sqlConn = conn;
+                bsFc = EntityManager_Static.GetByPk<bsFunConf>(DB_Base, "bsFC_ID", bsFC_Id);
 
-            bstable = EM_Base.GetBySql<bsTable>("bsD_Name='" + bsFc.bsD_Name + "' and TName='" + bsFc.TName+"'");
-            tName = bsFc.TName;
-            if (bsFc.baseWhereSql== null)
-                strBaseWhere = "(" + where+")";
-            else
-                strBaseWhere = "(" + bsFc.baseWhereSql+")";
-            if (bsFc.OrderBySql == null)
-                strOrderby = orderby;
-            else
-                strOrderby = bsFc.OrderBySql;
+                bstable = EntityManager_Static.GetByPk<bsTable>(DB_Base, "bsT_Id",bsFc.bsT_Id);
+                tName = bsFc.TName;
+                if (bsFc.baseWhereSql == null)
+                {
+                    if (where != "")
+                        strBaseWhere = "(" + where + ")";
+                    else
+                        strBaseWhere = "";
+                }
+                else
+                    strBaseWhere = "(" + bsFc.baseWhereSql + ")";
+                if (bsFc.OrderBySql == null)
+                    strOrderby = "";
+                else
+                    strOrderby = bsFc.OrderBySql;
 
-            this.Title = bsFc.FunDesp;
+                this.Title = bsFc.FunDesp;
 
+
+                bffs = EntityManager_Static.GetListNoPaging<bsFunField>(DB_Base, "bsFC_Id='" + bsFc.bsFC_Id.ToString() + "'", "NoInList");
+                if (bffs.Count > 0)
+                {
+                    selectfields = "";
+                    foreach (bsFunField ff in bffs)
+                    {
+                        selectfields += "," + ff.FName;
+                    }
+                    if (selectfields.Length > 0)
+                        selectfields = selectfields.Substring(1);
+                }
+                bffs_byFormNo = EntityManager_Static.GetListNoPaging<bsFunField>(DB_Base, "bsFC_Id='" + bsFc.bsFC_Id.ToString() + "'", "NoInForm");
+            }
+            catch(Exception ex)
+            { }
         }
 
         private void frmListWithLeft_Load(object sender, EventArgs e)
         {
             qyLayoutUtil.FormLoad(this);
 
+            CreateQueryGroupBox();
+
+            RefreshDgv(dgvList, "", "");
+
+
         }
 
-        protected int qyDgvList_CellClick(object sender, DataGridViewCellEventArgs e)
+
+        #region 列表浏览dgv事件
+
+        private void dgvList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex == -1 || e.ColumnIndex == -1) return -1;
+            if (e.RowIndex == -1 || e.ColumnIndex == -1) return;
+
+
             currRowIndex = e.RowIndex;
             _qyDgvList = sender as qyDgv;
             try
@@ -108,10 +152,49 @@ namespace QyTech.UICreate
                 {
                     currRowTPkId = Guid.Parse(_qyDgvList.Rows[currRowIndex].Cells[_qyDgvList.tpkColumnIndex].Value.ToString());
                 }
+
+                #region  获取当前行对象
+                Type typeEm = typeof(QyTech.DbUtils.SqlUtils);
+                Type dbtype = Type.GetType("QyTech.Auth.Dao." + bstable.TName + ",QyTech.Auth.Dao,Version=1.0.0.0, Culture=neutral, PublicKeyToken=null");
+                object dbobj = dbtype.Assembly.CreateInstance(dbtype.FullName);
+                System.Reflection.MethodInfo miObj = typeEm.GetMethod("DataRow2EntityObject").MakeGenericMethod(dbtype);//获取泛型类方法,不能有重名的，否则找不到，2018-10-06有一个错误，就是一个实例，一个静态，报错了
+                                                                                                                        //静态方法，所以Invode的第一个参数为null
+                CurrRowObj = miObj.Invoke(null, new object[] { (dgvList.DataSource as DataTable).Rows[e.RowIndex] });
+                #endregion
+
+                //行操作
+                if (dgvList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "删除")
+                {
+                    DeleteRow(e.RowIndex);
+                    CurrRowObj = null;
+                }
+                else if (dgvList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "保存")
+                {
+                    SaveRow(e.RowIndex);
+                }
+                else if (dgvList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "查看/编辑")
+                {
+                    //CurrRowObj = QyTech.DbUtils.SqlUtils.DataRow2EntityObject<bsFunField>((dgvList.DataSource as DataTable).Rows[e.RowIndex]);
+                    //EditRow(CurrRowObj);
+                    EditRow((dgvList.DataSource as DataTable).Rows[e.RowIndex]);
+                }
             }
             catch (Exception ex)
             { }
-            return 0;
+        }
+
+        private void dgvList_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (this._qyDgvList.IsCurrentCellDirty) //有未提交的更//改
+            {
+                this._qyDgvList.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
+
+
+        private void dgvList_eventColumnOrderByChanged(string orderby)
+        {
+            strOrderby = orderby;
         }
 
         public void RefreshDgv(qyDgv dgv,string where, string orderby = "")
@@ -125,41 +208,72 @@ namespace QyTech.UICreate
                 string strWhere = strBaseWhere;
                 if (where != "")
                 {
-                    strWhere += " and " + where;
+                    if (strWhere != "")
+                        strWhere += " and " + where;
+                    else
+                        strWhere = where;
                 }
 
-                qyDgvListUtil.RefreshDgv(dgv, sqlConn, tName, strWhere, orderby);
+                qyDgvListUtil.RefreshDgv(dgv, sqlConn, tName, selectfields,strWhere, orderby);
 
                 ResetDgvHeader(dgv);
             }
-            catch (Exception ex) { log.Error("RefreshDgv:" + ex.Message); }
+            catch (Exception ex) {
+                //log.Error("RefreshDgv:" + ex.Message);
+            }
         }
 
-
-        public void ResetDgvHeader(qyDgv dgv)
+        /// <summary>
+        /// 刷新表格头
+        /// </summary>
+        /// <param name="dgv"></param>
+        private void ResetDgvHeader(qyDgv dgv)
         {
-            bffs = EM_Base.GetListNoPaging<bsFunField>("bsFC_Id='"+bsFc.bsFC_Id.ToString()+"'", "NoInList");
             if (bffs != null&& bffs.Count>0)
             {
                 qyDgvListUtil.ResetDgvHeader(dgv, bffs);
             }
         }
 
+
+        /// <summary>
+        /// 用于修改的checkbox判断是否选中使用，暂时未使用
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
+
+        #endregion
+
+        #region 增删改功能+保存
+        /// <summary>
+        /// 增加功能
+        /// </summary>
+        /// <param name="currRowObj"></param>
         protected void Add(object currRowObj)
         {
             CurrRowObj = currRowObj;
-            qyfAdd frmaddobj = new qyfAdd(AddOrEdit.Add, sqlConn, CurrRowObj,bstable, bffs);
+            qyfAdd frmaddobj = new qyfAdd(AddOrEdit.Add, sqlConn, currRowObj,bstable, bffs_byFormNo);
             frmaddobj.ShowDialog();
         }
+
+        protected virtual void CreateAddForm()
+        {
+            frmaddobj = new qyfAdd();
+        }
+
+        /// <summary>
+        /// 调用界面编辑行数据
+        /// </summary>
+        /// <param name="currRowObj"></param>
         protected void EditRow(object currRowObj)
         {
             try
             {
-                CurrRowObj = currRowObj;
-
-                qyfAdd frmaddobj = new qyfAdd(AddOrEdit.Edit, sqlConn, CurrRowObj, bstable, bffs);
-
+                CreateAddForm();
+                frmaddobj.InitqyfAdd(AddOrEdit.Edit, sqlConn, currRowObj, bstable, bffs_byFormNo);
                 frmaddobj.ShowDialog();
+                //RefreshDgv();
             }
             catch(Exception ex)
             {
@@ -235,24 +349,119 @@ namespace QyTech.UICreate
             }
         }
 
+        #endregion
+
+
+        #region 查询框
         private void qyBtn_Refresh_Click(object sender, EventArgs e)
         {
+            RefreshDgv();
+        }
+
+        protected void RefreshDgv()
+        {
+            strWhere = CreateWhere();
+            RefreshDgv(dgvList, strWhere);
 
         }
 
-        private void qyDgvList_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        private void qyfLayoutListParent_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (this._qyDgvList.IsCurrentCellDirty) //有未提交的更//改
+            try
             {
-                this._qyDgvList.CommitEdit(DataGridViewDataErrorContexts.Commit);
+                DB_Base.Dispose();
+                DB_Base = null;
+
+                if (DB_App != null)
+                {
+                    DB_App.Dispose();
+                    DB_App = null;
+                }
             }
+            catch { }
         }
 
-
-        private void dgvList_eventColumnOrderByChanged(string orderby)
+        private string CreateWhere()
         {
-            strOrderby = orderby;
+            string Conditions = "";
+            foreach (Control c in gbCondition.Controls)
+            {
+                if (c is Label)
+                    continue;
+                try
+                {
+                    if (c is CheckBox)
+                    {
+                        CheckBox cb = c as CheckBox;
+                        Conditions += " and " + c.Tag.ToString().Replace("@@@@", cb.Checked?"1":"0");
+                    }
+                    else
+                    {
+                        if (c.Text != "")
+                        {
+                            if (c is TextBox)
+                            {
+                                Conditions += " and " + c.Tag.ToString().Replace("@@@@", c.Text);
+                            }
+                            else if (c is ComboBox)//根据分号分割条件
+                            {
+                                ComboBox cb = c as ComboBox;
+                                //如果显示与实际参数不同，有对应关系，则可考虑使用tag中字符串再split使用value
+                                if (cb.Tag.ToString() != "")
+                                {
+                                    int cb_selectindex = cb.SelectedIndex;
+                                    string[] conds = c.Tag.ToString().Split(new char[] { ';' });
+                                    int condindex = cb_selectindex < conds.Length ? cb_selectindex : conds.Length - 1;//如果条件不够，就用最后一个条件
+                                    Conditions += " and " + conds[condindex].Replace("@@@@", c.Text);
+                                }
+                            }
+
+                        }
+                    }
+                }
+                catch { }
+            }
+            if (Conditions.Length > 5)
+                Conditions = Conditions.Substring(4);
+
+            return Conditions;
         }
+        private void CreateQueryGroupBox()
+        {
+            try
+            {
+                //参数未实体对象
+                List<bsFunQuery> fqs = EntityManager_Static.GetListNoPaging<bsFunQuery>(DB_Base, "bsFC_Id='" + bsFc.bsFC_Id.ToString() + "'", "");
+                int gbWidth =0;
+                int gbHeight = gbCondition.Height;
+                if (fqs.Count > 0)
+                {
+                    Util.qyUICreate.CreateFunQueryPart(sqlConn, fqs, gbCondition, ref gbWidth, ref gbHeight);
+
+                    gbCondition.Width = gbWidth;
+                    //gbCondition.Height = gbHeight;
+                    this.scDgv.SplitterDistance = this.scDgv.SplitterDistance + (gbHeight - 34);//scdgv的上面pandel高度-
+                }
+                else
+                {
+                    gbCondition.Width = 0;
+                    //this.scDgv.SplitterDistance = 34;
+                }
+                qyBtn_Refresh.Left = gbCondition.Left + gbWidth + 10;
+
+                foreach(Control c in gbCondition.Controls)
+                {
+                    if (c is Label)
+                    {
+                        dicQueryControls.Add(c.Name, c);
+                    }
+                }
+            }
+            catch (Exception ex)
+            { }
+        }
+        #endregion
+
 
     }
 

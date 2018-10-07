@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Web;
-using SunMvcExpress.Common.Xml;
+
 namespace QyTech.Core.Common
 {
     public class SunMvcApp

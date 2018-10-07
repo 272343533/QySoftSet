@@ -45,7 +45,7 @@ namespace System.Web.Mvc
                             {
                                 if (item.GetValue(t, null) != null)
                                 {
-                                    int? systypeid = EntityManager.GetIntBySql(db,"select convert(int,a.system_type_id) as intData  from sys.columns a inner join sysobjects c on a.object_Id=c.id and c.[name]='" + tablename + "' and a.Name='" + item.Name + "'");
+                                    int? systypeid = EntityManager_Static.GetIntBySql(db,"select convert(int,a.system_type_id) as intData  from sys.columns a inner join sysobjects c on a.object_Id=c.id and c.[name]='" + tablename + "' and a.Name='" + item.Name + "'");
             
                                     if (Convert.ToInt32(systypeid) != 40)
                                     {

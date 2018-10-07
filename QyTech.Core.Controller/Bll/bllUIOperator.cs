@@ -52,8 +52,8 @@ namespace QyTech.Core.ExController.Bll
                 {
                     FunQueryItem objqi = new FunQueryItem();
                     objqi.Name = item.FName;
-                    objqi.NameTip = item.OperName;
-                    objqi.InputType = (FDataQueryType)Enum.Parse(typeof(FDataQueryType), "QT_" + item.OperType);
+                    objqi.NameTip = item.QueryName;
+                    objqi.InputType = (FDataQueryType)Enum.Parse(typeof(FDataQueryType), "QT_" + item.QueryType);
                     objqi.DataEx = item.DataEx;
                     if (objqi.InputType == FDataQueryType.QT_date)
                     {
@@ -146,15 +146,16 @@ namespace QyTech.Core.ExController.Bll
                 {
                     FunOperation obj = new FunOperation();
                     obj.btnNameTip = item.OperName;
-                    obj.btnType = item.BtnType;
-                    obj.btnSize = item.btnSize;
-                    obj.btnClickType=item.btnClickGetPost;
+                    //修改表结构所以暂时注释掉以下4行 zhwsun 2018-10-06
+                    //obj.btnType = item.BtnType;
+                    //obj.btnSize = item.btnSize;
+                    //obj.btnClickType=item.btnClickGetPost;
+                    //obj.btnClass = item.btnClass;
                     obj.btnClickUrl =item.UrlServerEx+ item.LinkUrl;
                     if (obj.btnClickType.ToLower() == "get")
                         obj.getPagePostUrl = item.UrlServerEx + item.PostUrl;
-                    obj.btnClass = item.btnClass;
-
-                    obj.btnPos = (ItemPos)Enum.Parse(typeof(ItemPos), item.btnPos);
+                    
+                    obj.btnPos = (ItemPos)Enum.Parse(typeof(ItemPos), item.btnPositon);
                     obj.pageType = (PageType)Enum.Parse(typeof(PageType), item.NewPageType); ;
                     objs.Add(obj);
                 }

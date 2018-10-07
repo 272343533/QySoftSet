@@ -170,6 +170,11 @@ namespace QyTech.Core.ExController
             get { return strForReplaceObject; }
         }
 
+        
+        /// <summary>
+        /// web请求会被这里捕获，然后可以得到Area/Controller/Action 然后
+        /// </summary>
+        /// <param name="filterContext"></param>
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
          

@@ -8,14 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using QyTech.Auth.Dao;
+
 
 namespace QyTech.SkinForm
 {
     public partial class qyFormWithTitle : Form
     {
-        protected log4net.ILog log = log4net.LogManager.GetLogger("QyTech.SkinForm.qyFormContainer");
-        public bsUser CurrLogUser;
+        protected log4net.ILog log = log4net.LogManager.GetLogger("qyFormWithTitle");
+
         public qyFormWithTitle()
         {
             InitializeComponent();

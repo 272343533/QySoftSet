@@ -27,7 +27,7 @@ namespace QyTech.SkinForm.Controls
 
         private int _tpkColumnIndex = 0;
 
-        public bool AutoAddOperColumns = true;
+        private bool AutoAddOperColumns = true;
 
 
         private string _OrderBy = "";
@@ -72,12 +72,24 @@ namespace QyTech.SkinForm.Controls
             RowPostPaint += new DataGridViewRowPostPaintEventHandler(dgv_RowPostPaint);
             CellPainting += new DataGridViewCellPaintingEventHandler(dgv_CellPainting);
             CellClick += new DataGridViewCellEventHandler(qyDgv_CellClick);
-            DataSourceChanged += new EventHandler(dgv_DataSourceChanged);
-
+        
             SortCompare += new DataGridViewSortCompareEventHandler(dgvList_SortCompare);
             ColumnHeaderMouseClick += new DataGridViewCellMouseEventHandler(dgvList_ColumnHeaderMouseClick);
             AutoGenerateColumns = true;
-           // Anchor = AnchorStyles.Bottom;
+            // Anchor = AnchorStyles.Bottom;
+
+            ///操作列放在前面
+            if (AutoAddOperColumns)
+            {
+                //DataGridViewColumn dgvc = Columns[0];
+                //if (dgvc.Name != "ViewEdit" && Columns[ColumnCount - 2].Name != "ViewEdit")
+                //{
+                    addDgvModifyButton();
+                    addDgvDelButton();
+                    //MergeCellsAdd("0,1", "操作");
+                //}
+            }
+
 
         }
 
@@ -128,25 +140,25 @@ namespace QyTech.SkinForm.Controls
                 _MergeCells.Remove(columns);
         }
 
-        private void dgv_DataSourceChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (AutoAddOperColumns)
-                {
-                    DataGridViewColumn dgvc = Columns[0];
-                    if (dgvc.Name != "ViewEdit" && Columns[ColumnCount - 2].Name != "ViewEdit")
-                    {
-                        addDgvModifyButton();
-                        addDgvDelButton();
-                        //MergeCellsAdd("0,1", "操作");
-                    }
-                }
-            }
-            catch(Exception ex)
-            {
-            }
-        }
+        //private void dgv_DataSourceChanged(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        //if (AutoAddOperColumns)
+        //        //{
+        //        //    DataGridViewColumn dgvc = Columns[0];
+        //        //    if (dgvc.Name != "ViewEdit" && Columns[ColumnCount - 2].Name != "ViewEdit")
+        //        //    {
+        //        //        addDgvModifyButton();
+        //        //        addDgvDelButton();
+        //        //        //MergeCellsAdd("0,1", "操作");
+        //        //    }
+        //        //}
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //    }
+        //}
         public static DataGridViewCellStyle DgvDefaultAlterCellStyle
         {
             get { return new DataGridViewCellStyle { BackColor = Color.FromArgb(255, 255, 224, 192) }; }

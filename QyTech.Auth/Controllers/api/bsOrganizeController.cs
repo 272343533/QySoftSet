@@ -44,8 +44,8 @@ namespace QyTech.Auth.Controllers.api
                 treenode = new TreeNode();
                 treenode.id = cc.bsO_Id.ToString();
                 treenode.name = cc.Name;
-                treenode.type = cc.OrgType;
                 treenode.pId = cc.PId.ToString();
+                treenode.type = cc.OrgType;
                 treenode.addBtnFlag = false;
                 treenode.removeBtnFlag = false;
                 treenode.editBtnFlag = false;

@@ -99,7 +99,7 @@ namespace QyTech.Core.ExController.Bll
                     obj.FDesp = item.FDesp;
                     obj.FVisible = (bool)item.VisibleInList;
 
-                    obj.FEditable = item.FEditable =="0" ? false : true;
+                    obj.FEditable = item.FEditable ==null ? false : (bool)item.FEditable;
 
                     obj.FDataVerity=new FDataInputVerity();
                     obj.FDataVerity.fdatatype=(FDataType)Enum.Parse(typeof(FDataType), "DT_" + item.OType);
@@ -151,12 +151,12 @@ namespace QyTech.Core.ExController.Bll
         /// 获取用户要显示的字段信息
         /// </summary>
         /// <returns></returns>
-        private static List<DataItemSet> GetUserNeedDispItemDesps(EntityManager EManager, Guid loginUserId, bsFunConf bsFC, string ListOrForm)
+        private static List<string> GetUserNeedDispItemDesps(EntityManager EManager, Guid loginUserId, bsFunConf bsFC, string ListOrForm)
         {
 
             List<bsFunField> ffs = EManager.GetAllByStorProcedure<bsFunField>("splyGetUserFunConfFields", new object[] { loginUserId, bsFC.bsFC_Id });
 
-            List<DataItemSet> objs = new List<DataItemSet>();
+            List<string> objs = new List<string>();
             if (ffs.Count > 0)
             {
 
@@ -164,37 +164,33 @@ namespace QyTech.Core.ExController.Bll
                 //应该使用bsFunField //还要获取该功能项的需要显示的项的列表
                 foreach (bsFunField item in ffs)
                 {
-                    DataItemSet obj = new DataItemSet();
                     if (ListOrForm.ToLower() == "list")
                     {
                         if ((bool)item.VisibleInList || bsFC.TPk == item.FName)
                         {
-                            obj.FName = item.FName;
-                            //obj.FDesp = item.FDesp;
-                            //obj.FVisible = (bool)item.VisibleInList;
-                            //obj.FDatatype = (FDataType)Enum.Parse(typeof(FDataType), "DT_" + item.OType);
-                            //obj.FEditType = (FDataEditType)Enum.Parse(typeof(FDataEditType), "ET_" + item.FEditType);
-                            //obj.FWidth = (int)item.FWidthInList;
-                            //obj.FRequired = item.FIsNull.HasValue ? !(bool)item.FIsNull : false;
+                            objs.Add(item.FName);
                         }
                     }
                     else
                     {
                         if ((bool)item.VisibleInForm)// || item.bsTable.TPk == item.FName)
                         {
-                            obj.FName = item.FName;
+                            
+                            objs.Add(item.FName);
                         }
                     }
-                    objs.Add(obj);
-
-
                 }
             }
             return objs;
         }
 
 
-      
+      /// <summary>
+      /// 根据路由信息判断是哪个FunConf
+      /// </summary>
+      /// <param name="EManager"></param>
+      /// <param name="routeData">路由信息</param>
+      /// <returns></returns>
         public static Guid GetFunConfId(EntityManager EManager, RouteData routeData)
         {
             Guid fcid;
@@ -227,7 +223,7 @@ namespace QyTech.Core.ExController.Bll
         }
 
 
-        public static List<DataItemSet> GetUserNeedDispListItemDesps(EntityManager EManager, Guid loginUserId, bsFunConf bsfc)
+        public static List<string> GetUserNeedDispListItemDesps(EntityManager EManager, Guid loginUserId, bsFunConf bsfc)
         {
             if (((int)bsfc.FunLayout&1)==1)
                 return GetUserNeedDispItemDesps(EManager, loginUserId, bsfc, "List");

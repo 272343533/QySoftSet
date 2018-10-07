@@ -18,6 +18,18 @@ namespace QyTech.SkinForm.Controls
 
 
         private Point Position = new Point(0, 0);
+
+
+        private bool NodeCheckedWithParent_ = false;
+        /// <summary>
+        /// 设置父子节点的复选框是否联动
+        /// </summary>
+        public bool NodeCheckedWithParent
+        {
+            get { return NodeCheckedWithParent_; }
+            set { NodeCheckedWithParent_ = value; }
+        }
+
         public qyTreeView():base()
         {
             Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -27,7 +39,48 @@ namespace QyTech.SkinForm.Controls
             ItemDrag += new ItemDragEventHandler(tv_ItemDrag);
             DragDrop += new DragEventHandler(tv_DragDrop);
             DragEnter += new DragEventHandler(tv_DragEnter);
+
+            AfterCheck += new TreeViewEventHandler(tv_AfterCheck);
         }
+
+
+        #region 设置选中节点
+        public bool SetSelectNode(string nodeText)
+        {
+            foreach(TreeNode tn in Nodes)
+            {
+                if (tn.Text == nodeText)
+                {
+                   SelectedNode = tn;
+                   return true;
+                }
+                bool findflag=SetSelectNode(tn, nodeText);
+                if (findflag)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        private bool SetSelectNode(TreeNode tn,string nodeText)
+        {
+            foreach (TreeNode node in tn.Nodes)
+            {
+                if (node.Text == nodeText)
+                {
+                    SelectedNode = tn;
+                    return true;
+                }
+                bool findflag = SetSelectNode(tn, nodeText);
+                if (findflag)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        #endregion
 
         protected void QyTreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
@@ -52,16 +105,20 @@ namespace QyTech.SkinForm.Controls
             //}
         }
 
+
+
+
+        #region 加载树
         /// <summary>
         /// 填充树
         /// </summary>
         /// <param name="Ts">要求根的PId=Id</param>
-        public void LoadData(List<qytvNode> Ts)
+        public void LoadData(List<qytvNode> Ts,bool checkbox=false)
         {
             if (Ts == null)
                 return;
             _Ts = Ts;
-
+            CheckBoxes = checkbox;
             if (_Ts.Count != 0)
             {
                 Nodes.Clear();
@@ -78,7 +135,7 @@ namespace QyTech.SkinForm.Controls
             {
                 if (t != null && t.PId!=null)//(t != null) && (t.PId == null))
                 {
-                    if (t.PId == Guid.Empty)//t.Id)
+                    if (t.PId == Guid.Empty.ToString())//t.Id)
                     {
                         TreeNode newNode = new TreeNode(t.Name);
                         //newNode.Checked = true;
@@ -113,7 +170,103 @@ namespace QyTech.SkinForm.Controls
                 }
             }
         }
+        #endregion
 
+        #region 复选框
+
+        //用一个节点集合刷新树，表示选中
+        public void RefreshChecked(List<qytvNode> checknodes)
+        {
+            foreach (TreeNode tn in Nodes)
+            {
+                if (tnInchecknodes(tn,ref checknodes))
+                {
+                    tn.Checked = true;
+                }
+                else
+                { 
+                    foreach(TreeNode subnode in tn.Nodes)
+                    {
+                        RefreshChecked(subnode, ref checknodes);
+                    }
+                }
+            }
+        }
+        public void RefreshChecked(TreeNode tn, ref List<qytvNode> checknodes)
+        {
+            foreach (TreeNode tn1 in tn.Nodes)
+            {
+                if (tnInchecknodes(tn, ref checknodes))
+                {
+                    tn.Checked = true;
+                }
+                else
+                {
+                    foreach (TreeNode subnode in tn.Nodes)
+                    {
+                        RefreshChecked(subnode, ref checknodes);
+                    }
+                }
+            }
+        }
+        private bool tnInchecknodes(TreeNode tn,ref List<qytvNode> checknodes)
+        {
+            bool findflag = false;
+            for(int i = checknodes.Count - 1; i >= 0; i--)
+            {
+                if ((tn.Tag as qytvNode).Id == checknodes[i].Id)
+                {
+                    findflag = true;
+                    checknodes.RemoveAt(i);
+                    break;
+                }
+            }
+
+            return findflag;
+        }
+
+
+        //获得选中的节点
+        public List<qytvNode> GetCheckedNode()
+        {
+            List<qytvNode> checkednodes = new List<qytvNode>();
+            foreach (TreeNode tn in Nodes)
+            {
+                GetCheckedNode(tn, ref checkednodes);
+            }
+            return checkednodes;
+        }
+
+        public void GetCheckedNode(TreeNode tn, ref List<qytvNode> checkednodes)
+        {
+            if (tn.Checked)
+            {
+                checkednodes.Add(tn.Tag as qytvNode);
+            }
+
+            foreach (TreeNode tn1 in tn.Nodes)
+            {
+                GetCheckedNode(tn1, ref checkednodes);
+            }
+
+        }
+
+
+        //选择父节点，联动子节点选中
+        private void tv_AfterCheck(object sender, TreeViewEventArgs e)
+        {
+            if (NodeCheckedWithParent_)
+            {
+                foreach (TreeNode tn in e.Node.Nodes)
+                {
+                    tn.Checked = e.Node.Checked;
+                }
+            }
+        }
+
+        #endregion  
+
+        #region 拖拽
 
         private void tv_DragEnter(object sender, DragEventArgs e)
         {
@@ -174,12 +327,13 @@ namespace QyTech.SkinForm.Controls
             }
         }
 
+        #endregion
     }
     public class qytvNode
     {
-        public Guid Id;
+        public string Id;
         public string Name;
-        public Guid PId;
+        public string PId;
         public string Tag;
     }
 }
