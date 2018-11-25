@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using QyTech.Core.ExController;
-using QyTech.Auth.Dao;
+using QyExpress.Dao;
 using QyTech.Core.BLL;
 using QyTech.Core;
 using QyTech.Core.Common;
@@ -10,9 +10,9 @@ using System.Collections;
 using System.Collections.Generic;
 using log4net;
 
-namespace QyTech.Auth.Controllers
+namespace QyExpress.Controllers
 {
-    public class HomCeontroller : AuthController
+    public class HomeController : Controller
     {
         //protected static ILog log = log4net.LogManager.GetLogger("HomCeontroller");
 
@@ -24,12 +24,10 @@ namespace QyTech.Auth.Controllers
             //return Redirect(LoginUser.WebUrl);
         }
 
-
-
-        //public ActionResult Login()
-        //{
-        //    return Redirect(Url.Content("~/Login.html"));
-        //}
+        public ActionResult Login()
+        {
+            return View();
+        }
 
 
     }

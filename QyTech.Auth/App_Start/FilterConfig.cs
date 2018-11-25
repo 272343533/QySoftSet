@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace QyTech.Auth
+namespace QyExpress
 {
     public class FilterConfig
     {

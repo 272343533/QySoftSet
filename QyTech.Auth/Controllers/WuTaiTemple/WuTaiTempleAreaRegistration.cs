@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 
 
-namespace QyTech.Auth.Controllers.WuTaiTemple
+namespace QyExpress.Controllers.WuTaiTemple
 {
     public class WuTaiTempleAreaRegistration : AreaRegistration  
     {  

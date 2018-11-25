@@ -10,11 +10,13 @@ using System.Windows.Forms;
 using QyTech.UICreate;
 using QyTech.SkinForm;
 
-using QyTech.Auth.Dao;
+using QyExpress.Dao;
 using QyTech.SkinForm.Controls;
 using QyTech.Core.BLL;
 using System.Data.Objects;
 using System.Data.SqlClient;
+using QyTech.Core.Common;
+
 
 namespace QyTech.UICreate.qyfLayout
 {
@@ -36,10 +38,12 @@ namespace QyTech.UICreate.qyfLayout
 
         private void qyfLayListWithLeftOrg_Load(object sender, EventArgs e)
         {
-            LoadTreeData();
+            LoadTreeData(strBaseWhere);
+            if (qytvLeftOrg.Nodes.Count > 0)
+                qytvLeftOrg.SelectedNode = qytvLeftOrg.Nodes[0];
         }
 
-        protected void LoadTreeData(string where="")
+        protected void LoadTreeData(string where)
         {
             List<qytvNode> nodes = new List<qytvNode>();
             try
@@ -48,13 +52,13 @@ namespace QyTech.UICreate.qyfLayout
                 foreach (bsOrganize s in dbns)
                 {
                     qytvNode n = new qytvNode();
-                    n.Id = s.bsO_Id.ToString();
+                    n.id = s.bsO_Id.ToString();
                     if (s.PId == null)
-                        n.PId = Guid.Empty.ToString();
+                        n.pId = Guid.Empty.ToString();
                     else
-                        n.PId = s.PId.ToString();
-                    n.Name = s.Name + "-1";
-                    n.Tag = s.bsoAttr;
+                        n.pId = s.PId.ToString();
+                    n.name = s.Name + "-1";
+                    n.type = s.bsoAttr;
                     nodes.Add(n);
                 }
             }
@@ -66,7 +70,7 @@ namespace QyTech.UICreate.qyfLayout
 
         private void qytvLeftOrg_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            currLeftFPk = (e.Node.Tag as qytvNode).Id;
+            currLeftFPk = (e.Node.Tag as qytvNode).id;
             CurrbsO_Name = e.Node.Text;
             RefreshDgv(dgvList, "bsO_Id='" + currLeftFPk + "'");
         }

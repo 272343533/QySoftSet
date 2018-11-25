@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace QyTech.Auth.Controllers.WuTaiTemple
+namespace QyExpress.Controllers.WuTaiTemple
 {
     public class WuTaiTempleDefaultController : WuTaiTempleController
     {

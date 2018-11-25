@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System.Data.Objects;
 using System.Data.SqlClient;
 using QyTech.Core.BLL;
-using QyTech.Auth.Dao;
+using QyExpress.Dao;
 using QyTech.SkinForm;
 using QyTech.SkinForm.Component;
 using QyTech.SkinForm.Controls;
@@ -86,7 +86,7 @@ namespace QyTech.UICreate
                 bsFc = EntityManager_Static.GetByPk<bsFunConf>(DB_Base, "bsFC_ID", bsFC_Id);
 
                 bstable = EntityManager_Static.GetByPk<bsTable>(DB_Base, "bsT_Id",bsFc.bsT_Id);
-                tName = bsFc.TName;
+                tName = bstable.TName;
                 if (bsFc.baseWhereSql == null)
                 {
                     if (where != "")
@@ -154,10 +154,10 @@ namespace QyTech.UICreate
                 }
 
                 #region  获取当前行对象
-                Type typeEm = typeof(QyTech.DbUtils.SqlUtils);
-                Type dbtype = Type.GetType("QyTech.Auth.Dao." + bstable.TName + ",QyTech.Auth.Dao,Version=1.0.0.0, Culture=neutral, PublicKeyToken=null");
+                Type typeEm = typeof(QyTech.Core.SqlUtils.Sql2Entity);
+                Type dbtype = Type.GetType("QyExpress.Dao." + bstable.TName + ",QyExpress.Dao,Version=1.0.0.0, Culture=neutral, PublicKeyToken=null");
                 object dbobj = dbtype.Assembly.CreateInstance(dbtype.FullName);
-                System.Reflection.MethodInfo miObj = typeEm.GetMethod("DataRow2EntityObject").MakeGenericMethod(dbtype);//获取泛型类方法,不能有重名的，否则找不到，2018-10-06有一个错误，就是一个实例，一个静态，报错了
+                System.Reflection.MethodInfo miObj = typeEm.GetMethod("DataRow2Entity").MakeGenericMethod(dbtype);//获取泛型类方法,不能有重名的，否则找不到，2018-10-06有一个错误，就是一个实例，一个静态，报错了
                                                                                                                         //静态方法，所以Invode的第一个参数为null
                 CurrRowObj = miObj.Invoke(null, new object[] { (dgvList.DataSource as DataTable).Rows[e.RowIndex] });
                 #endregion

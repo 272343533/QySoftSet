@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+
+using QyTech.Core.Common;
 namespace QyTech.SkinForm.Controls
 {
     public class qyTreeView : TreeView
@@ -71,7 +73,7 @@ namespace QyTech.SkinForm.Controls
                     SelectedNode = tn;
                     return true;
                 }
-                bool findflag = SetSelectNode(tn, nodeText);
+                bool findflag = SetSelectNode(node, nodeText);
                 if (findflag)
                 {
                     return true;
@@ -80,11 +82,55 @@ namespace QyTech.SkinForm.Controls
             return false;
         }
 
+        /// <summary>
+        /// 设置节点全部选中或取消
+        /// </summary>
+        /// <param name="checkflag"></param>
+        public void SetAllNodeCheckStatus(bool checkflag=true)
+        {
+            foreach (TreeNode tn in Nodes)
+            {
+                CheckAllNode(tn, checkflag);
+            }
+        }
+        private void CheckAllNode(TreeNode tn,bool checkflag)
+        {
+            foreach (TreeNode tn1 in tn.Nodes)
+            {
+                tn1.Checked = true;
+                CheckAllNode(tn1, checkflag);
+            }
+        }
+
+        /// <summary>
+        /// 节点反选
+        /// </summary>
+        public void CheckReverseNode()
+        {
+            foreach (TreeNode tn in Nodes)
+            {
+                CheckReverseNode(tn);
+            }
+        }
+        private void CheckReverseNode(TreeNode tn)
+        {
+            foreach (TreeNode tn1 in tn.Nodes)
+            {
+                tn1.Checked = !tn1.Checked;
+                CheckReverseNode(tn1);
+            }
+        }
         #endregion
 
+        /// <summary>
+        /// 改变选中节点的颜色为蓝色
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void QyTreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
             TreeNode tn = e.Node;
+
             tn.BackColor = Color.SkyBlue;
             if (preSelectTreeNode != null)
             {
@@ -110,9 +156,9 @@ namespace QyTech.SkinForm.Controls
 
         #region 加载树
         /// <summary>
-        /// 填充树
+        /// 填充树,pId为空的作为根节点
         /// </summary>
-        /// <param name="Ts">要求根的PId=Id</param>
+        /// <param name="Ts">要求根的pId=id</param>
         public void LoadData(List<qytvNode> Ts,bool checkbox=false)
         {
             if (Ts == null)
@@ -129,18 +175,54 @@ namespace QyTech.SkinForm.Controls
             Refresh();
         }
 
+        /// <summary>
+        /// 加载树，单独增加根节点，原有数据中pId为空的座位根节点的子节点
+        /// </summary>
+        /// <param name="RootText"></param>
+        /// <param name="Ts"></param>
+        /// <param name="checkbox"></param>
+        public void LoadData(string RootText,List<qytvNode> Ts, bool checkbox = false)
+        {
+            _Ts = Ts;
+            CheckBoxes = checkbox;
+
+
+            qytvNode qtNRoot = new qytvNode();
+            qtNRoot.id = Guid.Empty.ToString();
+            qtNRoot.name = RootText;
+            qtNRoot.pId = Guid.Empty.ToString();
+            qtNRoot.type = "virtualRoot";
+            TreeNode tnRoot = new TreeNode();
+            tnRoot.Text = RootText;
+            tnRoot.Tag = qtNRoot;
+
+            if (Ts != null)
+            {
+                if (_Ts.Count != 0)
+                {
+                    AddChildTreeViewNodes(tnRoot);
+                }
+            }
+            Nodes.Clear();
+            Nodes.Add(tnRoot);
+            ExpandAll();//应该只展开第一层就可以
+            //Nodes[0].Expand();
+            Refresh();
+        }
         public void AddRootTreeViewNodes()
         {
             foreach (qytvNode t in _Ts)
             {
-                if (t != null && t.PId!=null)//(t != null) && (t.PId == null))
+                if (t != null )//(t != null) && (t.pId == null))
                 {
-                    if (t.PId == Guid.Empty.ToString())//t.Id)
+                    if (t.pId == Guid.Empty.ToString()||t.pId==""||t.pId==null)//t.id)
                     {
-                        TreeNode newNode = new TreeNode(t.Name);
-                        //newNode.Checked = true;
-                        newNode.Name = t.Name;
+                        TreeNode newNode = new TreeNode(t.name);
+                        newNode.Name = t.name;
                         newNode.Tag = t;
+                        newNode.Checked = t.checkFlag;
+                        if (t.openFlag)
+                            newNode.Expand();
 
                         Nodes.Add(newNode);
 
@@ -158,11 +240,14 @@ namespace QyTech.SkinForm.Controls
             foreach (qytvNode t in _Ts)
             {
 
-                if (t.PId!=t.Id && t.PId == ((qytvNode)(parentTreeViewNode.Tag)).Id)
+                if (t.pId!=t.id && t.pId == ((qytvNode)(parentTreeViewNode.Tag)).id)
                 { 
-                    TreeNode newNode = new TreeNode(t.Name);
+                    TreeNode newNode = new TreeNode(t.name);
                     newNode.Checked = true;
-                    newNode.Name = t.Name;
+                    newNode.Name = t.name;
+                    newNode.Checked = t.checkFlag;
+                    if (t.openFlag)
+                        newNode.Expand();
                     newNode.Tag = t;
 
                     parentTreeViewNode.Nodes.Add(newNode);
@@ -214,7 +299,7 @@ namespace QyTech.SkinForm.Controls
             bool findflag = false;
             for(int i = checknodes.Count - 1; i >= 0; i--)
             {
-                if ((tn.Tag as qytvNode).Id == checknodes[i].Id)
+                if ((tn.Tag as qytvNode).id == checknodes[i].id)
                 {
                     findflag = true;
                     checknodes.RemoveAt(i);
@@ -329,11 +414,7 @@ namespace QyTech.SkinForm.Controls
 
         #endregion
     }
-    public class qytvNode
-    {
-        public string Id;
-        public string Name;
-        public string PId;
-        public string Tag;
-    }
+
+  
+ 
 }

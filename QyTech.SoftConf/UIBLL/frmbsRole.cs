@@ -10,17 +10,18 @@ using System.Windows.Forms;
 using QyTech.UICreate;
 using QyTech.SkinForm;
 
-using QyTech.Auth.Dao;
-using QyTech.SoftConf;
+using QyExpress.Dao;
+using QyTech.Core.Common;
 using QyTech.SkinForm.Controls;
 using QyTech.Core.BLL;
-using QyTech.DbUtils;
+using QyTech.Utils;
 
 namespace QyTech.SoftConf.UIBLL
 {
     public partial class frmbsRole : QyTech.UICreate.qyfLayout.qyfLayListWithLeftOrg
     {
-        public frmbsRole() : base(GlobalVaribles.ObjContext_Base, null, GlobalVaribles.SqConn_Base, Guid.Parse("2b26f396-03c6-4b33-a7c7-210a9ddad1b5"), "")
+        public frmbsRole() 
+            : base(GlobalVaribles.ObjContext_Base, null, GlobalVaribles.SqConn_Base, Guid.Parse("2b26f396-03c6-4b33-a7c7-210a9ddad1b5"), "bsS_Id='" + GlobalVaribles.currSoftCutomer.bsS_Id.ToString() + "'")
         {
             InitializeComponent();
             ToolStripButton tsbAdd = AddtsbButton("新增");
@@ -52,14 +53,39 @@ namespace QyTech.SoftConf.UIBLL
         }
         private void tsbRoleFun_Click(object sender, EventArgs e)
         {
-            bsTable bstable = EntityManager_Static.GetByPk<bsTable>(GlobalVaribles.ObjContext_Base_, "TName", "bsRolNaviRel");
-            frmRights frmobj = new frmRights(GlobalVaribles.currloginUser, (CurrRowObj as bsRole), BLL.RightType.RoleNaviFuns, bstable);
-            frmobj.ShowDialog();
+            if ((sender as ToolStripButton).Text == "角色操作")
+            {
+                MessageBox.Show("操作暂时还没考虑！");
+            }
+            else
+            {
+                if (CurrRowObj == null)
+                {
+                    MessageBox.Show("请首先选择数据！");
+                    return;
+                }
+                bsTable bstable = EntityManager_Static.GetByPk<bsTable>(DB_Base, "TName", "bsRoleNaviRel");
+                //Dictionary<string, string> paras = new Dictionary<string, string>();
+                //paras.Add("FName", "TName");
+                //paras.Add("FValue", "bsRoleNaviRe");
+                ////bsTable bstable = HttpRequestUtils.PostRemoteJsonQy<bsTable>("/api/bsTable/GetOneByFName", paras);
+                //bsTable bstable = HttpRequestUtils.GetRemoteJsonQy<bsTable>("/api/bsTable/GetOneByFName?FName=TName&FValue=bsRoleNaviRel");
+                frmRights frmobj = new frmRights(DB_Base,GlobalVaribles.currloginUser, (CurrRowObj as bsRole), RightType.RoleNaviFuns, bstable);
+                frmobj.ShowDialog();
+            }
         }
         private void tsbRoleTF_Click(object sender, EventArgs e)
         {
-            bsTable bstable = EntityManager_Static.GetByPk<bsTable>(GlobalVaribles.ObjContext_Base_, "TName", "bsRolNaviRel");
-            frmRights frmobj = new frmRights(GlobalVaribles.currloginUser, (CurrRowObj as bsRole), BLL.RightType.RoleTFs, bstable);
+            if (CurrRowObj == null)
+            {
+                MessageBox.Show("请首先选择数据！");
+                return;
+            }
+            Dictionary<string, string> paras = new Dictionary<string, string>();
+            paras.Add("FName", "TName");
+            paras.Add("FValue", "bsRoleTFDataRel");
+            bsTable bstable = HttpRequestUtils.PostRemoteJsonQy<bsTable>("/api/bsTable/GetOneByFName", paras);
+            frmRights frmobj = new frmRights(DB_Base, GlobalVaribles.currloginUser, (CurrRowObj as bsRole), RightType.RoleTFs, bstable);
             frmobj.ShowDialog();
 
         }

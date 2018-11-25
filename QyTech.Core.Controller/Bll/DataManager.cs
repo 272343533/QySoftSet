@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Reflection;
 using log4net;
 using QyTech.Core.Helpers;
-using QyTech.Auth.Dao;
+using QyExpress.Dao;
 using QyTech.Core;
 using System.Data.Objects;
 using QyTech.Core.BLL;
@@ -18,7 +18,8 @@ using QyTech.Core.ExController.Bll;
 namespace QyTech.Core.ExController.Bll
 {
     /// <summary>
-    /// 通用访问数据库类
+    /// 通用此类访问数据库操作类EntityManager中的获取数据的方法
+    /// add，edit，delete方法不在这里，直接再Dao中泛型调用
     /// </summary>
     public class DataManager
     {

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 
 
-namespace QyTech.Auth.Controllers.bll
+namespace QyExpress.Controllers.bll
 {
     public class BllAreaRegistration : AreaRegistration  
     {  
@@ -23,7 +23,7 @@ namespace QyTech.Auth.Controllers.bll
                 "bll_default",  
                 "bll/{controller}/{action}/{id}",
                 new { controller = "bsFunConf", action = "Index", id = UrlParameter.Optional },
-                new string[] { "QyTech.Auth.Controllers.bll" }
+                new string[] { "QyExpress.Controllers.bll" }
             );  
         }  
     }

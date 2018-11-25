@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace QyTech.Auth.Controllers.api
+namespace QyExpress.Controllers.api
 {
-    public class apiDefaultController : AuthController
+    public class apiDefaultController : apiController
     {
     }
 }

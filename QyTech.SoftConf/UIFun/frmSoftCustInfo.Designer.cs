@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             ((System.ComponentModel.ISupportInitialize)(this.scForm)).BeginInit();
+            this.scForm.Panel1.SuspendLayout();
             this.scForm.Panel2.SuspendLayout();
             this.scForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scDgv)).BeginInit();
@@ -38,7 +39,26 @@
             this.scQuery.Panel1.SuspendLayout();
             this.scQuery.SuspendLayout();
             this.SuspendLayout();
-
+            // 
+            // qytvLeft
+            // 
+            this.qytvLeft.LineColor = System.Drawing.Color.Black;
+            // 
+            // scForm
+            // 
+            this.scForm.Size = new System.Drawing.Size(874, 450);
+            // 
+            // scDgv
+            // 
+            this.scDgv.Size = new System.Drawing.Size(869, 450);
+            // 
+            // scQuery
+            // 
+            this.scQuery.Size = new System.Drawing.Size(869, 68);
+            // 
+            // gbCondition
+            // 
+            this.gbCondition.Size = new System.Drawing.Size(181, 34);
             // 
             // frmSoftCustInfo
             // 
@@ -49,6 +69,7 @@
             this.Text = "应用程序";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frm_Load);
+            this.scForm.Panel1.ResumeLayout(false);
             this.scForm.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.scForm)).EndInit();
             this.scForm.ResumeLayout(false);

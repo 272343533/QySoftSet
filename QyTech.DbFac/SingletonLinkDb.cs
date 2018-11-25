@@ -15,7 +15,7 @@ namespace SunMvcExpress.Core.BLL
     
     public class SingletonLinkDb
     {
-        private static ObjectContext Db_ = new QyTech.Auth.Dao.QyTech_AuthEntities();
+        private static ObjectContext Db_ = new QyExpress.Dao.QyExpressEntities();
 
    
         private SingletonLinkDb(string EntityName) { }  

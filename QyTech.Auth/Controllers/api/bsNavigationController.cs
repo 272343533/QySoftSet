@@ -4,92 +4,60 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using QyTech.Core.ExController;
-using QyTech.Auth.Dao;
+using QyExpress.Dao;
 using QyTech.Core.BLL;
 using QyTech.Core;
 using QyTech.Core.Common;
 using QyTech.Json;
+using QyTech.BLL;
 
-namespace QyTech.Auth.Controllers.api
+
+namespace QyExpress.Controllers.api
 {
-    public class bsNavigationController : AuthController
+    public class bsNavigationController : apiController
     {
 
-        public class Navi
+        //public class Navi
+        //{
+        //    public string title { get; set; }
+        //    public string route { get; set; }
+        //    public string icon { get; set; }
+        //    public List<Navi> items { get; set; }
+        //}
+
+        /// <summary>
+        ///  配置导航使用  重写了getall,需要吗？//2018-10-18
+        /// </summary>
+        /// <param name="fields"></param>
+        /// <param name="where"></param>
+        /// <param name="orderby"></param>
+        /// <returns></returns>
+        public override string GetAll(string sessionid, string fields,string where="", string orderby="")
         {
-            public string title { get; set; }
-            public string route { get; set; }
-            public string icon { get; set; }
-            public List<Navi> items { get; set; }
-        }
+            //1.应该与用户账号相关，默认的getall没有考虑账号，
 
+            //2.应该对有些表，根据权限获取数据 zhwsun 2018-10-08 根据用户权限在结合where结果进行过滤
+            ObjectClassFullName = ObjectClassFullName.Replace(StrForReplaceObject, objNameSpace + "." + "bsNavigation");
 
-        public override string GetAll(string fields,string where, string orderby)
-        {
-            //object[] abc=new object[] { 1, null };
-            //List<bsNavigation> aa = EManager.GetAllByStorProcedure<bsNavigation>("splyTestRetValue", ref abc);
-
-
-            //应该与用户账号相关
-            List<Navi> navis = new List<Navi>();
-            List<bsNavigation> funs = EManager.GetListNoPaging<bsNavigation>("NaviStatus='正常'", "NaviNo");
           
-            List<bsNavigation> fun_start = funs.Where(p => p.pId == null).OrderBy(p => p.NaviNo).ToList<bsNavigation>();
-            foreach (bsNavigation pN in fun_start)
-            {
-                Navi gN = new Navi();
-                gN.title = pN.NaviName;
-                gN.icon = pN.Icon;
-                gN.route = pN.Route;
-                List<bsNavigation> items = funs.Where(p => p.pId == pN.bsN_Id).OrderBy(p => p.NaviNo).ToList<bsNavigation>();
-                if (items.Count > 0)
-                {
-                    gN.items=new List<Navi>();
-                    gN.items.AddRange(GetSubNavis(funs, items, pN));
-                }
-                navis.Add(gN);
-            }
 
-            return jsonMsgHelper.Create(0, navis, "",navis[0].GetType(),null);
+            return base.GetAll(sessionid,fields, where, orderby);
         }
 
-        private List<Navi> GetSubNavis(List<bsNavigation> allitems, List<bsNavigation> items, bsNavigation pN)
+        /// <summary>
+        /// 重写的gettree
+        /// </summary>
+        /// <param name="where">不需要</param>
+        /// <param name="orderby">不需要</param>
+        /// <returns></returns>
+        public string getUserTree(string sessionid, string where="", string orderby="")
         {
-            List<Navi> navis = new List<Navi>();
+            bllbsNavigation bobj = new bllbsNavigation();
+            List<qytvNode> nodes= bobj.GetNaviNodes(EManager,LoginUser);
+            string json = jsonMsgHelper.Create(0, nodes, "");
+            return json;
+        }
+
        
-            foreach (bsNavigation item in items)
-            {
-                Navi gN = new Navi();
-                gN.title = item.NaviName;
-                gN.icon = item.Icon;
-                gN.route = item.Route;
-
-                List<bsNavigation> subitems = allitems.Where(p => p.pId == item.bsN_Id).OrderBy(p => p.NaviNo).ToList<bsNavigation>();
-                if (subitems.Count > 0)
-                {
-                    gN.items = new List<Navi>();
-                    gN.items.AddRange(GetSubNavis(allitems, subitems, item));
-                }
-                
-                navis.Add(gN);
-            }
-
-            return navis;
-
-        }
-
-
-        public override string TreeDis(string where, string orderby)
-        {
-            if (orderby != null)
-            {
-                return base.GetTree(where, orderby, "bsN_Id", "NaviName", "pId", "NaviType");
-            }
-            else
-            {
-                return base.GetTree(where, "NaviNo", "bsN_Id", "NaviName", "pId", "NaviType");
-            
-            }
-        }
     }
 }

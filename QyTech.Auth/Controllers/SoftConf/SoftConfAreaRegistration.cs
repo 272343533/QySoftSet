@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 
 
-namespace QyTech.Auth.Controllers.SoftConf
+namespace QyExpress.Controllers.SoftConf
 {
     public class SoftConfAreaRegistration : AreaRegistration  
     {  
@@ -23,7 +23,7 @@ namespace QyTech.Auth.Controllers.SoftConf
                 "SoftConf_default",
                 "SoftConf/{controller}/{action}/{id}",
                 new { controller = "bsFunConf", action = "Index", id = UrlParameter.Optional },
-                new string[] { "QyTech.Auth.Controllers.SoftConf" }
+                new string[] { "QyExpress.Controllers.SoftConf" }
             );  
         }  
     }

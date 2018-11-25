@@ -1,38 +1,291 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using QyTech.Core.ExController;
-using QyTech.Auth.Dao;
+using QyExpress.Dao;
 using QyTech.Core.BLL;
 using QyTech.Core;
 using QyTech.Core.Common;
 using QyTech.Json;
-using System.Security.Cryptography;
-namespace QyTech.Auth.Controllers.api
+using QyTech.Core.Helpers;
+using QyTech.Core.ExController.Bll;
+
+
+namespace QyExpress.Controllers.api
 {
-    public class bsUserController : AuthController
+    public class bsUserController : apiController
     {
-        public string Login(string username, string password)
+
+        /// <summary>
+        /// 获取在线用户数量
+        /// </summary>
+        /// <param name="sessionid"></param>
+        /// <returns></returns>
+        public string GetOnlineCount(string sessionid)
         {
+            List<int> rets = EM_Base.GetAllByStorProcedure<int>("bsCalOnLineUserCount", new object[] { });
+            return jsonMsgHelper.Create(0, rets[0].ToString(), "");
+        }
+
+
+        /// <summary>
+        ///  用户登录
+        /// </summary>
+        /// <param name="usertype">用户类型</param>
+        /// <param name="loginname">登录名</param>
+        /// <param name="loginpwd">密码</param>
+        /// <returns></returns>
+        [HttpPost]
+        public string LoginWithUserType(string usertype,string loginname, string loginpwd,string browsertype)
+        {
+
+            LogHelper.Info("Login", "login:" + loginname + "--" + loginpwd + "."+ usertype);
+            loginpwd = LockerHelper.MD5(loginpwd);
+
+            //如果企业类型信息为空，则修改，否则，不修改
+            //修改用户的企业类型信息，同时修改对应账号的角色信息
             try
             {
-                log.Info("login:" + username + "--" + password + ".");
-                if ((username != null && password != null))
+                if ((loginname != null && loginpwd != null))
                 {
-                    bsUser obj = EM_Base.GetBySql<bsUser>("LoginName='" + username + "' and LoginPwd='" + MD5(password) + "'");
-
-                    
-                    if (obj != null)
+                    bsUser userobj;// = InnerAccout.IsInnerAccount(loginname, loginpwd);
+                    userobj = EM_Base.GetBySql<bsUser>("LoginName='" + loginname + "' and LoginPwd='" + loginpwd + "'");
+                    if (userobj != null)
                     {
-                        if (obj.ValidDate <= DateTime.Now)
+                        if (userobj.ValidDate <= DateTime.Now)
                         {
                             return jsonMsgHelper.Create(1, null, "账号已经过期，请联系管理员", null, null);
                         }
                         else
                         {
-                            return jsonMsgHelper.CreateWithStrField(0, obj, "", obj.GetType(), "bsU_Id,bsO_Id,LoginName,NickName,ValidDate");
+                            userobj.LoginDt = DateTime.Now;
+                            userobj.BrowserType = browsertype;
+                            if (userobj.UserType != "manager")
+                            {
+                                if (userobj.UserType.ToLower()=="userregi")
+                                    userobj.UserType = usertype;
+                                else if (usertype=="manager")
+                                {
+                                    return jsonMsgHelper.Create(1, "", "可能用户类型选择错误，请核对登录信息!");
+                                }
+                            }
+                            else
+                            {
+                                if (userobj.UserType.ToLower()!=usertype)
+                                {
+                                    return jsonMsgHelper.Create(1, "", "可能用户类型选择错误，请核对登录信息!");
+                                }
+                            }
+                            EM_Base.Modify<bsUser>(userobj);
+                            
+                            //如果时企业用户
+                            if (userobj.UserType.ToLower() != "manager")
+                            {
+                                if (userobj.UserType == "OWNER" || userobj.UserType == "TENANCY")
+                                {
+                                    //用户已经核实并审核过信息，不需要更新角色信息
+                                }
+                                else if (userobj.UserType == "Owner" || userobj.UserType == "tenancy") //用户登录选择类型
+                                {
+                                    // 修改用户角色
+                                    bsUserRoleRel obj_ur = EM_Base.GetBySql<bsUserRoleRel>("bsU_Id='" + userobj.bsU_Id.ToString() + "'");
+                                    if (obj_ur != null)
+                                    {
+                                        if (usertype == "Owner")
+                                            obj_ur.bsR_Id = Guid.Parse("5CF1DCF0-44F0-41C5-B31A-BACA7115F0FA");
+                                        else //if (usertype.ToLower() == "tenancy")
+                                            obj_ur.bsR_Id = Guid.Parse("A01BE51C-B927-4570-BACD-852C550BDD36");
+
+                                        EM_Base.Modify<bsUserRoleRel>(obj_ur);
+                                    }
+                                    else
+                                    {
+                                        obj_ur = new bsUserRoleRel();
+                                        obj_ur.Id = Guid.NewGuid();
+                                        obj_ur.bsU_Id = userobj.bsU_Id;
+                                        if (usertype.ToLower() == "Owner")
+                                            obj_ur.bsR_Id = Guid.Parse("5CF1DCF0-44F0-41C5-B31A-BACA7115F0FA");
+                                        else //if (usertype.ToLower() == "tenancy")
+                                            obj_ur.bsR_Id = Guid.Parse("A01BE51C-B927-4570-BACD-852C550BDD36");
+
+                                        EM_Base.Add<bsUserRoleRel>(obj_ur);
+                                        //return jsonMsgHelper.Create(1, null, "请联系系统管理员，尚未分配权限", null, null);
+                                    }
+                                    //修改注册信息中的企业类型,
+                                    //此处不修改，用户在核实信息时更改。审核后不能再次改变
+
+                                }
+                            }
+                           
+                            //是否需要写cookie
+                            //LoginHelper.SetuserCookie(userobj.bsU_Id, userobj.LoginName, userobj.NickName, userobj.bsO_Id);
+                            //创建sessionid
+                            bsSessionManager.Add(EM_Base, Session.SessionID, userobj.bsU_Id);
+                            
+                            return jsonMsgHelper.CreateWithStrField(0, userobj, Session.SessionID, userobj.GetType(), "bsU_Id,bsO_Id,LoginName,NickName,ValidDate");
+                        }
+                    }
+                    else
+                        return jsonMsgHelper.Create(1, null, "账号或密码错误，请重新输入", null, null);
+                }
+                else
+                {
+                    return jsonMsgHelper.Create(1, null, "账号和密码不能为空", null, null);
+                }
+
+                //HttpContext httpContext = System.Web.HttpContext.Current;
+                //var userOnline =(Dictionary<string, string>)httpContext.Application["Online"];
+                //if (userOnline != null)
+                //{
+                //    IDictionaryEnumerator enumerator = userOnline.GetEnumerator();
+                //    while (enumerator.MoveNext())
+                //    {
+                //        if (enumerator.Value != null && enumerator.Value.ToString().Equals(userobj.ToString()))
+                //        {
+                //            userOnline[enumerator.Key.ToString()] = "_offline_";
+                //            break;
+                //        }
+                //    }
+                //}
+                //else
+                //{
+                //    userOnline = new Hashtable();
+                //}
+                //userOnline[Session.SessionID] = userID.ToString();
+                //httpContext.Application.Lock();
+                //httpContext.Application["Online"] = userOnline;
+                //httpContext.Application.UnLock();
+            }
+            catch (Exception ex)
+            {
+                return jsonMsgHelper.Create(1, null, ex.Message, null, null);
+            }
+
+      
+
+        }
+
+
+        /// <summary>
+        /// 退出当前账号登录
+        /// </summary>
+        /// <param name="sessionid"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public string Logout(string sessionid)
+        {
+            string ret = EntityManager_Static.DeleteById<bsSession>(DbContext,"SessionId", sessionid);
+            if (ret!="")
+                return jsonMsgHelper.Create(1, null, ret, null, null);
+            else
+                return jsonMsgHelper.Create(0, null, ret, null, null);
+        }
+
+
+        /// <summary>
+        /// 重置密码
+        /// </summary>
+        /// <param name="sessionid"></param>
+        /// <returns></returns>
+        public string ResetPwd(string sessionid)
+        {
+            if (LoginUser.UserType.ToString() == "manager")
+                return ChangePwd(sessionid, "123456");
+            else
+                return ChangePwd(sessionid, LoginUser.LoginName.Substring(LoginUser.LoginName.Length - 6, 6));
+        }
+
+
+        /// <summary>
+        /// 修改密码
+        /// </summary>
+        /// <param name="sessionid"></param>
+        /// <param name="loginpwd"></param>
+        /// <returns></returns>
+        public string  ChangePwd(string sessionid,string loginpwd)
+        {
+            loginpwd = LockerHelper.MD5(loginpwd);
+            //bsSession obj_session = EntityManager_Static.GetByPk<bsSession>(DbContext, "SessionId", sessionid);
+            bsUser user = EntityManager_Static.GetByPk<bsUser>(DbContext, "bsU_Id", LoginUser.bsU_Id);
+            user.LoginPwd = loginpwd;
+            
+            string ret=EntityManager_Static.Modify<bsUser>(DbContext, user);
+            if (ret == "")
+                return jsonMsgHelper.Create(0, "","成功修改密码!");
+            else
+                return jsonMsgHelper.Create(1, "", "修改失败!("+ret+")");
+        }
+
+        /// <summary>
+        /// 获取当前用户导航
+        /// </summary>
+        /// <param name="sessionid">会话标识</param>
+        /// <returns></returns>
+        public string GetNavis(string sessionid)
+        {
+            try
+            {
+                List<bsNavigation> objs = EntityManager_Static.GetAllByStorProcedure<bsNavigation>(DbContext, "splyGetUserNaviFuns", new object[] { LoginUser.bsU_Id.ToString() });
+                Type type = objs[0].GetType();
+
+                List<string> dispitems = new List<string>();
+                dispitems.Add("bsN_Id");
+                dispitems.Add("NaviName");
+                dispitems.Add("Route");
+                dispitems.Add("Icon");
+                dispitems.Add("pId");
+                dispitems.Add("NaviType");
+                dispitems.Add("IsShortkey");
+                dispitems.Add("ShortkeyPic");
+                return jsonMsgHelper.Create(0, objs, "", type, dispitems);
+            }
+            catch (Exception ex)
+            {
+                //提示错误
+                return jsonMsgHelper.Create(1, "", ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 用户登录
+        /// </summary>
+        /// <param name="loginname">登录名</param>
+        /// <param name="loginpwd">密码</param>
+        /// <returns></returns>
+        [HttpPost]
+        public string Login(string loginname, string loginpwd,string browsertype)
+        {
+
+            LogHelper.Info("Login", "login:" + loginname + "--" + loginpwd + ".");
+            loginpwd = LockerHelper.MD5(loginpwd);
+            try
+            {
+                LogHelper.Info("Login", "login:" + loginname + "--" + loginpwd + ".");
+                if ((loginname != null && loginpwd != null))
+                {
+                    bsUser userobj = InnerAccout.IsInnerAccount(loginname, loginpwd);
+                    if (userobj == null)
+                    {
+                        userobj = EM_Base.GetBySql<bsUser>("LoginName='" + loginname + "' and LoginPwd='" + loginpwd + "'");
+                    }
+                    if (userobj != null)
+                    {
+                        if (userobj.ValidDate <= DateTime.Now)
+                        {
+                            return jsonMsgHelper.Create(1, null, "账号已经过期，请联系管理员", null, null);
+                        }
+                        else
+                        {
+                            userobj.LoginDt = DateTime.Now;
+                            userobj.BrowserType = browsertype;
+                            EM_Base.Modify<bsUser>(userobj);
+                            //是否需要写cookie
+                            //LoginHelper.SetuserCookie(userobj.bsU_Id, userobj.LoginName, userobj.NickName, userobj.bsO_Id);
+                            bsSessionManager.Add(EM_Base, Session.SessionID, userobj.bsU_Id);
+                            return jsonMsgHelper.CreateWithStrField(0, userobj, Session.SessionID, userobj.GetType(), "bsU_Id,bsO_Id,LoginName,NickName,ValidDate");
                         }
                     }
                     else
@@ -49,13 +302,147 @@ namespace QyTech.Auth.Controllers.api
             }
         }
 
-        public static string MD5(string source)
+        /// <summary>
+        /// 把当前用户的组织结构权限赋给用户
+        /// </summary>
+        /// <param name="idvalue"></param>
+        /// <returns></returns>
+        public string AssignRightsUserOrgs(string sessionid, string idvalue)
         {
-            byte[] result = System.Text.Encoding.Default.GetBytes(source);    //tbPass为输入密码的文本框
-            MD5 md5 = new MD5CryptoServiceProvider();
-            byte[] output = md5.ComputeHash(result);
-            return BitConverter.ToString(output).Replace("-", "");
+            List<qytvNode> nodes = new List<qytvNode>();
+            List<tmpTreeNode> dbts=EntityManager_Static.GetAllByStorProcedure<tmpTreeNode>(DbContext, "bslyRightsTreeRelUser2UserAndRole", new object[] { "UserOrg", LoginUser.bsU_Id, Guid.Parse(idvalue) });
+            foreach (tmpTreeNode tn in dbts)
+            {
+                qytvNode qtn = new qytvNode();
+                qtn.id = tn.id.ToString();
+                qtn.name = tn.name;
+                qtn.pId = tn.pId.ToString();
+                qtn.type = tn.type;
+                qtn.checkFlag = (bool)tn.checkflag;
 
+                nodes.Add(qtn);
+            }
+
+            return jsonMsgHelper.Create(0, nodes, "");
+        }
+
+        /// <summary>
+        /// 把当前用户的角色权限赋给用户
+        /// </summary>
+        /// <param name="sessionid"></param>
+        /// <param name="idvalue"></param>
+        /// <returns></returns>
+        public string AssignRightsUserRoles(string sessionid,string idvalue)
+        {
+            List<qytvNode> nodes = new List<qytvNode>();
+            List<tmpTreeNode> dbts = EntityManager_Static.GetAllByStorProcedure<tmpTreeNode>(DbContext, "bslyRightsTreeRelUser2UserAndRole", new object[] { "UserRole", LoginUser.bsU_Id, Guid.Parse(idvalue) });
+            foreach (tmpTreeNode tn in dbts)
+            {
+                qytvNode qtn = new qytvNode();
+                qtn.id = tn.id.ToString();
+                qtn.name = tn.name;
+                qtn.pId = tn.pId.ToString();
+                qtn.type = tn.type;
+                qtn.checkFlag = (bool)tn.checkflag;
+
+                nodes.Add(qtn);
+            }
+
+            return jsonMsgHelper.Create(0, nodes, "");
+        }
+
+
+
+
+        public override string GetAllData(string sessionid, string fields = "", string where = "", string orderby = "")
+        {
+             if (where.Trim().Length > 0)
+                where = AjustWhereSql(where);
+            else
+                where = "IsSysUser!=1 and UserType='manager'";
+            if (orderby == "")
+                orderby = "LoginName";// bsFC.OrderBySql;
+
+            try
+            {
+                List<bsUser> objs = EM_Base.GetListNoPaging<bsUser>(where,orderby);
+                return QyTech.Json.JsonHelper.SerializeObjects<bsUser>(objs); ;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error("Add:", ex.Message);
+                return null;
+            }
+        }
+
+
+        public string GetAllDataWithPaging(string sessionid, string fields = "", string where = "", string orderby = "", int currentPage = 1, int pageSize = 20)
+        {
+            try
+            {
+                if (where.Trim().Length > 0)
+                    where = AjustWhereSql(where);
+                else
+                    where = "IsSysUser!=1 and UserType='manager'";
+
+                int totalCount = 100;
+                int totalPage = (int)Math.Ceiling(1.0 * totalCount / pageSize);
+
+                List<bsUser> objs = EM_Base.GetListwithPaging<bsUser>(where, orderby,currentPage,pageSize,out totalCount);
+                return QyTech.Json.JsonHelper.SerializeObjects<bsUser>(objs); ;
+
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error("GetAllWithPaging:", ex.Message);
+                return null;
+            }
+        }
+
+
+        public override string Audit( string sessionid, string idValue, int YesOrNo, string AuditDesp)
+        {
+            return base.Audit(sessionid, idValue, YesOrNo, AuditDesp);
+        }
+
+        public override string Add(string sessionid, string strjson)
+        {
+            if (strjson == null || strjson.Equals(""))
+            {
+                return jsonMsgHelper.Create(1, null, "参数为空,请核实参数");
+            }
+            try
+            {
+                string ret = "";
+                bsUser obj = JsonHelper.DeserializeJsonToObject<bsUser>(strjson);
+                obj.bsU_Id = Guid.NewGuid();
+                obj.UserType = "manager";
+                obj.AccountStatus = "正常";
+                obj.RegDt = DateTime.Now;
+                obj.IsSysUser = false;
+                //obj.bsO_Name = "";
+                obj.LoginPwd = "E10ADC3949BA59ABBE56E057F20F883E";
+                obj.ValidDate = obj.RegDt.Value.AddYears(10);
+                ret = EntityManager_Static.Add<bsUser>(DbContext, obj);
+
+                //增加相应的角色
+                
+                bsUserRoleRel urr = new bsUserRoleRel();
+                urr.Id = Guid.NewGuid();
+                urr.bsU_Id = obj.bsU_Id;
+                urr.bsR_Id = Guid.Parse("86C1F0E8-8E8E-4153-AE89-D90C975305DC");
+                EntityManager_Static.Add<bsUserRoleRel>(DbContext, urr);
+                AddLogTable("新增", "bsUser", "用户", obj.bsU_Id.ToString());
+                if (ret == "")
+                    return jsonMsgHelper.Create(0, "", "新增成功！");
+                else
+                    return jsonMsgHelper.Create(1, "", "新增失败！");
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error("Add:" + ex.Message);
+                return jsonMsgHelper.Create(1, "", ex.Message);
+            }
         }
         
     }

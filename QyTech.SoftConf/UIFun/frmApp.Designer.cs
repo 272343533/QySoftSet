@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmApp));
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.scForm)).BeginInit();
             this.scForm.Panel2.SuspendLayout();
             this.scForm.SuspendLayout();
@@ -39,9 +36,7 @@
             this.scDgv.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scQuery)).BeginInit();
             this.scQuery.Panel1.SuspendLayout();
-            this.scQuery.Panel2.SuspendLayout();
             this.scQuery.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // scForm
@@ -54,33 +49,11 @@
             // 
             // scQuery
             // 
-            // 
-            // scQuery.Panel2
-            // 
-            this.scQuery.Panel2.Controls.Add(this.toolStrip1);
             this.scQuery.Size = new System.Drawing.Size(869, 68);
             // 
             // gbCondition
             // 
-            this.gbCondition.Size = new System.Drawing.Size(572, 34);
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(869, 25);
-            this.toolStrip1.TabIndex = 13;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(100, 22);
-            this.toolStripButton1.Text = "设为当前应用";
+            this.gbCondition.Size = new System.Drawing.Size(646, 34);
             // 
             // frmApp
             // 
@@ -98,19 +71,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.scDgv)).EndInit();
             this.scDgv.ResumeLayout(false);
             this.scQuery.Panel1.ResumeLayout(false);
-            this.scQuery.Panel2.ResumeLayout(false);
-            this.scQuery.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scQuery)).EndInit();
             this.scQuery.ResumeLayout(false);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }

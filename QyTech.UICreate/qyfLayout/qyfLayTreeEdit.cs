@@ -8,14 +8,15 @@ using System.Windows.Forms;
 using System.Data.Objects;
 using System.Data.SqlClient;
 using QyTech.Core.BLL;
-using QyTech.Auth.Dao;
+using QyExpress.Dao;
 using QyTech.SkinForm;
 using QyTech.SkinForm.Component;
 using QyTech.SkinForm.Controls;
 using QyTech.UICreate.Util;
-using QyTech.DbUtils;
+using QyTech.Core.Common;
 
 using QyTech.UICreate.UIUtils;
+
 
 namespace QyTech.UICreate
 {
@@ -40,10 +41,9 @@ namespace QyTech.UICreate
         protected string tName;
         protected string strBaseWhere = "", strWhere = "", strOrderby = "";
 
-
         Dictionary<string, object> HiddenFieldsValue = new Dictionary<string, object>();
 
-        AddOrEdit addoredit;
+        protected AddOrEdit addoredit;
 
         public qyfLayTreeEdit()
         {
@@ -71,8 +71,8 @@ namespace QyTech.UICreate
                 sqlConn = conn;
                 bsFc = EntityManager_Static.GetByPk<bsFunConf>(DB_Base, "bsFC_ID", bsFC_Id);
 
-                bstable = EntityManager_Static.GetByPk<bsTable>(DB_Base, "bsT_Id=", bsFc.bsT_Id);
-                tName = bsFc.TName;
+                bstable = EntityManager_Static.GetByPk<bsTable>(DB_Base, "bsT_Id", bsFc.bsT_Id);
+                tName = bstable.TName;
                 if (bsFc.baseWhereSql == null)
                 {
                     if (where != "")
@@ -103,52 +103,107 @@ namespace QyTech.UICreate
         }
 
 
-        private void InitFrom()
+        protected void InitFrom(object currobj)
         {
-            
+            HiddenFieldsValue.Clear();
+            //应该首先对非显示数据 存放到HiddenFieldsValue中
+            foreach (bsFunField ff in bffs)
+            {
+                if (ff.VisibleInForm == false)
+                {
+                    System.Reflection.PropertyInfo pi = currobj.GetType().GetProperty(ff.FName);
+                    object v = pi.GetValue(currobj);
+                    if (v != null)
+                        HiddenFieldsValue.Add(ff.FName, v);
+                }
+            }
             int gbWidth = 0, gbHeight = 0;
 
 
-            Util.qyUICreate.CreateFormEditPart(sqlConn, CurrSelectObj, bffs, gbContainer, ref gbWidth, ref gbHeight);
-            gbContainer.Height = gbHeight;
-            gbContainer.Width = gbWidth;
+            Util.qyUICreate.CreateFormEditPart(sqlConn, currobj, bffs, gbContainer, ref gbWidth, ref gbHeight);
+            //gbContainer.Height = gbHeight;
+            //gbContainer.Width = gbWidth;
             //this.Height = gbHeight + this.Height;// -gbContainer.Height;//自身也要占高度
             //this.Width = gbWidth + this.Width - gbContainer.Width;
 
+            //for (int i=0;i<bsFc.)
        }
 
+
+
+
         #region 增删改功能+保存
+
+        private void 刷新ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RefreshTree();
+        }
+
+        private void 新增ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Add();
+        }
+
+        private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Delete();
+
+        }
+
+        protected  void qyBtn_Save_Click(object sender, EventArgs e)
+        {
+            Save();
+        }
+
+        private void qytvLeft_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            try
+            {
+                currTPkId = (e.Node.Tag as qytvNode).id;
+                CurrSelectObj = EntityManager_Static.GetByPk<bsOrganize>(DB_Base, "bsO_Id", currTPkId);
+                InitFrom(CurrSelectObj);
+            }
+            catch(Exception ex)
+            {
+                QyTech.Core.LogHelper.Error(ex);
+            }
+        }
+
+        #endregion
+
+        #region 子类实现或根据业务可覆盖
+
         /// <summary>
-        /// 增加功能
+        /// 刷新树，子类实现
+        /// </summary>
+        protected virtual void RefreshTree()
+        {
+
+        }
+
+
+        /// <summary>
+        /// 增加功能，子类实现
         /// </summary>
         /// <param name="currRowObj"></param>
-        protected void Add(object currRowObj)
+        protected virtual void Add()
         {
-            CurrSelectObj = currRowObj;
-            InitFrom();
+           
         }
 
         /// <summary>
-        /// 编辑行数据
+        /// 删除功能，子类可覆盖,一般应该可以了
         /// </summary>
-        /// <param name="currRowObj"></param>
-        protected void Edit(object currRowObj)
+        protected virtual void Delete()
         {
-            CurrSelectObj = currRowObj;
-            InitFrom();
-        }
-
-        //private void tsbDelete_Click(object sender, EventArgs e)
-        protected void Delete()
-        {
-            int ret=-1;
+            int ret = -1;
             if (DialogResult.Yes == MessageBox.Show("确定要删除所有选择的对象吗？", "提示", MessageBoxButtons.YesNo))
             {
                 try
                 {
-                    if (currTPkId is Int32)
+                    if (bstable.TPkType=="int")
                         ret = QyTech.DbUtils.SqlUtils.ExceuteSql(sqlConn, "delete from " + tName + " where " + bstable.TPk + "=" + currTPkId.ToString());
-                    else if (currTPkId is Guid)
+                    else if (bstable.TPkType=="uniqueidentifier")
                         ret = QyTech.DbUtils.SqlUtils.ExceuteSql(sqlConn, "delete from " + tName + " where " + bstable.TPk + "='" + currTPkId.ToString() + "'");
 
                     if (ret == -1)
@@ -157,6 +212,7 @@ namespace QyTech.UICreate
                     }
                     else
                     {
+                        qytvLeft.Nodes.Remove(qytvLeft.SelectedNode);
                         //RefreshTree(_qyDgvList, strWhere, strOrderby);
                     }
                 }
@@ -166,35 +222,11 @@ namespace QyTech.UICreate
                 }
             }
         }
-      
-        private void 刷新ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void 新增ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void qyBtn_Save_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void qytvLeft_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            currTPkId = (e.Node.Tag as qytvNode).Id;
-            CurrSelectObj = EntityManager_Static.GetByPk<bsOrganize>(DB_Base, "bsO_Id", currTPkId);
-            InitFrom();
-        }
-
-        protected void SaveRow(int rowindex)
+        /// <summary>
+        /// 保存编辑数据，子类可覆盖
+        /// </summary>
+        protected virtual void Save()
         {
             try
             {

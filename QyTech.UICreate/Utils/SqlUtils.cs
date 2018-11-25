@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Reflection;
 
-using QyTech.Auth.Dao;
+using QyExpress.Dao;
 using System.Windows.Forms;
 
 namespace QyTech.DbUtils
@@ -77,7 +77,7 @@ namespace QyTech.DbUtils
 
             Dictionary<string, string> dics = new Dictionary<string, string>();
             //是定义变量还是普通列表
-            List<string> predefVars = GetOneFieldValues(sqlConn, "SELECT [InterfName] FROM[QyTech_Auth].[dbo].[blPredefineInterface] ");
+            List<string> predefVars = GetOneFieldValues(sqlConn, "SELECT [InterfName] FROM [QyExpress].[dbo].[blPredefineInterface] ");
             int KhPos = editItems.IndexOf('(');
             if (KhPos >= 0)
             {
@@ -153,7 +153,8 @@ namespace QyTech.DbUtils
             {
                 string tName = "bsTable";
                 //sqlConn = new SqlConnection(sqlConn.ConnectionString);
-                string strSql = "select bsT_Id,bsD_Name+'.'+TName as TName from bsTable where bsD_Id in (select bsD_Id from bsDb where AppName='" +APPName + "') order by tName";
+                //string strSql = "select bsT_Id,bsD_Name+'.'+TName as TName from bsTable where bsD_Id in (select bsD_Id from bsDb where AppName='" +APPName + "') order by tName";
+                string strSql = "select bsT_Id,TName as TName from bsTable where bsD_Id in (select bsD_Id from bsDb where AppName='" + APPName + "') order by tName";
                 SqlCommand Cmd = new SqlCommand(strSql, sqlConn);//建立要执行的命令
                 SqlDataAdapter da = new SqlDataAdapter(Cmd);//建立数据适配器
                 DataSet ds = new DataSet();
@@ -232,10 +233,10 @@ namespace QyTech.DbUtils
         }
         public static int ExceuteSql(SqlConnection sqlconn, string strSql)
         {
-            int ret = -1;
-            sqlconn.Open();
+            int ret = -2;
             try
             {
+                sqlconn.Open();
                 SqlCommand Cmd = new SqlCommand(strSql, sqlconn);//建立要执行的命令
                 ret = Cmd.ExecuteNonQuery();
                 sqlconn.Close();
@@ -243,7 +244,7 @@ namespace QyTech.DbUtils
             }
             catch (Exception ex)
             {
-                ret= - 1;
+                ret= -2;
             }
             finally
             {
@@ -251,6 +252,33 @@ namespace QyTech.DbUtils
             }
             return ret;
         }
+
+        public static string ExceuteSp(SqlConnection sqlconn, string spName,string param)
+        {
+            string retstr = "操作成功";
+            try
+            {
+                sqlconn.Open();
+                string strSql = "exec "+ spName+"  "+ param;
+
+                SqlCommand Cmd = new SqlCommand(strSql, sqlconn);//建立要执行的命令
+                int ret = Cmd.ExecuteNonQuery();
+                sqlconn.Close();
+                //if (ret == -1)
+                //    retstr = "没有记录被影响";
+                return retstr;
+            }
+            catch (Exception ex)
+            {
+                retstr = ex.Message;
+            }
+            finally
+            {
+                sqlconn.Close();
+            }
+            return retstr;
+        }
+
 
         /// <summary>
         /// 数据库脚本导入excel数据, 对已存在数据的修改怎么处理呢？让用户自己决定是否直接删除？
@@ -404,6 +432,7 @@ namespace QyTech.DbUtils
                     }
                     else if (c is ComboBox)
                     {
+                        #region Combox处理
                         ComboBox cb = c as ComboBox;
                         string selectV = cb.Text;
                         if (cb.Tag.ToString() != "")
@@ -442,6 +471,7 @@ namespace QyTech.DbUtils
 
                             }
                         }
+                        #endregion
                     }
                     else
                     {
@@ -455,7 +485,7 @@ namespace QyTech.DbUtils
                             if ("string,guid".Contains(dicFName2Type[c.Name].ToLower()))
                             {
 
-                                updateSql += "," + c.Name + "='" + c.Text + "'";
+                                updateSql += "," + c.Name + "='" + c.Text.Replace("'", "''") + "'";
                             }
                             else if ("int,decimal,float,int32".Contains(dicFName2Type[c.Name].ToLower()))
                             {
@@ -565,23 +595,6 @@ namespace QyTech.DbUtils
             catch (Exception ex) {
                 return 0;
             }
-        }
-        public static T DataRow2EntityObject<T>(DataRow r)
-        {
-            T t = default(T);
-            t = Activator.CreateInstance<T>();
-            PropertyInfo[] ps = t.GetType().GetProperties();
-            foreach (var item in ps)
-            {
-                if (r.Table.Columns.Contains(item.Name))
-                {
-                    object v = r[item.Name];
-                    if (v.GetType() == typeof(System.DBNull))
-                        v = null;
-                    item.SetValue(t, v, null);
-                }
-            }
-            return t;
         }
 
 

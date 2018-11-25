@@ -26,7 +26,7 @@ using QyTech.Core.Common;
 using QyTech.Core.ExController.Bll;
 using QyTech.Core.ExController;
 
-using QyTech.Auth.Dao;
+using QyExpress.Dao;
 
 namespace QyTech.Core.ExController
 {
@@ -34,8 +34,14 @@ namespace QyTech.Core.ExController
     {
         //
         // GET: /FolerControllerFactory/
-        EntityManager EM = new EntityManager(new QyTech.Auth.Dao.QyTech_AuthEntities());
+        EntityManager EM = new EntityManager(new QyExpress.Dao.QyExpressEntities());
                   
+        /// <summary>
+        /// 如果没有实现具体的控制器，则转为使用默认的控制器，具体的控制器只需要实现私有的action即可
+        /// </summary>
+        /// <param name="requestContext"></param>
+        /// <param name="controllerName"></param>
+        /// <returns></returns>
         public override IController CreateController(RequestContext requestContext, string controllerName)
         {
             try
@@ -48,8 +54,11 @@ namespace QyTech.Core.ExController
                     var dynamicRoute = string.Join("/", requestContext.RouteData.Values.Values);
                     string[] routes = dynamicRoute.Split(new char[] { '/' });
 
-                    bsFunInterface bsfi = EM.GetBySql<bsFunInterface>("LinkController='" + routes[routes.Length - 2] + "' and LinkAction='" + routes[routes.Length - 1] + "'");
-                    controllerName = bsfi.AreaName+ "Default";//根据controller觉得对应的QyTechDefault
+                    //zhwsun modified on 2018-10-08 是从数据库配置中确定area，还是按照请求来确定area？理顺这些关系
+                    //bsFunInterface bsfi = EM.GetBySql<bsFunInterface>("LinkController='" + routes[routes.Length - 2] + "' and LinkAction='" + routes[routes.Length - 1] + "'");
+                    //controllerName = bsfi.AreaName+ "Default";//根据controller觉得对应的QyTechDefault
+                    //目前为了效率高些，直接按照传输过来的路由进行，如果更改，需要更改为从bsTTinterface寻找，原来的bsFunInterface已经被bsTInterface代替
+                    controllerName = requestContext.RouteData.DataTokens["area"] + "Default";
                     //if (routes.Length >= 3)
                    //     controllerName = routes[0] + "Default";//根据controller觉得对应的QyTechDefault
                    // else

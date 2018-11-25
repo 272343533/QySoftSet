@@ -79,17 +79,23 @@
     <Compile Include="Controls\qyTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Form\qyFormContainer.cs">
+    <Compile Include="IForm\qyFormContainer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\qyFormContainer.Designer.cs">
+    <Compile Include="IForm\qyFormContainer.Designer.cs">
       <DependentUpon>qyFormContainer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\qyFormWithTitle.cs">
+    <Compile Include="IForm\qyFormWithTitle.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\qyFormWithTitle.Designer.cs">
+    <Compile Include="IForm\qyFormWithTitle.Designer.cs">
       <DependentUpon>qyFormWithTitle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IForm\qyFrmBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IForm\qyFrmBase.Designer.cs">
+      <DependentUpon>qyFrmBase.cs</DependentUpon>
     </Compile>
     <Compile Include="qyResources.cs" />
     <Compile Include="Resources.Designer.cs">
@@ -103,16 +109,16 @@
     <Compile Include="Controls\qyBtn.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Form\qyForm.cs">
+    <Compile Include="IForm\qyForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\qyForm.Designer.cs">
+    <Compile Include="IForm\qyForm.Designer.cs">
       <DependentUpon>qyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Component\qyBtn_cancel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Form\qyFormUtil.cs" />
+    <Compile Include="IForm\qyFormUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controls\qyPbr.cs">
       <SubType>Component</SubType>
@@ -125,16 +131,16 @@
     <EmbeddedResource Include="Component\qyImagelist.resx">
       <DependentUpon>qyImagelist.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\qyFormContainer.resx">
+    <EmbeddedResource Include="IForm\qyFormContainer.resx">
       <DependentUpon>qyFormContainer.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\qyFormWithTitle.resx">
-      <DependentUpon>qyFormWithTitle.cs</DependentUpon>
+    <EmbeddedResource Include="IForm\qyForm.resx">
+      <DependentUpon>qyForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\qyForm.resx">
-      <DependentUpon>qyForm.cs</DependentUpon>
+    <EmbeddedResource Include="IForm\qyFormWithTitle.resx">
+      <DependentUpon>qyFormWithTitle.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources.resx">

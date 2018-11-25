@@ -7,13 +7,19 @@ namespace SunMvcExpress.Core.FileIO
 {
     public class FileOperate
     {
+
+        /// <summary>
+        /// 两个文件合并到令一个文件的前面
+        /// </summary>
+        /// <param name="infileName">要合并的文件</param>
+        /// <param name="outfileName">合并的目标文件</param>
         public static  void CombineToFile(String infileName, String outfileName)
         {
             int b;
             int n = infileName.Length;
             FileStream fileIn = new FileStream(infileName, FileMode.Open);
- 
-            using (FileStream fileOut = new FileStream(outfileName, FileMode.Create))
+
+            using (FileStream fileOut = new FileStream(outfileName, FileMode.Append))//.Create))shi
             {
                 try
                 {

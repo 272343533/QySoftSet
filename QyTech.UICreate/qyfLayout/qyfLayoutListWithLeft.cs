@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using System.Data.Objects;
 using System.Data.SqlClient;
 using QyTech.Core.BLL;
-using QyTech.Auth.Dao;
+using QyExpress.Dao;
 using QyTech.SkinForm;
 using QyTech.SkinForm.Component;
 using QyTech.SkinForm.Controls;

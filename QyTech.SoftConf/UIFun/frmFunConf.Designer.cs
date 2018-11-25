@@ -48,12 +48,12 @@
             // scForm.Panel1
             // 
             this.scForm.Panel1.Controls.Add(this.qytvDbTable);
-            this.scForm.Size = new System.Drawing.Size(930, 422);
+            this.scForm.Size = new System.Drawing.Size(930, 450);
             this.scForm.SplitterDistance = 225;
             // 
             // scDgv
             // 
-            this.scDgv.Size = new System.Drawing.Size(701, 422);
+            this.scDgv.Size = new System.Drawing.Size(701, 450);
             // 
             // scQuery
             // 
@@ -66,7 +66,7 @@
             // gbCondition
             // 
             this.gbCondition.Location = new System.Drawing.Point(3, 0);
-            this.gbCondition.Size = new System.Drawing.Size(560, 31);
+            this.gbCondition.Size = new System.Drawing.Size(520, 31);
             // 
             // qytvDbTable
             // 
@@ -75,7 +75,7 @@
             this.qytvDbTable.Location = new System.Drawing.Point(0, 0);
             this.qytvDbTable.Name = "qytvDbTable";
             this.qytvDbTable.NodeCheckedWithParent = false;
-            this.qytvDbTable.Size = new System.Drawing.Size(225, 422);
+            this.qytvDbTable.Size = new System.Drawing.Size(225, 450);
             this.qytvDbTable.TabIndex = 0;
             this.qytvDbTable.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.qytvDbTable_AfterSelect);
             // 

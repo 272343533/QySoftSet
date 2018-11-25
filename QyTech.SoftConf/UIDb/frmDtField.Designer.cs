@@ -79,7 +79,7 @@
             // gbCondition
             // 
             this.gbCondition.Location = new System.Drawing.Point(3, 0);
-            this.gbCondition.Size = new System.Drawing.Size(240, 31);
+            this.gbCondition.Size = new System.Drawing.Size(200, 31);
             // 
             // qytvDbTable
             // 
@@ -87,6 +87,7 @@
             this.qytvDbTable.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.qytvDbTable.Location = new System.Drawing.Point(0, 0);
             this.qytvDbTable.Name = "qytvDbTable";
+            this.qytvDbTable.NodeCheckedWithParent = false;
             this.qytvDbTable.Size = new System.Drawing.Size(225, 422);
             this.qytvDbTable.TabIndex = 0;
             this.qytvDbTable.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.qytvDbTable_AfterSelect);
@@ -144,6 +145,7 @@
             this.tsbInitColunn.Name = "tsbInitColunn";
             this.tsbInitColunn.Size = new System.Drawing.Size(100, 22);
             this.tsbInitColunn.Text = "初始化列信息";
+            this.tsbInitColunn.Click += new System.EventHandler(this.tsbInitColunn_Click);
             // 
             // frmDtField
             // 

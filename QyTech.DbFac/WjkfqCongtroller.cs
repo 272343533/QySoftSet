@@ -22,11 +22,11 @@ namespace QyTech.DbFac
         public WjkfqController()
             : base()
         {
-            StrDbContext = "wj_GisDbEntities";
-            //DbContext = new wj_GisDbEntities();
+            //StrDbContext = "wj_GisDbEntities";
+            DbContext = new wj_GisDbEntities();
             objNameSpace = "Dao.WjGisDb";
             ObjectClassFullName = StrForReplaceObject + ", Dao.WjGisDb, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null";
-            //DbContext = new QyTech.Auth.aut();
+            //DbContext = new QyExpress.aut();
         }
 
 

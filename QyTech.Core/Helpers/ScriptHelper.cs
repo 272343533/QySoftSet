@@ -12,6 +12,12 @@ using QyTech.Core.BLL;
 
 namespace System.Web.Mvc
 {
+
+    /// <summary>
+    /// 用于原来dwz的自动代码生成，以后应该不用了
+    /// 计划应该是用户自行创建界面，然后我们只是给予需要的数据的接口
+    /// 计划使用Element UI，创建相应的模板，把各个组件标准化
+    /// </summary>
     public static class ScriptHelper
     {
         public static ILog log = log4net.LogManager.GetLogger("ScriptHelper");

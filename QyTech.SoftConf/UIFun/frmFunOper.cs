@@ -10,11 +10,13 @@ using System.Windows.Forms;
 using QyTech.UICreate;
 using QyTech.SkinForm;
 
-using QyTech.Auth.Dao;
+using QyExpress.Dao;
 using QyTech.SoftConf;
 using QyTech.SkinForm.Controls;
 
 using QyTech.DbUtils;
+using QyTech.Core.Common;
+
 
 namespace QyTech.SoftConf.UIList
 {
@@ -23,7 +25,7 @@ namespace QyTech.SoftConf.UIList
         
         public frmFunOper()
             :base(GlobalVaribles.ObjContext_Base, GlobalVaribles.ObjContext_App, GlobalVaribles.SqConn_Base,
-                 Guid.Parse("4C1E9407-618A-4A3F-86AB-07279F64B095"), BLL.commService.FunConfWhere)//, "OperNo")
+                 Guid.Parse("4C1E9407-618A-4A3F-86AB-07279F64B095"), "")
         {
             InitializeComponent();
 
@@ -46,7 +48,7 @@ namespace QyTech.SoftConf.UIList
             TreeNode tn = e.Node;
             qytvNode tntag = tn.Tag as qytvNode;
 
-            strBaseWhere = "bsFC_Id='" + tntag.Id + "'";
+            strBaseWhere = "bsFC_Id='" + tntag.id + "'";
 
             RefreshDgv();
         }

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 
 
-namespace QyTech.Auth.Controllers.Wjkfa
+namespace QyExpress.Controllers.Wjkfa
 {
     public class WebAppAreaRegistration : AreaRegistration  
     {  
@@ -23,7 +23,7 @@ namespace QyTech.Auth.Controllers.Wjkfa
                 "Wjkfq_default",
                 "Wjkfq/{controller}/{action}/{id}",
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                new string[] { "QyTech.Auth.Controllers.Wjkfq" }
+                new string[] { "QyExpress.Controllers.Wjkfq" }
             );  
         }  
     }

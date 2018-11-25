@@ -10,11 +10,13 @@ using System.Windows.Forms;
 using QyTech.UICreate;
 using QyTech.SkinForm;
 
-using QyTech.Auth.Dao;
+using QyExpress.Dao;
 using QyTech.SoftConf;
 using QyTech.SkinForm.Controls;
 using QyTech.Core.BLL;
-using QyTech.DbUtils;
+using QyTech.Core.Common;
+
+
 
 namespace QyTech.SoftConf.UIList
 {
@@ -22,7 +24,7 @@ namespace QyTech.SoftConf.UIList
     {
         public frmFunField() 
             : base(GlobalVaribles.ObjContext_Base, GlobalVaribles.ObjContext_App, GlobalVaribles.SqConn_Base,
-                  Guid.Parse("F98AD688-66F8-439D-A6E1-66B81640721D"), BLL.commService.FunConfWhere)//, "FNo")
+                  Guid.Parse("F98AD688-66F8-439D-A6E1-66B81640721D"), "")
         {
             InitializeComponent();
 
@@ -58,8 +60,8 @@ namespace QyTech.SoftConf.UIList
             TreeNode tn = e.Node;
             qytvNode tntag = tn.Tag as qytvNode;
 
-            strBaseWhere = "bsFC_Id='" + tntag.Id + "'";
-            CurrLeftPFk = tntag.Id;
+            strBaseWhere = "bsFC_Id='" + tntag.id + "'";
+            CurrLeftPFk = tntag.id;
 
             RefreshDgv();
         }
@@ -86,7 +88,15 @@ namespace QyTech.SoftConf.UIList
         private void tsbAddNewField_Click(object sender, EventArgs e)
         {
             string sqls = "exec bslyAppendFunAllFields2FCField '" + CurrLeftPFk.ToString() + "'";
-            QyTech.DbUtils.SqlUtils.ExceuteSql(GlobalVaribles.SqConn_Base, sqls);
+            int ret=QyTech.DbUtils.SqlUtils.ExceuteSql(GlobalVaribles.SqConn_Base, sqls);
+            if (ret == -2)
+            {
+                MessageBox.Show("操作失败");
+            }
+            else if (ret==-1)
+                MessageBox.Show("没有需要导入的数据");
+            else
+                MessageBox.Show("操作成功");
         }
 
         #region 字段位置移动

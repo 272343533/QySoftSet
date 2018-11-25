@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using QyTech.SkinForm;
-using QyTech.Auth.Dao;
+using QyExpress.Dao;
 using System.Reflection;
 using QyTech.Core.BLL;
 using System.Text.RegularExpressions;
@@ -25,7 +25,7 @@ namespace QyTech.UICreate
 
         protected SqlConnection sqlConn;
         protected bsTable bstable;
-        List<QyTech.Auth.Dao.bsFunField> _bffs;
+        List<QyExpress.Dao.bsFunField> _bffs;
 
 
         protected AddOrEdit addoredit = AddOrEdit.Add;
@@ -145,11 +145,12 @@ namespace QyTech.UICreate
 
 
             int gbWidth = 0, gbHeight = 0;
-            
+
+            object tmpobj = drobj_;
             if (DataRowOrEntityObject=="EntityObject")
-                Util.qyUICreate.CreateFormEditPart(sqlConn, efobj_, _bffs, gbContainer, ref gbWidth, ref gbHeight);
-            else
-                Util.qyUICreate.CreateFormEditPart(sqlConn, drobj_, _bffs, gbContainer, ref gbWidth, ref gbHeight);
+                tmpobj = efobj_;
+
+            Util.qyUICreate.CreateFormEditPart(sqlConn, tmpobj, _bffs, gbContainer, ref gbWidth, ref gbHeight);
 
             this.Height = gbHeight +this.Height;// -gbContainer.Height;//自身也要占高度
             this.Width = gbWidth + this.Width - gbContainer.Width;

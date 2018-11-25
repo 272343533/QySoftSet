@@ -45,30 +45,14 @@ namespace QyTech.Core.BLL
             }
             catch (Exception ex)
             {
-                string errmsg = ExceptionMessage.Parse(ex);
                 LogHelper.Error(ex);
                 return -9999;
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="spName"></param>
-        /// <param name="paramvalues"> 都好分割的参数值</param>
-        public int ExecuteSql(string sql)
-        {
-            try
-            {
-                return db.ExecuteStoreCommand(sql);
-            }
-            catch (Exception ex)
-            {
-                LogHelper.Error(ex);
-                return -1;
-            }
-        }
 
+
+       
 
         /// <summary>
         /// 
@@ -256,14 +240,13 @@ namespace QyTech.Core.BLL
             }
             catch (Exception ex)
             {
-                string errmsg = ExceptionMessage.Parse(ex);
                 LogHelper.Error(ex);
-                return errmsg;
+                return ex.Message;
             }
         }
 
  
-        public string Add<T>(List<T> ts)
+        public string Adds<T>(List<T> ts)
         {
             try
             {
@@ -281,9 +264,8 @@ namespace QyTech.Core.BLL
             }
             catch (Exception ex)
             {
-                string errmsg = ExceptionMessage.Parse(ex);
                 LogHelper.Error(ex);
-                return errmsg;
+                return ex.Message;
             }
         }
         /// <summary>
@@ -304,9 +286,8 @@ namespace QyTech.Core.BLL
             }
             catch (Exception ex)
             {
-                errmsg = ExceptionMessage.Parse(ex);
+                errmsg = ex.Message;
                 LogHelper.Error(ex);
-
                 return default(T);
             }
         }
@@ -329,9 +310,8 @@ namespace QyTech.Core.BLL
             }
             catch (Exception ex)
             {
-                string errmsg = ExceptionMessage.Parse(ex);
                 LogHelper.Error(ex);
-                return errmsg;
+                return ex.Message;
             }
         }
 
@@ -343,7 +323,7 @@ namespace QyTech.Core.BLL
         /// <param name="pkName"></param>
         /// <param name="pkValue"></param>
         /// <returns></returns>
-        public string Modify<T>(T t,string pkName,object pkValue) where T : EntityObject
+        public string ModifyByIdFName<T>(T t,string pkName,object pkValue) where T : EntityObject
         {
             try
             {
@@ -358,9 +338,8 @@ namespace QyTech.Core.BLL
             }
             catch (Exception ex)
             {
-                string errmsg = ExceptionMessage.Parse(ex);
                 LogHelper.Error(ex);
-                return errmsg;
+                return ex.Message;
             }
         }
 
@@ -420,25 +399,91 @@ namespace QyTech.Core.BLL
                 return ex.Message;
             }
         }
- 
-        //public T GetByGuidPk<T>( string PkName, Guid PkValue)
-        //{
-        //    try
-        //    {
-        //        string tablename = typeof(T).Name;
-        //        string CommandText = "select * from " + tablename + " where " + PkName + "='" + PkValue.ToString() + "'";
 
-        //        String entityName = db.GetType().GetProperties().Where(p => p.Name == tablename || p.Name == tablename + "s" || p.Name == tablename + "es").Single().Name;
-        //        var obj = db.ExecuteStoreQuery<T>(CommandText, entityName, System.Data.Objects.MergeOption.AppendOnly, null)
-        //               .SingleOrDefault<T>();
-        //        return obj;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        LogHelper.Error(ex);
-        //        return default(T);
-        //    }
-        //}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="where">where 不能为null，危险条件</param>
+        /// <returns></returns>
+        public int DeleteByWhereSql<T>(string where)
+        {
+            try
+            {
+                string tablename = typeof(T).Name;
+                string CommandText = "delete  from " + tablename + " where " + where;
+                return db.ExecuteStoreCommand(CommandText);
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error(ex);
+                return -1;
+            }
+        }
+
+        public int ExecuteSql(string sql)
+        {
+            try
+            {
+                return db.ExecuteStoreCommand(sql);
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error(ex);
+                return -1;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="spName"></param>
+        /// <param name="paras"></param>
+        /// <returns></returns>
+        public int ExcuteStoreProcedure(string spName, string paras)
+        {
+            if (paras.ToLower().Contains("delete"))
+            {
+                return -9999;
+            }
+
+            string Sqls = "EXEC [" + spName + "] ";
+
+            List<SqlParameter> paramArray = new List<SqlParameter>();
+            string[] strs = paras.Split(new char[] { ',' });
+            int index = 1;
+            foreach (string item in strs)
+            {
+                Sqls += "@Param" + index.ToString() + ",";
+                paramArray.Add(new SqlParameter("@Param" + index.ToString(), item));
+                index++;
+            }
+
+            Sqls = Sqls.Substring(0, Sqls.Length - 1);
+            int ret = db.ExecuteStoreCommand(Sqls, paramArray.ToArray());
+            return ret;
+        }
+
+        public int ExcuteStoreProcedure(string spName, object[] paramvalues)
+        {
+            string Sqls = "EXEC [" + spName + "] ";
+            List<SqlParameter> paramArray = new List<SqlParameter>();
+
+            int index = 1;
+            foreach (object item in paramvalues)
+            {
+
+                paramArray.Add(new SqlParameter("@Param" + index.ToString(), item));
+                Sqls += "@Param" + index.ToString() + ",";
+
+                index++;
+            }
+
+            Sqls = Sqls.Substring(0, Sqls.Length - 1);
+            //db.Database.ExecuteSqlCommand("EXEC [AddVote] @blockId,@titleId,@typeId,@num out", paramArray.ToArray());
+            int ret=db.ExecuteStoreCommand(Sqls, paramArray.ToArray());
+            return ret;
+        }
 
         public T GetByGuidPkWithMaxDt<T>( string PkName, object PkValue, string orderby)
         {
@@ -518,7 +563,6 @@ namespace QyTech.Core.BLL
             }
             catch (Exception ex)
             {
-                string errmsg = ExceptionMessage.Parse(ex);
                 LogHelper.Error(ex);
                 return default(T);
             }
@@ -543,9 +587,7 @@ namespace QyTech.Core.BLL
             }
             catch (Exception ex)
             {
-                string errmsg = ExceptionMessage.Parse(ex);
                 LogHelper.Error(ex);
-
                 return null;
             }
         }
@@ -573,7 +615,6 @@ namespace QyTech.Core.BLL
             }
             catch (Exception ex)
             {
-                string errmsg = ExceptionMessage.Parse(ex);
                 LogHelper.Error(ex);
                 return null;
             }

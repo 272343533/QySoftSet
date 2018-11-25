@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System.Data.Objects;
 using System.Data.SqlClient;
 using QyTech.Core.BLL;
-using QyTech.Auth.Dao;
+using QyExpress.Dao;
 using QyTech.SkinForm;
 using QyTech.SkinForm.Component;
 using QyTech.SkinForm.Controls;
@@ -87,7 +87,7 @@ namespace QyTech.UICreate
 
                 bstable = EntityManager_Static.GetByPk<bsTable>(DB_Base, "bsT_Id",bsFc.bsT_Id);
                 tName = bstable.TName;
-                if (bsFc.baseWhereSql == null)
+                if (bsFc.baseWhereSql == null || bsFc.baseWhereSql == "")
                 {
                     if (where != "")
                         strBaseWhere = "(" + where + ")";
@@ -95,7 +95,12 @@ namespace QyTech.UICreate
                         strBaseWhere = "";
                 }
                 else
-                    strBaseWhere = "(" + bsFc.baseWhereSql + ")";
+                {
+                    if (where != "")
+                        strBaseWhere = "((" + where + ")"+ " and (" + bsFc.baseWhereSql + "))";
+                    else
+                        strBaseWhere = "(" + bsFc.baseWhereSql + ")";
+                }
                 if (bsFc.OrderBySql == null)
                     strOrderby = "";
                 else
@@ -149,10 +154,10 @@ namespace QyTech.UICreate
                     currRowTPkId = Guid.Parse(_qyDgvList.Rows[currRowIndex].Cells[_qyDgvList.tpkColumnIndex].Value.ToString());
                 }
                 #region  获取当前行对象
-                Type typeEm = typeof(QyTech.DbUtils.SqlUtils);
-                Type dbtype = Type.GetType("QyTech.Auth.Dao." + bstable.TName + ",QyTech.Auth.Dao,Version=1.0.0.0, Culture=neutral, PublicKeyToken=null");
+                Type typeEm = typeof(QyTech.Core.SqlUtils.Sql2Entity);
+                Type dbtype = Type.GetType("QyExpress.Dao." + bstable.TName + ",QyExpress.Dao,Version=1.0.0.0, Culture=neutral, PublicKeyToken=null");
                 object dbobj = dbtype.Assembly.CreateInstance(dbtype.FullName);
-                System.Reflection.MethodInfo miObj = typeEm.GetMethod("DataRow2EntityObject").MakeGenericMethod(dbtype);//获取泛型类方法,不能有重名的，否则找不到，2018-10-06有一个错误，就是一个实例，一个静态，报错了
+                System.Reflection.MethodInfo miObj = typeEm.GetMethod("DataRow2Entity").MakeGenericMethod(dbtype);//获取泛型类方法,不能有重名的，否则找不到，2018-10-06有一个错误，就是一个实例，一个静态，报错了
                                                                                                                         //静态方法，所以Invode的第一个参数为null
                 CurrRowObj = miObj.Invoke(null, new object[] { (dgvList.DataSource as DataTable).Rows[e.RowIndex] });
                 #endregion
@@ -199,16 +204,18 @@ namespace QyTech.UICreate
                 if (orderby == ""&& strOrderby!=null)
                     orderby = strOrderby;
 
-                string strWhere = strBaseWhere;
+                string strWhere = strBaseWhere;//这个条件再左树结构中用作左侧树的规律条件了
                 if (where != "")
                 {
-                    if (strWhere != "")
-                        strWhere += " and " + where;
-                    else
+                    //if (strWhere != "")
+                    //    strWhere += " and " + where;
+                    //else
                         strWhere = where;
                 }
 
                 qyDgvListUtil.RefreshDgv(dgv, sqlConn, tName, selectfields, strWhere, orderby);
+
+                dtList = dgvList.DataSource as DataTable;
 
                 ResetDgvHeader(dgv);
             }
@@ -375,7 +382,7 @@ namespace QyTech.UICreate
             catch { }
         }
 
-        private string CreateWhere()
+        protected virtual string CreateWhere()
         {
             string Conditions = "";
             foreach (Control c in gbCondition.Controls)
@@ -423,7 +430,7 @@ namespace QyTech.UICreate
             try
             {
                 //参数未实体对象
-                List<bsFunQuery> fqs = EntityManager_Static.GetListNoPaging<bsFunQuery>(DB_Base, "bsFC_Id='" + bsFc.bsFC_Id.ToString() + "'", "");
+                List<bsFunQuery> fqs = EntityManager_Static.GetListNoPaging<bsFunQuery>(DB_Base, "bsFC_Id='" + bsFc.bsFC_Id.ToString() + "' and itempos='上部'", "");
                 int gbWidth =0;
                 int gbHeight = gbCondition.Height;
                 if (fqs.Count > 0)

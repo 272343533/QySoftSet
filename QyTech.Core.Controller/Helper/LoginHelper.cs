@@ -5,7 +5,7 @@ using System.Web;
 //-------------新增引用
 using System.Web.Security;
 using QyTech.Core.BLL ;
-using QyTech.Auth.Dao;
+using QyExpress.Dao;
 using System.Data.Objects;
 using QyTech.Core.Common;
 
@@ -14,11 +14,13 @@ using log4net;
 
 namespace QyTech.Core.Helpers
 {
-
+    /// <summary>
+    /// 用于登录用到的各种操作接口,需进一步测试 noted by zhwsun on 2018-10-12
+    /// </summary>
     public class LoginHelper
     {
         private static ILog log = log4net.LogManager.GetLogger("LoginHelper");
-        private static QyTech_AuthEntities db_ = new QyTech_AuthEntities();
+        private static QyExpressEntities db_ = new QyExpressEntities();
         private static QyTech.Core.BLL.EntityManager EManager= new QyTech.Core.BLL.EntityManager(db_);
 
         #region Login登录相关
@@ -39,17 +41,17 @@ namespace QyTech.Core.Helpers
                  string loginname;
                 log.Info("login:" + name + pwd + "end");// Environment.UserDomainName
                 
-                pwd = System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(pwd, "MD5");
-
+                //pwd = System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(pwd, "MD5");
+                pwd = LockerHelper.MD5(pwd);
                 DateTime dtnow = DateTime.Now;
-                bsUser userobj;
-                if ((name.ToLower() == QyTech.Core.Common.devAdmin.Name && pwd.ToUpper() == QyTech.Core.Common.devAdmin.Pwd))
+                bsUser userobj = InnerAccout.IsInnerAccount(name, pwd);
+                if (userobj!=null)
                 {
-                    SetuserCookie(devAdmin.Id, devAdmin.Name, devAdmin.NickName, devAdmin.CustId);
+                    SetuserCookie(userobj.bsU_Id, userobj.LoginName, userobj.NickName, userobj.bsO_Id);
                 }
                 else
                 {
-                    if (name != InnerAccount.sysAdmin.ToString())
+                    if (name != InnerAccout.expressAdminUser.LoginName.ToString())
                     {
                         custcode = name.Substring(0, 4);
                         loginname = name.Substring(4);
@@ -220,8 +222,7 @@ namespace QyTech.Core.Helpers
 
         #endregion
 
-        #region
-        //---------------权限接口-----公司问题暂时不太好处理！
+        #region ---------------权限接口-----公司问题暂时不太好处理！
 
         //public static bool isusefunc(int UserID, int funcID)
         //{
@@ -235,6 +236,13 @@ namespace QyTech.Core.Helpers
         //    return false;
         //}
 
+            /// <summary>
+            /// 是否是用户有无此路由的权限？//2018-10-17
+            /// </summary>
+            /// <param name="UserID"></param>
+            /// <param name="controllername"></param>
+            /// <param name="actionname"></param>
+            /// <returns></returns>
         public static bool isusefunc(Guid UserID, string controllername, string actionname)
         {
             //需要修改 2015-01-07

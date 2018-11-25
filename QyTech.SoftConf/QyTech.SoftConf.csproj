@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -34,12 +34,14 @@
     <Reference Include="log4net">
       <HintPath>..\..\..\..\PublicReference\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="QyTech.Auth.Dao, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\WebPub\QyTech.Auth.Dao.dll</HintPath>
+    <Reference Include="QyExpress.Dao">
+      <HintPath>..\WebPub\QyExpress.Dao.dll</HintPath>
     </Reference>
     <Reference Include="QyTech.Core">
       <HintPath>..\WebPub\QyTech.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="QyTech.Json">
+      <HintPath>..\WebPub\QyTech.Json.dll</HintPath>
     </Reference>
     <Reference Include="QyTech.SkinForm">
       <HintPath>..\Debug\QyTech.SkinForm.dll</HintPath>
@@ -48,6 +50,7 @@
       <HintPath>..\Debug\QyTech.UICreate.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
@@ -61,8 +64,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL\commEnums.cs" />
     <Compile Include="BLL\commService.cs" />
+    <Compile Include="Utils\HttpRequest.cs" />
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,17 +117,23 @@
     <Compile Include="UIBLL\frmRights.Designer.cs">
       <DependentUpon>frmRights.cs</DependentUpon>
     </Compile>
-    <Compile Include="UIDb\frmExcelColMap.cs">
+    <Compile Include="UIDb\AttachUI\frmAddDefaultTInterface.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UIDb\frmExcelColMap.Designer.cs">
-      <DependentUpon>frmExcelColMap.cs</DependentUpon>
+    <Compile Include="UIDb\AttachUI\frmAddDefaultTInterface.Designer.cs">
+      <DependentUpon>frmAddDefaultTInterface.cs</DependentUpon>
     </Compile>
     <Compile Include="UIDb\frmDtInterface.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UIDb\frmDtInterface.Designer.cs">
       <DependentUpon>frmDtInterface.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIDb\frmExcelColMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIDb\frmExcelColMap.Designer.cs">
+      <DependentUpon>frmExcelColMap.cs</DependentUpon>
     </Compile>
     <Compile Include="UIFun\UIAdd\qyfFunFieldfAdd.cs">
       <SubType>Form</SubType>
@@ -162,12 +177,6 @@
     <Compile Include="UIFun\frmFunQuery.Designer.cs">
       <DependentUpon>frmFunQuery.cs</DependentUpon>
     </Compile>
-    <Compile Include="UIFun\frmFunInterface.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UIFun\frmFunInterface.Designer.cs">
-      <DependentUpon>frmFunInterface.cs</DependentUpon>
-    </Compile>
     <Compile Include="UIFun\frmFunOper.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,6 +213,15 @@
     <Compile Include="UIDb\frmDtTable.Designer.cs">
       <DependentUpon>frmDtTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="UIParent\IqyfTreeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIParent\IqyfTreeView.Designer.cs">
+      <DependentUpon>IqyfTreeView.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -228,8 +246,14 @@
     <EmbeddedResource Include="UIBLL\frmRights.resx">
       <DependentUpon>frmRights.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UIDb\AttachUI\frmAddDefaultTInterface.resx">
+      <DependentUpon>frmAddDefaultTInterface.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UIDb\frmDtInterface.resx">
       <DependentUpon>frmDtInterface.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIDb\frmExcelColMap.resx">
+      <DependentUpon>frmExcelColMap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UIFun\UIAdd\qyfFunFieldfAdd.resx">
       <DependentUpon>qyfFunFieldfAdd.cs</DependentUpon>
@@ -252,9 +276,6 @@
     <EmbeddedResource Include="UIFun\frmFunQuery.resx">
       <DependentUpon>frmFunQuery.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UIFun\frmFunInterface.resx">
-      <DependentUpon>frmFunInterface.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UIFun\frmFunOper.resx">
       <DependentUpon>frmFunOper.cs</DependentUpon>
     </EmbeddedResource>
@@ -273,6 +294,9 @@
     <EmbeddedResource Include="UIDb\frmDtTable.resx">
       <DependentUpon>frmDtTable.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UIParent\IqyfTreeView.resx">
+      <DependentUpon>IqyfTreeView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -286,9 +310,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UISource\" />
-    <Folder Include="Utils\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

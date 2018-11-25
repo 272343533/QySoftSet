@@ -10,10 +10,12 @@ using System.Windows.Forms;
 using QyTech.UICreate;
 using QyTech.SkinForm;
 
-using QyTech.Auth.Dao;
+using QyExpress.Dao;
 using QyTech.SoftConf;
 using QyTech.SkinForm.Controls;
 using QyTech.DbUtils;
+using QyTech.Core.Common;
+
 
 namespace QyTech.SoftConf.UIList
 {
@@ -24,7 +26,7 @@ namespace QyTech.SoftConf.UIList
 
         public frmDtField()
             :base(GlobalVaribles.ObjContext_Base, GlobalVaribles.ObjContext_App, GlobalVaribles.SqConn_Base,
-                 new Guid("B7BF7641-CCDF-4726-B948-2F9F4B212A7F"), BLL.commService.bsTWhere)//, "FNo")
+                 new Guid("B7BF7641-CCDF-4726-B948-2F9F4B212A7F"), "")
         {
             InitializeComponent();
         }
@@ -36,6 +38,9 @@ namespace QyTech.SoftConf.UIList
             List < qytvNode > nodes = BLL.commService.GetbsTables(DB_Base);
 
             qytvDbTable.LoadData(nodes);
+
+            if (qytvDbTable.Nodes.Count > 0)
+                qytvDbTable.SelectedNode = qytvDbTable.Nodes[0];
         }
 
 
@@ -44,17 +49,21 @@ namespace QyTech.SoftConf.UIList
 
             TreeNode tn = e.Node;
             qytvNode tntag = tn.Tag as qytvNode;
-            if (tntag.Tag != "Db")
+            if (tntag.type != "Db")
             {
-                PFk = Guid.Parse(tntag.Id);
+                PFk = Guid.Parse(tntag.id);
 
                 TreeNode ptn = tn.Parent;
-                qytvNode ptntag = ptn.Tag as qytvNode;
-
-                strBaseWhere = "bsT_Id='" + tntag.Id + "'";
-
+           
+                strBaseWhere = "bsT_Id='" + tntag.id + "'";
                 RefreshDgv();
              }
+            else
+            {
+                strBaseWhere = "bsT_Id='" + Guid.Empty.ToString()+ "'";
+
+                RefreshDgv();
+            }
 
         }
 
@@ -79,7 +88,12 @@ namespace QyTech.SoftConf.UIList
 
         private void tsbCreate_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("数据库中创建字段");
+        }
 
+        private void tsbInitColunn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("？");
         }
     }
 }

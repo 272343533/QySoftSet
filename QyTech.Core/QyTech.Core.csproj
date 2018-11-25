@@ -73,6 +73,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\WebPub\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="QyExpress.Dao, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WebPub\QyExpress.Dao.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
@@ -106,21 +110,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL\devAdmin.cs" />
+    <Compile Include="Common\InnerAccout.cs" />
     <Compile Include="BLL\EntityCopy.cs" />
     <Compile Include="BLL\EntityManager_Static.cs" />
-    <Compile Include="BLL\ReturnErrMessage.cs" />
     <Compile Include="BLL\EntityManager.cs" />
-    <Compile Include="Common\TreeNode.cs" />
-    <Compile Include="Helpers\LoginFilterAttribute.cs" />
-    <Compile Include="Helpers\ScriptHelper.cs" />
+    <Compile Include="Common\InnerAccountFilter.cs" />
+    <Compile Include="Common\qyDefalutInterface.cs" />
+    <Compile Include="Common\qyTypes_FunUI.cs" />
+    <Compile Include="Common\qyTypes.cs" />
+    <Compile Include="Common\qyExpres.cs" />
+    <Compile Include="CommUtils\ImageUtril.cs" />
+    <Compile Include="CommUtils\qyEnumUtil.cs" />
+    <Compile Include="CommUtils\qyTreeViewUtil.cs" />
     <Compile Include="FileIO\FileOperate.cs" />
-    <Compile Include="Models\ContextObject_Helper.cs" />
-    <Compile Include="Models\Pagination.cs" />
-    <Compile Include="Models\Toolkit.cs" />
-    <Compile Include="ORM\SunORM.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Helpers\LockerHelper.cs" />
     <Compile Include="Helpers\LogHelper.cs" />
+    <Compile Include="Helpers\PkCreateHelper.cs" />
+    <Compile Include="Helpers\ScriptHelper.cs" />
+    <Compile Include="BLL\Models\ContextObject_Helper.cs" />
+    <Compile Include="BLL\Models\Pagination.cs" />
+    <Compile Include="BLL\Models\Toolkit.cs" />
+    <Compile Include="SqlUtils\Sql2Entity.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

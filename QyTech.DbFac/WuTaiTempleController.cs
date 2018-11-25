@@ -14,7 +14,7 @@ using QyTech.Core.Helpers;
 
 using Dao.WuTaiTemple;
 
-namespace QyTech.Auth
+namespace QyExpress
 {
     public class WuTaiTempleController : QyTechController
     {
@@ -26,7 +26,7 @@ namespace QyTech.Auth
             DbContext = new WuTaiTempleEntities();
             objNameSpace = "Dao.WuTaiTemple";
             ObjectClassFullName = StrForReplaceObject + ", Dao.WuTaiTemple, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null";
-            //DbContext = new QyTech.Auth.aut();
+            //DbContext = new QyExpress.aut();
         }
        
 

@@ -25,6 +25,7 @@ namespace QyTech.Json
     /// </summary>
     public class JsonHelper
     {
+        static log4net.ILog  log = log4net.LogManager.GetLogger("JsonHelper");
         /// <summary>
         /// 序列化对象，直接序列化所有属性
         /// </summary>
@@ -248,6 +249,7 @@ namespace QyTech.Json
                 jsetting.Formatting = Newtonsoft.Json.Formatting.Indented;
                 //序列化
                 json = JsonConvert.SerializeObject(o, jsetting);
+                json = json.Replace("\r\n", "");
             }
             catch (Exception ex)
             {
@@ -514,11 +516,19 @@ namespace QyTech.Json
         /// <returns>对象实体</returns>
         public static T DeserializeJsonToObject<T>(string json) where T : class
         {
-            JsonSerializer serializer = new JsonSerializer();
-            StringReader sr = new StringReader(json);
-            object o = serializer.Deserialize(new JsonTextReader(sr), typeof(T));
-            T t = o as T;
-            return t;
+            try
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                StringReader sr = new StringReader(json);
+                object o = serializer.Deserialize(new JsonTextReader(sr), typeof(T));
+                T t = o as T;
+                return t;
+            }
+            catch(Exception ex)
+            {
+                log.Error(ex.Message);
+                return null;
+            }
         }
 
         /// <summary>

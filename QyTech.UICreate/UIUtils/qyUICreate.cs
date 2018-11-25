@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using System.Drawing;
 
 using System.Data;
-using QyTech.Auth.Dao;
+using QyExpress.Dao;
 using System.Data.SqlClient;
 using QyTech.SkinForm.Controls;
 
@@ -38,7 +38,14 @@ namespace QyTech.UICreate.Util
             stepX = ColumnWidth;
             int stepY = 40;//每行之间的像素距离
 
-            int colCount = (int)Math.Ceiling(ffs.Count / 13.0);//每列最多十三行，进行列扩充
+            int visibleCount = 0;
+            foreach(bsFunField ff in ffs)
+            {
+                if ((bool)ff.VisibleInForm)
+                    visibleCount++;
+            }
+
+            int colCount = (int)Math.Ceiling(visibleCount / 13.0);//每列最多十三行，进行列扩充
             int colIndex = 1;//用于当前控件所在列，默认从第1列开始，从1-ColCount
 
 
@@ -89,6 +96,15 @@ namespace QyTech.UICreate.Util
                             {
                                 qyUICreate.CreateCheckboxDisplay(gbParent, ff.FDesp, ff.FName, Fvalue, LocationX, LocationY, null, lblWidth, (int)ff.FWidthInForm);
 
+                            }
+                            else if (ff.FEditType == "date")
+                            {
+                                qyUICreate.CreateDateDisplay(gbParent, ff.FDesp, ff.FName, Fvalue, LocationX, LocationY, null, lblWidth, (int)ff.FWidthInForm);
+                                
+                            }
+                            else if (ff.FEditType == "datetime")
+                            {
+                                qyUICreate.CreateDateTimeDisplay(gbParent, ff.FDesp, ff.FName, Fvalue, LocationX, LocationY, null, lblWidth, (int)ff.FWidthInForm);
                             }
                             else //if (ff.FEditType == "text")
                             {
@@ -214,6 +230,48 @@ namespace QyTech.UICreate.Util
             tb.Text = FValue.ToString();
             tb.Tag = querytag;
             gbContainer.Controls.Add(tb);
+        }
+
+        
+        public static void CreateDateDisplay(GroupBox gbContainer, string labText, string FName, object FValue, int x, int y, object querytag = null, int labwidth = 90, int textwidth = 150, bool Enabled = true)
+        {
+            Label l = new Label();
+            l.Name = "lbl_" + FName;
+            l.Text = labText;
+            l.Location = new System.Drawing.Point(x, y);//(300,...)
+            l.Width = labwidth;
+            l.TextAlign = ContentAlignment.MiddleRight;
+            gbContainer.Controls.Add(l);
+
+            DateTimePicker dp = new DateTimePicker();
+            dp.Location = new System.Drawing.Point(x + 100, y);
+            dp.Width = textwidth;
+            dp.Name = FName;
+            dp.Text = FValue.ToString();
+            dp.Tag = querytag;
+            dp.Format = DateTimePickerFormat.Custom;
+            dp.CustomFormat = "yyyy-MM-dd";
+            gbContainer.Controls.Add(dp);
+        }
+        public static void CreateDateTimeDisplay(GroupBox gbContainer, string labText, string FName, object FValue, int x, int y, object querytag = null, int labwidth = 90, int textwidth = 150, bool Enabled = true)
+        {
+            Label l = new Label();
+            l.Name = "lbl_" + FName;
+            l.Text = labText;
+            l.Location = new System.Drawing.Point(x, y);//(300,...)
+            l.Width = labwidth;
+            l.TextAlign = ContentAlignment.MiddleRight;
+            gbContainer.Controls.Add(l);
+
+            DateTimePicker dp = new DateTimePicker();
+            dp.Location = new System.Drawing.Point(x + 100, y);
+            dp.Width = textwidth;
+            dp.Name = FName;
+            dp.Text = FValue.ToString();
+            dp.Tag = querytag;
+            dp.Format = DateTimePickerFormat.Custom;
+            dp.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            gbContainer.Controls.Add(dp);
         }
         public static void CreateCheckboxDisplay(GroupBox gbContainer, string labText, string FName, object FValue, int x, int y, object querytag = null, int labwidth = 90, int textwidth = 150, bool Enabled = true)
         {

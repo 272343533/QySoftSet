@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Reflection;
 using log4net;
 using QyTech.Core.Helpers;
-using QyTech.Auth.Dao;
+using QyExpress.Dao;
 using QyTech.Core;
 using System.Data.Objects;
 using QyTech.Core.BLL;
@@ -18,11 +18,11 @@ using System.Web.Routing;
 namespace QyTech.Core.ExController.Bll
 {
 
-
-
+    /// <summary>
+    /// 返回用户操作的界面的各项信息，暂时先不管，先把dao接口弄完 noted by zhwusn on 2018-10-12
+    /// </summary>
     public class bllbsUserFields
     {
-
 
         /// <summary>
         /// 获取用户要显示的查询列表的表头描述内容，Guid都不显示
@@ -173,9 +173,9 @@ namespace QyTech.Core.ExController.Bll
                     }
                     else
                     {
-                        if ((bool)item.VisibleInForm)// || item.bsTable.TPk == item.FName)
+                        //modiftied by zhwsun on 2018-10-09 原来不知为什么把主键去掉了，又给加上了
+                        if ((bool)item.VisibleInForm || item.bsTable.TPk == item.FName)
                         {
-                            
                             objs.Add(item.FName);
                         }
                     }
@@ -185,50 +185,84 @@ namespace QyTech.Core.ExController.Bll
         }
 
 
-      /// <summary>
-      /// 根据路由信息判断是哪个FunConf
-      /// </summary>
-      /// <param name="EManager"></param>
-      /// <param name="routeData">路由信息</param>
-      /// <returns></returns>
-        public static Guid GetFunConfId(EntityManager EManager, RouteData routeData)
+        /// <summary>
+        /// 根据路由信息判断是哪个FunConf或bsTable
+        /// </summary>
+        /// <param name="EManager"></param>
+        /// <param name="routeData"></param>
+        /// <param name="AccObj"></param>
+        /// <returns></returns>
+        public static UrlType GetAccessObject(EntityManager EManager, RouteData routeData,ref object AccObj)
         {
-            Guid fcid;
-            if (routeData.Values.Count == 2)
+            UrlType retype = UrlType.None;
+            //要考虑：1是否包含area，2是否是动态路由
+            
+            string url = "";
+            //如何判断是否包括动态路由，下面的条件合适吗？2018-05-19
+            //modified by zhwsun on 2018-10-17
+            if (!routeData.Values.ContainsKey("dynamicroute"))
             {
-                fcid = GetFunConfId(EManager, routeData.Values["controller"].ToString(), routeData.Values["action"].ToString());
+                if (!routeData.DataTokens.ContainsKey("area"))
+                    url = routeData.Values["controller"].ToString() +"/"+ routeData.Values["action"].ToString();
+                else
+                    url = routeData.DataTokens["area"]+"/"+ routeData.Values["controller"].ToString() + "/" + routeData.Values["action"].ToString();
             }
             else
             {
                 //根据动态路由修改 2018-05-19
                 string[] routes = routeData.Values["dynamicroute"].ToString().Split(new char[] { '/' });
-                fcid = GetFunConfId(EManager, routes[0], routes[1]);
+                url = routeData.DataTokens["area"]+"/"+ routes[0] + "/" + routes[1];
+
             }
-            return fcid;
-        }
-        public static Guid GetFunConfId(EntityManager EManager, string controller, string action)
-        {
-            bsFunInterface obj = EManager.GetBySql<bsFunInterface>("LinkController='" + controller + "' and LinkAction='" + action + "'");
-            if (obj == null)
+            vwlyRouteUrl urlobj = EManager.GetBySql<vwlyRouteUrl>("RouteUrl='/"+url+"'");
+            if (urlobj != null)
             {
-                obj = EManager.GetBySql<bsFunInterface>("LinkController='" + controller + "' and LinkAction='getall'");
-            }
+                if (urlobj.IType.ToLower() == "ui")
+                {
+                    retype = UrlType.UI;
+                    AccObj = EManager.GetByPk<bsTable>("bsT_Id", urlobj.Id);
+                }
+                else
+                {
+                    retype = UrlType.DAO;
 
-            if (obj != null)
-            {
-                return obj.bsFC_Id;
+                    bsTInterface tiobj = EManager.GetByPk<bsTInterface>("bsTI_Id", urlobj.Id);
+                    AccObj = EManager.GetByPk<bsTable>("bsT_Id", tiobj.bsT_Id);
+                }
             }
-            else
-                return Guid.Empty;
+            return retype;
         }
 
 
+        /// <summary>
+        /// 获取用户需要显示的窗体或浏览的字段列表
+        /// </summary>
+        /// <param name="EManager"></param>
+        /// <param name="loginUserId"></param>
+        /// <param name="bsfc"></param>
+        /// <returns></returns>
         public static List<string> GetUserNeedDispListItemDesps(EntityManager EManager, Guid loginUserId, bsFunConf bsfc)
         {
             if (((int)bsfc.FunLayout&1)==1)
                 return GetUserNeedDispItemDesps(EManager, loginUserId, bsfc, "List");
             else
                 return GetUserNeedDispItemDesps(EManager, loginUserId, bsfc, "Form");
+        }
+
+        public static Dictionary<string,string> GetbsTFieldsOType(EntityManager EManager, Guid loginUserId, bsTable bst)
+        {
+
+            List<bsField> bfs = EManager.GetListNoPaging<bsField>("bsT_Id='"+bst.bsT_Id.ToString()+"'","");
+            //bfs=bst.bsField.ToList<bsField>();
+            Dictionary<string, string> dicobjs = new Dictionary<string, string>();
+            if (bfs.Count > 0)
+            {
+                foreach (bsField item in bfs)
+                { 
+                    dicobjs.Add(item.FName,item.OType);
+                }
+            }
+            return dicobjs;
         }
 
         //public static List<DataItemSet> GetUserNeedDispListItemDesps(EntityManager EManager, Guid loginUserId, string controllername,string actionname)

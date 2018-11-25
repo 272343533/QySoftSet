@@ -34,7 +34,7 @@ namespace QyTech.UICreate
         /// <param name="where"></param>
         /// <param name="orderby"></param>
         public qyfLayList(ObjectContext em_Base, ObjectContext em_App, SqlConnection conn, Guid bsFC_Id, string where = "")
-            : base(em_Base, em_App, conn, bsFC_Id)
+            : base(em_Base, em_App, conn, bsFC_Id, where)
         {
             InitializeComponent();
             this.scForm.SplitterDistance = 0;

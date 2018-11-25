@@ -10,18 +10,18 @@ using System.Windows.Forms;
 using QyTech.UICreate;
 using QyTech.SkinForm;
 
-using QyTech.Auth.Dao;
+using QyExpress.Dao;
 using QyTech.SkinForm.Controls;
 using QyTech.Core.BLL;
 using System.Data.Objects;
 using System.Data.SqlClient;
-
+using QyTech.Core.Common;
 
 namespace QyTech.UICreate
 {
     public partial class qyfLayListWithLeftTree : qyfLayListParent
     {
-
+        List<bsFunQuery> fqs_Left;
         /// <summary>
         /// 子类界面不显示，需要加这个构造函数
         /// </summary>
@@ -43,13 +43,14 @@ namespace QyTech.UICreate
             : base(em_Base, em_App, conn, bsFC_Id)
         {
             InitializeComponent();
+
+            fqs_Left = EntityManager_Static.GetListNoPaging<bsFunQuery>(DB_Base, "bsFC_Id='" + bsFc.bsFC_Id.ToString() + "' and Itempos='左侧' and  QueryType='tree'", "");
         }
 
 
 
         private void qyfLayListWithLeftTree_Load(object sender, EventArgs e)
         {
-
         }
 
         protected virtual void LoadTreeData(string where = "")
@@ -58,20 +59,51 @@ namespace QyTech.UICreate
         }
 
 
+
         private void qytvLeft_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            currLeftFPk = (e.Node.Tag as qytvNode).Id;
-            currLeftText = e.Node.Text;
-            //找到配置中的tree的查询条件，用这个条件对应的Sql即可，
-            List<bsFunQuery> fqs = EntityManager_Static.GetListNoPaging<bsFunQuery>(DB_Base,"bsFC_Id='"+bsFc.bsFC_Id.ToString()+"' and QueryType='tree'", "");
-            if (fqs[0].WhereSql.Contains("@@@@"))
+            try
             {
-                RefreshDgv(dgvList, fqs[0].WhereSql.Replace("@@@@", currLeftFPk.ToString()));
+                currLeftFPk = (e.Node.Tag as qytvNode).id;
+                currLeftText = e.Node.Text;
+                //找到配置中的tree的查询条件，用这个条件对应的Sql即可，
+                if (fqs_Left.Count > 0)
+                {
+                    if (fqs_Left[0].WhereSql.Contains("@@@@"))
+                    {
+                        RefreshDgv(dgvList, fqs_Left[0].WhereSql.Replace("@@@@", currLeftFPk.ToString()));
+                    }
+                    else
+                    {
+                        RefreshDgv(dgvList, fqs_Left[0].WhereSql.Replace("####", currLeftText));
+                    }
+                }
             }
-            else
+            catch(Exception ex)
+            { }
+        }
+
+        protected override string CreateWhere()
+        {
+            try
             {
-                RefreshDgv(dgvList, fqs[0].WhereSql.Replace("####", currLeftText));
+                string Conditions = "";
+                if (currLeftFPk != null)
+                {
+                    //获取左侧的wheresql，然后串起来
+                    Conditions = fqs_Left[0].WhereSql.Replace("@@@@", currLeftFPk.ToString());
+
+                    string upConditions = base.CreateWhere();
+                    if (upConditions != "")
+                        Conditions += " and " + upConditions;
+                }
+                else
+                {
+                    Conditions = "bsT_Id='"+Guid.Empty.ToString()+"'";
+                }
+                return Conditions;
             }
+            catch { return ""; }
         }
     }
 }

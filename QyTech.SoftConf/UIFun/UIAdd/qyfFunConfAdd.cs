@@ -51,7 +51,8 @@ namespace QyTech.SoftConf.UIAdd
             try
             {
                 string bsT_Id = cbo_bsT_Id.Tag.ToString().Split(new char[] { ',' })[cbo_bsT_Id.SelectedIndex];
-                HiddenFieldsValue["TName"] = cbo_bsT_Id.Text;
+                int dhPos = cbo_bsT_Id.Text.LastIndexOf(".");
+                HiddenFieldsValue["TName"] = cbo_bsT_Id.Text.Substring(dhPos+1);
 
                 List<string> fields = DbUtils.SqlUtils.GetTableAllFields(sqlConn, bsT_Id);
                 AddItems(cbo_NotNullField, fields);

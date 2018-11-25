@@ -10,9 +10,11 @@ using System.Windows.Forms;
 using QyTech.UICreate;
 using QyTech.SkinForm;
 
-using QyTech.Auth.Dao;
+using QyExpress.Dao;
 using QyTech.Core.BLL;
 using QyTech.SkinForm.Controls;
+using QyTech.Core.Common;
+
 
 namespace QyTech.SoftConf.UIList
 {
@@ -20,7 +22,7 @@ namespace QyTech.SoftConf.UIList
     {
         public frmNaviagtion()
             :base(GlobalVaribles.ObjContext_Base, GlobalVaribles.ObjContext_App, GlobalVaribles.SqConn_Base,
-                 Guid.Parse("376FEC88-7431-4358-AF33-123597BEDD65"), BLL.commService.NavigationWhere)//, "NaviNo")
+                 Guid.Parse("376FEC88-7431-4358-AF33-123597BEDD65"), GlobalVaribles.currloginUserFilter.Navi)//, "NaviNo")
         {
             InitializeComponent();
         }
@@ -38,8 +40,8 @@ namespace QyTech.SoftConf.UIList
         {
             qytvNode tntag = e.Node.Tag as qytvNode;
 
-            strBaseWhere = "bsN_Id='" + tntag.Id + "' or pId='"+tntag.Id+"'";
-            CurrLeftPFk = tntag.Id;
+            strBaseWhere = "bsN_Id='" + tntag.id + "' or pId='"+tntag.id+"'";
+            CurrLeftPFk = tntag.id;
 
 
             RefreshDgv();
@@ -50,22 +52,18 @@ namespace QyTech.SoftConf.UIList
             qytvNode tnobj = tn.Tag as qytvNode;
             qytvNode ptnobj = ptn.Tag as qytvNode;
 
-            bsNavigation dbobj = EntityManager_Static.GetByPk<bsNavigation>(DB_Base, "bsN_Id", tnobj.Id);
-            dbobj.pId = Guid.Parse(ptnobj.Id);
+            bsNavigation dbobj = EntityManager_Static.GetByPk<bsNavigation>(DB_Base, "bsN_Id", tnobj.id);
+            dbobj.pId = Guid.Parse(ptnobj.id);
             EntityManager_Static.Modify<bsNavigation>(DB_Base, dbobj);
         }
 
-
-
-
-     
 
 
         private void tsbAdd_Click(object sender, EventArgs e)
         {
             bsNavigation navObj = new bsNavigation();
             navObj.bsN_Id = Guid.NewGuid();
-            navObj.bsA_Id = GlobalVaribles.currAppObj.AppId;
+            navObj.AppName = GlobalVaribles.currAppObj.AppName;
             navObj.pId = Guid.Parse(CurrLeftPFk.ToString());
             qyfAdd frm = new qyfAdd(AddOrEdit.Add, sqlConn, navObj, bstable, bffs_byFormNo);
             frm.ShowDialog();
@@ -77,20 +75,26 @@ namespace QyTech.SoftConf.UIList
         }
         private void refreshTree()
         {
-            List<qytvNode> nodes = BLL.commService.GetNavigations(DB_Base, strBaseWhere);
+            List<qytvNode> nodes = BLL.commService.GetNavigations(DB_Base);
             qytvDbTable.LoadData(nodes);
+
+            if (qytvDbTable.Nodes.Count > 0)
+                qytvDbTable.SelectedNode = qytvDbTable.Nodes[0];
         }
 
         private void tsbInitFunConf_Click(object sender, EventArgs e)
         {
-            string sqls = "exec bslyUpdateNavi2FunConf '" + currRowTPkId.ToString() + "'";
-
-
-            int ret = QyTech.DbUtils.SqlUtils.ExceuteSql(GlobalVaribles.SqConn_Base, sqls);
-            if (ret == -1)
+            if (currRowTPkId != null)
             {
-                MessageBox.Show("初始化失败");
+                string sqls = "exec bslyUpdateNavi2FunConf '" + currRowTPkId.ToString() + "'";
+                int ret = QyTech.DbUtils.SqlUtils.ExceuteSql(GlobalVaribles.SqConn_Base, sqls);
+                if (ret == -1)
+                {
+                    MessageBox.Show("初始化失败");
+                }
             }
+            else
+                MessageBox.Show("请先选择数据！");
         }
     }
 }

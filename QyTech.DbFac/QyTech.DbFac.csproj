@@ -30,21 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dao.WjGisDb, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Dao.QyBllApp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\WebPub\Dao.WjGisDb.dll</HintPath>
-    </Reference>
-    <Reference Include="Dao.WuTaiTemple, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\WebPub\Dao.WuTaiTemple.dll</HintPath>
+      <HintPath>..\WebPub\Dao.QyBllApp.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\WebPub\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="QyTech.Auth.Dao, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="QyExpress.Dao, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\WebPub\QyTech.Auth.Dao.dll</HintPath>
+      <HintPath>..\WebPub\QyExpress.Dao.dll</HintPath>
     </Reference>
     <Reference Include="QyTech.Core.ExController, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -64,13 +60,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthController.cs" />
+    <Compile Include="BllAppController.cs" />
+    <Compile Include="apiController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SingletonLinkDb.cs" />
     <Compile Include="SoftConfController.cs" />
     <Compile Include="QyTechCommonController.cs" />
-    <Compile Include="WjkfqCongtroller.cs" />
-    <Compile Include="WuTaiTempleController.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

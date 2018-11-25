@@ -61,6 +61,7 @@
             this.民族ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.政治面目ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.党派ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.初始化系统ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsslAppName = new System.Windows.Forms.ToolStripStatusLabel();
@@ -79,7 +80,8 @@
             this.功能维护ToolStripMenuItem,
             this.部门与权限ToolStripMenuItem,
             this.视图ToolStripMenuItem,
-            this.资源ToolStripMenuItem});
+            this.资源ToolStripMenuItem,
+            this.初始化系统ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(926, 25);
@@ -154,35 +156,35 @@
             // 数据库科ToolStripMenuItem
             // 
             this.数据库科ToolStripMenuItem.Name = "数据库科ToolStripMenuItem";
-            this.数据库科ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.数据库科ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.数据库科ToolStripMenuItem.Text = "应用数据库配置";
             this.数据库科ToolStripMenuItem.Click += new System.EventHandler(this.数据库科ToolStripMenuItem_Click);
             // 
             // 数据表ToolStripMenuItem
             // 
             this.数据表ToolStripMenuItem.Name = "数据表ToolStripMenuItem";
-            this.数据表ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.数据表ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.数据表ToolStripMenuItem.Text = "数据表";
             this.数据表ToolStripMenuItem.Click += new System.EventHandler(this.数据表ToolStripMenuItem_Click);
             // 
             // 数据字段ToolStripMenuItem
             // 
             this.数据字段ToolStripMenuItem.Name = "数据字段ToolStripMenuItem";
-            this.数据字段ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.数据字段ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.数据字段ToolStripMenuItem.Text = "数据字段";
             this.数据字段ToolStripMenuItem.Click += new System.EventHandler(this.数据字段ToolStripMenuItem_Click);
             // 
             // 数据接口ToolStripMenuItem
             // 
             this.数据接口ToolStripMenuItem.Name = "数据接口ToolStripMenuItem";
-            this.数据接口ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.数据接口ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.数据接口ToolStripMenuItem.Text = "数据接口";
             this.数据接口ToolStripMenuItem.Click += new System.EventHandler(this.数据接口ToolStripMenuItem_Click);
             // 
             // 导入导出列维护ToolStripMenuItem
             // 
             this.导入导出列维护ToolStripMenuItem.Name = "导入导出列维护ToolStripMenuItem";
-            this.导入导出列维护ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.导入导出列维护ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.导入导出列维护ToolStripMenuItem.Text = "导入列维护";
             this.导入导出列维护ToolStripMenuItem.Click += new System.EventHandler(this.导入导出列维护ToolStripMenuItem_Click);
             // 
@@ -224,6 +226,7 @@
             this.功能接口ToolStripMenuItem.Name = "功能接口ToolStripMenuItem";
             this.功能接口ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.功能接口ToolStripMenuItem.Text = "功能接口";
+            this.功能接口ToolStripMenuItem.Visible = false;
             this.功能接口ToolStripMenuItem.Click += new System.EventHandler(this.功能接口ToolStripMenuItem_Click);
             // 
             // 功能操作ToolStripMenuItem
@@ -331,6 +334,13 @@
             this.党派ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.党派ToolStripMenuItem.Text = "党派";
             // 
+            // 初始化系统ToolStripMenuItem
+            // 
+            this.初始化系统ToolStripMenuItem.Name = "初始化系统ToolStripMenuItem";
+            this.初始化系统ToolStripMenuItem.Size = new System.Drawing.Size(80, 21);
+            this.初始化系统ToolStripMenuItem.Text = "初始化系统";
+            this.初始化系统ToolStripMenuItem.Click += new System.EventHandler(this.初始化系统ToolStripMenuItem_Click);
+            // 
             // toolStrip1
             // 
             this.toolStrip1.Location = new System.Drawing.Point(0, 25);
@@ -389,7 +399,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain";
             this.Text = "软件配置";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -441,6 +451,7 @@
         private System.Windows.Forms.ToolStripMenuItem 民族ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 政治面目ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 党派ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 初始化系统ToolStripMenuItem;
     }
 }
 
