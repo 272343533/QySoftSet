@@ -91,6 +91,7 @@
     <Compile Include="Bll\bllbsUserFields.cs" />
     <Compile Include="Bll\bsSessionManager.cs" />
     <Compile Include="Bll\DataManager.cs" />
+    <Compile Include="Helper\PicUpHelper.cs" />
     <Compile Include="Helper\ReflectExample.cs" />
     <Compile Include="Helper\LoginHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

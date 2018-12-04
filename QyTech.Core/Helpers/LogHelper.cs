@@ -49,10 +49,10 @@ namespace QyTech.Core
         {
             string methodName = GetMethodName(2);
             string msg = Parse(ex);
-            if (ex.InnerException != null)
-            {
-                msg += "(" + ex.InnerException.Message + ")";
-            }
+            //if (ex.InnerException != null)
+            //{
+            //    msg += "(" + ex.InnerException.Message + ")";
+            //}
             Error(methodName, msg);
         }
         public static void Error(string adddesp, Exception ex)

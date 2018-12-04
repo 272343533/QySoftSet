@@ -128,8 +128,13 @@ namespace QyTech.SoftConf.UIBLL
             qytvRights.LoadData(allNodes, true);
 
             haveNodes=qytvRights.GetCheckedNode();
+            List<qytvNode> nodes = new List<qytvNode>();
+            foreach(qytvNode n in haveNodes)
+            {
+                nodes.Add(n);
+            }
             if (haveNodes!=null && haveNodes.Count>0)
-                qytvRights.RefreshChecked(haveNodes);
+                qytvRights.RefreshChecked(nodes);
         }
 
         private void qyBtn_Ok_Click(object sender, EventArgs e)
@@ -172,28 +177,28 @@ namespace QyTech.SoftConf.UIBLL
                 delNodeIds = delNodeIds.Substring(1);
                 if (rightType_ == RightType.UserOrgs)
                 {
-                    url = GlobalVaribles.ServerUrl + "/api/bsUserOrgRel/DeleteByWhereSql";
-                    dicparas.Add("wheresql", "bsU_id = '" + operUser_.bsU_Id.ToString() + "' and bsO_Id in ('"+ delNodeIds.Replace(",","','")+"')");
+                    url = GlobalVaribles.ServerUrl + "/api/bsUserOrgRel/DeleteBysqlwhere";
+                    dicparas.Add("sqlwhere", "bsU_id = '" + operUser_.bsU_Id.ToString() + "' and bsO_Id in ('"+ delNodeIds.Replace(",","','")+"')");
                 }
                 else if (rightType_ == RightType.UserRoles)
                 {
-                    url = GlobalVaribles.ServerUrl + "/api/bsUserRoleRel/DeleteByWhereSql";
-                    dicparas.Add("wheresql", "bsU_id = '" + operUser_.bsU_Id.ToString() + "' and bsR_Id in ('" + delNodeIds.Replace(",", "','") + "')");
+                    url = GlobalVaribles.ServerUrl + "/api/bsUserRoleRel/DeleteBysqlwhere";
+                    dicparas.Add("sqlwhere", "bsU_id = '" + operUser_.bsU_Id.ToString() + "' and bsR_Id in ('" + delNodeIds.Replace(",", "','") + "')");
                 }
                 else if (rightType_ == RightType.RoleTFs)
                 {
-                    url = GlobalVaribles.ServerUrl + "/api/bsRoleTFDataRel/DeleteByWhereSql";
-                    dicparas.Add("wheresql", "bsR_id = '" + operRole_.bsR_Id.ToString() + "' and bsTF_Id in ('" + delNodeIds.Replace(",", "','") + "')");
+                    url = GlobalVaribles.ServerUrl + "/api/bsRoleTFDataRel/DeleteBysqlwhere";
+                    dicparas.Add("sqlwhere", "bsR_id = '" + operRole_.bsR_Id.ToString() + "' and bsTF_Id in ('" + delNodeIds.Replace(",", "','") + "')");
                 }
                 else if (rightType_ == RightType.RoleNaviFuns)
                 {
-                    url = GlobalVaribles.ServerUrl + "/api/bsRoleNaviRel/DeleteByWhereSql";
-                    dicparas.Add("wheresql", "bsR_id = '" + operRole_.bsR_Id.ToString() + "' and bsN_Id in ('" + delNodeIds.Replace(",", "','") + "')");
+                    url = GlobalVaribles.ServerUrl + "/api/bsRoleNaviRel/DeleteBysqlwhere";
+                    dicparas.Add("sqlwhere", "bsR_id = '" + operRole_.bsR_Id.ToString() + "' and bsN_Id in ('" + delNodeIds.Replace(",", "','") + "')");
                 }
                 else if (rightType_ == RightType.CustFuns)
                 {
-                    url = GlobalVaribles.ServerUrl + "/api/bsSoftRelFuns/DeleteByWhereSql";
-                    dicparas.Add("wheresql", "bsS_id = '" + operCust_.bsS_Id.ToString() + "' and bsN_Id in ('" + delNodeIds.Replace(",", "','") + "')");
+                    url = GlobalVaribles.ServerUrl + "/api/bsSoftRelFuns/DeleteBysqlwhere";
+                    dicparas.Add("sqlwhere", "bsS_id = '" + operCust_.bsS_Id.ToString() + "' and bsN_Id in ('" + delNodeIds.Replace(",", "','") + "')");
                 }
                 QyJsonData jsonData = HttpRequestUtils.PostRemoteJsonQy(url, dicparas);
                 if (jsonData.code==1)

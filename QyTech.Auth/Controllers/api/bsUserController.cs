@@ -65,36 +65,33 @@ namespace QyExpress.Controllers.api
                             userobj.BrowserType = browsertype;
                             if (userobj.UserType != "manager")
                             {
-                                if (userobj.UserType.ToLower()=="userregi")
+                                //不是管理员的话
+                                //如果是初始的未定类型数据，则给传来的用户选择的类型
+                                if (userobj.UserType.ToLower() == "userregi")
                                     userobj.UserType = usertype;
-                                else if (usertype=="manager")
+                                else if (usertype == "manager")//如果应该是企业，而用户选择的是管理员类型
                                 {
                                     return jsonMsgHelper.Create(1, "", "可能用户类型选择错误，请核对登录信息!");
                                 }
                             }
-                            else
+                            else if (userobj.UserType.ToLower() != usertype)
                             {
-                                if (userobj.UserType.ToLower()!=usertype)
-                                {
-                                    return jsonMsgHelper.Create(1, "", "可能用户类型选择错误，请核对登录信息!");
-                                }
+                                //是管理员，但选择的不是企业
+                                return jsonMsgHelper.Create(1, "", "可能用户类型选择错误，请核对登录信息!");
                             }
                             EM_Base.Modify<bsUser>(userobj);
                             
-                            //如果时企业用户
+                            //如果是企业用户
                             if (userobj.UserType.ToLower() != "manager")
                             {
-                                if (userobj.UserType == "OWNER" || userobj.UserType == "TENANCY")
-                                {
-                                    //用户已经核实并审核过信息，不需要更新角色信息
-                                }
-                                else if (userobj.UserType == "Owner" || userobj.UserType == "tenancy") //用户登录选择类型
+                                //企业还没有核实，则按照用户选择的类型，出现相应的操作权限
+                                if (userobj.UserType == "owner" || userobj.UserType == "tenancy") //用户登录选择类型
                                 {
                                     // 修改用户角色
                                     bsUserRoleRel obj_ur = EM_Base.GetBySql<bsUserRoleRel>("bsU_Id='" + userobj.bsU_Id.ToString() + "'");
                                     if (obj_ur != null)
                                     {
-                                        if (usertype == "Owner")
+                                        if (usertype.ToLower() == "owner")
                                             obj_ur.bsR_Id = Guid.Parse("5CF1DCF0-44F0-41C5-B31A-BACA7115F0FA");
                                         else //if (usertype.ToLower() == "tenancy")
                                             obj_ur.bsR_Id = Guid.Parse("A01BE51C-B927-4570-BACD-852C550BDD36");
@@ -106,7 +103,7 @@ namespace QyExpress.Controllers.api
                                         obj_ur = new bsUserRoleRel();
                                         obj_ur.Id = Guid.NewGuid();
                                         obj_ur.bsU_Id = userobj.bsU_Id;
-                                        if (usertype.ToLower() == "Owner")
+                                        if (usertype.ToLower() == "owner")
                                             obj_ur.bsR_Id = Guid.Parse("5CF1DCF0-44F0-41C5-B31A-BACA7115F0FA");
                                         else //if (usertype.ToLower() == "tenancy")
                                             obj_ur.bsR_Id = Guid.Parse("A01BE51C-B927-4570-BACD-852C550BDD36");
@@ -115,8 +112,7 @@ namespace QyExpress.Controllers.api
                                         //return jsonMsgHelper.Create(1, null, "请联系系统管理员，尚未分配权限", null, null);
                                     }
                                     //修改注册信息中的企业类型,
-                                    //此处不修改，用户在核实信息时更改。审核后不能再次改变
-
+                                    //此处不修改，用户在核实信息时更改。核实或审核后不能再次改变
                                 }
                             }
                            
@@ -190,12 +186,21 @@ namespace QyExpress.Controllers.api
         /// </summary>
         /// <param name="sessionid"></param>
         /// <returns></returns>
-        public string ResetPwd(string sessionid)
+        public string ResetPwd(string sessionid,string IdValue)
         {
+            string loginpwd = "";
             if (LoginUser.UserType.ToString() == "manager")
-                return ChangePwd(sessionid, "123456");
+                loginpwd= "123456";
             else
-                return ChangePwd(sessionid, LoginUser.LoginName.Substring(LoginUser.LoginName.Length - 6, 6));
+                loginpwd=LoginUser.LoginName.Substring(LoginUser.LoginName.Length - 6, 6);
+
+            bsUser user = EntityManager_Static.GetByPk<bsUser>(DbContext, "bsU_Id", Guid.Parse(IdValue));
+            user.LoginPwd = LockerHelper.MD5(loginpwd);
+            string ret = EntityManager_Static.Modify<bsUser>(DbContext, user);
+            if (ret == "")
+                return jsonMsgHelper.Create(0, "", "成功重置密码!");
+            else
+                return jsonMsgHelper.Create(1, "", "重置失败!(" + ret + ")");
         }
 
 
@@ -210,7 +215,7 @@ namespace QyExpress.Controllers.api
             loginpwd = LockerHelper.MD5(loginpwd);
             //bsSession obj_session = EntityManager_Static.GetByPk<bsSession>(DbContext, "SessionId", sessionid);
             bsUser user = EntityManager_Static.GetByPk<bsUser>(DbContext, "bsU_Id", LoginUser.bsU_Id);
-            user.LoginPwd = loginpwd;
+            user.LoginPwd =LockerHelper.MD5(loginpwd);
             
             string ret=EntityManager_Static.Modify<bsUser>(DbContext, user);
             if (ret == "")
@@ -356,10 +361,11 @@ namespace QyExpress.Controllers.api
 
         public override string GetAllData(string sessionid, string fields = "", string where = "", string orderby = "")
         {
-             if (where.Trim().Length > 0)
-                where = AjustWhereSql(where);
+            string basewhere= "(IsSysUser!=1 and UserType='manager')";
+            if (where.Trim().Length > 0)
+                where = Ajustsqlwhere(where) + " and "+ basewhere;
             else
-                where = "IsSysUser!=1 and UserType='manager'";
+                where = basewhere;
             if (orderby == "")
                 orderby = "LoginName";// bsFC.OrderBySql;
 
@@ -381,7 +387,7 @@ namespace QyExpress.Controllers.api
             try
             {
                 if (where.Trim().Length > 0)
-                    where = AjustWhereSql(where);
+                    where = Ajustsqlwhere(where);
                 else
                     where = "IsSysUser!=1 and UserType='manager'";
 

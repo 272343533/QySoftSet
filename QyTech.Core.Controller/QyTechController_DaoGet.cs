@@ -42,7 +42,7 @@ namespace QyTech.Core.ExController
 
                 //ObjectClassFullName
                 if (where.Length > 0)
-                    where = AjustWhereSql(where);
+                    where = Ajustsqlwhere(where);
                 //if (orderby == "")
                 //    orderby = bsFC.OrderBySql;
                 object objs = dataManager.GetObjects(where, orderby);
@@ -99,7 +99,7 @@ namespace QyTech.Core.ExController
         {
             AddLogTable("获取", bsT.TName, bsT.Desp, where);
             if (where.Length > 0)
-                where = AjustWhereSql(where);
+                where = Ajustsqlwhere(where);
             //如果表中有bsO_Id字段，还要获取数据的部门权限
 
             //if (orderby == "" && (bsFC.OrderBySql!="" && bsFC.OrderBySql!=null))
@@ -174,7 +174,7 @@ namespace QyTech.Core.ExController
             {
                
                 if (where!="")
-                    where = AjustWhereSql(where);
+                    where = Ajustsqlwhere(where);
                 
                 int totalCount = 100;
                 int totalPage = (int)Math.Ceiling(1.0 * totalCount / pageSize);
@@ -227,7 +227,7 @@ namespace QyTech.Core.ExController
         //{
         //    //ObjectClassFullName
         //    if (where.Length > 0)
-        //        where = AjustWhereSql(where);
+        //        where = Ajustsqlwhere(where);
         //    //if (orderby == "")
         //    //    orderby = bsFC.OrderBySql;
         //    try
@@ -283,7 +283,7 @@ namespace QyTech.Core.ExController
         //    {
 
         //        if (where != "")
-        //            where = AjustWhereSql(where);
+        //            where = Ajustsqlwhere(where);
 
         //        int totalCount = 100;
         //        int totalPage = (int)Math.Ceiling(1.0 * totalCount / pageSize);

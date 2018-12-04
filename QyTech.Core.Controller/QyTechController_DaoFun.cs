@@ -41,7 +41,10 @@ namespace QyTech.Core.ExController
         {
             //增加日志
             AddLogTable("批量增加", bsT.TName, bsT.Desp, "");
-
+            foreach(object row in rowobjs)
+            {
+                //应该反射增加主键，not finished 2018-11-27
+            }
             Type typeEm = typeof(EntityManager);
             MethodInfo miObj = typeEm.GetMethod("Adds").MakeGenericMethod(dbtype);
             object ret = miObj.Invoke(EManagerApp_, new object[] { rowobjs });
@@ -84,21 +87,27 @@ namespace QyTech.Core.ExController
             }
             else
             {
-                List<bsField> items = EManager_.GetListNoPaging<bsField>("bsT_id='" + bsT.bsT_Id.ToString() + "'", "");
+                List<bsField> items = EManager_.GetListNoPaging<bsField>("bsT_id='" + bsT.bsT_Id.ToString() + "' and FEditable=1", "");
                 //4 按照上面的字段列表将rowdataobj中的值复制给rowdbobj，
                 foreach (bsField item in items)
                 {
                     if (item.FEditable != null && item.FEditable.Value)
                     {
-                        propertyInfo = dbtype.GetProperty(item.FName);
-                        object svalue = propertyInfo.GetValue(rowdataobj, null);
-                        propertyInfo.SetValue(rowdbobj, svalue, null); //给对应属性赋值
                         try
                         {
+                            propertyInfo = dbtype.GetProperty(item.FName);
+                            object svalue = propertyInfo.GetValue(rowdataobj, null);
+                            propertyInfo.SetValue(rowdbobj, svalue, null); //给对应属性赋值
+
+                            //加入日志
                             object prevalue = propertyInfo.GetValue(rowdbobj, null);
-                            AddLogField(ltid, item.FName, item.FDesp, svalue.ToString(), prevalue.ToString());
+                            if (prevalue!=svalue)
+                                AddLogField(ltid, item.FName, item.FDesp, svalue==null?"null":svalue.ToString(), prevalue==null?"null":prevalue.ToString());
                         }
-                        catch { }
+                        catch (Exception ex)
+                        {
+                            LogHelper.Error(ex);
+                        }
                     }
                 }
             }
@@ -131,6 +140,12 @@ namespace QyTech.Core.ExController
                     continue;
                 PropertyInfo propertyInfo = dbtype.GetProperty(fname);
                 object svalue = dicKV[fname];
+                if (propertyInfo.PropertyType.ToString().Contains("Int32"))
+                    svalue = Convert.ToInt32(svalue);
+                else if (propertyInfo.PropertyType.ToString().Contains("GUID"))
+                    svalue = Guid.Parse(svalue.ToString());
+                else if (propertyInfo.PropertyType.ToString().ToLower().Contains("datetime"))
+                    svalue = Convert.ToDateTime(svalue.ToString());
                 propertyInfo.SetValue(rowdbobj, svalue, null); //给对应属性赋值
 
                 try
@@ -184,7 +199,7 @@ namespace QyTech.Core.ExController
             }
             try
             {
-                Dictionary<string, string> fieldTypes = bllbsUserFields.GetbsTFieldsOType(EManagerApp_, LoginUser.bsU_Id, bsT);
+                Dictionary<string, string> fieldTypes = bllbsUserFields.GetbsTFieldsOType(EM_Base, LoginUser.bsU_Id, bsT);
                 object idV = FValue;
                 Guid guidV = Guid.Empty;
                 if (FValue != null)
@@ -226,18 +241,43 @@ namespace QyTech.Core.ExController
                 return null;
             }
         }
+        protected Dictionary<string, string> kvWhere2Dic(string kvwhere)
+        {
+            LogHelper.Info(kvwhere);
+            Dictionary<string, string> dics = new Dictionary<string, string>();
 
+            try
+            {
+                if (kvwhere.Substring(0, 1) != "[")//则认为是原始的sql语句
+                    return dics;
+
+                //where = "[{Name: 张三},{Age: 18}]";
+                kvwhere = kvwhere.Replace("{", "{\"").Replace("}", "\"}").Replace(":", "\":\"");
+
+                List<QyTech.Json.keyVal> wherelist = JsonHelper.DeserializeJsonToKeyValList(kvwhere);
+                foreach (QyTech.Json.keyVal kv in wherelist)
+                {
+                    dics.Add(kv.key.ToLower(), kv.val);
+                }
+                return dics;
+            }
+            catch(Exception ex)
+            {
+                LogHelper.Error(ex);
+            }
+            return dics;
+        }
 
         /// <summary>
         /// 校正where条件
         /// </summary>
         /// <param name="where"></param>
         /// <returns></returns>
-        protected string AjustWhereSql(string where)
+        protected string Ajustsqlwhere(string where)
         {
             LogHelper.Info(where);
 
-            string wheresql = "";
+            string sqlwhere = "";
             if (where.Substring(0, 1) != "[")//则认为是原始的sql语句
                 return where;
             
@@ -254,11 +294,11 @@ namespace QyTech.Core.ExController
                 {
                     if (bsFs[kv.key].FType == "varchar")
                     {
-                        wheresql += " and " + kv.key + " like '%" + kv.val + "%'";
+                        sqlwhere += " and " + kv.key + " like '%" + kv.val + "%'";
                     }
                     else if (bsFs[kv.key].FType == "uniqueidentifier")
                     {
-                        wheresql += " and " + kv.key + "='" + kv.val + "'";
+                        sqlwhere += " and " + kv.key + "='" + kv.val + "'";
                     }
                     else if (bsFs[kv.key].FType == "int"
                         || bsFs[kv.key].FType == "decimal"
@@ -266,13 +306,13 @@ namespace QyTech.Core.ExController
                     {
                         if (kv.val.IndexOf("|") == -1)
                         {
-                            wheresql += " and " + kv.key + "=" + kv.val;
+                            sqlwhere += " and " + kv.key + "=" + kv.val;
                         }
                         else
                         {
                             string[] str = kv.val.Split(new char[] { '|' });
 
-                            wheresql += " and " + kv.key + ">=" + str[0] + " and " + kv.key + "<=" + str[1];
+                            sqlwhere += " and " + kv.key + ">=" + str[0] + " and " + kv.key + "<=" + str[1];
 
                         }
                     }
@@ -280,27 +320,27 @@ namespace QyTech.Core.ExController
                     {
                         if (kv.val.IndexOf("|") == -1)
                         {
-                            wheresql += " and " + kv.key + "='" + kv.val+"'";
+                            sqlwhere += " and " + kv.key + "='" + kv.val+"'";
                         }
                         else
                         {
                             string[] str = kv.val.Split(new char[] { '|' });
 
-                            wheresql += " and " + kv.key + ">='" + str[0] + "' and " + kv.key + "<='" + str[1]+"'";
+                            sqlwhere += " and " + kv.key + ">='" + str[0] + "' and " + kv.key + "<='" + str[1]+"'";
 
                         }
                     }
                     else
                     {
-                        wheresql += " and " + kv.key + " like '%" + kv.val + "%'";
+                        sqlwhere += " and " + kv.key + " like '%" + kv.val + "%'";
                     }
                 }
             }
-            if (wheresql.Length > 0)
+            if (sqlwhere.Length > 0)
             {
-                wheresql = wheresql.Substring(4);
+                sqlwhere = sqlwhere.Substring(4);
             }
-            return wheresql;
+            return sqlwhere;
         }
 
         protected bsTable GetbsTablebyName(string tName)
@@ -374,15 +414,15 @@ namespace QyTech.Core.ExController
             //如果是整型，应该默认为自增
             //否则，应该
             string Key_TPk = "\"" + bsT.TPk + "\"";
+            string TpkDefault = Key_TPk + ":" + "\"" + PkCreateHelper.GetQySortGuidPk().ToString() + "\"";
 
             if (bsT.TPkType == "uniqueidentifier")
             {
                 //json串是否包含主键
-                //判断strjson是否有主键及默认值，没有则增加,此处用了一个有序的guid
-                string TpkDefaultIn = Key_TPk + ":" + "\"\"";
-                string TpkDefault = Key_TPk + ":" + "\"" + PkCreateHelper.GetQySortGuidPk().ToString() + "\"";
                 if (strjson.Contains(Key_TPk))
                 {
+                    //判断strjson是否有主键及默认值，没有则增加,此处用了一个有序的guid
+                    string TpkDefaultIn = Key_TPk + ":" + "\"\"";
                     if (strjson.Contains(TpkDefaultIn)) //如果传的串包含主键值为""，否则就是已经赋值
                     {
                         strjson = strjson.Replace(TpkDefaultIn, TpkDefault);//则用赋值替代

@@ -15,42 +15,45 @@ namespace QyTech.Core.ExController
         /// <summary>
         /// 保存图片到Uploads文件夹，前端预览后上传预览的数据
         /// </summary>
-        /// <param name="picStringbyComma">逗号分隔的图片上传数据</param>
+        /// <param name="picString">逗号分隔的图片上传数据</param>
         /// <returns>逗号分隔的多个图片文件名</returns>
-        protected string SavePicture(string picStringbyComma)
+        protected string SavePicture(string sessionid,string picString)
         {
+            LogHelper.Error(picString);
             string files = "";
             try
             {
-                var tmpArr = picStringbyComma.Split(',');
-                for (int i = 0; i < tmpArr.Length - 1; i++)
-                {
+                files = QyTech.Core.ExController.Helper.PicUpHelper.Save(picString);
 
-                    byte[] bytes = Convert.FromBase64String(tmpArr[i + 1]);
-                    MemoryStream ms = new MemoryStream(bytes);
-                    ms.Write(bytes, 0, bytes.Length);
-                    var img = Image.FromStream(ms, true);
+                //var tmpArr = picString.Split(',');
+                //for (int i = 0; i < tmpArr.Length - 1; i++)
+                //{
 
-                    var path = System.AppDomain.CurrentDomain.BaseDirectory;
-                    var imagesPath = System.IO.Path.Combine(path, @"Uploads\");
-                    if (!System.IO.Directory.Exists(imagesPath))
-                        System.IO.Directory.CreateDirectory(imagesPath);
+                //    byte[] bytes = Convert.FromBase64String(tmpArr[i + 1]);
+                //    MemoryStream ms = new MemoryStream(bytes);
+                //    ms.Write(bytes, 0, bytes.Length);
+                //    var img = Image.FromStream(ms, true);
 
-                    string fileName = DateTime.Now.ToString("yyyyMMddHHmmss_ffff", System.Globalization.DateTimeFormatInfo.InvariantInfo);
-                    string srcFullname = imagesPath + fileName + "_1.jpg";
-                    string compressfullname = imagesPath + fileName + ".jpg";
-                    img.Save(srcFullname);
+                //    var path = System.AppDomain.CurrentDomain.BaseDirectory;
+                //    var imagesPath = System.IO.Path.Combine(path, @"Uploads\");
+                //    if (!System.IO.Directory.Exists(imagesPath))
+                //        System.IO.Directory.CreateDirectory(imagesPath);
 
-                    bool ret = QyTech.Core.CommUtils.ImageUtril.CompressImage(srcFullname, compressfullname);
-                    if (ret)
-                        files +=","+ fileName + ".jpg";
-                    else
-                        files+="," + fileName + "_1.jpg";
+                //    string fileName = DateTime.Now.ToString("yyyyMMddHHmmss_ffff", System.Globalization.DateTimeFormatInfo.InvariantInfo);
+                //    string srcFullname = imagesPath + fileName + "_1.jpg";
+                //    string compressfullname = imagesPath + fileName + ".jpg";
+                //    img.Save(srcFullname);
 
-                    i = i + 1;
-                }
-                if (files.Length > 0)
-                    files = files.Substring(1);
+                //    bool ret = QyTech.Core.CommUtils.ImageUtril.CompressImage(srcFullname, compressfullname);
+                //    if (ret)
+                //        files +="|"+ fileName + ".jpg";
+                //    else
+                //        files+="|" + fileName + "_1.jpg";
+
+                //    i = i + 1;
+                //}
+                //if (files.Length > 0)
+                //    files = files.Substring(0);
             }
             catch (Exception ex)
             {

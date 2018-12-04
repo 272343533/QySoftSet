@@ -241,7 +241,7 @@ namespace QyTech.Core.BLL
             catch (Exception ex)
             {
                 LogHelper.Error(ex);
-                return ex.Message;
+                return LogHelper.Parse(ex); 
             }
         }
 
@@ -265,7 +265,7 @@ namespace QyTech.Core.BLL
             catch (Exception ex)
             {
                 LogHelper.Error(ex);
-                return ex.Message;
+                return LogHelper.Parse(ex);
             }
         }
         /// <summary>
@@ -311,7 +311,7 @@ namespace QyTech.Core.BLL
             catch (Exception ex)
             {
                 LogHelper.Error(ex);
-                return ex.Message;
+                return LogHelper.Parse(ex);
             }
         }
 
@@ -339,7 +339,7 @@ namespace QyTech.Core.BLL
             catch (Exception ex)
             {
                 LogHelper.Error(ex);
-                return ex.Message;
+                return LogHelper.Parse(ex);
             }
         }
 
@@ -389,14 +389,12 @@ namespace QyTech.Core.BLL
                 }
 
 
-                int i = ExecuteSql(CommandText);
-
-                return "";
+                return ExecuteSql(CommandText);
             }
             catch (Exception ex)
             {
                 LogHelper.Error(ex);
-                return ex.Message;
+                return LogHelper.Parse(ex);
             }
         }
 
@@ -406,31 +404,33 @@ namespace QyTech.Core.BLL
         /// <typeparam name="T"></typeparam>
         /// <param name="where">where 不能为null，危险条件</param>
         /// <returns></returns>
-        public int DeleteByWhereSql<T>(string where)
+        public string DeleteBysqlwhere<T>(string where)
         {
             try
             {
                 string tablename = typeof(T).Name;
                 string CommandText = "delete  from " + tablename + " where " + where;
-                return db.ExecuteStoreCommand(CommandText);
+                db.ExecuteStoreCommand(CommandText);//返回影响的行数
+                return "";
             }
             catch (Exception ex)
             {
                 LogHelper.Error(ex);
-                return -1;
+                return LogHelper.Parse(ex);
             }
         }
 
-        public int ExecuteSql(string sql)
+        public string ExecuteSql(string sql)
         {
             try
             {
-                return db.ExecuteStoreCommand(sql);
+                db.ExecuteStoreCommand(sql);//返回影响的行数
+                return "";
             }
             catch (Exception ex)
             {
                 LogHelper.Error(ex);
-                return -1;
+                return LogHelper.Parse(ex);//返回影响的行数;
             }
         }
 
@@ -464,25 +464,33 @@ namespace QyTech.Core.BLL
             return ret;
         }
 
-        public int ExcuteStoreProcedure(string spName, object[] paramvalues)
+        public string  ExcuteStoreProcedure(string spName, object[] paramvalues)
         {
-            string Sqls = "EXEC [" + spName + "] ";
-            List<SqlParameter> paramArray = new List<SqlParameter>();
-
-            int index = 1;
-            foreach (object item in paramvalues)
+            try
             {
+                string Sqls = "EXEC [" + spName + "] ";
+                List<SqlParameter> paramArray = new List<SqlParameter>();
 
-                paramArray.Add(new SqlParameter("@Param" + index.ToString(), item));
-                Sqls += "@Param" + index.ToString() + ",";
+                int index = 1;
+                foreach (object item in paramvalues)
+                {
 
-                index++;
+                    paramArray.Add(new SqlParameter("@Param" + index.ToString(), item));
+                    Sqls += "@Param" + index.ToString() + ",";
+
+                    index++;
+                }
+
+                Sqls = Sqls.Substring(0, Sqls.Length - 1);
+                //db.Database.ExecuteSqlCommand("EXEC [AddVote] @blockId,@titleId,@typeId,@num out", paramArray.ToArray());
+                db.ExecuteStoreCommand(Sqls, paramArray.ToArray());
+                return "";
             }
-
-            Sqls = Sqls.Substring(0, Sqls.Length - 1);
-            //db.Database.ExecuteSqlCommand("EXEC [AddVote] @blockId,@titleId,@typeId,@num out", paramArray.ToArray());
-            int ret=db.ExecuteStoreCommand(Sqls, paramArray.ToArray());
-            return ret;
+            catch(Exception ex)
+            {
+                LogHelper.Error(ex);
+                return LogHelper.Parse(ex);
+            }
         }
 
         public T GetByGuidPkWithMaxDt<T>( string PkName, object PkValue, string orderby)

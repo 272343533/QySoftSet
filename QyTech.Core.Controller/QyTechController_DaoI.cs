@@ -88,8 +88,8 @@ namespace QyTech.Core.ExController
             Type dbtype;
             try
             {
-                //增加主建
-                AddGuidTPk(ref strjson);
+                //增加主建 2018-11-27  不合适，应为多个记录的话每个主键应该不同
+                //AddGuidTPk(ref strjson);
 
                 dbtype = Type.GetType(objClassFullName);//.Replace(strForReplaceObject, objNameSpace + "." + objClassName));
                 dbobj = dbtype.Assembly.CreateInstance(dbtype.FullName);
@@ -157,6 +157,9 @@ namespace QyTech.Core.ExController
         /// <returns>修改结果json</returns>
         public virtual string EditbyKeyValuesDefaultTpk(string sessionid, string keyvalues)
         {
+            //增加日志
+            AddLogTable("EditbyKeyValuesDefaultTpk", bsT.TName, bsT.Desp, keyvalues);
+
             if (keyvalues == null || keyvalues.Equals(""))
                 return jsonMsgHelper.Create(1, "", "参数为空，无法修改");
             //进一步修改为keyvalues
@@ -166,6 +169,7 @@ namespace QyTech.Core.ExController
                 //2.获取rowdataobj主键值
                 Dictionary<string, bsField> items = getbsFields(bsT.bsT_Id);
                 object idV = GetRightFValue(items[bsT.TPk], dicKV[bsT.TPk]);//类型
+
                 return EditbyKeyValues(bsT.TPk, dicKV[bsT.TPk], dicKV);
             }
             catch (Exception ex)
@@ -186,11 +190,15 @@ namespace QyTech.Core.ExController
         /// <returns></returns>
         public virtual string EditbyKeyValues(string sessionid, string FName, string FValue, string keyvalues)
         {
+            //增加日志
+            AddLogTable("EditbyKeyValues", bsT.TName, bsT.Desp, FName+" "+ FValue + " "+keyvalues);
+
             Dictionary<string, string> dicKV = new Dictionary<string, string>();
             keyvalues = keyvalues.Replace(" ", "");
             try
             {
                 keyvalues = keyvalues.Replace("{", "{\"").Replace("}", "\"}").Replace(":", "\":\"");
+        
                 List<QyTech.Json.keyVal> kvs = JsonHelper.DeserializeJsonToKeyValList(keyvalues);
                 //进一步修改为keyvalues
                 foreach (keyVal kv in kvs)
@@ -250,13 +258,13 @@ namespace QyTech.Core.ExController
         /// <summary>
         /// 按条件删除数据
         /// </summary>
-        /// <param name="wheresql">sql条件</param>
+        /// <param name="sqlwhere">sql条件</param>
         /// <returns></returns>
-        public virtual string DeleteByWhereSql(string sessionid, string wheresql)
+        public virtual string DeleteBysqlwhere(string sessionid, string sqlwhere)
         {
-            LogHelper.Error(wheresql);
-            AddLogTable("编辑", bsT.TName, bsT.Desp, wheresql);
-            if (wheresql == null || wheresql.Equals(""))
+            LogHelper.Error(sqlwhere);
+            AddLogTable("编辑", bsT.TName, bsT.Desp, sqlwhere);
+            if (sqlwhere == null || sqlwhere.Equals(""))
             {
                 return jsonMsgHelper.Create(1, "", "没有删除条件！");
             }
@@ -270,16 +278,16 @@ namespace QyTech.Core.ExController
                 dbobj = dbtype.Assembly.CreateInstance(dbtype.FullName);
 
                 Type typeEm = typeof(EntityManager);
-                miObj = typeEm.GetMethod("DeleteByWhereSql").MakeGenericMethod(dbtype);
+                miObj = typeEm.GetMethod("DeleteBysqlwhere").MakeGenericMethod(dbtype);
                 if (bsT.bsD_Name.Contains("QyExpress"))
                 {
-                    rowdataobj = miObj.Invoke(EManager_, new object[] { wheresql });
+                    rowdataobj = miObj.Invoke(EManager_, new object[] { sqlwhere });
                 }
                 else
                 {
-                    rowdataobj = miObj.Invoke(EManagerApp_, new object[] { wheresql });
+                    rowdataobj = miObj.Invoke(EManagerApp_, new object[] { sqlwhere });
                 }
-                if (Convert.ToInt32(rowdataobj)==0)
+                if (Convert.ToInt32(rowdataobj)!=-1)
                     return jsonMsgHelper.Create(0, "", "删除成功！");
                 else
                     return jsonMsgHelper.Create(1, "", new Exception(rowdataobj.ToString()));
@@ -300,8 +308,11 @@ namespace QyTech.Core.ExController
             }
             try
             {
-                int ret = EManagerApp_.ExecuteSql(sql);
-                return jsonMsgHelper.Create(0, "", "执行成功");
+                string  ret = EManagerApp_.ExecuteSql(sql);
+                if (ret=="")
+                    return jsonMsgHelper.Create(0, "", "执行成功");
+                else
+                    return jsonMsgHelper.Create(0, "", ret);
             }
             catch (Exception ex)
             {
@@ -346,7 +357,7 @@ namespace QyTech.Core.ExController
                 string Key_TPk = "\"" + bsT.TPk + "\":";
                 string TpkDefaultIn = Key_TPk + "\"\"";
 
-                if (!strjson.Contains(TpkDefaultIn))
+                if (strjson.Contains(Key_TPk))
                 {
                     return Edit(sessionid, strjson);
                 }
@@ -375,8 +386,8 @@ namespace QyTech.Core.ExController
             Type dbtype;
             try
             {
-                //增加主建
-                AddGuidTPk(ref strjson);
+                //增加主建 //不合适，同adds的原因
+                //AddGuidTPk(ref strjson);
 
                 dbtype = Type.GetType(objClassFullName);//.Replace(strForReplaceObject, objNameSpace + "." + objClassName));
                 dbobj = dbtype.Assembly.CreateInstance(dbtype.FullName);
@@ -415,7 +426,7 @@ namespace QyTech.Core.ExController
         //////{
         //////    //ObjectClassFullName
         //////    if (where.Length>0)
-        //////        where= AjustWhereSql(where);
+        //////        where= Ajustsqlwhere(where);
         //////    //if (orderby == "")
         //////    //    orderby = bsFC.OrderBySql;
         //////    try
@@ -528,7 +539,7 @@ namespace QyTech.Core.ExController
         public virtual string GetAllByProcedure(string sessionid, string spname, string fields, string where, string orderby)
         {
             AddLogTable("获取", bsT.TName, bsT.Desp, spname+" "+where);
-            where = AjustWhereSql(where);
+            where = Ajustsqlwhere(where);
             if (orderby == "")
             {
                 if (bsFC != null)
@@ -589,7 +600,7 @@ namespace QyTech.Core.ExController
         //////    {
                
         //////        if (where!="")
-        //////            where = AjustWhereSql(where);
+        //////            where = Ajustsqlwhere(where);
                 
         //////        int totalCount = 100;
         //////        int totalPage = (int)Math.Ceiling(1.0 * totalCount / pageSize);
@@ -630,7 +641,7 @@ namespace QyTech.Core.ExController
             AddLogTable("获取", bsT.TName, bsT.Desp, where);
             try
             {
-                where = AjustWhereSql(where);
+                where = Ajustsqlwhere(where);
                 
                 int totalCount = 100;
                 int totalPage = (int)Math.Ceiling(1.0 * totalCount / pageSize);
@@ -672,7 +683,7 @@ namespace QyTech.Core.ExController
 
             try
             {
-                where = AjustWhereSql(where);
+                where = Ajustsqlwhere(where);
                 
                 int totalCount = 0;
                 int totalPage = (int)Math.Ceiling(1.0 * totalCount / pageSize);
