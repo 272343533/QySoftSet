@@ -63,16 +63,15 @@ namespace QyExpress.Controllers.api
                         {
                             userobj.LoginDt = DateTime.Now;
                             userobj.BrowserType = browsertype;
-                            if (userobj.UserType != "manager")
+                            if (userobj.UserType != "manager")//不是管理员的话
                             {
-                                //不是管理员的话
-                                //如果是初始的未定类型数据，则给传来的用户选择的类型
-                                if (userobj.UserType.ToLower() == "userregi")
-                                    userobj.UserType = usertype;
-                                else if (usertype == "manager")//如果应该是企业，而用户选择的是管理员类型
+                                
+                                if (usertype == "manager")//如果应该是企业，而用户选择的是管理员类型
                                 {
                                     return jsonMsgHelper.Create(1, "", "可能用户类型选择错误，请核对登录信息!");
                                 }
+                                else if("userregi,owner,tenancy".Contains(userobj.UserType.ToLower()))//如果还未核实，则给传来的用户选择的类型
+                                    userobj.UserType = usertype;
                             }
                             else if (userobj.UserType.ToLower() != usertype)
                             {
