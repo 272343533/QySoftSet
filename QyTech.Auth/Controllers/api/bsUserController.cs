@@ -70,7 +70,7 @@ namespace QyExpress.Controllers.api
                                 {
                                     return jsonMsgHelper.Create(1, "", "可能用户类型选择错误，请核对登录信息!");
                                 }
-                                else if("userregi,owner,tenancy".Contains(userobj.UserType.ToLower()))//如果还未核实，则给传来的用户选择的类型
+                                else if("userregi,owner,tenancy".Contains(userobj.UserType))//如果还未核实，则给传来的用户选择的类型
                                     userobj.UserType = usertype;
                             }
                             else if (userobj.UserType.ToLower() != usertype)
@@ -211,8 +211,7 @@ namespace QyExpress.Controllers.api
         /// <returns></returns>
         public string  ChangePwd(string sessionid,string loginpwd)
         {
-            loginpwd = LockerHelper.MD5(loginpwd);
-            //bsSession obj_session = EntityManager_Static.GetByPk<bsSession>(DbContext, "SessionId", sessionid);
+           //bsSession obj_session = EntityManager_Static.GetByPk<bsSession>(DbContext, "SessionId", sessionid);
             bsUser user = EntityManager_Static.GetByPk<bsUser>(DbContext, "bsU_Id", LoginUser.bsU_Id);
             user.LoginPwd =LockerHelper.MD5(loginpwd);
             

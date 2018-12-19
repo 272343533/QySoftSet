@@ -16,6 +16,7 @@ namespace QyExpress.Controllers.api
     {
         public override string getTreeDefault(string sessionid, string where, string orderby)
         {
+            where = "orgtype != '企业'";
             List<bsOrganize> objs;
             if (InnerAccout.IsInnerAccount(LoginUser))
             {
@@ -34,7 +35,6 @@ namespace QyExpress.Controllers.api
                 
             foreach (var cc in objs)
             {
-
                 treenode = new qytvNode();
                 treenode.id = cc.bsO_Id.ToString();
                 treenode.name = cc.Name;

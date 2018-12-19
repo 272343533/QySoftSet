@@ -204,15 +204,15 @@ namespace QyTech.Core.ExController
                 Guid guidV = Guid.Empty;
                 if (FValue != null)
                 {
-                    if ("Guid".Contains(fieldTypes[FName]))
+                    if ("GUID".Contains(fieldTypes[FName].ToUpper()))
                     {
                         idV = Guid.Parse(FValue);
                     }
-                    else if (fieldTypes[FName] == "int")
+                    else if (fieldTypes[FName].ToUpper() == "INT")
                     {
                         idV = Convert.ToInt64(FValue);
                     }
-                    else if (fieldTypes[FName] == "decimal")
+                    else if (fieldTypes[FName].ToUpper() == "DECIMAL")
                     {
                         idV = Convert.ToDecimal(FValue);
                     }
@@ -233,6 +233,33 @@ namespace QyTech.Core.ExController
                 Type typeEm = typeof(EntityManager);
                 miObj = typeEm.GetMethod("GetByPk").MakeGenericMethod(dbtype);
                 rowdataobj = miObj.Invoke(EManagerApp_, new object[] { FName, idV });
+                return rowdataobj;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error(ex);
+                return null;
+            }
+        }
+
+        protected object DaoGetOneBySql(string sql)
+        {
+            if (sql == null || sql.Equals(""))
+            {
+                return null;
+            }
+            try
+            {
+                object dbobj, rowdataobj;
+                Type dbtype;
+                MethodInfo miObj;
+
+                dbtype = Type.GetType(objClassFullName);//.Replace(strForReplaceObject, objNameSpace + "." + objClassName));
+                dbobj = dbtype.Assembly.CreateInstance(dbtype.FullName);
+
+                Type typeEm = typeof(EntityManager);
+                miObj = typeEm.GetMethod("GetBySql").MakeGenericMethod(dbtype);
+                rowdataobj = miObj.Invoke(EManagerApp_, new object[] { sql });
                 return rowdataobj;
             }
             catch (Exception ex)

@@ -38,10 +38,16 @@ module.exports = {
     historyApiFallback: true,
     noInfo: true,
     port: 8888,
+    //publicPath: "/",
+    host:'127.0.0.1',
+    //contentBase:'./dist',
     proxy: {
-		  "/SoftConf":"http://localhost:3454",
-      //"/api": "http://122.114.38.213:8080/tustar/api",
-      "/api": "http://localhost:3454",
+		  //"/api": "http://122.114.38.213:8080/tustar/api",
+      "/api": {
+        target:'"http://localhost:3454/api',
+        changeOrigin:true
+      },
+      "/SoftConf":"http://122.114.190.250:8083/bllinfoup/softconf",
       "/mock": "http://localhost:8888"
     }
   },

@@ -810,6 +810,34 @@ namespace QyTech.Core.ExController
 
         }
 
+        protected virtual string GetOnebySql(string sessionid,string sql)
+        {
+          
+            if (sql == null || sql.Equals(""))
+            {
+                return jsonMsgHelper.Create(1, "", "参数不足");
+            }
+            else if (sql.ToLower().Contains("delete"))
+            {
+                return jsonMsgHelper.Create(1, "", "参数不合理");
+            }
+            try
+            {
+                object rowdataobj = DaoGetOneBySql(sql);
+
+                if (rowdataobj != null)
+                    return jsonMsgHelper.Create(0, rowdataobj, "");
+                else
+                    return jsonMsgHelper.Create(0, "", "没有记录！");
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error(ex.Message);
+                return jsonMsgHelper.Create(1, "", "获取失败！");
+            }
+
+        }
+
         /// <summary>
         /// 按照配置获取树结构
         /// </summary>
