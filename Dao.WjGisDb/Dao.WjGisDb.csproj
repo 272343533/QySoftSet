@@ -7,8 +7,8 @@
     <ProjectGuid>{5AD51904-AC46-47A2-ADC6-76CBE63B038F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Dao.WjGisDb</RootNamespace>
-    <AssemblyName>Dao.WjGisDb</AssemblyName>
+    <RootNamespace>Dao.QyBllApp</RootNamespace>
+    <AssemblyName>Dao.QyBllApp</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

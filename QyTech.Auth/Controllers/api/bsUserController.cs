@@ -202,6 +202,40 @@ namespace QyExpress.Controllers.api
                 return jsonMsgHelper.Create(1, "", "重置失败!(" + ret + ")");
         }
 
+        /// <summary>
+        /// 重置所有账户密码
+        /// </summary>
+        /// <param name="sessionid"></param>
+        /// <returns></returns>
+        public string ResetWjLtdInfoUpAllPwds(string sessionid)
+        {
+            string loginpwd = "";
+            try
+            {
+                List<bsUser> userobjs = EntityManager_Static.GetListNoPaging<bsUser>(DbContext, "", "");
+
+                foreach (bsUser userobj in userobjs)
+                {
+                    if (userobj.UserType.ToString() == "manager")
+                        loginpwd = "123456";
+                    else
+                        loginpwd = userobj.LoginName.Substring(userobj.LoginName.Length - 6, 6);
+
+                    loginpwd = LockerHelper.MD5(loginpwd);
+                    if (userobj.LoginPwd != loginpwd)
+                    {
+                        bsUser user = EntityManager_Static.GetByPk<bsUser>(DbContext, "bsU_Id", userobj.bsU_Id);
+                        user.LoginPwd = loginpwd;
+                        string ret = EntityManager_Static.Modify<bsUser>(DbContext, user);
+                    }
+                }
+                return jsonMsgHelper.Create(0, "", "成功重置密码!");
+            }
+            catch (Exception ex)
+            {
+                return jsonMsgHelper.Create(1, "", "重置失败!(" + ex.Message + ")");
+            }
+        }
 
         /// <summary>
         /// 修改密码
@@ -258,7 +292,7 @@ namespace QyExpress.Controllers.api
         /// <param name="loginname">登录名</param>
         /// <param name="loginpwd">密码</param>
         /// <returns></returns>
-        [HttpPost]
+        //[HttpPost]
         public string Login(string loginname, string loginpwd,string browsertype)
         {
 

@@ -31,6 +31,9 @@ namespace QyTech.SoftConf.UIList
             ToolStripButton tsbAdd = AddtsbButton("新增");
             tsbAdd.Click += new System.EventHandler(this.tsbAdd_Click);
 
+            ToolStripButton tsbNavigatioin = AddtsbButton("导航");
+            tsbNavigatioin.Click += new System.EventHandler(this.tsbNavigation_Click);
+
             RefreshDgv();
         }
         private void tsbAdd_Click(object sender, EventArgs e)
@@ -40,6 +43,15 @@ namespace QyTech.SoftConf.UIList
             
             qyfAdd frm = new qyfAdd(AddOrEdit.Add, sqlConn, objforadd, bstable, bffs_byFormNo);
             frm.ShowDialog();
+        }
+
+        private void tsbNavigation_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("将系统配置下的页面加入到对应的项目中，暂时不选择，按照默认方式进行");
+
+            string sql = "exec bslyInitAppNam '" + GlobalVaribles.currAppObj.AppName + "'";
+            QyTech.DbUtils.SqlUtils.ExceuteSql(GlobalVaribles.SqConn_Base, sql);
+
         }
     }
 }

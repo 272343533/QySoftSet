@@ -45,6 +45,7 @@ namespace QyTech.SoftConf.UIBLL
         #region 重写父类方法
         protected override void Add()
         {
+            base.Add();
             bsOrganize obj = new bsOrganize();
             obj.DelStatus = false;
             obj.OrganizeStatus = "正常";

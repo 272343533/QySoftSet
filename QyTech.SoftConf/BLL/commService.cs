@@ -114,7 +114,12 @@ namespace QyTech.SoftConf.BLL
                 where = "appName='系统配置'";
             }
             else
-                where="bsN_Id in (select bsN_Id from bsSoftRelFuns where bsS_Id='" + GlobalVaribles.currSoftCutomer.bsS_Id.ToString() + "')";
+            {
+                if (GlobalVaribles.currSoftCutomer!=null)
+                    where = "bsN_Id in (select bsN_Id from bsSoftRelFuns where bsS_Id='" + GlobalVaribles.currSoftCutomer.bsS_Id.ToString() + "')";
+                else
+                    where = "AppName='"+ GlobalVaribles.currAppObj.AppName + "'";
+            }
             List<bsNavigation> objs = EntityManager_Static.GetListNoPaging<bsNavigation>(dbcontext, where, "NaviNo");
             foreach(bsNavigation obj in objs)
             {

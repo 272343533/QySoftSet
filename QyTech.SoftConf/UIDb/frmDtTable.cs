@@ -44,7 +44,7 @@ namespace QyTech.SoftConf.UIList
                 qytvNode tntag = tn.Tag as qytvNode;
                 if (tntag.type == "Table")
                 {
-                    TreeNode ptn = tn.Parent.Parent;
+                    TreeNode ptn = tn.Parent;//.Parent;
                     qytvNode ptntag = ptn.Tag as qytvNode;
                     //库id，表名，主键，描述，类型，是否重建
                     string sqls = "exec bsly1AppendCreatedTableInfoToBsTable '" + ptntag.id + "','" + tn.Text + "','" + tn.Text + "',0";
@@ -52,7 +52,7 @@ namespace QyTech.SoftConf.UIList
                 }
                 else if (tntag.type == "View")
                 {
-                    TreeNode ptn = tn.Parent.Parent;
+                    TreeNode ptn = tn.Parent;//.Parent;
                     qytvNode ptntag = ptn.Tag as qytvNode;
                     //库id，表名，主键，描述，类型，是否重建
                     string sqls = "exec [bsly1AppendCreatedViewsInfoToBsTable] '" + ptntag.id + "','" + tn.Text + "','" + tn.Text + "'";

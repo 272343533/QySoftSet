@@ -523,7 +523,19 @@ namespace QyTech.DbUtils
                         updateSql += "," + fname + "=" + HiddenFieldsValue[fname];
                     }
                 }
+                if (bst.TFkType=="uniqueidentifier")
+                {
+                    tpkvalue = "'" + tpkvalue + "'";
+                }
+                else if (bst.TPkType=="Int")
+                {
+                    tpkvalue =  tpkvalue;
+                }
+                else
+                    tpkvalue = "'" + tpkvalue + "'";
 
+                updateSql = updateSql.Replace("False", "0");
+                updateSql = updateSql.Replace("True", "1");
                 sql = sql + updateSql.Substring(1) + "  where "+bst.TPk+"="+ tpkvalue;
 
                 int row = ExceuteSql(sqlconn, sql);

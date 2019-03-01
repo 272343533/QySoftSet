@@ -144,32 +144,7 @@ namespace QyTech.SoftConf
 
             this.Text += "("+GlobalVaribles.currloginUser.NickName+")";
 
-            if (InnerAccout.IsInnerAccount(GlobalVaribles.currloginUser))
-            {
-                ////////刷新应用树
-                //////string url = GlobalVaribles.ServerUrl + "/softconf/bsAppName/getall";
-                //////QyJsonData qyjson = QyTech.FormRequest.HttpRequest.GetRemoteJsonQy(url);
-                //////List<bsAppName> apps = JsonHelper.DeserializeJsonToList<bsAppName>(qyjson.data.ToString());
-                ////////json数据转对象处理
-                GlobalVaribles.currloginUserFilter = new InnerAccountFilter(GlobalVaribles.currloginUser);
-                List<qytvNode> nodes = BLL.commService.GetAppCustomers(DB_Base, GlobalVaribles.currloginUserFilter.App);
-                qytvAppName.LoadData(nodes);
-                if (qytvAppName.Nodes.Count > 0)
-                {
-                    if (qytvAppName.Nodes[0].Nodes.Count > 0)
-                    {
-                        qytvAppName.SelectedNode = qytvAppName.Nodes[0].Nodes[0];
-                    }
-                }
-            }
-            else
-            {
-                //bsSoftCustInfo sci= GlobalVaribles.currloginUser.bsOrganize.bsSoftCustInfo; //目前的对象是序列化出来的，不能.bsOrganize.bsSoftCustInfo
-                //根据bsU_Id 获取到所属的bsSoftCustInfo对象和app对象
-                bsSoftCustInfo sci = EntityManager_Static.GetBySql<bsSoftCustInfo>(DB_Base," bsS_Id= (select bsS_Id from bsOrganize where bsO_Id='"+ GlobalVaribles.currloginUser.bsO_Id.ToString()+"')");
-                GlobalVaribles.currAppObj = EntityManager_Static.GetByPk<bsAppName>(DB_Base, "AppName", sci.AppName);
-                GlobalVaribles.currSoftCutomer = sci;
-            }
+            刷新ToolStripMenuItem_Click(刷新ToolStripMenuItem, null);
 
             #endregion
         }
@@ -214,6 +189,7 @@ namespace QyTech.SoftConf
             if ((tn.Tag as qytvNode).type == "appname")
             {
                 GlobalVaribles.currAppObj = EntityManager_Static.GetByPk<QyExpress.Dao.bsAppName>(DB_Base, "AppName", tn.Text);
+                GlobalVaribles.currSoftCutomer = null;
             }
             else if((tn.Tag as qytvNode).type == "customer")
             {
@@ -412,5 +388,37 @@ namespace QyTech.SoftConf
         {
             MessageBox.Show("恢复到空项目状态！");//应该使用存储过程删除所有数据库中无效的数据
         }
+
+        private void 刷新ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (InnerAccout.IsInnerAccount(GlobalVaribles.currloginUser))
+            {
+                ////////刷新应用树
+                //////string url = GlobalVaribles.ServerUrl + "/softconf/bsAppName/getall";
+                //////QyJsonData qyjson = QyTech.FormRequest.HttpRequest.GetRemoteJsonQy(url);
+                //////List<bsAppName> apps = JsonHelper.DeserializeJsonToList<bsAppName>(qyjson.data.ToString());
+                ////////json数据转对象处理
+                GlobalVaribles.currloginUserFilter = new InnerAccountFilter(GlobalVaribles.currloginUser);
+                List<qytvNode> nodes = BLL.commService.GetAppCustomers(DB_Base, GlobalVaribles.currloginUserFilter.App);
+                qytvAppName.LoadData(nodes);
+                if (qytvAppName.Nodes.Count > 0)
+                {
+                    if (qytvAppName.Nodes[0].Nodes.Count > 0)
+                    {
+                        qytvAppName.SelectedNode = qytvAppName.Nodes[0].Nodes[0];
+                    }
+                }
+            }
+            else
+            {
+                //bsSoftCustInfo sci= GlobalVaribles.currloginUser.bsOrganize.bsSoftCustInfo; //目前的对象是序列化出来的，不能.bsOrganize.bsSoftCustInfo
+                //根据bsU_Id 获取到所属的bsSoftCustInfo对象和app对象
+                bsSoftCustInfo sci = EntityManager_Static.GetBySql<bsSoftCustInfo>(DB_Base, " bsS_Id= (select bsS_Id from bsOrganize where bsO_Id='" + GlobalVaribles.currloginUser.bsO_Id.ToString() + "')");
+                GlobalVaribles.currAppObj = EntityManager_Static.GetByPk<bsAppName>(DB_Base, "AppName", sci.AppName);
+                GlobalVaribles.currSoftCutomer = sci;
+            }
+        }
+
+        
     }
 }

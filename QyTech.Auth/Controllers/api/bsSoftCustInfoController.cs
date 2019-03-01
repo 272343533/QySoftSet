@@ -31,10 +31,11 @@ namespace QyExpress.Controllers.api
         {
             List<qytvNode> nodes = new List<qytvNode>();
             //nodes = BLL.commService.GetNavigations(GlobalVaribles.ObjContext_Base);
-            List<bsNavigation> dbts = EntityManager_Static.GetListNoPaging<bsNavigation>(DbContext, "AppName='" + WebConfigurationManager.AppSettings["currAppName"].ToString() + "' or  (AppName='系统配置' and NAccount=1)", "NaviNo");
+            bsSoftCustInfo sci = EntityManager_Static.GetByPk<bsSoftCustInfo>(DbContext, "bsS_Id", Guid.Parse(idvalue));
+            List<bsNavigation> dbts = EntityManager_Static.GetListNoPaging<bsNavigation>(DbContext, "AppName='" + sci.AppName + "' or  (AppName='系统配置' and NAccount=1)", "NaviNo");// WebConfigurationManager.AppSettings["currAppName"].ToString()
 
             //用户具有的角色具有的功能
-            List<bsSoftRelFuns> dbts_sub = EntityManager_Static.GetListNoPaging<bsSoftRelFuns>(DbContext, "bsS_Id='" + WebConfigurationManager.AppSettings["currSoftCustId"].ToString()  + "'", "");
+            List<bsSoftRelFuns> dbts_sub = EntityManager_Static.GetListNoPaging<bsSoftRelFuns>(DbContext, "bsS_Id='" + idvalue.ToString() +"'", "");// WebConfigurationManager.AppSettings["currSoftCustId"].ToString()  + "'", "");
             List<Guid> subs = new List<Guid>();
             for (int i = 0; i < dbts_sub.Count; i++)
             {

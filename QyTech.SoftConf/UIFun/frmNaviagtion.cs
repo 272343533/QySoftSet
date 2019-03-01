@@ -64,7 +64,8 @@ namespace QyTech.SoftConf.UIList
             bsNavigation navObj = new bsNavigation();
             navObj.bsN_Id = Guid.NewGuid();
             navObj.AppName = GlobalVaribles.currAppObj.AppName;
-            navObj.pId = Guid.Parse(CurrLeftPFk.ToString());
+            if (CurrLeftPFk!=null)
+                navObj.pId = Guid.Parse(CurrLeftPFk.ToString());
             qyfAdd frm = new qyfAdd(AddOrEdit.Add, sqlConn, navObj, bstable, bffs_byFormNo);
             frm.ShowDialog();
         }

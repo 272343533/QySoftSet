@@ -29,7 +29,10 @@ namespace QyTech.SoftConf
         public static string SessionId = "";
 
         private static bsAppName _currAppObj;
-        
+
+        public static SqlConnection SqConn_Base = new SqlConnection("server =122.112.245.147; uid = sa; pwd = Qy_ltd414; database = " + System.Configuration.ConfigurationManager.AppSettings["curExpressDbName"] +"");//考虑从配置文件中，不过密码不安全
+        public static SqlConnection SqConn_App = new SqlConnection("server =122.112.245.147; uid = sa; pwd = Qy_ltd414; database = " + System.Configuration.ConfigurationManager.AppSettings["curAppDbName"] + "");//考虑从配置文件中，不过密码不安全
+
 
         /// <summary>
         /// 赋值需要早于currSoftCustomer,涉及到创建LoginUserFilter的创建
@@ -59,18 +62,23 @@ namespace QyTech.SoftConf
             set
             {
                 currSoftCutomer_ = value;
-                mdiform.tsslAppName.Text = "当前应用：" + _currAppObj.AppName + ";当前客户：" + currSoftCutomer_.Name;
+                if (currSoftCutomer_ != null)
+                {
+                    mdiform.tsslAppName.Text = "当前应用：" + _currAppObj.AppName + ";当前客户：" + currSoftCutomer_.Name;
 
-                currloginUserFilter.bsOFilter= "bsO_Id in ( select bsO_Id from bsOrganize where bsS_Id='" + GlobalVaribles.currSoftCutomer_.bsS_Id + "')";
+                   // currloginUserFilter.bsOFilter = "bsO_Id in ( select bsO_Id from bsOrganize where bsS_Id='" + GlobalVaribles.currSoftCutomer_.bsS_Id + "')";
+                }
+                else
+                {
+                    mdiform.tsslAppName.Text = "当前应用：" + _currAppObj.AppName + ";当前客户：";
+                    //currloginUserFilter.bsOFilter = "bsO_Id in ( select bsO_Id from bsOrganize where bsS_Id='" + GlobalVaribles.currSoftCutomer_.bsS_Id + "')";
+
+                }
             }
         }
 
 
-        public static SqlConnection SqConn_Base = new SqlConnection("server =122.114.190.250,2433; uid = sa; pwd = Qy_ltd414; database = LtdUp_QyExpress");//考虑从配置文件中，不过密码不安全
-        public static SqlConnection SqConn_App = new SqlConnection("server =122.114.190.250,2433; uid = sa; pwd = Qy_ltd414; database = LtdUp_Wj");//考虑从配置文件中，不过密码不安全
-        //public static SqlConnection SqConn_Base = new SqlConnection("server =(local); uid = sa; pwd = Qy_ltd414; database = QyExpress");//考虑从配置文件中，不过密码不安全
-        //public static SqlConnection SqConn_App = new SqlConnection("server =(local); uid = sa; pwd = Qy_ltd414; database = wj_GisDb");//考虑从配置文件中，不过密码不安全
-
+ 
 
         public static ObjectContext ObjContext_Base_ = new QyExpress.Dao.QyExpressEntities();
         public static ObjectContext ObjContext_Base

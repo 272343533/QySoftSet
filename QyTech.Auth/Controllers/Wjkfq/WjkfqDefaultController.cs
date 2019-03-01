@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace QyExpress.Controllers.Wjkfq
 {
-    public class WjkfqDefaultController : QyTech.DbFac.WjkfqController
+    public class WjkfqDefaultController : WjkfqController
     {
         //
         // GET: /Default1/

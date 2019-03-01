@@ -73,7 +73,7 @@ namespace QyTech.UICreate
 
                 bstable = EntityManager_Static.GetByPk<bsTable>(DB_Base, "bsT_Id", bsFc.bsT_Id);
                 tName = bstable.TName;
-                if (bsFc.basesqlwhere == null)
+                if (bsFc.baseWhereSql == null)
                 {
                     if (where != "")
                         strBaseWhere = "(" + where + ")";
@@ -81,7 +81,7 @@ namespace QyTech.UICreate
                         strBaseWhere = "";
                 }
                 else
-                    strBaseWhere = "(" + bsFc.basesqlwhere + ")";
+                    strBaseWhere = "(" + bsFc.baseWhereSql + ")";
                 if (bsFc.OrderBySql == null)
                     strOrderby = "";
                 else
@@ -159,6 +159,7 @@ namespace QyTech.UICreate
         {
             try
             {
+                addoredit = AddOrEdit.Edit;
                 currTPkId = (e.Node.Tag as qytvNode).id;
                 CurrSelectObj = EntityManager_Static.GetByPk<bsOrganize>(DB_Base, "bsO_Id", currTPkId);
                 InitFrom(CurrSelectObj);
@@ -188,7 +189,8 @@ namespace QyTech.UICreate
         /// <param name="currRowObj"></param>
         protected virtual void Add()
         {
-           
+            addoredit = AddOrEdit.Add;
+
         }
 
         /// <summary>

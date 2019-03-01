@@ -125,6 +125,7 @@ namespace QyTech.SoftConf.UIBLL
 
             QyJsonData jsonData = HttpRequestUtils.PostRemoteJsonQy(url, dicparas);
             allNodes = JsonHelper.DeserializeJsonToList<qytvNode>(jsonData.data.ToString());
+
             qytvRights.LoadData(allNodes, true);
 
             haveNodes=qytvRights.GetCheckedNode();

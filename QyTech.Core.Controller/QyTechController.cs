@@ -164,12 +164,12 @@ namespace QyTech.Core.ExController
         {
             LogHelper.Info(Request.Url.ToString(), "验证登录信息");
 
-            #region 用户登录验证
-            string InCName = filterContext.RouteData.Values["controller"].ToString();
+             string InCName = filterContext.RouteData.Values["controller"].ToString();
             string InAName = filterContext.RouteData.Values["action"].ToString();
             string currUrl_CA= (InCName + "/" + InAName).ToLower();
 
-            if (!bsSessionManager.GetUrlWithoutSession().Contains(currUrl_CA))
+          
+           if (!bsSessionManager.GetUrlWithoutSession().Contains(currUrl_CA))
             {
                 #region cookie使用 目前用session方式，cookie已注释
                 //if (LoginHelper.IsLogin())
@@ -214,39 +214,43 @@ namespace QyTech.Core.ExController
                 //}
                 #endregion
 
+                #region 用户登录验证 可通过webconfig配置取消，设为调试模式
                 if (filterContext.ActionParameters.ContainsKey("sessionid"))//需要sessionid参数
                 {
-                    if (filterContext.ActionParameters["sessionid"] == null)//传入了sessionid参数
+                    if (System.Web.Configuration.WebConfigurationManager.AppSettings["currAppRunV"].Substring(0,5) != "debug")
                     {
-                        //需要sessioniid，但是没有给
-                        LogHelper.Info(Request.Url.ToString(), "没有登录信息，需转登录界面");
-                        HttpContext.Response.Redirect("http://122.114.190.250:8083/", true);
-                        return;
-                        //base.OnActionExecuting(filterContext);
-                    }
-                    else if (filterContext.ActionParameters["sessionid"].ToString().Length > 24)//form传过来的
-                    {
-                        LoginUser = EManager_.GetByPk<bsUser>("bsU_Id", Guid.Parse(filterContext.ActionParameters["sessionid"].ToString()));
-                    }
-                    else
-                    {
-                        LoginUser = QyTech.Core.ExController.Bll.bsSessionManager.GetLoginUser(EManager_, filterContext.ActionParameters["sessionid"].ToString());
-                    }
+                        if (filterContext.ActionParameters["sessionid"] == null)//传入了sessionid参数
+                        {
+                            //需要sessioniid，但是没有给
+                            LogHelper.Info(Request.Url.ToString(), "没有登录信息，需转登录界面");
+                            HttpContext.Response.Redirect("http://122.112.245.147:8004/", true);
+                            return;
+                            //base.OnActionExecuting(filterContext);
+                        }
+                        else if (filterContext.ActionParameters["sessionid"].ToString().Length > 24)//form传过来的
+                        {
+                            LoginUser = EManager_.GetByPk<bsUser>("bsU_Id", Guid.Parse(filterContext.ActionParameters["sessionid"].ToString()));
+                        }
+                        else
+                        {
+                            LoginUser = QyTech.Core.ExController.Bll.bsSessionManager.GetLoginUser(EManager_, filterContext.ActionParameters["sessionid"].ToString());
+                        }
 
-                    if (LoginUser == null || LoginUser.bsU_Id == null || LoginUser.bsU_Id == Guid.Empty)
-                    {
-                        LogHelper.Info(Request.Url.ToString(), filterContext.ActionParameters["sessionid"].ToString() + "登录信息已过期，请重新登录！");
-                        //filterContext.Result = RedirectToAction("login", "Home"); // new RedirectToRouteResult("Login", new RouteValueDictionary { { "from", Request.Url.ToString() } });
-                        HttpContext.Response.Redirect("http://122.114.190.250:8083/", true);
-                        return;
-                    }
+                        if (LoginUser == null || LoginUser.bsU_Id == null || LoginUser.bsU_Id == Guid.Empty)
+                        {
+                            LogHelper.Info(Request.Url.ToString(), filterContext.ActionParameters["sessionid"].ToString() + "登录信息已过期，请重新登录！");
+                            //filterContext.Result = RedirectToAction("login", "Home"); // new RedirectToRouteResult("Login", new RouteValueDictionary { { "from", Request.Url.ToString() } });
+                            HttpContext.Response.Redirect("http://122.114.190.250:8083/", true);
+                            return;
+                        }
 
-                    //判断用户是否有此路由权限,用户id，控制器，action
-                    //if (!LoginHelper.isusefunc(LoginHelper.GetLoginUserId(), sysfunc, actionname))
-                    //{
-                    //    HttpContext.Response.Redirect("/Home/Error");
-                    //    return;
-                    //}
+                        //判断用户是否有此路由权限,用户id，控制器，action
+                        //if (!LoginHelper.isusefunc(LoginHelper.GetLoginUserId(), sysfunc, actionname))
+                        //{
+                        //    HttpContext.Response.Redirect("/Home/Error");
+                        //    return;
+                        //}
+                    }
                 }
                 #endregion
 

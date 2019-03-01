@@ -25,7 +25,7 @@ namespace QyTech.Json
         public static string Create(int flag, object data, Exception ex)
         {
             string msg= "操作失败！";
-            if (System.Web.Configuration.WebConfigurationManager.AppSettings["currAppRun"] == "Debug1.01")
+            if (System.Web.Configuration.WebConfigurationManager.AppSettings["currAppRunV"] == "Debug1.01")
                 msg = QyTech.Core.LogHelper.Parse(ex);
             QyJsonData jd = new QyJsonData(flag, data, msg);
             string jsonstr = jd.Serialize();

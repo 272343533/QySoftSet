@@ -8,7 +8,7 @@ using QyTech.Core.Common;
 using QyTech.Json;
 using System.Collections;
 using System.Collections.Generic;
-
+using QyExpress.BLL;
 
 namespace QyExpress.Controllers.api
 {
@@ -16,7 +16,7 @@ namespace QyExpress.Controllers.api
     {
         public override string getTreeDefault(string sessionid, string where, string orderby)
         {
-            where = "orgtype != '企业'";
+            where = "bsS_id='"+WebSiteParams.currSoftCustId + "' and orgtype != '企业'";
             List<bsOrganize> objs;
             if (InnerAccout.IsInnerAccount(LoginUser))
             {

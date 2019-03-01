@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.应用程序ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.应用管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,9 +68,12 @@
             this.tsslAppName = new System.Windows.Forms.ToolStripStatusLabel();
             this.panLeft = new System.Windows.Forms.Panel();
             this.qytvAppName = new QyTech.SkinForm.Controls.qyTreeView();
+            this.cmsApp = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.刷新ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panLeft.SuspendLayout();
+            this.cmsApp.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -376,6 +380,7 @@
             // 
             // qytvAppName
             // 
+            this.qytvAppName.ContextMenuStrip = this.cmsApp;
             this.qytvAppName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.qytvAppName.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.qytvAppName.Location = new System.Drawing.Point(0, 0);
@@ -385,6 +390,20 @@
             this.qytvAppName.TabIndex = 0;
             this.qytvAppName.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.qytvAppName_AfterSelect);
             this.qytvAppName.DoubleClick += new System.EventHandler(this.qytvAppName_DoubleClick);
+            // 
+            // cmsApp
+            // 
+            this.cmsApp.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.刷新ToolStripMenuItem});
+            this.cmsApp.Name = "cmsApp";
+            this.cmsApp.Size = new System.Drawing.Size(181, 48);
+            // 
+            // 刷新ToolStripMenuItem
+            // 
+            this.刷新ToolStripMenuItem.Name = "刷新ToolStripMenuItem";
+            this.刷新ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.刷新ToolStripMenuItem.Text = "刷新";
+            this.刷新ToolStripMenuItem.Click += new System.EventHandler(this.刷新ToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -406,6 +425,7 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.panLeft.ResumeLayout(false);
+            this.cmsApp.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -452,6 +472,8 @@
         private System.Windows.Forms.ToolStripMenuItem 政治面目ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 党派ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 初始化系统ToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip cmsApp;
+        private System.Windows.Forms.ToolStripMenuItem 刷新ToolStripMenuItem;
     }
 }
 

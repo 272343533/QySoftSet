@@ -39,7 +39,7 @@ namespace QyTech.SkinForm.Controls
             EditMode = DataGridViewEditMode.EditOnEnter;
             //EnableHeadersVisualStyles = false;
             RowHeadersVisible = false; //第一列前面的短空白
-            SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            SelectionMode = DataGridViewSelectionMode.CellSelect;//.FullRowSelect;
 
             //ReadOnly = true;
 

@@ -87,7 +87,7 @@ namespace QyTech.UICreate
 
                 bstable = EntityManager_Static.GetByPk<bsTable>(DB_Base, "bsT_Id",bsFc.bsT_Id);
                 tName = bstable.TName;
-                if (bsFc.basesqlwhere == null)
+                if (bsFc.baseWhereSql == null)
                 {
                     if (where != "")
                         strBaseWhere = "(" + where + ")";
@@ -95,7 +95,7 @@ namespace QyTech.UICreate
                         strBaseWhere = "";
                 }
                 else
-                    strBaseWhere = "(" + bsFc.basesqlwhere + ")";
+                    strBaseWhere = "(" + bsFc.baseWhereSql + ")";
                 if (bsFc.OrderBySql == null)
                     strOrderby = "";
                 else
