@@ -191,9 +191,9 @@ namespace QyTech.Core.ExController.Bll
 
             Object[] myArgs = new Object[wheres.Length + 5];
             int index = 0;
-            for (int i = 0; i < wheres.Length; i++)
+            for (int i = 0; i < wheres.Length; i++,index++)
             {
-                myArgs[index++] = wheres[index++];
+                myArgs[index] = wheres[i];
             }
             myArgs[index++] = orderby;
             myArgs[index++] = currentPage;

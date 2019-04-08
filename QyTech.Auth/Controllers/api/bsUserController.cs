@@ -393,7 +393,9 @@ namespace QyExpress.Controllers.api
 
         public override string GetAllData(string sessionid, string fields = "", string where = "", string orderby = "")
         {
-            string basewhere= "(IsSysUser!=1 and UserType='manager')";
+            //string basewhere= "(IsSysUser!=1 and UserType='manager')";//wjltdup使用
+            string basewhere = "(IsSysUser!=1)";//wjltdup使用
+
             if (where.Trim().Length > 0)
                 where = Ajustsqlwhere(where) + " and "+ basewhere;
             else
@@ -437,6 +439,19 @@ namespace QyExpress.Controllers.api
             }
         }
 
+        public string GetAllbsOUser(string sessionid, string idValue, int level = 2)
+        {
+            List<bsUser> lst = EntityManager_Static.GetAllByStorProcedure<bsUser>(DbContext, "splyGetbsOUser", new object[] { idValue, level });
+            if (lst.Count > 0)
+            {
+                Type type = lst[0].GetType();
+                return QyTech.Json.JsonHelper.SerializeObject(lst, type, null);
+            }
+            else
+            {
+                return "";
+            }
+        }
 
         public override string Audit( string sessionid, string idValue, int YesOrNo, string AuditDesp)
         {

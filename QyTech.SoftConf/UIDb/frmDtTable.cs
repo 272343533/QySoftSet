@@ -44,8 +44,9 @@ namespace QyTech.SoftConf.UIList
                 qytvNode tntag = tn.Tag as qytvNode;
                 if (tntag.type == "Table")
                 {
-                    TreeNode ptn = tn.Parent;//.Parent;
+                    TreeNode ptn = tn.Parent.Parent;//上一级数据表，上二级数据库名城。
                     qytvNode ptntag = ptn.Tag as qytvNode;
+                    
                     //库id，表名，主键，描述，类型，是否重建
                     string sqls = "exec bsly1AppendCreatedTableInfoToBsTable '" + ptntag.id + "','" + tn.Text + "','" + tn.Text + "',0";
                     QyTech.DbUtils.SqlUtils.ExceuteSql(sqlConn, sqls);
@@ -69,7 +70,7 @@ namespace QyTech.SoftConf.UIList
             //QyJsonData jsonData = HttpRequestUtils.PostRemoteJsonQy(url, null);
             //List<qytvNode> nodes = JsonHelper.DeserializeJsonToList<qytvNode>(jsonData.data.ToString());
             List<qytvNode> nodes = new List<qytvNode>();
-            string appName = System.Configuration.ConfigurationManager.AppSettings["curAppName"];
+            string appName = GlobalVaribles.currAppObj.AppName;// System.Configuration.ConfigurationManager.AppSettings["curAppName"];
             if (GlobalVaribles.currloginUser.bsU_Id==InnerAccout.expressAdminUser.bsU_Id)
             {
                 appName = "系统配置";

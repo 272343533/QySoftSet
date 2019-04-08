@@ -84,7 +84,7 @@
             // gbCondition
             // 
             this.gbCondition.Location = new System.Drawing.Point(3, 0);
-            this.gbCondition.Size = new System.Drawing.Size(40, 31);
+            this.gbCondition.Size = new System.Drawing.Size(0, 31);
             // 
             // cmsDbTable
             // 
@@ -92,19 +92,19 @@
             this.导入ToolStripMenuItem,
             this.刷新ToolStripMenuItem});
             this.cmsDbTable.Name = "cmsDbTable";
-            this.cmsDbTable.Size = new System.Drawing.Size(101, 48);
+            this.cmsDbTable.Size = new System.Drawing.Size(181, 70);
             // 
             // 导入ToolStripMenuItem
             // 
             this.导入ToolStripMenuItem.Name = "导入ToolStripMenuItem";
-            this.导入ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.导入ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.导入ToolStripMenuItem.Text = "导入";
             this.导入ToolStripMenuItem.Click += new System.EventHandler(this.导入ToolStripMenuItem_Click);
             // 
             // 刷新ToolStripMenuItem
             // 
             this.刷新ToolStripMenuItem.Name = "刷新ToolStripMenuItem";
-            this.刷新ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.刷新ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.刷新ToolStripMenuItem.Text = "刷新";
             this.刷新ToolStripMenuItem.Click += new System.EventHandler(this.刷新ToolStripMenuItem_Click);
             // 

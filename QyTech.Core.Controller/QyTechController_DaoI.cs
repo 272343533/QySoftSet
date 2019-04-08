@@ -29,6 +29,12 @@ namespace QyTech.Core.ExController
 
     public partial class QyTechController
     {
+
+        protected virtual string CheckLogical(string idValue)
+        {
+            return "";
+        }
+
         /// <summary>
         /// 新增json对应的对象
         /// </summary>
@@ -120,6 +126,48 @@ namespace QyTech.Core.ExController
         /// </summary>
         /// <param name="strjson">json数据</param>
         /// <returns>修改结果json</returns>
+        public virtual string EditThenCheckLogical(string sessionid, string strjson,string idValue)
+        {
+            if (strjson == null || strjson.Equals(""))
+            {
+                return jsonMsgHelper.Create(1, "", "参数为空，无法修改");
+            }
+
+           
+            strjson = strjson.Replace(" ", "");
+            try
+            {
+                Type dbtype = Type.GetType(objClassFullName);//.Replace(strForReplaceObject, objNameSpace + "." + objClassName));
+
+                Type typeJh = typeof(JsonHelper);
+                MethodInfo miObj = typeJh.GetMethod("DeserializeJsonToObject").MakeGenericMethod(dbtype);
+                object rowdataobj = miObj.Invoke(null, new object[] { strjson });
+
+                string ret= DaoModify(dbtype, rowdataobj);
+
+                string retLogical = CheckLogical(idValue);
+
+                if (ret == "")
+                {
+                    if (retLogical == null|| retLogical.Trim()=="")
+                        return jsonMsgHelper.Create(0, "", "保存成功！");
+                    else
+                        return jsonMsgHelper.Create(0, "",  retLogical );
+                }
+                else
+                    return jsonMsgHelper.Create(1, "", new Exception(ret));
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error(ex);
+                return jsonMsgHelper.Create(1, "", ex);
+            }
+        }
+        /// <summary>
+        /// 修改json对应的对象
+        /// </summary>
+        /// <param name="strjson">json数据</param>
+        /// <returns>修改结果json</returns>
         public virtual string Edit(string sessionid, string strjson)
         {
             if (strjson == null || strjson.Equals(""))
@@ -135,12 +183,14 @@ namespace QyTech.Core.ExController
                 MethodInfo miObj = typeJh.GetMethod("DeserializeJsonToObject").MakeGenericMethod(dbtype);
                 object rowdataobj = miObj.Invoke(null, new object[] { strjson });
 
-                string ret= DaoModify(dbtype, rowdataobj);
-                
+                string ret = DaoModify(dbtype, rowdataobj);
+
                 if (ret == "")
-                    return jsonMsgHelper.Create(0, "", "保存成功！");
+                {
+                   return jsonMsgHelper.Create(0, "", "保存成功！");
+                }
                 else
-                    return jsonMsgHelper.Create(1, "",new Exception(ret));
+                    return jsonMsgHelper.Create(1, "", new Exception(ret));
             }
             catch (Exception ex)
             {
@@ -148,7 +198,6 @@ namespace QyTech.Core.ExController
                 return jsonMsgHelper.Create(1, "", ex);
             }
         }
-
 
         /// <summary>
         ///  根据默认主键编辑数据，按照编辑的数据项进行修改
@@ -953,6 +1002,9 @@ namespace QyTech.Core.ExController
         /// <returns></returns>
         protected string EditbyKeyValues(string FName, string FValue, Dictionary<string, string> dicKV)
         {
+            //增加日志
+            AddLogTable("EditbydicKV", bsT.TName, bsT.Desp, FName + " " + FValue);
+
             if (dicKV == null || dicKV.Count == 0)
             {
                 return jsonMsgHelper.Create(1, "", "参数为空，无法修改");
@@ -962,7 +1014,7 @@ namespace QyTech.Core.ExController
             {
                 Type dbtype = Type.GetType(objClassFullName);//.Replace(strForReplaceObject, objNameSpace + "." + objClassName));
 
-                #region 单独方法
+                #region 单独方法 不使用
                 ////1。获取字段列表
                 //Dictionary<string, bsField> items = getbsFields(bsT.bsT_Id);
                 ////2.获取rowdataobj主键值
@@ -1003,7 +1055,7 @@ namespace QyTech.Core.ExController
             }
             catch (Exception ex)
             {
-                LogHelper.Error("EditbyKeyValues:" + ex.Message);
+                LogHelper.Error("EditbyKeyValues_dicKV:" + ex.Message);
                 return jsonMsgHelper.Create(1, "", ex);
             }
         }

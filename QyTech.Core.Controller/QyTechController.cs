@@ -162,7 +162,7 @@ namespace QyTech.Core.ExController
         /// <param name="filterContext"></param>
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            LogHelper.Info(Request.Url.ToString(), "验证登录信息");
+            LogHelper.Info("OnAction", "请求地址："+ Request.Url.ToString());
 
              string InCName = filterContext.RouteData.Values["controller"].ToString();
             string InAName = filterContext.RouteData.Values["action"].ToString();
@@ -217,7 +217,7 @@ namespace QyTech.Core.ExController
                 #region 用户登录验证 可通过webconfig配置取消，设为调试模式
                 if (filterContext.ActionParameters.ContainsKey("sessionid"))//需要sessionid参数
                 {
-                    if (System.Web.Configuration.WebConfigurationManager.AppSettings["currAppRunV"].Substring(0,5) != "debug")
+                    if (WebSiteParams.currAppRunV.Substring(0,5) != "debug")
                     {
                         if (filterContext.ActionParameters["sessionid"] == null)//传入了sessionid参数
                         {
@@ -240,7 +240,7 @@ namespace QyTech.Core.ExController
                         {
                             LogHelper.Info(Request.Url.ToString(), filterContext.ActionParameters["sessionid"].ToString() + "登录信息已过期，请重新登录！");
                             //filterContext.Result = RedirectToAction("login", "Home"); // new RedirectToRouteResult("Login", new RouteValueDictionary { { "from", Request.Url.ToString() } });
-                            HttpContext.Response.Redirect("http://122.114.190.250:8083/", true);
+                            HttpContext.Response.Redirect(System.Web.Configuration.WebConfigurationManager.AppSettings["currSoftCustUrl"], true);
                             return;
                         }
 

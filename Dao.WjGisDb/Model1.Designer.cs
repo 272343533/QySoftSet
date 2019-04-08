@@ -1504,6 +1504,30 @@ namespace Dao.QyBllApp
         private Nullable<global::System.Int32> _DispNo;
         partial void OnDispNoChanging(Nullable<global::System.Int32> value);
         partial void OnDispNoChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> LoadVisible
+        {
+            get
+            {
+                return _LoadVisible;
+            }
+            set
+            {
+                OnLoadVisibleChanging(value);
+                ReportPropertyChanging("LoadVisible");
+                _LoadVisible = StructuralObject.SetValidValue(value, "LoadVisible");
+                ReportPropertyChanged("LoadVisible");
+                OnLoadVisibleChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _LoadVisible;
+        partial void OnLoadVisibleChanging(Nullable<global::System.Boolean> value);
+        partial void OnLoadVisibleChanged();
 
         #endregion
 

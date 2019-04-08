@@ -24,7 +24,7 @@ namespace QyTech.Json
         /// <returns></returns>
         public static string Create(int flag, object data, Exception ex)
         {
-            string msg= "操作失败！";
+            string msg= "操作失败,请新登录页面再试一次！";
             if (System.Web.Configuration.WebConfigurationManager.AppSettings["currAppRunV"] == "Debug1.01")
                 msg = QyTech.Core.LogHelper.Parse(ex);
             QyJsonData jd = new QyJsonData(flag, data, msg);

@@ -61,7 +61,7 @@ namespace QyTech.Core.BLL
         /// <param name="spName"></param>
         /// <param name="paramvalues"></param>
         /// <returns></returns>
-        public List<T> GetAllByStorProcedure<T>(string spName, object[] paramvalues,int outParamIndexFrom1,out object result)
+        public List<T> GetAllByStorProcedureWithOut<T>(string spName, object[] paramvalues,int outParamIndexFrom1,out object result)
         {
             result = -999;
             try
@@ -121,7 +121,7 @@ namespace QyTech.Core.BLL
         /// <param name="spName"></param>
         /// <param name="paramvalues">参数值列表，如果为null，则认为是out参数</param>
         /// <returns></returns>
-        public List<T> GetAllByStorProcedure<T>(string spName, ref object[] paramvalues)
+        public List<T> GetAllByStorProcedureWithRef<T>(string spName, ref object[] paramvalues)
         {
             try
             {
@@ -464,7 +464,7 @@ namespace QyTech.Core.BLL
             return ret;
         }
 
-        public string  ExcuteStoreProcedure(string spName, object[] paramvalues)
+        public string  ExcuteStoreProcedure1(string spName, object[] paramvalues)
         {
             try
             {

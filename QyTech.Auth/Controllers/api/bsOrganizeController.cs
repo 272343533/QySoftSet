@@ -16,7 +16,15 @@ namespace QyExpress.Controllers.api
     {
         public override string getTreeDefault(string sessionid, string where, string orderby)
         {
-            where = "bsS_id='"+WebSiteParams.currSoftCustId + "' and orgtype != '企业'";
+            string sqlwhere = "bsS_id='" + WebSiteParams.currSoftCustId + "'";
+            if (where == null || where.Trim() == "")
+            {
+                where = sqlwhere;
+            }
+            else
+            {
+                where = sqlwhere + " and (" + where+")";
+            }
             List<bsOrganize> objs;
             if (InnerAccout.IsInnerAccount(LoginUser))
             {

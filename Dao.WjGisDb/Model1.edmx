@@ -30,6 +30,7 @@
           <Property Name="Code" Type="varchar" MaxLength="50" />
           <Property Name="FullName" Type="varchar" MaxLength="50" />
           <Property Name="DispNo" Type="int" />
+          <Property Name="LoadVisible" Type="bit" />
         </EntityType>
         <EntityType Name="bsArcLayer">
           <Key>
@@ -589,40 +590,6 @@
           <Property Name="区镇" Type="nvarchar" MaxLength="20" />
           <Property Name="地块编号" Type="varchar" MaxLength="20" />
         </EntityType>
-        <!--生成过程中发现错误:
-警告 6013: 表/视图“WjGis2.dbo.x榜单”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
-        <EntityType Name="x榜单">
-          <Property Name="单位代码" Type="nvarchar" MaxLength="255" />
-          <Property Name="单位名称" Type="nvarchar" MaxLength="255" />
-          <Property Name="等级" Type="nvarchar" MaxLength="255" />
-          <Property Name="市区" Type="nvarchar" MaxLength="255" />
-          <Property Name="区域" Type="nvarchar" MaxLength="255" />
-          <Property Name="年度" Type="nvarchar" MaxLength="255" />
-          <Property Name="月份" Type="nvarchar" MaxLength="255" />
-        </EntityType>-->
-        <!--生成过程中发现错误:
-警告 6013: 表/视图“WjGis2.dbo.x数据整理占地0925”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
-        <EntityType Name="x数据整理占地0925">
-          <Property Name="序号" Type="float" />
-          <Property Name="单位代码" Type="nvarchar" MaxLength="255" />
-          <Property Name="单位" Type="nvarchar" MaxLength="255" />
-          <Property Name="住所" Type="nvarchar" MaxLength="255" />
-          <Property Name="主行业" Type="nvarchar" MaxLength="255" />
-          <Property Name="规模" Type="nvarchar" MaxLength="255" />
-          <Property Name="销售" Type="float" />
-          <Property Name="占地" Type="float" />
-        </EntityType>-->
-        <!--生成过程中发现错误:
-警告 6013: 表/视图“WjGis2.dbo.x所有行业汇总”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
-        <EntityType Name="x所有行业汇总">
-          <Property Name="序号" Type="float" />
-          <Property Name="F2" Type="nvarchar" MaxLength="255" />
-          <Property Name="门类" Type="nvarchar" MaxLength="255" />
-          <Property Name="门类个数" Type="float" />
-          <Property Name="大类" Type="float" />
-          <Property Name="行业名称" Type="nvarchar" MaxLength="255" />
-          <Property Name="E-F合并" Type="nvarchar" MaxLength="255" />
-        </EntityType>-->
         <EntityType Name="z企业变化信息表">
           <Key>
             <PropertyRef Name="Id" />
@@ -856,11 +823,6 @@
           <Property Name="config_string" Type="nvarchar" MaxLength="2048" />
         </EntityType>
         <!--生成过程中发现错误:
-警告 6013: 表/视图“WjGis2.sde.SDE_generate_guid”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
-        <EntityType Name="SDE_generate_guid">
-          <Property Name="guidstr" Type="nvarchar" MaxLength="38" />
-        </EntityType>-->
-        <!--生成过程中发现错误:
 警告 6002: 表/视图“WjGis2.sde.ST_GEOMETRY_COLUMNS”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="ST_GEOMETRY_COLUMNS">
           <Key>
@@ -906,55 +868,6 @@
           <Property Name="organization_coordsys_id" Type="int" />
           <Property Name="definition" Type="varchar" MaxLength="1024" Nullable="false" />
         </EntityType>
-        <!--生成过程中发现错误:
-警告 6013: 表/视图“WjGis2.sde.vwQyxx”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
-        <EntityType Name="vwQyxx">
-          <Property Name="ID" Type="varchar" MaxLength="21" />
-          <Property Name="DKBH" Type="nvarchar" MaxLength="50" />
-          <Property Name="NSRSBH" Type="nvarchar" MaxLength="50" />
-          <Property Name="YDQYMC" Type="nvarchar" MaxLength="150" />
-          <Property Name="TDZL" Type="nvarchar" MaxLength="150" />
-          <Property Name="ZCLX" Type="nvarchar" MaxLength="50" />
-          <Property Name="ZCSJ" Type="datetime2" Precision="7" />
-          <Property Name="JYFW" Type="nvarchar" MaxLength="255" />
-          <Property Name="HYDL" Type="nvarchar" MaxLength="150" />
-          <Property Name="HYLXXF" Type="nvarchar" MaxLength="150" />
-          <Property Name="FZMJ_" Type="float" />
-          <Property Name="ZDMJ" Type="float" />
-          <Property Name="JZZDMJ" Type="float" />
-          <Property Name="JZMJ" Type="float" />
-          <Property Name="QSXZ" Type="nvarchar" MaxLength="50" />
-          <Property Name="TDYT" Type="nvarchar" MaxLength="50" />
-          <Property Name="LZZJGDM" Type="nvarchar" MaxLength="50" />
-          <Property Name="HGDM" Type="nvarchar" MaxLength="50" />
-          <Property Name="HYLXDM" Type="nvarchar" MaxLength="50" />
-          <Property Name="LAODIKUAIHAO" Type="nvarchar" MaxLength="50" />
-          <Property Name="SSXZQDM" Type="nvarchar" MaxLength="50" />
-          <Property Name="SSGLQDM" Type="nvarchar" MaxLength="50" />
-          <Property Name="SYQLX_" Type="nvarchar" MaxLength="50" />
-          <Property Name="PZYT_" Type="nvarchar" MaxLength="50" />
-          <Property Name="TDZH_" Type="nvarchar" MaxLength="50" />
-          <Property Name="SFWZLQY_" Type="nvarchar" MaxLength="50" />
-          <Property Name="ZLQYMC_" Type="nvarchar" MaxLength="255" />
-          <Property Name="SZDWMC_" Type="nvarchar" MaxLength="255" />
-          <Property Name="ZLLX_" Type="nvarchar" MaxLength="50" />
-          <Property Name="ZJ_" Type="nvarchar" MaxLength="50" />
-          <Property Name="ZCZB_" Type="nvarchar" MaxLength="50" />
-          <Property Name="GSGM_" Type="nvarchar" MaxLength="50" />
-          <Property Name="FRDB_" Type="nvarchar" MaxLength="50" />
-          <Property Name="LXDH_" Type="nvarchar" MaxLength="50" />
-          <Property Name="TXDZ_" Type="nvarchar" MaxLength="255" />
-          <Property Name="CYLX_" Type="nvarchar" MaxLength="50" />
-          <Property Name="JJLX_" Type="nvarchar" MaxLength="50" />
-          <Property Name="CYLX1" Type="nvarchar" MaxLength="50" />
-          <Property Name="NH_" Type="nvarchar" MaxLength="50" />
-          <Property Name="CZ_" Type="nvarchar" MaxLength="50" />
-          <Property Name="SS_" Type="nvarchar" MaxLength="50" />
-          <Property Name="JSQK_" Type="nvarchar" MaxLength="50" />
-          <Property Name="DYQK_" Type="nvarchar" MaxLength="50" />
-          <Property Name="ZLWZ_" Type="nvarchar" MaxLength="50" />
-          <Property Name="XSZD_" Type="nvarchar" MaxLength="50" />
-        </EntityType>-->
         <EntityContainer Name="wj_GisDbModelStoreContainer">
           <EntitySet Name="bsArcLayer" EntityType="Self.bsArcLayer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bsDynCondition" EntityType="Self.bsDynCondition" Schema="dbo" store:Type="Tables" />
@@ -1012,7 +925,8 @@ FROM [dbo].[blCityPlan] AS [blCityPlan]</DefiningQuery>
 [blLayer].[Name] AS [Name], 
 [blLayer].[Code] AS [Code], 
 [blLayer].[FullName] AS [FullName], 
-[blLayer].[DispNo] AS [DispNo]
+[blLayer].[DispNo] AS [DispNo], 
+[blLayer].[LoadVisible] AS [LoadVisible]
 FROM [dbo].[blLayer] AS [blLayer]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwLtdJcSj" EntityType="Self.vwLtdJcSj" store:Type="Views" store:Schema="dbo">
@@ -1897,6 +1811,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DispNo" Type="Int32" />
+          <Property Name="LoadVisible" Type="Boolean" />
         </EntityType>
         <EntityType Name="vwLtdJcSj">
           <Key>
@@ -2786,6 +2701,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <EntitySetMapping Name="blLayer">
             <EntityTypeMapping TypeName="wj_GisDbModel.blLayer">
               <MappingFragment StoreEntitySet="blLayer">
+                <ScalarProperty Name="LoadVisible" ColumnName="LoadVisible" />
                 <ScalarProperty Name="DispNo" ColumnName="DispNo" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
