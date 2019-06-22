@@ -93,8 +93,8 @@ namespace QyTech.SoftConf.UIList
             {
                 MessageBox.Show("操作失败");
             }
-            else if (ret==-1)
-                MessageBox.Show("没有需要导入的数据");
+            //else if (ret==-1)
+                //MessageBox.Show("没有需要导入的数据");
             else
                 MessageBox.Show("操作成功");
         }

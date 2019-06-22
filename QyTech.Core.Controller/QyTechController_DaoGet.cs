@@ -38,6 +38,7 @@ namespace QyTech.Core.ExController
         {
              try
             {
+
                 AddLogTable("获取", bsT.TName, bsT.Desp, where);
 
                 //ObjectClassFullName

@@ -251,7 +251,6 @@ namespace QyTech.Core.ExController.Bll
 
         public static Dictionary<string,string> GetbsTFieldsOType(EntityManager EManager, Guid loginUserId, bsTable bst)
         {
-
             List<bsField> bfs = EManager.GetListNoPaging<bsField>("bsT_Id='"+bst.bsT_Id.ToString()+"'","");
             //bfs=bst.bsField.ToList<bsField>();
             Dictionary<string, string> dicobjs = new Dictionary<string, string>();

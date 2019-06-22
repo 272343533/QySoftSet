@@ -126,8 +126,12 @@ namespace QyTech.Core.ExController
         /// </summary>
         /// <param name="strjson">json数据</param>
         /// <returns>修改结果json</returns>
-        public virtual string EditThenCheckLogical(string sessionid, string strjson,string idValue)
+        public virtual string EditThenCheckLogical()
         {
+            string sessionid; string strjson; string idValue;
+            sessionid = Request["sessionid"];
+            strjson = Request["strjson"];
+            idValue = Request["idValue"];
             if (strjson == null || strjson.Equals(""))
             {
                 return jsonMsgHelper.Create(1, "", "参数为空，无法修改");
@@ -369,6 +373,10 @@ namespace QyTech.Core.ExController
             }
         }
 
+        public virtual string GetByStoreProcedure(string sessionid, string spname, string kvwhere)
+        {
+            return "";
+        }
 
         public string ExcuteStoreProcedure(string sessionid, string spname,string paras)
         {
@@ -406,7 +414,15 @@ namespace QyTech.Core.ExController
                 string Key_TPk = "\"" + bsT.TPk + "\":";
                 string TpkDefaultIn = Key_TPk + "\"\"";
 
-                if (strjson.Contains(Key_TPk))
+                string tmp = strjson.Replace("{", "").Replace("}", "");
+                 tmp = tmp.Replace("\"", "");
+                string[] arrStr = tmp.Split(new char[] { ',',':' });
+                Dictionary<string, string> kvs = new Dictionary<string, string>();
+                for (int i = 0; i < arrStr.Length; i += 2)
+                {
+                    kvs[arrStr[i]] = arrStr[i + 1];
+                }
+                if (kvs.ContainsKey(bsT.TPk)&& kvs[bsT.TPk]!="null")
                 {
                     return Edit(sessionid, strjson);
                 }

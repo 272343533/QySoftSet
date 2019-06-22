@@ -97,12 +97,18 @@ namespace QyTech.Core.ExController
                         {
                             propertyInfo = dbtype.GetProperty(item.FName);
                             object svalue = propertyInfo.GetValue(rowdataobj, null);
+                            
+                            if (propertyInfo.PropertyType.ToString().Contains("string") &&  svalue == null)
+                            {
+                                continue;//应为可能数据太多，所以（水电表）有些数据可能分批保存，某些之为null，则字符型为null时不处理，可以为"" modified on 2019-04-18
+                            }
                             propertyInfo.SetValue(rowdbobj, svalue, null); //给对应属性赋值
 
                             //加入日志
                             object prevalue = propertyInfo.GetValue(rowdbobj, null);
-                            if (prevalue!=svalue)
-                                AddLogField(ltid, item.FName, item.FDesp, svalue==null?"null":svalue.ToString(), prevalue==null?"null":prevalue.ToString());
+                            if (prevalue != svalue)
+                                AddLogField(ltid, item.FName, item.FDesp, svalue == null ? "null" : svalue.ToString(), prevalue == null ? "null" : prevalue.ToString());
+                           
                         }
                         catch (Exception ex)
                         {
@@ -442,8 +448,11 @@ namespace QyTech.Core.ExController
             //否则，应该
             string Key_TPk = "\"" + bsT.TPk + "\"";
             string TpkDefault = Key_TPk + ":" + "\"" + PkCreateHelper.GetQySortGuidPk().ToString() + "\"";
-
-            if (bsT.TPkType == "uniqueidentifier")
+            if (bsT.TPkType == null)
+            {
+                throw new Exception("需明确主键类型！");
+            }
+            else if (bsT.TPkType == "uniqueidentifier")
             {
                 //json串是否包含主键
                 if (strjson.Contains(Key_TPk))
@@ -460,7 +469,21 @@ namespace QyTech.Core.ExController
                     strjson = "{" + TpkDefault + "," + strjson.Substring(1);
                 }
             }
-            //其它类型暂不处理，因为自增数据不用管
+            else if (bsT.TPkType.ToUpper() == "INT")
+            {
+                //自增数据，如果用户界面中包含主键对应值，应该删除掉这部分str；不包含的话就不用管
+                //json串是否包含主键
+                if (strjson.Contains(Key_TPk))
+                {
+                    //判断strjson是否有主键及默认值，没有则增加,此处用了一个有序的guid
+                    string TpkDefaultIn = Key_TPk + ":" + "\"null\",";
+                    if (strjson.Contains(TpkDefaultIn)) //如果传的串包含主键值为""，否则就是已经赋值
+                    {
+                        strjson = strjson.Replace(TpkDefaultIn, "");//则取消这部分
+                    }
+                }
+            }
+            //其它类型暂不处理
         }
 
 

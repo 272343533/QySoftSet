@@ -89,7 +89,7 @@ namespace QyTech.SoftConf.UIList
             {
                 string sqls = "exec bslyUpdateNavi2FunConf '" + currRowTPkId.ToString() + "'";
                 int ret = QyTech.DbUtils.SqlUtils.ExceuteSql(GlobalVaribles.SqConn_Base, sqls);
-                if (ret == -1)
+                if (ret == -2)
                 {
                     MessageBox.Show("初始化失败");
                 }
