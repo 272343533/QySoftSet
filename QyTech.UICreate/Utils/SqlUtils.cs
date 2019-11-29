@@ -440,7 +440,10 @@ namespace QyTech.DbUtils
                             string[] items = cb.Tag.ToString().Split(new char[] { ',' });
                             int selectedindex = cb.SelectedIndex;
                             int condindex = selectedindex >= items.Length - 1 ? items.Length - 1 : selectedindex;
-                            selectV = items[condindex];
+                            if (condindex != -1)
+                                selectV = items[condindex];
+                            else
+                                selectV = null;
                         }
                         if (c.Text.Trim() == "")
                         {
@@ -523,16 +526,16 @@ namespace QyTech.DbUtils
                         updateSql += "," + fname + "=" + HiddenFieldsValue[fname];
                     }
                 }
-                if (bst.TFkType=="uniqueidentifier")
-                {
-                    tpkvalue = "'" + tpkvalue + "'";
-                }
-                else if (bst.TPkType=="Int")
-                {
-                    tpkvalue =  tpkvalue;
-                }
-                else
-                    tpkvalue = "'" + tpkvalue + "'";
+                //if (bst.TFkType=="uniqueidentifier")
+                //{
+                //    tpkvalue = tpkvalue;
+                //}
+                //else if (bst.TPkType=="Int")
+                //{
+                //    tpkvalue =  tpkvalue;
+                //}
+                //else
+                    //tpkvalue = tpkvalue;
 
                 updateSql = updateSql.Replace("False", "0");
                 updateSql = updateSql.Replace("True", "1");

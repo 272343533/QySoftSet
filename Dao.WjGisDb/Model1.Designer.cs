@@ -24,32 +24,32 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    public partial class wj_GisDbEntities : ObjectContext
+    public partial class QyBllAppEntities : ObjectContext
     {
         #region 构造函数
     
         /// <summary>
-        /// 请使用应用程序配置文件的“wj_GisDbEntities”部分中的连接字符串初始化新 wj_GisDbEntities 对象。
+        /// 请使用应用程序配置文件的“QyBllAppEntities”部分中的连接字符串初始化新 QyBllAppEntities 对象。
         /// </summary>
-        public wj_GisDbEntities() : base("name=wj_GisDbEntities", "wj_GisDbEntities")
+        public QyBllAppEntities() : base("name=QyBllAppEntities", "QyBllAppEntities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
     
         /// <summary>
-        /// 初始化新的 wj_GisDbEntities 对象。
+        /// 初始化新的 QyBllAppEntities 对象。
         /// </summary>
-        public wj_GisDbEntities(string connectionString) : base(connectionString, "wj_GisDbEntities")
+        public QyBllAppEntities(string connectionString) : base(connectionString, "QyBllAppEntities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
     
         /// <summary>
-        /// 初始化新的 wj_GisDbEntities 对象。
+        /// 初始化新的 QyBllAppEntities 对象。
         /// </summary>
-        public wj_GisDbEntities(EntityConnection connection) : base(connection, "wj_GisDbEntities")
+        public QyBllAppEntities(EntityConnection connection) : base(connection, "QyBllAppEntities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
@@ -116,22 +116,6 @@ namespace Dao.QyBllApp
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        public ObjectSet<bsLtdInfo> bsLtdInfo
-        {
-            get
-            {
-                if ((_bsLtdInfo == null))
-                {
-                    _bsLtdInfo = base.CreateObjectSet<bsLtdInfo>("bsLtdInfo");
-                }
-                return _bsLtdInfo;
-            }
-        }
-        private ObjectSet<bsLtdInfo> _bsLtdInfo;
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
         public ObjectSet<bsTableImportType> bsTableImportType
         {
             get
@@ -192,22 +176,6 @@ namespace Dao.QyBllApp
             }
         }
         private ObjectSet<bsVisitLog> _bsVisitLog;
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        public ObjectSet<LtdPhoto> LtdPhoto
-        {
-            get
-            {
-                if ((_LtdPhoto == null))
-                {
-                    _LtdPhoto = base.CreateObjectSet<LtdPhoto>("LtdPhoto");
-                }
-                return _LtdPhoto;
-            }
-        }
-        private ObjectSet<LtdPhoto> _LtdPhoto;
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -288,22 +256,6 @@ namespace Dao.QyBllApp
             }
         }
         private ObjectSet<t标准化级别> _t标准化级别;
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        public ObjectSet<t高企> t高企
-        {
-            get
-            {
-                if ((_t高企 == null))
-                {
-                    _t高企 = base.CreateObjectSet<t高企>("t高企");
-                }
-                return _t高企;
-            }
-        }
-        private ObjectSet<t高企> _t高企;
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -724,22 +676,6 @@ namespace Dao.QyBllApp
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        public ObjectSet<vwLtdJcSj> vwLtdJcSj
-        {
-            get
-            {
-                if ((_vwLtdJcSj == null))
-                {
-                    _vwLtdJcSj = base.CreateObjectSet<vwLtdJcSj>("vwLtdJcSj");
-                }
-                return _vwLtdJcSj;
-            }
-        }
-        private ObjectSet<vwLtdJcSj> _vwLtdJcSj;
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
         public ObjectSet<dbtune> dbtune
         {
             get
@@ -784,6 +720,86 @@ namespace Dao.QyBllApp
             }
         }
         private ObjectSet<ST_SPATIAL_REFERENCE_SYSTEMS> _ST_SPATIAL_REFERENCE_SYSTEMS;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<bsLtdIndustries> bsLtdIndustries
+        {
+            get
+            {
+                if ((_bsLtdIndustries == null))
+                {
+                    _bsLtdIndustries = base.CreateObjectSet<bsLtdIndustries>("bsLtdIndustries");
+                }
+                return _bsLtdIndustries;
+            }
+        }
+        private ObjectSet<bsLtdIndustries> _bsLtdIndustries;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<t高企> t高企
+        {
+            get
+            {
+                if ((_t高企 == null))
+                {
+                    _t高企 = base.CreateObjectSet<t高企>("t高企");
+                }
+                return _t高企;
+            }
+        }
+        private ObjectSet<t高企> _t高企;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<LtdPhoto> LtdPhoto
+        {
+            get
+            {
+                if ((_LtdPhoto == null))
+                {
+                    _LtdPhoto = base.CreateObjectSet<LtdPhoto>("LtdPhoto");
+                }
+                return _LtdPhoto;
+            }
+        }
+        private ObjectSet<LtdPhoto> _LtdPhoto;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<bsLtdInfo> bsLtdInfo
+        {
+            get
+            {
+                if ((_bsLtdInfo == null))
+                {
+                    _bsLtdInfo = base.CreateObjectSet<bsLtdInfo>("bsLtdInfo");
+                }
+                return _bsLtdInfo;
+            }
+        }
+        private ObjectSet<bsLtdInfo> _bsLtdInfo;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<vwLtdJcSj> vwLtdJcSj
+        {
+            get
+            {
+                if ((_vwLtdJcSj == null))
+                {
+                    _vwLtdJcSj = base.CreateObjectSet<vwLtdJcSj>("vwLtdJcSj");
+                }
+                return _vwLtdJcSj;
+            }
+        }
+        private ObjectSet<vwLtdJcSj> _vwLtdJcSj;
 
         #endregion
 
@@ -811,14 +827,6 @@ namespace Dao.QyBllApp
         public void AddTobsHYDL(bsHYDL bsHYDL)
         {
             base.AddObject("bsHYDL", bsHYDL);
-        }
-    
-        /// <summary>
-        /// 用于向 bsLtdInfo EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
-        /// </summary>
-        public void AddTobsLtdInfo(bsLtdInfo bsLtdInfo)
-        {
-            base.AddObject("bsLtdInfo", bsLtdInfo);
         }
     
         /// <summary>
@@ -851,14 +859,6 @@ namespace Dao.QyBllApp
         public void AddTobsVisitLog(bsVisitLog bsVisitLog)
         {
             base.AddObject("bsVisitLog", bsVisitLog);
-        }
-    
-        /// <summary>
-        /// 用于向 LtdPhoto EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
-        /// </summary>
-        public void AddToLtdPhoto(LtdPhoto ltdPhoto)
-        {
-            base.AddObject("LtdPhoto", ltdPhoto);
         }
     
         /// <summary>
@@ -899,14 +899,6 @@ namespace Dao.QyBllApp
         public void AddTot标准化级别(t标准化级别 t标准化级别)
         {
             base.AddObject("t标准化级别", t标准化级别);
-        }
-    
-        /// <summary>
-        /// 用于向 t高企 EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
-        /// </summary>
-        public void AddTot高企(t高企 t高企)
-        {
-            base.AddObject("t高企", t高企);
         }
     
         /// <summary>
@@ -1118,14 +1110,6 @@ namespace Dao.QyBllApp
         }
     
         /// <summary>
-        /// 用于向 vwLtdJcSj EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
-        /// </summary>
-        public void AddTovwLtdJcSj(vwLtdJcSj vwLtdJcSj)
-        {
-            base.AddObject("vwLtdJcSj", vwLtdJcSj);
-        }
-    
-        /// <summary>
         /// 用于向 dbtune EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
         /// </summary>
         public void AddTodbtune(dbtune dbtune)
@@ -1148,6 +1132,46 @@ namespace Dao.QyBllApp
         {
             base.AddObject("ST_SPATIAL_REFERENCE_SYSTEMS", sT_SPATIAL_REFERENCE_SYSTEMS);
         }
+    
+        /// <summary>
+        /// 用于向 bsLtdIndustries EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddTobsLtdIndustries(bsLtdIndustries bsLtdIndustries)
+        {
+            base.AddObject("bsLtdIndustries", bsLtdIndustries);
+        }
+    
+        /// <summary>
+        /// 用于向 t高企 EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddTot高企(t高企 t高企)
+        {
+            base.AddObject("t高企", t高企);
+        }
+    
+        /// <summary>
+        /// 用于向 LtdPhoto EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToLtdPhoto(LtdPhoto ltdPhoto)
+        {
+            base.AddObject("LtdPhoto", ltdPhoto);
+        }
+    
+        /// <summary>
+        /// 用于向 bsLtdInfo EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddTobsLtdInfo(bsLtdInfo bsLtdInfo)
+        {
+            base.AddObject("bsLtdInfo", bsLtdInfo);
+        }
+    
+        /// <summary>
+        /// 用于向 vwLtdJcSj EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddTovwLtdJcSj(vwLtdJcSj vwLtdJcSj)
+        {
+            base.AddObject("vwLtdJcSj", vwLtdJcSj);
+        }
 
         #endregion
 
@@ -1160,7 +1184,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="blCityPlan")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="blCityPlan")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class blCityPlan : EntityObject
@@ -1336,7 +1360,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="blLayer")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="blLayer")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class blLayer : EntityObject
@@ -1536,7 +1560,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="bsArcLayer")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="bsArcLayer")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class bsArcLayer : EntityObject
@@ -1928,7 +1952,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="bsDynCondition")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="bsDynCondition")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class bsDynCondition : EntityObject
@@ -2200,7 +2224,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="bsHYDL")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="bsHYDL")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class bsHYDL : EntityObject
@@ -2378,7 +2402,233 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="bsLtdInfo")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="bsLtdIndustries")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class bsLtdIndustries : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 bsLtdIndustries 对象。
+        /// </summary>
+        /// <param name="id">Id 属性的初始值。</param>
+        /// <param name="name">Name 属性的初始值。</param>
+        public static bsLtdIndustries CreatebsLtdIndustries(global::System.Int32 id, global::System.String name)
+        {
+            bsLtdIndustries bsLtdIndustries = new bsLtdIndustries();
+            bsLtdIndustries.Id = id;
+            bsLtdIndustries.Name = name;
+            return bsLtdIndustries;
+        }
+
+        #endregion
+
+        #region 简单属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value, "Id");
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String HNo
+        {
+            get
+            {
+                return _HNo;
+            }
+            set
+            {
+                OnHNoChanging(value);
+                ReportPropertyChanging("HNo");
+                _HNo = StructuralObject.SetValidValue(value, true, "HNo");
+                ReportPropertyChanged("HNo");
+                OnHNoChanged();
+            }
+        }
+        private global::System.String _HNo;
+        partial void OnHNoChanging(global::System.String value);
+        partial void OnHNoChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> HLevel
+        {
+            get
+            {
+                return _HLevel;
+            }
+            set
+            {
+                OnHLevelChanging(value);
+                ReportPropertyChanging("HLevel");
+                _HLevel = StructuralObject.SetValidValue(value, "HLevel");
+                ReportPropertyChanged("HLevel");
+                OnHLevelChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _HLevel;
+        partial void OnHLevelChanging(Nullable<global::System.Int32> value);
+        partial void OnHLevelChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> PId
+        {
+            get
+            {
+                return _PId;
+            }
+            set
+            {
+                OnPIdChanging(value);
+                ReportPropertyChanging("PId");
+                _PId = StructuralObject.SetValidValue(value, "PId");
+                ReportPropertyChanged("PId");
+                OnPIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _PId;
+        partial void OnPIdChanging(Nullable<global::System.Int32> value);
+        partial void OnPIdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> IsUse
+        {
+            get
+            {
+                return _IsUse;
+            }
+            set
+            {
+                OnIsUseChanging(value);
+                ReportPropertyChanging("IsUse");
+                _IsUse = StructuralObject.SetValidValue(value, "IsUse");
+                ReportPropertyChanged("IsUse");
+                OnIsUseChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _IsUse;
+        partial void OnIsUseChanging(Nullable<global::System.Boolean> value);
+        partial void OnIsUseChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String bsS_Codes
+        {
+            get
+            {
+                return _bsS_Codes;
+            }
+            set
+            {
+                OnbsS_CodesChanging(value);
+                ReportPropertyChanging("bsS_Codes");
+                _bsS_Codes = StructuralObject.SetValidValue(value, true, "bsS_Codes");
+                ReportPropertyChanged("bsS_Codes");
+                OnbsS_CodesChanged();
+            }
+        }
+        private global::System.String _bsS_Codes;
+        partial void OnbsS_CodesChanging(global::System.String value);
+        partial void OnbsS_CodesChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> bsS_Value
+        {
+            get
+            {
+                return _bsS_Value;
+            }
+            set
+            {
+                OnbsS_ValueChanging(value);
+                ReportPropertyChanging("bsS_Value");
+                _bsS_Value = StructuralObject.SetValidValue(value, "bsS_Value");
+                ReportPropertyChanged("bsS_Value");
+                OnbsS_ValueChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _bsS_Value;
+        partial void OnbsS_ValueChanging(Nullable<global::System.Int32> value);
+        partial void OnbsS_ValueChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="bsLtdInfo")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class bsLtdInfo : EntityObject
@@ -2389,10 +2639,12 @@ namespace Dao.QyBllApp
         /// 创建新的 bsLtdInfo 对象。
         /// </summary>
         /// <param name="ltd_Id">Ltd_Id 属性的初始值。</param>
-        public static bsLtdInfo CreatebsLtdInfo(global::System.Int32 ltd_Id)
+        /// <param name="序号">序号 属性的初始值。</param>
+        public static bsLtdInfo CreatebsLtdInfo(global::System.Int32 ltd_Id, global::System.String 序号)
         {
             bsLtdInfo bsLtdInfo = new bsLtdInfo();
             bsLtdInfo.Ltd_Id = ltd_Id;
+            bsLtdInfo.序号 = 序号;
             return bsLtdInfo;
         }
 
@@ -2430,7 +2682,7 @@ namespace Dao.QyBllApp
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String 序号
         {
@@ -2442,7 +2694,7 @@ namespace Dao.QyBllApp
             {
                 On序号Changing(value);
                 ReportPropertyChanging("序号");
-                _序号 = StructuralObject.SetValidValue(value, true, "序号");
+                _序号 = StructuralObject.SetValidValue(value, false, "序号");
                 ReportPropertyChanged("序号");
                 On序号Changed();
             }
@@ -2936,7 +3188,7 @@ namespace Dao.QyBllApp
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> 清洁生产历年年度
+        public global::System.String 清洁生产历年年度
         {
             get
             {
@@ -2946,13 +3198,13 @@ namespace Dao.QyBllApp
             {
                 On清洁生产历年年度Changing(value);
                 ReportPropertyChanging("清洁生产历年年度");
-                _清洁生产历年年度 = StructuralObject.SetValidValue(value, "清洁生产历年年度");
+                _清洁生产历年年度 = StructuralObject.SetValidValue(value, true, "清洁生产历年年度");
                 ReportPropertyChanged("清洁生产历年年度");
                 On清洁生产历年年度Changed();
             }
         }
-        private Nullable<global::System.Int32> _清洁生产历年年度;
-        partial void On清洁生产历年年度Changing(Nullable<global::System.Int32> value);
+        private global::System.String _清洁生产历年年度;
+        partial void On清洁生产历年年度Changing(global::System.String value);
         partial void On清洁生产历年年度Changed();
     
         /// <summary>
@@ -3202,7 +3454,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="bsTableImportType")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="bsTableImportType")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class bsTableImportType : EntityObject
@@ -3332,7 +3584,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="bsTotalResult")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="bsTotalResult")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class bsTotalResult : EntityObject
@@ -3508,7 +3760,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="bsUser_Ex")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="bsUser_Ex")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class bsUser_Ex : EntityObject
@@ -3588,7 +3840,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="bsVisitLog")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="bsVisitLog")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class bsVisitLog : EntityObject
@@ -3740,7 +3992,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="dbtune")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="dbtune")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class dbtune : EntityObject
@@ -3849,7 +4101,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="LtdPhoto")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="LtdPhoto")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class LtdPhoto : EntityObject
@@ -4071,6 +4323,30 @@ namespace Dao.QyBllApp
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
+        public global::System.Byte[] PicureObj
+        {
+            get
+            {
+                return StructuralObject.GetValidValue(_PicureObj);
+            }
+            set
+            {
+                OnPicureObjChanging(value);
+                ReportPropertyChanging("PicureObj");
+                _PicureObj = StructuralObject.SetValidValue(value, true, "PicureObj");
+                ReportPropertyChanged("PicureObj");
+                OnPicureObjChanged();
+            }
+        }
+        private global::System.Byte[] _PicureObj;
+        partial void OnPicureObjChanging(global::System.Byte[] value);
+        partial void OnPicureObjChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
         public global::System.String PicMemo
         {
             get
@@ -4089,6 +4365,30 @@ namespace Dao.QyBllApp
         private global::System.String _PicMemo;
         partial void OnPicMemoChanging(global::System.String value);
         partial void OnPicMemoChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> UpDt
+        {
+            get
+            {
+                return _UpDt;
+            }
+            set
+            {
+                OnUpDtChanging(value);
+                ReportPropertyChanging("UpDt");
+                _UpDt = StructuralObject.SetValidValue(value, "UpDt");
+                ReportPropertyChanged("UpDt");
+                OnUpDtChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _UpDt;
+        partial void OnUpDtChanging(Nullable<global::System.DateTime> value);
+        partial void OnUpDtChanged();
 
         #endregion
 
@@ -4097,7 +4397,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="LtdProblem")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="LtdProblem")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class LtdProblem : EntityObject
@@ -4417,7 +4717,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="LtdRegular")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="LtdRegular")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class LtdRegular : EntityObject
@@ -4713,7 +5013,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="ST_GEOMETRY_COLUMNS")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="ST_GEOMETRY_COLUMNS")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class ST_GEOMETRY_COLUMNS : EntityObject
@@ -4914,7 +5214,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="ST_SPATIAL_REFERENCE_SYSTEMS")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="ST_SPATIAL_REFERENCE_SYSTEMS")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class ST_SPATIAL_REFERENCE_SYSTEMS : EntityObject
@@ -5279,7 +5579,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="tmpLtdXx")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="tmpLtdXx")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class tmpLtdXx : EntityObject
@@ -6391,7 +6691,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="t安全事故情况")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="t安全事故情况")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class t安全事故情况 : EntityObject
@@ -6511,6 +6811,54 @@ namespace Dao.QyBllApp
         private global::System.String _事故类型;
         partial void On事故类型Changing(global::System.String value);
         partial void On事故类型Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 地块编号
+        {
+            get
+            {
+                return _地块编号;
+            }
+            set
+            {
+                On地块编号Changing(value);
+                ReportPropertyChanging("地块编号");
+                _地块编号 = StructuralObject.SetValidValue(value, true, "地块编号");
+                ReportPropertyChanged("地块编号");
+                On地块编号Changed();
+            }
+        }
+        private global::System.String _地块编号;
+        partial void On地块编号Changing(global::System.String value);
+        partial void On地块编号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 纳税人识别号
+        {
+            get
+            {
+                return _纳税人识别号;
+            }
+            set
+            {
+                On纳税人识别号Changing(value);
+                ReportPropertyChanging("纳税人识别号");
+                _纳税人识别号 = StructuralObject.SetValidValue(value, true, "纳税人识别号");
+                ReportPropertyChanged("纳税人识别号");
+                On纳税人识别号Changed();
+            }
+        }
+        private global::System.String _纳税人识别号;
+        partial void On纳税人识别号Changing(global::System.String value);
+        partial void On纳税人识别号Changed();
 
         #endregion
 
@@ -6519,7 +6867,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="t标准化级别")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="t标准化级别")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class t标准化级别 : EntityObject
@@ -6711,6 +7059,30 @@ namespace Dao.QyBllApp
         private global::System.String _地块编号;
         partial void On地块编号Changing(global::System.String value);
         partial void On地块编号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 纳税人识别号
+        {
+            get
+            {
+                return _纳税人识别号;
+            }
+            set
+            {
+                On纳税人识别号Changing(value);
+                ReportPropertyChanging("纳税人识别号");
+                _纳税人识别号 = StructuralObject.SetValidValue(value, true, "纳税人识别号");
+                ReportPropertyChanged("纳税人识别号");
+                On纳税人识别号Changed();
+            }
+        }
+        private global::System.String _纳税人识别号;
+        partial void On纳税人识别号Changing(global::System.String value);
+        partial void On纳税人识别号Changed();
 
         #endregion
 
@@ -6719,7 +7091,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="t高企")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="t高企")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class t高企 : EntityObject
@@ -6943,7 +7315,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="t工程技术研究中心")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="t工程技术研究中心")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class t工程技术研究中心 : EntityObject
@@ -7159,6 +7531,30 @@ namespace Dao.QyBllApp
         private global::System.String _认定文件名称或文号;
         partial void On认定文件名称或文号Changing(global::System.String value);
         partial void On认定文件名称或文号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 地块编号
+        {
+            get
+            {
+                return _地块编号;
+            }
+            set
+            {
+                On地块编号Changing(value);
+                ReportPropertyChanging("地块编号");
+                _地块编号 = StructuralObject.SetValidValue(value, true, "地块编号");
+                ReportPropertyChanged("地块编号");
+                On地块编号Changed();
+            }
+        }
+        private global::System.String _地块编号;
+        partial void On地块编号Changing(global::System.String value);
+        partial void On地块编号Changed();
 
         #endregion
 
@@ -7167,7 +7563,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="t工业固定资产")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="t工业固定资产")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class t工业固定资产 : EntityObject
@@ -7359,6 +7755,54 @@ namespace Dao.QyBllApp
         private global::System.String _本年完成投资;
         partial void On本年完成投资Changing(global::System.String value);
         partial void On本年完成投资Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 地块编号
+        {
+            get
+            {
+                return _地块编号;
+            }
+            set
+            {
+                On地块编号Changing(value);
+                ReportPropertyChanging("地块编号");
+                _地块编号 = StructuralObject.SetValidValue(value, true, "地块编号");
+                ReportPropertyChanged("地块编号");
+                On地块编号Changed();
+            }
+        }
+        private global::System.String _地块编号;
+        partial void On地块编号Changing(global::System.String value);
+        partial void On地块编号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 纳税人识别号
+        {
+            get
+            {
+                return _纳税人识别号;
+            }
+            set
+            {
+                On纳税人识别号Changing(value);
+                ReportPropertyChanging("纳税人识别号");
+                _纳税人识别号 = StructuralObject.SetValidValue(value, true, "纳税人识别号");
+                ReportPropertyChanged("纳税人识别号");
+                On纳税人识别号Changed();
+            }
+        }
+        private global::System.String _纳税人识别号;
+        partial void On纳税人识别号Changing(global::System.String value);
+        partial void On纳税人识别号Changed();
 
         #endregion
 
@@ -7367,7 +7811,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="t规上企业名单")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="t规上企业名单")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class t规上企业名单 : EntityObject
@@ -7511,6 +7955,54 @@ namespace Dao.QyBllApp
         private global::System.String _企业名称;
         partial void On企业名称Changing(global::System.String value);
         partial void On企业名称Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 地块编号
+        {
+            get
+            {
+                return _地块编号;
+            }
+            set
+            {
+                On地块编号Changing(value);
+                ReportPropertyChanging("地块编号");
+                _地块编号 = StructuralObject.SetValidValue(value, true, "地块编号");
+                ReportPropertyChanged("地块编号");
+                On地块编号Changed();
+            }
+        }
+        private global::System.String _地块编号;
+        partial void On地块编号Changing(global::System.String value);
+        partial void On地块编号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 纳税人识别号
+        {
+            get
+            {
+                return _纳税人识别号;
+            }
+            set
+            {
+                On纳税人识别号Changing(value);
+                ReportPropertyChanging("纳税人识别号");
+                _纳税人识别号 = StructuralObject.SetValidValue(value, true, "纳税人识别号");
+                ReportPropertyChanged("纳税人识别号");
+                On纳税人识别号Changed();
+            }
+        }
+        private global::System.String _纳税人识别号;
+        partial void On纳税人识别号Changing(global::System.String value);
+        partial void On纳税人识别号Changed();
 
         #endregion
 
@@ -7519,7 +8011,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="t经发局表格")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="t经发局表格")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class t经发局表格 : EntityObject
@@ -7983,7 +8475,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="t开发区2000万企业")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="t开发区2000万企业")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class t开发区2000万企业 : EntityObject
@@ -8279,7 +8771,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="t立案处罚情况")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="t立案处罚情况")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class t立案处罚情况 : EntityObject
@@ -8405,6 +8897,54 @@ namespace Dao.QyBllApp
         private global::System.String _年份;
         partial void On年份Changing(global::System.String value);
         partial void On年份Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 地块编号
+        {
+            get
+            {
+                return _地块编号;
+            }
+            set
+            {
+                On地块编号Changing(value);
+                ReportPropertyChanging("地块编号");
+                _地块编号 = StructuralObject.SetValidValue(value, true, "地块编号");
+                ReportPropertyChanged("地块编号");
+                On地块编号Changed();
+            }
+        }
+        private global::System.String _地块编号;
+        partial void On地块编号Changing(global::System.String value);
+        partial void On地块编号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 纳税人识别号
+        {
+            get
+            {
+                return _纳税人识别号;
+            }
+            set
+            {
+                On纳税人识别号Changing(value);
+                ReportPropertyChanging("纳税人识别号");
+                _纳税人识别号 = StructuralObject.SetValidValue(value, true, "纳税人识别号");
+                ReportPropertyChanged("纳税人识别号");
+                On纳税人识别号Changed();
+            }
+        }
+        private global::System.String _纳税人识别号;
+        partial void On纳税人识别号Changing(global::System.String value);
+        partial void On纳税人识别号Changed();
 
         #endregion
 
@@ -8413,7 +8953,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="t能耗数据")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="t能耗数据")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class t能耗数据 : EntityObject
@@ -8517,7 +9057,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="t企业基础数据")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="t企业基础数据")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class t企业基础数据 : EntityObject
@@ -9525,6 +10065,30 @@ namespace Dao.QyBllApp
         private Nullable<global::System.Double> _亩均税收;
         partial void On亩均税收Changing(Nullable<global::System.Double> value);
         partial void On亩均税收Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 地块编号
+        {
+            get
+            {
+                return _地块编号;
+            }
+            set
+            {
+                On地块编号Changing(value);
+                ReportPropertyChanging("地块编号");
+                _地块编号 = StructuralObject.SetValidValue(value, true, "地块编号");
+                ReportPropertyChanged("地块编号");
+                On地块编号Changed();
+            }
+        }
+        private global::System.String _地块编号;
+        partial void On地块编号Changing(global::System.String value);
+        partial void On地块编号Changed();
 
         #endregion
 
@@ -9533,7 +10097,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="t企业技术中心台账")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="t企业技术中心台账")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class t企业技术中心台账 : EntityObject
@@ -9751,6 +10315,30 @@ namespace Dao.QyBllApp
         private global::System.String _地块编号;
         partial void On地块编号Changing(global::System.String value);
         partial void On地块编号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 纳税人识别号
+        {
+            get
+            {
+                return _纳税人识别号;
+            }
+            set
+            {
+                On纳税人识别号Changing(value);
+                ReportPropertyChanging("纳税人识别号");
+                _纳税人识别号 = StructuralObject.SetValidValue(value, true, "纳税人识别号");
+                ReportPropertyChanged("纳税人识别号");
+                On纳税人识别号Changed();
+            }
+        }
+        private global::System.String _纳税人识别号;
+        partial void On纳税人识别号Changing(global::System.String value);
+        partial void On纳税人识别号Changed();
 
         #endregion
 
@@ -9759,7 +10347,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="t清洁生产历年")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="t清洁生产历年")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class t清洁生产历年 : EntityObject
@@ -9927,6 +10515,30 @@ namespace Dao.QyBllApp
         private global::System.String _地块编号;
         partial void On地块编号Changing(global::System.String value);
         partial void On地块编号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 纳税人识别号
+        {
+            get
+            {
+                return _纳税人识别号;
+            }
+            set
+            {
+                On纳税人识别号Changing(value);
+                ReportPropertyChanging("纳税人识别号");
+                _纳税人识别号 = StructuralObject.SetValidValue(value, true, "纳税人识别号");
+                ReportPropertyChanged("纳税人识别号");
+                On纳税人识别号Changed();
+            }
+        }
+        private global::System.String _纳税人识别号;
+        partial void On纳税人识别号Changing(global::System.String value);
+        partial void On纳税人识别号Changed();
 
         #endregion
 
@@ -9935,7 +10547,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="t市局表格")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="t市局表格")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class t市局表格 : EntityObject
@@ -10807,7 +11419,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="t同里镇开发区上市企业台帐三板")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="t同里镇开发区上市企业台帐三板")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class t同里镇开发区上市企业台帐三板 : EntityObject
@@ -11127,7 +11739,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="t同里镇开发区上市企业台帐台资")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="t同里镇开发区上市企业台帐台资")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class t同里镇开发区上市企业台帐台资 : EntityObject
@@ -11343,6 +11955,30 @@ namespace Dao.QyBllApp
         private global::System.String _地块编号;
         partial void On地块编号Changing(global::System.String value);
         partial void On地块编号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 纳税人识别号
+        {
+            get
+            {
+                return _纳税人识别号;
+            }
+            set
+            {
+                On纳税人识别号Changing(value);
+                ReportPropertyChanging("纳税人识别号");
+                _纳税人识别号 = StructuralObject.SetValidValue(value, true, "纳税人识别号");
+                ReportPropertyChanged("纳税人识别号");
+                On纳税人识别号Changed();
+            }
+        }
+        private global::System.String _纳税人识别号;
+        partial void On纳税人识别号Changing(global::System.String value);
+        partial void On纳税人识别号Changed();
 
         #endregion
 
@@ -11351,7 +11987,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="t同里镇开发区上市企业台帐主版后备")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="t同里镇开发区上市企业台帐主版后备")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class t同里镇开发区上市企业台帐主版后备 : EntityObject
@@ -11815,7 +12451,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="t吴江区智能制造示范试点企业名单")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="t吴江区智能制造示范试点企业名单")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class t吴江区智能制造示范试点企业名单 : EntityObject
@@ -12007,6 +12643,54 @@ namespace Dao.QyBllApp
         private global::System.String _年份;
         partial void On年份Changing(global::System.String value);
         partial void On年份Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 地块编号
+        {
+            get
+            {
+                return _地块编号;
+            }
+            set
+            {
+                On地块编号Changing(value);
+                ReportPropertyChanging("地块编号");
+                _地块编号 = StructuralObject.SetValidValue(value, true, "地块编号");
+                ReportPropertyChanged("地块编号");
+                On地块编号Changed();
+            }
+        }
+        private global::System.String _地块编号;
+        partial void On地块编号Changing(global::System.String value);
+        partial void On地块编号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 纳税人识别号
+        {
+            get
+            {
+                return _纳税人识别号;
+            }
+            set
+            {
+                On纳税人识别号Changing(value);
+                ReportPropertyChanging("纳税人识别号");
+                _纳税人识别号 = StructuralObject.SetValidValue(value, true, "纳税人识别号");
+                ReportPropertyChanged("纳税人识别号");
+                On纳税人识别号Changed();
+            }
+        }
+        private global::System.String _纳税人识别号;
+        partial void On纳税人识别号Changing(global::System.String value);
+        partial void On纳税人识别号Changed();
 
         #endregion
 
@@ -12015,7 +12699,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="t闲置土地盘活计划表")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="t闲置土地盘活计划表")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class t闲置土地盘活计划表 : EntityObject
@@ -12239,7 +12923,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="t新地标计划企业名单")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="t新地标计划企业名单")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class t新地标计划企业名单 : EntityObject
@@ -12503,6 +13187,30 @@ namespace Dao.QyBllApp
         private global::System.String _地块编号;
         partial void On地块编号Changing(global::System.String value);
         partial void On地块编号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 纳税人识别号
+        {
+            get
+            {
+                return _纳税人识别号;
+            }
+            set
+            {
+                On纳税人识别号Changing(value);
+                ReportPropertyChanging("纳税人识别号");
+                _纳税人识别号 = StructuralObject.SetValidValue(value, true, "纳税人识别号");
+                ReportPropertyChanged("纳税人识别号");
+                On纳税人识别号Changed();
+            }
+        }
+        private global::System.String _纳税人识别号;
+        partial void On纳税人识别号Changing(global::System.String value);
+        partial void On纳税人识别号Changed();
 
         #endregion
 
@@ -12511,7 +13219,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="t智能车间")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="t智能车间")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class t智能车间 : EntityObject
@@ -12703,6 +13411,30 @@ namespace Dao.QyBllApp
         private global::System.String _地块编号;
         partial void On地块编号Changing(global::System.String value);
         partial void On地块编号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 纳税人识别号
+        {
+            get
+            {
+                return _纳税人识别号;
+            }
+            set
+            {
+                On纳税人识别号Changing(value);
+                ReportPropertyChanging("纳税人识别号");
+                _纳税人识别号 = StructuralObject.SetValidValue(value, true, "纳税人识别号");
+                ReportPropertyChanged("纳税人识别号");
+                On纳税人识别号Changed();
+            }
+        }
+        private global::System.String _纳税人识别号;
+        partial void On纳税人识别号Changing(global::System.String value);
+        partial void On纳税人识别号Changed();
 
         #endregion
 
@@ -12711,7 +13443,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="vwLtdJcSj")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="vwLtdJcSj")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class vwLtdJcSj : EntityObject
@@ -13751,7 +14483,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="z企业变化信息表")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="z企业变化信息表")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class z企业变化信息表 : EntityObject
@@ -14071,7 +14803,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="z新增企业信息表")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="z新增企业信息表")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class z新增企业信息表 : EntityObject
@@ -14367,7 +15099,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="z租赁企业信息表")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="z租赁企业信息表")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class z租赁企业信息表 : EntityObject
@@ -15479,7 +16211,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="城市规划")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="城市规划")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class 城市规划 : EntityObject
@@ -15527,30 +16259,6 @@ namespace Dao.QyBllApp
         private global::System.Int32 _OBJECTID;
         partial void OnOBJECTIDChanging(global::System.Int32 value);
         partial void OnOBJECTIDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.Data.Spatial.DbGeometry Shape
-        {
-            get
-            {
-                return _Shape;
-            }
-            set
-            {
-                OnShapeChanging(value);
-                ReportPropertyChanging("Shape");
-                _Shape = StructuralObject.SetValidValue(value, true, "Shape");
-                ReportPropertyChanged("Shape");
-                OnShapeChanged();
-            }
-        }
-        private global::System.Data.Spatial.DbGeometry _Shape;
-        partial void OnShapeChanging(global::System.Data.Spatial.DbGeometry value);
-        partial void OnShapeChanged();
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -15823,7 +16531,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="房屋建筑")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="房屋建筑")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class 房屋建筑 : EntityObject
@@ -16183,30 +16891,6 @@ namespace Dao.QyBllApp
         private global::System.String _SSGLQMC;
         partial void OnSSGLQMCChanging(global::System.String value);
         partial void OnSSGLQMCChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.Data.Spatial.DbGeometry Shape
-        {
-            get
-            {
-                return _Shape;
-            }
-            set
-            {
-                OnShapeChanging(value);
-                ReportPropertyChanging("Shape");
-                _Shape = StructuralObject.SetValidValue(value, true, "Shape");
-                ReportPropertyChanged("Shape");
-                OnShapeChanged();
-            }
-        }
-        private global::System.Data.Spatial.DbGeometry _Shape;
-        partial void OnShapeChanging(global::System.Data.Spatial.DbGeometry value);
-        partial void OnShapeChanged();
 
         #endregion
 
@@ -16215,7 +16899,7 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="wj_GisDbModel", Name="企业范围")]
+    [EdmEntityTypeAttribute(NamespaceName="QyBllAppModel", Name="企业范围")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class 企业范围 : EntityObject
@@ -17319,30 +18003,6 @@ namespace Dao.QyBllApp
         private global::System.String _XSZD_;
         partial void OnXSZD_Changing(global::System.String value);
         partial void OnXSZD_Changed();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.Data.Spatial.DbGeometry Shape
-        {
-            get
-            {
-                return _Shape;
-            }
-            set
-            {
-                OnShapeChanging(value);
-                ReportPropertyChanging("Shape");
-                _Shape = StructuralObject.SetValidValue(value, true, "Shape");
-                ReportPropertyChanged("Shape");
-                OnShapeChanged();
-            }
-        }
-        private global::System.Data.Spatial.DbGeometry _Shape;
-        partial void OnShapeChanging(global::System.Data.Spatial.DbGeometry value);
-        partial void OnShapeChanged();
 
         #endregion
 

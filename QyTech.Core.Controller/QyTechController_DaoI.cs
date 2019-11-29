@@ -237,8 +237,8 @@ namespace QyTech.Core.ExController
         /// 根据指定字段值编辑数据
         /// </summary>
         /// <param name="sessionid"></param>
-        /// <param name="FName"></param>
-        /// <param name="FValue"></param>
+        /// <param name="FName">字段</param>
+        /// <param name="FValue">字段值</param>
         /// <param name="keyvalues">需要编辑的数据，json数组格式，编辑项的keyvalue列表，非数值型不需加引号，如：[{Name: 张三},{Age: 18}]</param>
         /// <returns></returns>
         public virtual string EditbyKeyValues(string sessionid, string FName, string FValue, string keyvalues)

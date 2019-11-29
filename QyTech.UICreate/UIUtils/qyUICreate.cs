@@ -72,7 +72,7 @@ namespace QyTech.UICreate.Util
                             {
                                 string[] items = new string[2];
                                 if (ff.FEditValueEx != null && ff.FEditValueEx.Trim() != "")
-                                    items = QyTech.DbUtils.SqlUtils.ParseSelectItemsFromFunField(sqlconn, ff.FEditValueEx, "系统配置");
+                                    items = QyTech.DbUtils.SqlUtils.ParseSelectItemsFromFunField(sqlconn, ff.FEditValueEx, "吴江地理信息系统");//此处应该是动态的app值。怎么传过来呢？
                                 else
                                 {
                                     items[0] = ""; items[1] = "";

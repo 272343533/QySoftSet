@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0e43c68c61b646cca7d46ac351d09f8b" Name="关系图1" ZoomLevel="97">
+        <EntityTypeShape EntityType="QyExpressModel.blBaseInfo" Width="1.5" PointX="0.75" PointY="3.5" />
+        <EntityTypeShape EntityType="QyExpressModel.blBtnStyleList" Width="1.5" PointX="8.75" PointY="3.5" />
+        <EntityTypeShape EntityType="QyExpressModel.blEmployee" Width="1.5" PointX="9.75" PointY="19.5" />
+        <EntityTypeShape EntityType="QyExpressModel.blImageList" Width="1.5" PointX="15.75" PointY="3.5" />
+        <EntityTypeShape EntityType="QyExpressModel.blPredefineInterface" Width="1.5" PointX="11.75" PointY="19.5" />
+        <EntityTypeShape EntityType="QyExpressModel.bsAppName" Width="1.5" PointX="17.75" PointY="3.5" />
+        <EntityTypeShape EntityType="QyExpressModel.bsAreaRegistration" Width="1.5" PointX="13" PointY="4.375" />
+        <EntityTypeShape EntityType="QyExpressModel.bsCommEntranceUrl" Width="1.5" PointX="0.75" PointY="20.5" />
+        <EntityTypeShape EntityType="QyExpressModel.bsDb" Width="1.5" PointX="10.75" PointY="11" />
+        <EntityTypeShape EntityType="QyExpressModel.bsErrLog" Width="1.5" PointX="17.75" PointY="8.5" />
+        <EntityTypeShape EntityType="QyExpressModel.bsField" Width="1.5" PointX="15.25" PointY="16.125" />
+        <EntityTypeShape EntityType="QyExpressModel.bsFName2ExcelColMap" Width="1.5" PointX="15.25" PointY="7" />
+        <EntityTypeShape EntityType="QyExpressModel.bsFunConf" Width="1.5" PointX="6" PointY="3.25" />
+        <EntityTypeShape EntityType="QyExpressModel.bsFunField" Width="1.5" PointX="17.5" PointY="15.125" />
+        <EntityTypeShape EntityType="QyExpressModel.bsFunOper" Width="1.5" PointX="8.25" PointY="7.625" />
+        <EntityTypeShape EntityType="QyExpressModel.bsFunQuery" Width="1.5" PointX="19.75" PointY="16.125" />
+        <EntityTypeShape EntityType="QyExpressModel.bsNavigation" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QyExpressModel.bsOrganize" Width="1.5" PointX="3" PointY="14.625" />
+        <EntityTypeShape EntityType="QyExpressModel.bsRole" Width="1.5" PointX="5.25" PointY="20.75" />
+        <EntityTypeShape EntityType="QyExpressModel.bsRoleFunOperRel" Width="1.5" PointX="10.5" PointY="16.625" />
+        <EntityTypeShape EntityType="QyExpressModel.bsRoleNaviRel" Width="1.5" PointX="10.5" PointY="8.125" />
+        <EntityTypeShape EntityType="QyExpressModel.bsRoleTFDataRel" Width="1.5" PointX="7.5" PointY="29.125" />
+        <EntityTypeShape EntityType="QyExpressModel.bsSession" Width="1.5" PointX="19.75" PointY="3.5" />
+        <EntityTypeShape EntityType="QyExpressModel.bsSoftCustInfo" Width="1.5" PointX="0.75" PointY="9.25" />
+        <EntityTypeShape EntityType="QyExpressModel.bsSoftRelFuns" Width="1.5" PointX="6" PointY="11.125" />
+        <EntityTypeShape EntityType="QyExpressModel.bsTable" Width="1.5" PointX="13" PointY="11.375" />
+        <EntityTypeShape EntityType="QyExpressModel.bsTInterface" Width="1.5" PointX="15.25" PointY="11" />
+        <EntityTypeShape EntityType="QyExpressModel.bsUser" Width="1.5" PointX="5.25" PointY="14.375" />
+        <EntityTypeShape EntityType="QyExpressModel.bsUserOrgRel" Width="1.5" PointX="8.5" PointY="13.125" />
+        <EntityTypeShape EntityType="QyExpressModel.bsUserRoleRel" Width="1.5" PointX="7.5" PointY="16.125" />
+        <EntityTypeShape EntityType="QyExpressModel.nouse_bsFunInterface" Width="1.5" PointX="8.25" PointY="24.875" />
+        <EntityTypeShape EntityType="QyExpressModel.nouse_GisLayer" Width="1.5" PointX="3" PointY="7" />
+        <EntityTypeShape EntityType="QyExpressModel.tmpTreeNode" Width="1.5" PointX="19.75" PointY="6.5" />
+        <EntityTypeShape EntityType="QyExpressModel.vwlyRouteUrl" Width="1.5" PointX="19.75" PointY="9.5" />
+        <EntityTypeShape EntityType="QyExpressModel.vwUserNavigation" Width="1.5" PointX="19.75" PointY="12.5" />
+        <AssociationConnector Association="QyExpressModel.FK_bsAreaRegistration_bsDb" />
+        <AssociationConnector Association="QyExpressModel.FK_bsTable_bsDb" />
+        <AssociationConnector Association="QyExpressModel.FK_BSFIELD_RELATIONS_BSTABLE" />
+        <AssociationConnector Association="QyExpressModel.FK_BSFUNFIE_RELATIONS_BSFIELD" />
+        <AssociationConnector Association="QyExpressModel.FK_bsFName2ExcelColMap_bsTable" />
+        <AssociationConnector Association="QyExpressModel.FK_BSFUNCON_RELATIONS_BSNAVIGA" />
+        <AssociationConnector Association="QyExpressModel.FK_bsFunInt_RELATIONS_BSFUNCON" />
+        <AssociationConnector Association="QyExpressModel.FK_BSFUNOPE_RELATIONS_BSFUNCON" />
+        <AssociationConnector Association="QyExpressModel.FK_BSFUNQUE_RELATIONS_BSFUNFIE" />
+        <AssociationConnector Association="QyExpressModel.FK_BSROLEFU_BSROLEFUN_BSFUNOPE" />
+        <AssociationConnector Association="QyExpressModel.FK_bsRoleNaviRel_bsNavigation" />
+        <AssociationConnector Association="QyExpressModel.FK_bsSoftRelFuns_bsNavigation" />
+        <AssociationConnector Association="QyExpressModel.FK_BSORGANI_RELATIONS_BSSOFTCU" />
+        <AssociationConnector Association="QyExpressModel.FK_BSUSER_RELATIONS_BSORGANI" />
+        <AssociationConnector Association="QyExpressModel.FK_bsUserOrg_bsOrganize" />
+        <AssociationConnector Association="QyExpressModel.FK_BSROLEFU_BSROLEFUN_BSROLE" />
+        <AssociationConnector Association="QyExpressModel.FK_bsRoleNaviRel_bsRoleNaviRel" />
+        <AssociationConnector Association="QyExpressModel.FK_bsRoleTF_RELATIONS_BSROLE" />
+        <AssociationConnector Association="QyExpressModel.FK_bsUserRoleRel_bsRole" />
+        <AssociationConnector Association="QyExpressModel.FK_bsSoftRelFuns_bsSoftCustInfo" />
+        <AssociationConnector Association="QyExpressModel.FK_GISLAYER_RELATIONS_BSSOFTCU" />
+        <AssociationConnector Association="QyExpressModel.FK_bsTInt_RELATIONS_BSTable" />
+        <AssociationConnector Association="QyExpressModel.FK_bsUserRightsOrg_bsUser" />
+        <AssociationConnector Association="QyExpressModel.FK_bsUserRoleRel_bsUser" />
+        <AssociationConnector Association="QyExpressModel.FK_bsFunField_bsFunConf" />
+        <AssociationConnector Association="QyExpressModel.FK_bsFunField_bsTable" />
+        <AssociationConnector Association="QyExpressModel.FK_bsSession_bsUser" />
+        <EntityTypeShape EntityType="QyExpressModel.bsLog_Field" Width="1.5" PointX="22.625" PointY="21.125" />
+        <EntityTypeShape EntityType="QyExpressModel.bsLog_Table" Width="1.5" PointX="20.375" PointY="21" />
+        <AssociationConnector Association="QyExpressModel.FK_bsLog_Field_bsLog_Table" />
+        <EntityTypeShape EntityType="QyExpressModel.bsLog_Oper" Width="1.5" PointX="7.5" PointY="19" />
+        <AssociationConnector Association="QyExpressModel.FK_BSOPERLO_RELATIONS_BSUSER" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

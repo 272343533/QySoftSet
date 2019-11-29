@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<title>登录</title>
+	<link rel="stylesheet" type="text/css" href="css/login.css">
+</head>
+<body>
+<div id="login">
+
+  <!-- <img src="img/bg.jpg" alt=""> -->
+  <div class="login-m">
+    <div class="name">
+       用户名：<input type="text" class="form"  placeholder="用户名" id="username" name="username"></br>
+    </div>
+    <div class="pw">
+       密&nbsp;&nbsp;码&nbsp;：<input type="text" class="form" placeholder="密码"  id="password" name="password"></br>  
+    </div>
+    <div class="button">
+    <button type="submit" value="登录" class="btn" id="btnlogin">登录</button>
+    <a href="register.html"><button type="submit" value="注册" class="btn" id="btnregister">注册</button></a>
+    </div>
+  </div>
+  
+</div>
+</body>
+<script type="text/javascript" src="/Scripts/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" >
+
+    	$('#btnlogin').click(function(){
+		//alert("hhahhha");
+		var name = $("#username").val();
+		var psw = $("#password").val();
+
+		$.ajax({
+			type:"GET",
+			url:"http://122.114.190.250:8080/Wjkfq_Gis/home/login?username="+name+"&password="+psw,
+			dataType:"JSON",
+			// data:{username:name,psw:psw},
+			success:function(data){
+				if (data=="管理员") {
+					window.location.href="http://www.baidu.com"
+				}else{
+					alert("error")
+				}
+			
+				}
+
+
+		})
+	})
+
+
+
+</script>
+</html>

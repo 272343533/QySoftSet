@@ -1,0 +1,40 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<title>注册</title>
+	<link rel="stylesheet" type="text/css" href="/themes/register.css">
+</head>
+<body>
+<div id="form">
+ <div class="stitle">	
+   <div class="zx">用户注册</div>
+ </div>
+ <hr/>
+
+<div id="container" >
+  <form action="">
+  	<div class="title">
+  		<span class="type"> * </span>用户名&nbsp;&nbsp;<input type="text" class="formm" name="name" validation="required nameAvailable" placeholder="请输入用户名" >
+      <span class="availability_status"></span>
+      </br>
+  	</div>
+    <div class="psw">
+      <span class="type"> * </span>密&nbsp;&nbsp;码&nbsp;&nbsp;<input type="text" class="formm" name="password" validation="password" placeholder="请输入密码" ></br>
+    </div>
+  	<div class="email">电子邮箱&nbsp;&nbsp;<input type="text"  class="formm" placeholder="请正确填写邮箱地址" ></br>
+  	</div>
+  
+  	
+  </form>
+	<div class="button">
+		<button type="submit" value="注册" class="btn" onclick="btn()">注册</button>
+	</div>
+</div>
+</div>
+</body>
+</html>

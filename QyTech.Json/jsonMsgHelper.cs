@@ -24,8 +24,12 @@ namespace QyTech.Json
         /// <returns></returns>
         public static string Create(int flag, object data, Exception ex)
         {
-            string msg= "操作失败,请新登录页面再试一次！";
-            if (System.Web.Configuration.WebConfigurationManager.AppSettings["currAppRunV"] == "Debug1.01")
+            string msg= "操作失败,请登录页面再试一次！如果仍有问题，请与管理员联系！";
+            if (ex.Message.Contains("唯一索引") || ex.Message.Contains("重复键"))
+            {
+                msg = "操作失败，数据已经存在！";
+            }
+            else if (System.Web.Configuration.WebConfigurationManager.AppSettings["currAppRunV"] == "Debug1.01")
                 msg = QyTech.Core.LogHelper.Parse(ex);
             QyJsonData jd = new QyJsonData(flag, data, msg);
             string jsonstr = jd.Serialize();

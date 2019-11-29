@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QyBllAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="bsDeal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DealDt" Type="date" />
+          <Property Name="BuyerId" Type="uniqueidentifier" />
+          <Property Name="Buyer" Type="varchar" MaxLength="50" />
+          <Property Name="SalerId" Type="uniqueidentifier" />
+          <Property Name="Saler" Type="varchar" MaxLength="50" />
+          <Property Name="DealCount" Type="int" />
+          <Property Name="DealUnit" Type="varchar" MaxLength="20" />
+          <Property Name="DealType" Type="varchar" MaxLength="20" />
+          <Property Name="disCount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Amonut" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IsCheck" Type="int" />
+          <Property Name="Checker" Type="varchar" MaxLength="50" />
+          <Property Name="CheckDt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="bsDealTotal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Cycle" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CycleType" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="bsS_Id" Type="uniqueidentifier" />
+          <Property Name="bsS_Name" Type="varchar" MaxLength="50" />
+          <Property Name="bsS_ContactTel" Type="varchar" MaxLength="50" />
+          <Property Name="DealCount" Type="int" />
+          <Property Name="DealUnit" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="bsSalary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Cycle" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CycleType" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="bsS_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsS_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ZTJ" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="EDJ" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SDJ" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="JHJL" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="NextFWJL" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="JHCJ" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SCYJJL" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bsSaler">
+          <Key>
+            <PropertyRef Name="bsE_Id" />
+          </Key>
+          <Property Name="bsE_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsO_Id" Type="uniqueidentifier" />
+          <Property Name="SalerCode" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="20" />
+          <Property Name="Sex" Type="varchar" MaxLength="20" />
+          <Property Name="IdCode" Type="varchar" MaxLength="50" />
+          <Property Name="ContactTel" Type="varchar" MaxLength="20" />
+          <Property Name="BirthDt" Type="date" />
+          <Property Name="Addr" Type="varchar" MaxLength="100" />
+          <Property Name="EntryDate" Type="date" />
+          <Property Name="SalerStatus" Type="varchar" MaxLength="50" />
+          <Property Name="SalerType" Type="varchar" MaxLength="50" />
+          <Property Name="Reference" Type="varchar" MaxLength="50" />
+          <Property Name="IsCheck" Type="int" />
+          <Property Name="Checker" Type="varchar" MaxLength="50" />
+          <Property Name="CheckDt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Promote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsS_Id" Type="uniqueidentifier" />
+          <Property Name="PreRank" Type="varchar" MaxLength="50" />
+          <Property Name="CurrRank" Type="varchar" MaxLength="50" />
+          <Property Name="PromoteCondition" Type="varchar" MaxLength="500" />
+          <Property Name="PromoteDt" Type="datetime" />
+          <Property Name="IsCheck" Type="int" />
+          <Property Name="Checker" Type="varchar" MaxLength="50" />
+          <Property Name="CheckDt" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="QyBllAppModelStoreContainer">
+          <EntitySet Name="bsDeal" EntityType="Self.bsDeal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bsDealTotal" EntityType="Self.bsDealTotal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bsSalary" EntityType="Self.bsSalary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bsSaler" EntityType="Self.bsSaler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Promote" EntityType="Self.Promote" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QyBllAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="QyBllAppEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="bsDeal" EntityType="QyBllAppModel.bsDeal" />
+          <EntitySet Name="bsDealTotal" EntityType="QyBllAppModel.bsDealTotal" />
+          <EntitySet Name="bsSalary" EntityType="QyBllAppModel.bsSalary" />
+          <EntitySet Name="bsSaler" EntityType="QyBllAppModel.bsSaler" />
+          <EntitySet Name="Promote" EntityType="QyBllAppModel.Promote" />
+        </EntityContainer>
+        <EntityType Name="bsDeal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="DealDt" Type="DateTime" Precision="0" />
+          <Property Name="BuyerId" Type="Guid" />
+          <Property Name="Buyer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SalerId" Type="Guid" />
+          <Property Name="Saler" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DealCount" Type="Int32" />
+          <Property Name="DealUnit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DealType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="disCount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Amonut" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IsCheck" Type="Int32" />
+          <Property Name="Checker" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CheckDt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="bsDealTotal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Cycle" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CycleType" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="bsS_Id" Type="Guid" />
+          <Property Name="bsS_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bsS_ContactTel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DealCount" Type="Int32" />
+          <Property Name="DealUnit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="bsSalary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Cycle" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CycleType" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="bsS_Id" Type="Guid" Nullable="false" />
+          <Property Name="bsS_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ZTJ" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="EDJ" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="SDJ" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="JHJL" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="NextFWJL" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="JHCJ" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="SCYJJL" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="bsSaler">
+          <Key>
+            <PropertyRef Name="bsE_Id" />
+          </Key>
+          <Property Name="bsE_Id" Type="Guid" Nullable="false" />
+          <Property Name="bsO_Id" Type="Guid" />
+          <Property Name="SalerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Sex" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IdCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactTel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BirthDt" Type="DateTime" Precision="0" />
+          <Property Name="Addr" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EntryDate" Type="DateTime" Precision="0" />
+          <Property Name="SalerStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SalerType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Reference" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsCheck" Type="Int32" />
+          <Property Name="Checker" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CheckDt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Promote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="bsS_Id" Type="Guid" />
+          <Property Name="PreRank" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CurrRank" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PromoteCondition" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PromoteDt" Type="DateTime" Precision="3" />
+          <Property Name="IsCheck" Type="Int32" />
+          <Property Name="Checker" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CheckDt" Type="DateTime" Precision="3" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QyBllAppModelStoreContainer" CdmEntityContainer="QyBllAppEntities">
+          <EntitySetMapping Name="bsDeal">
+            <EntityTypeMapping TypeName="QyBllAppModel.bsDeal">
+              <MappingFragment StoreEntitySet="bsDeal">
+                <ScalarProperty Name="CheckDt" ColumnName="CheckDt" />
+                <ScalarProperty Name="Checker" ColumnName="Checker" />
+                <ScalarProperty Name="IsCheck" ColumnName="IsCheck" />
+                <ScalarProperty Name="Amonut" ColumnName="Amonut" />
+                <ScalarProperty Name="disCount" ColumnName="disCount" />
+                <ScalarProperty Name="DealType" ColumnName="DealType" />
+                <ScalarProperty Name="DealUnit" ColumnName="DealUnit" />
+                <ScalarProperty Name="DealCount" ColumnName="DealCount" />
+                <ScalarProperty Name="Saler" ColumnName="Saler" />
+                <ScalarProperty Name="SalerId" ColumnName="SalerId" />
+                <ScalarProperty Name="Buyer" ColumnName="Buyer" />
+                <ScalarProperty Name="BuyerId" ColumnName="BuyerId" />
+                <ScalarProperty Name="DealDt" ColumnName="DealDt" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsDealTotal">
+            <EntityTypeMapping TypeName="QyBllAppModel.bsDealTotal">
+              <MappingFragment StoreEntitySet="bsDealTotal">
+                <ScalarProperty Name="DealUnit" ColumnName="DealUnit" />
+                <ScalarProperty Name="DealCount" ColumnName="DealCount" />
+                <ScalarProperty Name="bsS_ContactTel" ColumnName="bsS_ContactTel" />
+                <ScalarProperty Name="bsS_Name" ColumnName="bsS_Name" />
+                <ScalarProperty Name="bsS_Id" ColumnName="bsS_Id" />
+                <ScalarProperty Name="CycleType" ColumnName="CycleType" />
+                <ScalarProperty Name="Cycle" ColumnName="Cycle" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsSalary">
+            <EntityTypeMapping TypeName="QyBllAppModel.bsSalary">
+              <MappingFragment StoreEntitySet="bsSalary">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="SCYJJL" ColumnName="SCYJJL" />
+                <ScalarProperty Name="JHCJ" ColumnName="JHCJ" />
+                <ScalarProperty Name="NextFWJL" ColumnName="NextFWJL" />
+                <ScalarProperty Name="JHJL" ColumnName="JHJL" />
+                <ScalarProperty Name="SDJ" ColumnName="SDJ" />
+                <ScalarProperty Name="EDJ" ColumnName="EDJ" />
+                <ScalarProperty Name="ZTJ" ColumnName="ZTJ" />
+                <ScalarProperty Name="bsS_Name" ColumnName="bsS_Name" />
+                <ScalarProperty Name="bsS_Id" ColumnName="bsS_Id" />
+                <ScalarProperty Name="CycleType" ColumnName="CycleType" />
+                <ScalarProperty Name="Cycle" ColumnName="Cycle" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsSaler">
+            <EntityTypeMapping TypeName="QyBllAppModel.bsSaler">
+              <MappingFragment StoreEntitySet="bsSaler">
+                <ScalarProperty Name="CheckDt" ColumnName="CheckDt" />
+                <ScalarProperty Name="Checker" ColumnName="Checker" />
+                <ScalarProperty Name="IsCheck" ColumnName="IsCheck" />
+                <ScalarProperty Name="Reference" ColumnName="Reference" />
+                <ScalarProperty Name="SalerType" ColumnName="SalerType" />
+                <ScalarProperty Name="SalerStatus" ColumnName="SalerStatus" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="Addr" ColumnName="Addr" />
+                <ScalarProperty Name="BirthDt" ColumnName="BirthDt" />
+                <ScalarProperty Name="ContactTel" ColumnName="ContactTel" />
+                <ScalarProperty Name="IdCode" ColumnName="IdCode" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SalerCode" ColumnName="SalerCode" />
+                <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
+                <ScalarProperty Name="bsE_Id" ColumnName="bsE_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Promote">
+            <EntityTypeMapping TypeName="QyBllAppModel.Promote">
+              <MappingFragment StoreEntitySet="Promote">
+                <ScalarProperty Name="CheckDt" ColumnName="CheckDt" />
+                <ScalarProperty Name="Checker" ColumnName="Checker" />
+                <ScalarProperty Name="IsCheck" ColumnName="IsCheck" />
+                <ScalarProperty Name="PromoteDt" ColumnName="PromoteDt" />
+                <ScalarProperty Name="PromoteCondition" ColumnName="PromoteCondition" />
+                <ScalarProperty Name="CurrRank" ColumnName="CurrRank" />
+                <ScalarProperty Name="PreRank" ColumnName="PreRank" />
+                <ScalarProperty Name="bsS_Id" ColumnName="bsS_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="默认值" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

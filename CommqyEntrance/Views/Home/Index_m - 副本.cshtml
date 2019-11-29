@@ -1,0 +1,1990 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width">
+      
+        <title>界面</title>
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="http://122.114.38.213:8080/arcgis_js_api/library/3.17/3.17/dijit/themes/claro/claro.css">
+    	<link rel="stylesheet" href="http://122.114.38.213:8080/arcgis_js_api/library/3.17/3.17/esri/css/esri.css">
+        <link  href="~/themes/Site.css" rel="stylesheet"/>
+	    
+		<link href="~/themes/menu.css" rel="stylesheet" />
+		<script src="~/Scripts/jquery-3.2.1.min.js"></script>
+		<script src="~/Scripts/vue.js"></script>
+		<script src="~/Scripts/vue-resource.js"></script>
+		<script src="~/Scripts/bootstrap.min.js"></script>
+		<script type="text/javascript" src="http://122.114.38.213:8080/arcgis_js_api/library/3.17/3.17/init.js"></script>
+		<script type="text/javascript"  src="~/Scripts/json2.js"></script>
+        <script src="~/Scripts/QyTech/nav4.js"></script>
+        <script src="~/Scripts/QyTech/Sonic.js"></script>
+          <script src="~/Scripts/QyTech.js"></script>
+        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=zogQhcGTaQUNycXl5OrdXq9Z"></script>  
+   
+		<!--<script type="text/javascript" src="/js/Qytech/myArc.js"></script>-->
+       <style> 
+           .layerdisp{
+                background-color:#33ffcc !important;
+                z-index :200;
+            }
+           .layernodisp{
+                background-color:white;
+                   z-index :200;
+            }
+           .retPosBtn{
+                background-Image:url('/td_gis/themes/imgs/retPos.jpg');
+                z-index :200;
+            } 
+            .stopPosBtn{
+                background-Image:url('/td_gis/themes/imgs/stopPos.jpg');
+                z-index :200;
+            }
+          
+           .DituBtnVec
+           {
+                background-Image:url('/td_gis/themes/imgs/ditu.jpg');
+                z-index :200;
+           }
+            .DituBtnWei
+           {
+                background-Image:url('/td_gis/themes/imgs/weixing.jpg');
+                z-index :200;
+           }
+
+
+           .esriPopup .titleButton.maximize
+           {
+               display: none;
+           }
+
+
+            .iosForZheGai
+            {
+                top:60px;
+            }
+         </style>
+	<script>
+	    var WebServer = '';
+	    var jpgForDitu = '';
+	    console.log(window.location.host);
+
+	    //矢量图
+	    var MapServers = [];
+	  
+
+	    var LoginUserName = 'admin';
+	    var bsUser = {};
+	    var bsUserRightCode = ''
+
+	    var map;
+	    var setLayers;
+	    var CurrLayerName;
+	    var Djlayers = [];
+	    var DjFeatureLayers=[];
+	    var CurrPosition;
+
+	    var PositionStartFlag = '';
+	    var StartPositinoIntervalId = -1;
+	    //规则：所有菜单项和按钮项都给定统一的编号规则，方便将来统一处理相互关系
+	    // 101:镇查询 102：村查询 
+	    //叠加，查询合成一个：单击叠加或取消，叠加则自动设为查询编辑状态
+	    //301：历年批次查询 302：城市规划查询 303 土地现状查询 304 房屋查询
+	    //401：企业查询定位
+	    var CurrFunItem = 303;
+	    var bolClickMap = false;//默认土地现状查询
+	    var IsReCenter = false;
+
+	    Djlayers.push('房屋');
+	    Djlayers.push('企业范围');
+
+	  
+	    var ValidExtent = [];//33100, 53879, 41386, 60000
+	    //ValidExtent.push(33300);
+	    //ValidExtent.push(53000);
+	    //ValidExtent.push(41800);
+	    //ValidExtent.push(59800);
+	    ValidExtent.push(13404128);
+	    ValidExtent.push(3661652);
+	    ValidExtent.push(13414200);
+	    ValidExtent.push(3669497);
+
+
+	    var GridVisibleLayerDisp = false;
+	
+
+	    function GetGridMapAddrByOrgCode(orgcode) {
+	        if (orgcode.length >= 12) {//320507100001
+	            return 'http://122.114.38.213/arcgis/rest/services/wd/cun' + orgcode + '/MapServer';
+	        }
+	        else {
+	            return 'http://122.114.38.213/arcgis/rest/services/WTMap/WTService/MapServer';
+	        }
+	    }
+
+	    function MapServer(Name, Url, LayerNo, MapType, IsBeginLoad, Opacity, visibleSubLayindex, LoadLayer) {
+	        var oserver = new Object;
+	        oserver.Name = Name;
+	        oserver.Url = Url;
+	        oserver.LayerNo = LayerNo;
+	        oserver.MapType = MapType;
+	        oserver.IsBeginLoad = IsBeginLoad;
+	        oserver.Opacity = Opacity;
+	        oserver.visibleSubLayindex = visibleSubLayindex;
+	        oserver.LoadLayer = LoadLayer;
+	        return oserver;
+	    }
+
+	    function Layer(LayerName, visible,EditView, QueryFName,ServerIndex,Index1st ,LayerQueryIndex, FunId) {
+	        var olayer = new Object;
+	        olayer.visible = visible;
+	        olayer.LayerName = LayerName;
+	        olayer.EditView = EditView;
+	        olayer.QueryFName = QueryFName;
+	        olayer.ServerIndex = ServerIndex;
+	        olayer.Index1st = Index1st;
+	        olayer.LayerQueryIndex = LayerQueryIndex;
+	        olayer.FunId = FunId;
+	        return olayer;
+	    }
+
+	    var mapserver1 = MapServer('s1', 'http://122.114.38.213:6080/arcgis/rest/services/WTMap/WtPublish1/MapServer', 3, 'Dynamic', true, 1, [0, 1, 2, 3, 4, 5, 6, 8],'');
+	    // var mapserver1 = MapServer('s1', 'http://122.114.38.213:6080/arcgis/rest/services/WTMap/WtPublish1/MapServer',0, 'Dynamic', true, 1, [], '');
+	    var mapserver2 = MapServer('s2', 'http://122.114.38.213:6080/arcgis/rest/services/WTMap/WtPublish2/MapServer', 2, 'Dynamic', true, 1, [], '');
+	    var mapserver3 = MapServer('s3', 'http://122.114.38.213:6080/arcgis/rest/services/WTMap/WtPublish3/MapServer', 1, 'Dynamic', true, 1, [], '');
+	    var mapserver4 = MapServer('s4', 'http://122.114.38.213:6080/arcgis/rest/services/WTMap/WTService/MapServer', 0, 'Dynamic', true, 1, [], '');
+
+	    MapServers.push(mapserver1);
+	    MapServers.push(mapserver2);
+	    MapServers.push(mapserver3);
+	    MapServers.push(mapserver4);
+	   
+
+
+
+
+	    var zjLayer = Layer("镇界", true, "", "", 0,0, [0], '');
+	    var cjLayer = Layer("村界", true, "", "",0, 1, [1], '');
+	    var dlLayer = Layer("道路", true, "", "",0, 2, [3,4,5], '');
+	    var fwjzdLayer = Layer("房屋_地", true, "fwjzWebView", "建筑编号", 0, 6, [6], 'B101');
+
+	    var fwjzwLayer = Layer("房屋_卫", true, "fwjzWebView", "建筑编号", 0, 7, [7], 'B102');
+	    var qyxxLayer = Layer("企业范围", true, "QyxxWebView", "地块编码", 0, 8, [8], '');
+	    var lnpcLayer = Layer("历年批次", false, "", "地块编码", 0, 9, [9], '');
+	    var wfjsxmLayer = Layer("未供及建设项目", false, "", "", 0, 10, [11, 12, 13], '');
+	    var wfydLayer = Layer("违法用地", false, "", "地块编码", 0, 14, [14], '');
+
+	    var jbnthcLayer = Layer("基本农田核查", false, "", "", 1, 0, [1, 2], '');
+	    var jcgzhcLayer = Layer("建设管制核查", false, "", "", 1, 3,[3], '');
+	    var csghhcLayer = Layer("城市规划核查", false, "", "",1, 4, [5], '');
+
+
+	    var tdxzLayer = Layer("土地现状", false, "", "地块编码", 2, 0, [0], '');
+	    var tdghLayer = Layer("土地规划", false, "", "地块编号", 2, 1, [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], '');
+	    var csghLayer = Layer("城市规划", false, "", "地块编码", 2, 14, [14], '');
+	    
+	    var weiLayer = Layer('影像', false, "", "", 3, 0, [0], '');
+
+	    var dic_Layer = new Array();
+	    dic_Layer['镇界'] = zjLayer;
+	    dic_Layer['村界'] = cjLayer;
+	    dic_Layer['道路'] = dlLayer;
+	    dic_Layer['房屋_地'] = fwjzdLayer;
+	    dic_Layer['房屋_卫'] = fwjzwLayer;
+	    dic_Layer['企业范围'] = qyxxLayer;
+	    dic_Layer['历年批次'] = lnpcLayer;
+	    dic_Layer['未供及建设项目'] = wfjsxmLayer;
+
+	    dic_Layer['违法用地'] = wfydLayer;
+
+	    dic_Layer['基本农田核查'] = jbnthcLayer;
+	    dic_Layer['建设管制核查'] = jcgzhcLayer;
+	    dic_Layer['城市规划核查'] = csghhcLayer;
+
+
+	    dic_Layer['土地现状'] = tdxzLayer;
+	    dic_Layer['土地规划'] = tdghLayer;
+	    dic_Layer['城市规划'] = csghLayer;
+
+	    dic_Layer['影像'] = weiLayer;
+
+	    var LayerOrder = [];
+	    LayerOrder.push('镇界');
+	    LayerOrder.push('村界');
+	    LayerOrder.push('道路');
+	    LayerOrder.push('房屋_地');
+	    LayerOrder.push('房屋_卫');
+	    LayerOrder.push('企业范围');
+	    LayerOrder.push('历年批次');
+	    LayerOrder.push('未供及建设项目');
+	    LayerOrder.push('违法用地');
+	    LayerOrder.push('基本农田核查');
+	    LayerOrder.push('建设管制核查');
+	    LayerOrder.push('城市规划核查');
+	    LayerOrder.push('土地现状');
+	    LayerOrder.push('土地规划');
+	    LayerOrder.push('城市规划');
+	    LayerOrder.push('影像');
+
+	 
+	    var dic_LayerTrans = new Array();
+	    for (var i = 0; i < 36; i++) {
+	        dic_LayerTrans[i] = 1;
+	    }
+	    dic_LayerTrans[16] = 0.4;
+	    dic_LayerTrans[17] = 0.4;
+	    dic_LayerTrans[19] = 0.4;
+	    dic_LayerTrans[21] = 0.4;
+
+	    var FeaLayer=[]
+	    for (var i = 0; i < 35; i++) {
+	        FeaLayer.push('');
+	    }
+	 
+	    
+        var arrFeaturelayers = [];
+
+
+	    // var dic_Menu2ServerAddr=new Array();
+	    // dic_Menu2ServerAddr['101']=WebServer+'/showview/resultview';
+	    // dic_Menu2ServerAddr['102']=WebServer+'/showview/resultview';
+
+	    function QueryLayerInfo(LayerName, ObjCode) {
+	        var olayer = new Object;
+	        olayer.LayerName = LayerName;
+	        olayer.ObjCode = ObjCode;
+	        return olayer;
+	    }
+	    function DjLayerAddrConf(LayerName, Layerindexs) {
+	        var olayer = new Object;
+	        olayer.LayerName = LayerName;
+	        olayer.Layerindexs = Layerindexs;
+	        return olayer;
+	    }
+	    function initMap(orgcode) {
+	        require([
+				"esri/map",
+                'esri/geometry/Extent',
+				"esri/layers/ArcGISDynamicMapServiceLayer",
+               "esri/layers/FeatureLayer",
+               	"esri/layers/ImageParameters",
+				//"esri/dijit/OverviewMap",
+				//"dojo/parser",
+                "dojo/dom",
+                 "esri/InfoTemplate",
+				"esri/tasks/query",
+				"esri/toolbars/draw",
+                "esri/symbols/SimpleMarkerSymbol",
+				"esri/symbols/SimpleFillSymbol",
+				"esri/symbols/SimpleLineSymbol",
+            	"esri/tasks/FindTask",
+				//"esri/tasks/FindParameters",
+				//"esri/tasks/IdentifyTask",
+				//"esri/tasks/IdentifyParameters",//"dijit/layout/ContentPane",//?
+				  // "esri/layers/ArcGISTiledMapServicelayer",
+             //"dijit/layout/BorderContainer",//?
+				
+			    // "esri/tasks/GenerateRendererParameters",
+               // "esri/renderers/UniqueValueRenderer",
+               // "esri/renderers/ClassBreaksRenderer",
+            // "esri/geometry/webMercatorUtils",
+		        "esri/renderers/SimpleRenderer",
+				"esri/graphic",
+				"dojo/colors",
+               "dojo/domReady!"
+	        ],
+				function (Map, Extent, ArcGISDynamicMapServiceLayer, FeatureLayer, ImageParameters
+                   // , OverviewMap  , parser
+						, on
+						, dom
+                        , InfoTemplate,query
+						, draw, SimpleMarkerSymbol, SimpleFillSymbol, SimpleLineSymbol
+                        , FindTask
+                        , SimpleRenderer, Graphic, Color
+                      
+                        ) {
+				    //parser.parse();
+				    //var options = { logo: false, center: [35775.71034270822, 59792.31742212466], zoom: 8 }; //var MyMap = new esri.Map(mapContainer, options);
+				    var options = { logo: false,slider: false, };
+				    map = new Map("map", options);
+
+				    var s = 0;
+				    var VectorLayer4 = new ArcGISDynamicMapServiceLayer(MapServers[s].Url);
+				    VectorLayer4.opacity = MapServers[s].Opacity;
+				    map.addLayer(VectorLayer4, 1);
+				    setLayers(VectorLayer4, MapServers[s].visibleSubLayindex);
+				    MapServers[s].LoadLayer = VectorLayer4;
+
+				    s = 3;
+				    var ImageLayer4= new ArcGISDynamicMapServiceLayer(MapServers[s].Url);
+				    ImageLayer4.opacity = MapServers[s].Opacity;
+				    map.addLayer(ImageLayer4, 0);
+				    setLayers(ImageLayer4, MapServers[s].visibleSubLayindex);
+				    MapServers[s].LoadLayer = ImageLayer4;
+
+				    s = 2;
+				    var VectorLayer2 = new ArcGISDynamicMapServiceLayer(MapServers[s].Url);
+				    VectorLayer2.opacity = MapServers[s].Opacity;
+				    map.addLayer(VectorLayer2, 1);
+				    setLayers(VectorLayer2, MapServers[s].visibleSubLayindex);
+				    MapServers[s].LoadLayer = VectorLayer2;
+
+				    s = 1;
+				    var VectorLayer2 = new ArcGISDynamicMapServiceLayer(MapServers[s].Url);
+				    VectorLayer2.opacity = MapServers[s].Opacity;
+				    map.addLayer(VectorLayer2, 1);
+				    setLayers(VectorLayer2, MapServers[s].visibleSubLayindex);
+				    MapServers[s].LoadLayer = VectorLayer2;
+
+
+
+
+
+
+				    //for (var s =0; s < MapServers.length; s++) {
+				    ////for (var s = MapServers.length-1; s >= 0; s--) {
+				    //    if (MapServers[s].IsBeginLoad == true) {
+				    //        var VectorLayer = new ArcGISDynamicMapServiceLayer(MapServers[s].Url);
+				    //        VectorLayer.opacity = MapServers[s].Opacity;
+
+				    //        MapServers[s].LoadLayer = VectorLayer;
+
+				    //        map.addLayer(VectorLayer, MapServers[s].LayerNo);
+				    //        setLayers(VectorLayer, MapServers[s].visibleSubLayindex);
+				    //    }
+				    //}
+				    //setLayers(VectorLayer,VectorVisibleLayer);
+				  
+				    //定义一个render对FeatureLayer自定义的数据进行渲染
+				    // var renderer = new SimpleRenderer(new SimpleFillSymbol().setOutline(new SimpleLineSymbol().setWidth(0.1).setColor(new Color([128, 128, 128]))));
+				    //renderer.setColorInfo({
+				    //    //使用nico属性进行渲染
+				    //    field: "nico",
+				    //    minDataValue: 0,
+				    //    maxDataValue: 40,
+				    //    colors: [
+				    //        new Color([0, 255, 0]),
+				    //        new Color([255, 0, 0])
+				    //    ]
+				    //});
+				    //featureLayer.on("update-end", function () {
+				    //    //输出其中一个graphic(面要素)的所有属性
+				    //    for (var i = 0; i < featureLayer.graphics.length; i++) {
+				    //        //自定义数据，在每个面要素中添加nico属性
+				    //        featureLayer.graphics[i].attributes["nico"] = i;
+				    //    }
+				    //    featureLayer.setRenderer(renderer);
+				    //    featureLayer.redraw();
+				    //    //输出FeatureLayer中所有的graphic数
+				    //    console.log("number of graphics in featureLayer:" + featureLayer.graphics.length);
+				    //    //输出其中一个graphic(面要素)的所有属性
+				    //    console.log("10th graphic attributes in featureLayer:");
+				    //    console.log(featureLayer.graphics[10].attributes);
+				    //});
+
+				
+				    map.on("click", mapClick);
+				    map.on("MouseMove", showCoordinates);
+				    map.on("extent-change", showExtent);
+				    //VectorLayer.on("onLoad", LoadList);
+				   // dojo.connect(VectorLayer4, "onLoad", LoadList);
+
+				}
+			);
+	    }
+
+	
+
+	    function LoadList(layers) {
+	        var html = ""
+	        //获取地图服务中的子图层对象数组，该对象包含子图层的基本信息，不包含属性信息  
+	        var infos = layers.layerInfos;
+	        //分别处理每个信息对象  
+	        for (var i = 0, length = infos.length; i < length; i++) {
+	            var info = infos[i];
+	            //获取图层默认显示情况，如默认为true显示的话就把图层id添加到visible数组中    
+	            if (info.defaultVisibility) {
+	                visible.push(info.id);
+	            }
+	            //输出图层列表的html    
+	            html = html +
+                        "<div><input id='" + info.id + "' name='layerList' class='listCss' type='checkbox' value='checkbox' " +
+                        "onclick='<span style=" + '"color:#FF6666;"' + ">setLayerVisibility()</span>' " + (info.defaultVisibility ? "checked" : "") + " />" + info.name + "</div>";
+	        }
+	        //设置可视图层    
+	        layer.setVisibleLayers(visible);
+	        //在右边显示图层名列表    
+	        dojo.byId("divInMap").innerHTML = html;
+	    }
+
+	    //关联checkbox的click事件  
+	    setLayerVisibility = function () {
+	        //用dojo.query获取css为listCss的元素数组    
+	        var inputs = dojo.query(".listCss");
+	        //清空数组   
+	        visible = [];
+	        //对checkbox数组进行变量把选中的id添加到visible    
+	        for (var i = 0; i < inputs.length; i++) {
+	            if (inputs[i].checked) {
+	                visible.push(inputs[i].id);
+	            }
+	        }
+	        //设置可视图层    
+	        layer.setVisibleLayers(visible);
+	    }
+
+	    function FilterLayerDisp(Url, filter) {
+	        var layerDefinitions = [];//定义过滤条件  
+	        //过滤5个图层  
+	        layerDefinitions[0] = "NAME_ = '11'";
+	        layerDefinitions[1] = "NAME_ = '高区' or NAME_ = '环翠区'";
+	        layerDefinitions[2] = "NAME_ = '0002'";
+	        layerDefinitions[3] = "NAME_ = '0002'";
+	        layerDefinitions[4] = "NAME_ = '0002'";
+	        layer1.setLayerDefinitions(layerDefinitions);//开始过滤  
+	    }
+
+	    function showCoordinates(evt) {
+	        return;
+	        //从事件中获取mapPoint
+	        var mp = evt.mapPoint;
+	        //显示鼠标坐标
+	        console.log(mp.x + "," + mp.y);
+	    }
+	    function showExtent(ext) {
+	        var extentString = "";
+
+	        var mapCenter = map.extent.getCenter();
+	        //var mapZoom=map.extent.z
+
+	        extentString = "XMin: " + ext.extent.xmin +
+              " YMin: " + ext.extent.ymin +
+              " XMax: " + ext.extent.xmax +
+              " YMax: " + ext.extent.ymax +
+              " Center: " + mapCenter.x + "," + mapCenter.y +
+	        "SR:" + ext.extent.spatialReference.wkt;
+	        console.log(extentString);
+
+
+	        var currRange = [];
+	        currRange.push(ext.extent.xmin);
+	        currRange.push(ext.extent.ymin);
+	        currRange.push(ext.extent.xmax);
+	        currRange.push((ext.extent.ymax + '').substring(0, 14));
+	        //if (isNaN(ext.extent.ymin) || isNaN(ext.extent.ymax)) {
+	        //    console.log('y is NaN is not valid');
+	        //    return;
+	        //}
+
+
+	        //if (isNaN(currRange[0]) || isNaN(currRange[1]) || isNaN(currRange[2]) || isNaN(currRange[3])) {
+	        //    console.log('NaN is not valid');
+	        //    //var startExtent = new esri.geometry.Extent(ValidExtent[0], ValidExtent[1], ValidExtent[2], ValidExtent[3], map.spatialReference);
+	        //    //map.setExtent(startExtent);
+	        //}
+	        //else {
+	        //    //if (!(ext.extent.xmin == ValidExtent[0] && ext.extent.ymin == ValidExtent[1] && ext.extent.xmax == ValidExtent[2] && ext.execute.yma == ValidExtent[3])) {
+	        //    //各种设备高宽比里不定，只考虑宽度即可
+	        //    if (!(currRange[0] == ValidExtent[0] && currRange[2] == ValidExtent[2])) {
+	        //        var val = currRange[0] + "," + currRange[1] + "," + currRange[2] + "," + currRange[3];
+	        //        setCookie("mapextent", val);
+	        //        console.log('set cookie:' + val);
+	        //    }
+	        //}
+	        //var strExtent = getCookie("mapextent");//('mapextent');
+	        //console.log('query cookie:'+strExtent);
+
+	    }
+
+	    setLayers = function (layer, vis) {
+	        if (layer != '') {
+	            layer.setVisibleLayers(vis);
+	        }
+	        else {
+	            console.log('layer unuseful');
+	        }
+	    }
+
+	    //图层显示控制
+	    function btnDispLayer(btnid, LayerName) {
+	        $("#FunGroup1").attr("class", "off");
+	        $("#FunGroup4").attr("class", "off");
+
+	        bolClickMap = false;
+	        if (btnid.substring(0, 2) == "F1") {
+	            DispFeatureLayer(btnid,LayerName);
+	        }
+	        else {
+	            DispLayerNew(btnid, LayerName);
+	        }
+	        //处理界面，即前面打勾,如果有勾就取消，否则就增加
+
+	        //var sf101 = document.getElementById('F101');
+	        //sf101.innerHTML = 'abc';
+	        //console.log(sf101.innerHtml);
+	     }
+	    function DispFeatureLayer(btnid, LayerName) {
+	        //先改变css
+	        if (DjFeatureLayers.contains(LayerName) == true) {
+	            DjFeatureLayers.remove(LayerName);
+	            $("#" + btnid).attr("class", "btn btn-default layernodisp");
+	        }
+	        else {
+	            DjFeatureLayers.push(LayerName);
+	            $("#" + btnid).attr("class", "btn btn-default layerdisp");
+	        }
+
+	        if (btnid == 'F101') {
+	            DjFeatureLayers.remove('建设管制核查');
+	            DjFeatureLayers.remove('城市规划核查');
+	            dic_Layer['基本农田核查'].visible = true;
+	            dic_Layer['建设管制核查'].visible = false;
+	            dic_Layer['城市规划核查'].visible = false;
+	            $("#F102").attr("class", "btn btn-default layernodisp");
+	            $("#F103").attr("class", "btn btn-default layernodisp");
+	        }
+	        else if (btnid == 'F102') {
+
+	            DjFeatureLayers.remove('基本农田核查');
+	            DjFeatureLayers.remove('城市规划核查');
+	            dic_Layer['基本农田核查'].visible = false;
+	            dic_Layer['建设管制核查'].visible = true;
+	            dic_Layer['城市规划核查'].visible = false;
+	            $("#F101").attr("class", "btn btn-default layernodisp");
+	            $("#F103").attr("class", "btn btn-default layernodisp");
+	        }
+	        else if (btnid == 'F103') {
+	            DjFeatureLayers.remove('基本农田核查');
+	            DjFeatureLayers.remove('建设管制核查');
+	            dic_Layer['基本农田核查'].visible = false;
+	            dic_Layer['建设管制核查'].visible = false;
+	            dic_Layer["城市规划核查"].visible = true;
+	            $("#F101").attr("class", "btn btn-default layernodisp");
+	            $("#F102").attr("class", "btn btn-default layernodisp");
+	        }
+
+	        RefreshFeatureDisplay();
+	    }
+
+	    function RefreshFeatureDisplay() {
+	        if (MapServers[1].LoadLayer != '') {
+	            var tVectorLayer = MapServers[1].LoadLayer;
+	            map.removeLayer(tVectorLayer);
+	        }
+	        if (DjFeatureLayers.length > 0) {
+	            var s = 1;
+	            var VectorLayer = new esri.layers.ArcGISDynamicMapServiceLayer(MapServers[s].Url);
+	            if (DjFeatureLayers[0] == "基本农田核查") {
+	                VectorLayer.opacity = dic_LayerTrans[16];// 0.5;//dic_LayerTrans[featureindex]
+	             }
+	            else if (DjFeatureLayers[0] == "建设管制核查") {
+	                VectorLayer.opacity = dic_LayerTrans[19];// 0.5;//dic_LayerTrans[featureindex]
+	            }
+	            else {//城市规划核查
+	                VectorLayer.opacity = dic_LayerTrans[21];// 0.5;//dic_LayerTrans[featureindex]
+	            }
+	            MapServers[s].LoadLayer = VectorLayer;
+
+	            map.addLayer(VectorLayer, MapServers[s].LayerNo);
+
+	            var layname = DjFeatureLayers[0];
+	            setLayers(VectorLayer, dic_Layer[layname].LayerQueryIndex);
+	        }
+
+	        return;
+
+	        var fealayer;
+	        for (var i = arrFeaturelayers.length-1; i >=0 ; i--) {
+	            fealayer = arrFeaturelayers[i];
+	            map.removeLayer(fealayer);
+	            arrFeaturelayers.pop(fealayer);
+	        }
+	        var featureindex;
+	        for (var i = 0; i < DjFeatureLayers.length; i++) {
+	            var layname = DjFeatureLayers[i];
+	            for (var i = 0; i < dic_Layer[layname].LayerQueryIndex.length; i++) {
+	                featureindex = dic_Layer[layname].LayerQueryIndex[i];
+	                fealayer = new esri.layers.FeatureLayer(MapServer[1].Url + '/' + featureindex, {
+	                    mode: esri.layers.FeatureLayer.MODE_SNAPSHOT,
+	                    outFields: ["*"],
+	                    hasAttributionData: true,
+	                    opacity: dic_LayerTrans[featureindex]
+	                })
+
+	                var statesLabel = new TextSymbol().setColor(new Color("#0a162c"));
+	                statesLabel.font.setSize("15pt");
+	                statesLabel.font.setWeight(700);
+	                var labelClass = new LabelClass({
+	                    "labelExpressionInfo": {
+	                        "value": "{labelField}"
+	                    }
+	                });
+	                labelClass.symbol = statesLabel;
+	                featureLayer.setLabelingInfo([labelClass]);
+
+	                arrFeaturelayers.push(fealayer);
+	                map.addLayer(fealayer,2);
+	               // if (FeaLayer[featureindex] != "") {
+	               //     //fealayer = FeaLayer[featureindex];
+	               //     fealayer = map.getLayer('graphicsLayer2');
+	               //     //map.getLayer(map.layerIds[j]);
+	               //    // fealayer.opacity = 0;// dic_LayerTrans[featureindex];
+
+	               //     fealayer.opacity =0.5;
+	               //     //fealayer.visible = true;
+	               //}
+
+	               // fealayer = GetFeatureLayer(featureindex, )
+	               // if (fealayer !== undefined) {
+	               //     arrFeaturelayers.push(fealayer);
+	               //     map.addLayer(fealayer, 2)
+	               // }
+	               // else {
+	               //     console.log(featureindex + ' not create');
+	               // };
+	            }
+	        }
+	    }
+
+	    function DispLayerNew(btnid, LayerName) {
+	        
+	      
+
+	        //处理叠加
+	        var LayerFwDisp = null
+	        if (LayerName == '影像') {
+	            GridVisibleLayerDisp = !GridVisibleLayerDisp;
+	            if (GridVisibleLayerDisp == true) {
+	                dic_Layer[LayerName].visible = true;
+	                setLayers(MapServers[3].LoadLayer, [0]);
+	                $("#" + btnid).attr("class", "btn btn-default DituBtnVec");
+	                if (Djlayers.contains('房屋') == true) {
+	                    dic_Layer['房屋_地'].visible = false;
+	                    dic_Layer['房屋_卫'].visible = true;
+	                }
+	            }
+	            else {
+	                dic_Layer[LayerName].visible = false;
+	                setLayers(MapServers[3].LoadLayer, []);
+	                $("#" + btnid).attr("class", "btn btn-default DituBtnWei");
+	                if (Djlayers.contains('房屋') == true) {
+	                    dic_Layer['房屋_地'].visible = true;
+	                    dic_Layer['房屋_卫'].visible = false;
+	                }
+	            }
+	          
+	        }
+	        else {
+	            if (LayerName == '房屋') { //房屋有区别
+	                if (Djlayers.contains(LayerName) == true) {
+	                    dic_Layer['房屋_地'].visible = false;
+	                    dic_Layer['房屋_卫'].visible = false;
+	                    $("#" + btnid).attr("class", "btn btn-default layernodisp");
+	                    Djlayers.remove(LayerName);
+	                }
+	                else {
+	                    if (GridVisibleLayerDisp == true) {
+	                        dic_Layer['房屋_地'].visible = false;
+	                        dic_Layer['房屋_卫'].visible = true;
+	                    }
+	                    else {
+	                        dic_Layer['房屋_地'].visible = true;
+	                        dic_Layer['房屋_卫'].visible = false;
+	                    }
+	                    $("#" + btnid).attr("class", "btn btn-default layerdisp");
+	                    Djlayers.push(LayerName);
+	                }
+	            }
+	            else {
+	                if (Djlayers.contains(LayerName) == true) {
+	                    Djlayers.remove(LayerName);
+	                    dic_Layer[LayerName].visible = false;
+	                    $("#" + btnid).attr("class", "btn btn-default layernodisp");
+	                }
+	                else {
+	                    Djlayers.push(LayerName);
+	                    dic_Layer[LayerName].visible = true;
+	                    $("#" + btnid).attr("class", "btn btn-default layerdisp");
+	                }
+	            }
+	        }
+	       
+	        //对所有叠加处理可见性
+	        for (var s = 0; s < MapServers.length-1; s++) {
+	            MapServers[s].visibleSubLayindex = [];
+	            for (var i = 0; i < LayerOrder.length; i++) {
+	                if (dic_Layer[LayerOrder[i]].ServerIndex == s && dic_Layer[LayerOrder[i]].visible == true) {
+	                    MapServers[s].visibleSubLayindex = MapServers[s].visibleSubLayindex.concat(dic_Layer[LayerOrder[i]].LayerQueryIndex);
+	                }
+	            }
+	            setLayers(MapServers[s].LoadLayer, MapServers[s].visibleSubLayindex);
+	        }
+	        //VectorVisibleLayer = GetVisibleLayers();
+	        //setLayers(VectorLayer, VectorVisibleLayer);
+	    }
+
+	    function GetVisibleLayers() {
+	        var layers = [];
+	        for (var i = 0; i < LayerOrder.length; i++) {
+	            if (dic_Layer[LayerOrder[i]].visible == true) {
+	                layers=layers.concat(dic_Layer[LayerOrder[i]].LayerQueryIndex);
+	            }
+	        }
+	        return layers;
+	    }
+
+        //这个叠加具有多充显示的逻辑，目前不使用
+	
+	    function HaveValueInArray(val) {
+	        for (i in VectorVisibleLayer) {
+	            v = VectorVisibleLayer[i];
+	            if (v == val) {
+	                return true;
+	            }
+	        }
+	        return false;
+	    }
+
+
+	    function mapClick(e) {
+	        if (bolClickMap == false) {
+	            return;
+	        }
+	       // alert("mc1");
+	        map.graphics.clear();
+	         //获得用户点击的地图坐标
+	        var point = e.mapPoint;
+	       // alert("mc2:"+point.x+","+point.y);
+
+
+	        //实例化查询参数
+	        var query = new esri.tasks.Query();
+	        query.geometry = point;
+	        query.outFields = ["*"];
+	        query.outSpatialReference = map.spatialReference;
+	        query.spatialRelationship = esri.tasks.Query.SPATIAL_REL_INTERSECTS;
+	        query.returnGeometry = true;
+	        //实例化查询对象
+	        //alert("mc3" + "/" + dic_Layer[CurrLayerName].Index1st);
+	        var queryTask = new esri.tasks.QueryTask(MapServers[dic_Layer[CurrLayerName].ServerIndex].Url + "/" + dic_Layer[CurrLayerName].Index1st);
+	        //进行查询                                
+	        queryTask.execute(query, showFindResult)
+
+	    }
+
+	    function showFindResult(queryResult) {
+	        if (queryResult.features == 0) {
+	            alert("没有该元素");
+	            return;
+	        }
+	        try {
+	            //alert("s1:" + queryResult.features.length);
+	            for (var i = 0; i < queryResult.features.length; i++) {
+	                var feature = queryResult.features[i];
+	                //alert("s2:" + queryResult.features[i].attributes[dic_Layer[CurrLayerName].QueryFName]);
+	                //定义高亮图形的符号
+	                //1.定义面的边界线符号
+	                var outline = new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_DASHDOT, new dojo.Color([255, 0, 0]), 3);
+	                //2.定义面符号 
+	                var PolygonSymbol = new esri.symbol.SimpleFillSymbol(esri.symbol.SimpleFillSymbol.STYLE_SOLID, outline, new dojo.Color([0, 255, 0, 1]));
+
+	                var graphic = new esri.Graphic();
+
+
+	                //创建客户端图形
+	                graphic.setGeometry(feature.geometry);
+	                //设置查询到的graphic的显示样式  
+	                graphic.setSymbol(PolygonSymbol);
+
+	                map.graphics.clear();
+	                //var graphic = new Graphic(geometry, PolygonSymbol);
+	                //将客户端图形添加到map中
+	                map.graphics.add(graphic);
+
+	                //setTimeout(function (map) {
+	                //    map.graphics.clear();
+	                //}, 1000);
+	            }
+	        }
+	        catch (e) {
+	            alert(e);
+	        }
+	        if (CurrFunItem.substring(0, 1) == '1') {
+	            var feature = queryResult.features[0];
+	            var geometry = feature.geometry;
+	            var dkcode = feature.attributes[dic_Layer[CurrLayerName].QueryFName];
+	            SpatialQuery(CurrLayerName, dkcode)
+	        }
+	        else if (CurrFunItem.substring(0,2) == 'F2') {
+
+	            var feature = queryResult.features[0];
+	            var geometry = feature.geometry;
+	            var dkbm = feature.attributes[dic_Layer[CurrLayerName].QueryFName];
+	            var url = WebServer + "/EditView/" + dic_Layer[CurrLayerName].EditView + "?id=" + dkbm;
+	            //alert("s3:" + queryResult.features[0].attributes[dic_Layer[CurrLayerName].QueryFName]);
+	            ShowUrl(url);
+	        }
+
+	    }
+	    function SpatialQuery(LayerName, ObjCode) {
+
+	        //var json = eval('(' + str + ')');
+	        var objStr = QueryLayerInfo(LayerName, ObjCode);
+	        //var strjson=objStr.toJSONString();
+	        var strjson = JSON.stringify(objStr);
+	        var url = WebServer + "/showview/resultview?json=" + strjson;
+
+	        ShowUrl(url);
+	    }
+
+	    function btnReturn() {
+	        history.go(-1);
+	        //$("#div3th").hide();
+	        //$("#LtdPos").hide();
+	        $("#container").show();
+	    }
+	    function ShowUrl(url) {
+
+	        //location.href = url;
+
+	        $("#divLoadPage").modal({
+	            remote: url,
+	            backdrop: 'static',
+	            keyboard: false
+	        });
+	        $("#divLoadPage").modal("show");
+	        //$("#container").hide();
+
+	    }
+	   
+	    //处理功能项菜单
+	    function MenuClick(FunItem, LayerName) {
+	        $("#FunGroup1").attr("class", "off");
+	        $("#FunGroup4").attr("class", "off");
+	     
+
+	        bolClickMap = false;
+	        CurrFunItem = FunItem;
+	        if (FunItem == 'F104') {
+	            //设置透明度
+	            if (DjFeatureLayers.length == 0) {
+	                alert('目前没有显示核查数据!');
+	            }
+	            else {
+	                ShowSettingTransModel(DjFeatureLayers[0]);
+	            }
+	        }
+	        else if (FunItem == 'F301') {//企业定位
+	            SetPosVisible(true);
+	        }
+	        else if (FunItem.substring(0, 2) == 'F2') {
+	            bolClickMap = true;
+	            CurrLayerName = LayerName;
+	             
+	            $("#FunGroup4").attr("class", "off");
+
+	            ////如果该图层没有加载，则加载
+	            if (!Djlayers.contains(CurrLayerName)) {
+	                alert('该图层还没有显示，请先叠加图层!');
+	                //    if (LayerName=="土地现状"){
+	                //        DispLayer("btnTdxz", LayerName)}
+	                //    else if (LayerName=="房屋"){
+	                //        DispLayer("btnFw", LayerName)}
+	                //    else if (LayerName=="历年批次"){
+	                //        DispLayer("btnLnpc", LayerName)}
+	                //    else if (LayerName=="城市规划"){
+	                //        DispLayer("btnCsgh", LayerName)}
+
+	                //    //VectorVisibleLayer.push(dic_Layer[CurrLayerName].LayerQueryIndex);
+	                //    //setLayers(VectorLayer, VectorVisibleLayer);
+	            }
+	            else {
+	                if (LayerName == "房屋") {
+	                    CurrLayerName = "房屋_地";
+	                }
+	                else { }
+	            }
+	        }
+	    }
+
+	    function LtdCheckControl(id) {
+	        var djindex = [];
+	        if (id == 101){
+	            djindex = [15, 16, 17];
+	        }
+	        else if (id == 102) {
+	            djindex = [18, 19];
+	        }
+	        else if (id == 103) {
+	            djindex = [20,21];
+	        }
+	        
+	        VectorVisibleLayer = VectorVisibleLayer.concat(djindex);
+	        setLayers(VectorLayer, VectorVisibleLayer);
+	        
+	    }
+
+	    //定位界面显示
+	    function SetPosVisible(posvisible) {
+	        $("#LtdTable tr:gt(0)").remove();
+	        $("#ltdname").val('');
+
+	        if (posvisible == true) {
+	            $("#LtdPos").show();
+	            $("#container").hide();
+	            $("#ltdname").focus();
+	        }
+	        else {
+	            $("#LtdPos").hide();
+	            $("#container").show();
+	        }
+
+	    }
+	    //初始位置
+	    function InitPosition(flag) {
+	        console.log(flag);
+	        if (IsReCenter == true)
+	            return;
+	        IsReCenter = true;
+	        console.log('recenter');
+	     
+	        var query = new esri.tasks.Query();
+	        //把需要查询的底图服务加载进来  
+	        var queryTask = new esri.tasks.QueryTask(MapServers[0].Url + "/0");
+	        //需要返回Geometry  
+	        query.returnGeometry = true;
+	        //需要返回的字段  
+	        query.outFields = ["*"];
+	        //设置查询条件，buildNo是之前DOM操作时从信息内容里取出来的  
+	        //query.where = "行政镇编码 ='320507100'";
+	        query.where = "OBJECTID=1";
+	        //进行查询  
+	        queryTask.execute(query, function (res) {
+	            var fea = res.features[0];
+	            //获取查询到的所有geometry的Extent用来设置查询后的地图显示  
+	            var showExtent = fea.geometry.getExtent();
+	            //设置地图的视图范围  
+	            map.setExtent(showExtent.expand(1));
+
+	        });
+	    }
+	    //开启定位
+	    function StartPosition(dkbm) {
+
+	        var query = new esri.tasks.Query();
+	        //把需要查询的底图服务加载进来  
+	        var queryTask = new esri.tasks.QueryTask(MapServers[0].Url + "/8");
+	        //需要返回Geometry  
+	        query.returnGeometry = true;
+	        //需要返回的字段  
+	        query.outFields = ["*"];
+	        //设置查询条件，buildNo是之前DOM操作时从信息内容里取出来的  
+	        query.where = "地块编码 ='" + dkbm + "'";
+	        //进行查询  
+	        queryTask.execute(query, function (res) {
+	            SetPosVisible(false);
+	            var showExtent;
+	            for (var i = 0; i < res.features.length; i++) {
+	                var fea = res.features[i];
+	                var point = fea.geometry.getExtent().getCenter();
+
+	                //设置信息模板infoWindow  
+	                map.infoWindow.setTitle("企业信息");
+	                map.infoWindow.setContent("<p>" + fea.attributes["用地单位名称"] + "</p>");
+	                //把信息模板显示在中心点上  
+	                map.infoWindow.show(point);
+	                map.infoWindow.on("hide", hideInfoWindow);
+	                //查询结果样式  
+	                try {
+	                    var symbol = new esri.symbol.SimpleFillSymbol(esri.symbol.SimpleFillSymbol.STYLE_SOLID,
+                            new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([255, 0, 0, 0.8]), 1),
+                            new dojo.Color([125, 125, 125, 0.35]));
+	                }
+	                catch (e) {
+	                    alert(e);
+	                }
+	                var graphic = new esri.Graphic();
+	                graphic.setGeometry(fea.geometry);
+	                //设置查询到的graphic的显示样式  
+	                graphic.setSymbol(symbol);
+	                //把查询结果添加到map.graphics中进行显示  
+	                map.graphics.clear();
+	                //map.graphics.add(graphic);
+
+	                var simpleMarkerSymbol1 = new esri.symbol.SimpleMarkerSymbol();
+	                var graphic1 = new esri.Graphic(point, simpleMarkerSymbol1);
+	                map.graphics.add(graphic1);
+
+
+	                //获取查询到的所有geometry的Extent用来设置查询后的地图显示  
+	                if (i == 0) {
+	                    showExtent = fea.geometry.getExtent();
+	                } else {
+	                    showExtent = showExtent.union(fea.geometry.getExtent());
+	                }
+
+	                //设置地图的视图范围  
+	                map.setExtent(showExtent.expand(3));
+	            }
+	        });
+	    }
+
+	    function hideInfoWindow() {
+	        map.graphics.clear();
+	    }
+	    //根据叠加判断需要显示的图层索引
+	    function getDjLayers() {
+	        var DjLayerCount = 0;
+	        for (var i = 0; i < Djlayers.length; i++) {
+	            DjLayerCount++;
+	        }
+	        var tmpDjLayers = [];
+	        if (Djlayers.contains('历年批次')) {
+	            tmpDjLayers.push('历年批次');
+	        }
+	        if (Djlayers.contains('城市规划')) {
+	            tmpDjLayers.push('城市规划');
+	        }
+	        if (Djlayers.contains('土地规划')) {
+	            tmpDjLayers.push('土地规划');
+	        }
+	        if (Djlayers.contains('土地现状')) {
+	            tmpDjLayers.push('土地现状');
+	        }
+
+	        var layindexs = [];
+	        var dic_DjLayerAddrConfs = [];
+	        dic_DjLayerAddrConfs['历年批次'] = [4, 4, 4, 4];
+	        dic_DjLayerAddrConfs['城市规划'] = [7, 8, 9, 10];
+	        dic_DjLayerAddrConfs['土地规划'] = [12, 13, 14, 15];
+	        dic_DjLayerAddrConfs['土地现状'] = [20, 21, 22, 23];
+
+	        if (GridVisibleLayerDisp == true) {//有影像
+	            if (DjLayerCount == 1) {
+	                var layname = tmpDjLayers[0];
+	                layindexs.push(dic_DjLayerAddrConfs[layname][1]);
+	            }
+	            else if (DjLayerCount == 2) {
+	                var layname = tmpDjLayers[0];
+	                layindexs.push(dic_DjLayerAddrConfs[layname][2]);
+	                layname = tmpDjLayers[1];
+	                layindexs.push(dic_DjLayerAddrConfs[layname][2]);
+	            }
+	            else if (DjLayerCount == 3) {
+	                var layname = tmpDjLayers[0];
+	                layindexs.push(dic_DjLayerAddrConfs[layname][2]);
+	                layname = tmpDjLayers[1];
+	                layindexs.push(dic_DjLayerAddrConfs[layname][2]);
+	                layname = tmpDjLayers[2];
+	                layindexs.push(dic_DjLayerAddrConfs[layname][2]);
+	            }
+	            else if (DjLayerCount == 4) {
+	                var layname = tmpDjLayers[0];
+	                layindexs.push(dic_DjLayerAddrConfs[layname][2]);
+	                layname = tmpDjLayers[1];
+	                layindexs.push(dic_DjLayerAddrConfs[layname][2]);
+	                layname = tmpDjLayers[2];
+	                layindexs.push(dic_DjLayerAddrConfs[layname][2]);
+	                layname = tmpDjLayers[3];
+	                layindexs.push(dic_DjLayerAddrConfs[layname][2]);
+	            }
+	        }
+	        else {//无影像
+	            if (DjLayerCount == 1) {
+	                var layname = tmpDjLayers[0];
+	                layindexs.push(dic_DjLayerAddrConfs[layname][0]);
+	            }
+	            else if (DjLayerCount == 2) {
+	                var layname = tmpDjLayers[0];
+	                layindexs.push(dic_DjLayerAddrConfs[layname][1]);
+	                layname = tmpDjLayers[1];
+	                layindexs.push(dic_DjLayerAddrConfs[layname][3]);
+	            }
+	            else if (DjLayerCount == 3) {
+	                var layname = tmpDjLayers[0];
+	                layindexs.push(dic_DjLayerAddrConfs[layname][2]);
+	                layname = tmpDjLayers[1];
+	                layindexs.push(dic_DjLayerAddrConfs[layname][2]);
+	                layname = tmpDjLayers[2];
+	                layindexs.push(dic_DjLayerAddrConfs[layname][3]);
+	            }
+	            else if (DjLayerCount == 4) {
+	                var layname = tmpDjLayers[0];
+	                layindexs.push(dic_DjLayerAddrConfs[layname][2]);
+	                layname = tmpDjLayers[1];
+	                layindexs.push(dic_DjLayerAddrConfs[layname][2]);
+	                layname = tmpDjLayers[2];
+	                layindexs.push(dic_DjLayerAddrConfs[layname][2]);
+	                layname = tmpDjLayers[3];
+	                layindexs.push(dic_DjLayerAddrConfs[layname][3]);
+
+	            }
+	        }
+	        return layindexs;
+	    }
+
+	    $(document).ready(function () {
+	        var host = window.location.host;
+	        if (host.substring(0, 9) == 'localhost') {
+	            WebServer = 'http://' + host;
+	        }
+	        else {
+	            WebServer = 'http://' + host + '/td_gis';
+	        }
+	        jpgForDitu = WebServer + '/themes/imgs/retPos.jpg';
+            
+
+	        setCookie("usesrname", 'admin');
+	        setCookie("userpwd", '123456');
+	        setCookie("userorg", '320507100');
+	        var orgcode = getCookie("userorg");
+	        initMap(orgcode);
+
+	       
+
+	        document.onreadystatechange = completeLoading;
+
+	        setTimeout('InitPosition(2)', 4000);
+
+	        
+	        //企业定位不显示
+	        SetPosVisible(false);
+
+            //ios的遮盖处理
+	        if (navigator.userAgent.match(/(iPhone|iPod|ios)/i)) {
+	            $("#btnTop").addClass("iosForZheGai");
+	            $("#LtdPos").addClass("iosForZheGai");
+	            $("#divSettingTransparent").addClass("iosForZheGai");
+	            $("#divLoadPage").addClass("iosForZheGai");
+
+	            
+	        }
+	        
+	    });
+
+	    function GetFeatureLayer(lindex, opacity) {
+	        require([
+				"esri/map",
+               "esri/layers/FeatureLayer",
+              
+				"dojo/domReady!"
+	        ],
+				function (Map, FeatureLayer) {
+				    var featureLayer = new FeatureLayer(MapServer[1].Url + "/"+lindex, {
+				        mode: FeatureLayer.MODE_SNAPSHOT,
+				        outFields: ["*"],
+				        hasAttributionData: true,
+				        opacity: opacity
+				    });
+				    //featureLayer.setDefinitionExpression("行政村代码 = '320507100204'");
+				    return featureLayer;
+                }
+			);
+	    }
+
+	    function completeLoading() {
+
+	        if (document.readyState == "complete") {
+	            InitPosition(1);
+	        }
+	    }
+	    Array.prototype.contains = function (needle) {
+	        for (i in this) {
+	            if (this[i] == needle) return true;
+	        }
+	        return false;
+	    }
+	    Array.prototype.indexOf = function (val) {
+	        for (var i = 0; i < this.length; i++) {
+	            if (this[i] == val) return i;
+	        }
+	        return -1;
+	    };
+
+	    Array.prototype.remove = function (val) {
+	        var index = this.indexOf(val);
+	        if (index > -1) {
+	            this.splice(index, 1);
+	        }
+	    };
+
+
+
+	    function targetto(url) {
+	        $("#showModal").modal({
+	            remote: url
+	        });
+	    }
+
+
+	    //4.每次隐藏时，清除数据。确保点击时，重新加载
+	    $("#showModal").on("hidden.bs.modal", function () {
+	        $(this).removeData("bs.modal");
+	    });
+
+
+	</script>
+
+         <script type="text/javascript">
+
+
+             //JS操作cookies方法!
+             //写cookies
+             function setCookie(name, value) {
+                 var Days = 30;
+                 var exp = new Date();
+                 exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+                 document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+             }
+
+             function getCookie(name) {
+                 var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+                 if (arr = document.cookie.match(reg))
+                     return unescape(arr[2]);
+                 else
+                     return null;
+             }
+             function delCookie(name) {
+                 var exp = new Date();
+                 exp.setTime(exp.getTime() - 1);
+                 var cval = getCookie(name);
+                 if (cval != null)
+                     document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+             }
+             //使用示例
+             //setCookie("name", "hayden");
+             //alert(getCookie("name"));
+             //如果需要设定自定义过期时间
+             //那么把上面的setCookie　函数换成下面两个函数就ok;
+             //程序代码
+             //////function setCookie(name, value, time) {
+             //////    var strsec = getsec(time);
+             //////    var exp = new Date();
+             //////    exp.setTime(exp.getTime() + strsec * 1);
+             //////    document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+             //////}
+             //////function getsec(str) {
+             //////    alert(str);
+             //////    var str1 = str.substring(1, str.length) * 1;
+             //////    var str2 = str.substring(0, 1);
+             //////    if (str2 == "s") {
+             //////        return str1 * 1000;
+             //////    }
+             //////    else if (str2 == "h") {
+             //////        return str1 * 60 * 60 * 1000;
+             //////    }
+             //////    else if (str2 == "d") {
+             //////        return str1 * 24 * 60 * 60 * 1000;
+             //////    }
+             //////}
+             //这是有设定过期时间的使用示例：
+             //s20是代表20秒
+             //h是指小时，如12小时则是：h12
+             //d是天数，30天则：d30
+             //setCookie("name", "hayden", "s20");
+
+             var circle = new Sonic({
+
+                 width: 50,
+                 height: 50,
+                 padding: 50,
+
+                 strokeColor: '#000',
+
+                 pointDistance: .01,
+                 stepsPerFrame: 3,
+                 trailLength: .7,
+
+                 step: 'fader',
+
+                 setup: function () {
+                     this._.lineWidth = 5;
+                 },
+
+                 path: [
+                     ['arc', 125, 125, 25, 0, 360]
+                 ]
+
+             });
+
+        </script>  
+	<script>
+	    function SubmitQueryLtd() {
+	        var ltdname = $("#ltdname").val();
+	        if ($.trim(ltdname) == "") {
+	            alert("查询条件不能为空!");
+	            return;
+	        }
+	        var tbody = ""; //声明表格中body部分 
+	        //$.getJSON(WebServer + "/lyRemoteserv/JsLtdQuery", [{ ltdname: '孙' }], showresult)
+
+	        $.ajax({ //这里使用到Jquery的ajax方法
+	            type: "Get",
+	            dataType: "json",   //dataType: 'jsonp',//crossDomain: true,
+	            url: WebServer + "/lyRemoteserv/JsLtdQuery", //请求的处理数据 
+	            data: { ltdName: ltdname },
+	            success: function (data) {
+	                try {
+	                    var testJson = data;//.serializeArray();// JSON.parse(json_string);// $.parseJSON(data);
+	                    //testJson = JSON.stringify(testJson);// testJson.stringify();
+	                    $("#LtdTable tr:gt(0)").remove();
+	                    for (var i = 0; i < testJson.length; i++) {
+	                        var trs = "";
+	                        trs += "<tr><td align='center'>" + (i + 1) + "</td><td>"
+                            //trs += testJson[i].地块编码 + "</td><td>"
+                            + '<a href="#" onclick="StartPosition(' + "'" + testJson[i].dkbm + "'" + ')">' + testJson[i].name + '</a>'
+                                + "" + "</td></tr>";
+	                        tbody += trs;
+	                    }
+	                    $("#LtdTable").append(tbody);
+	                    //altRows('LtdTable');
+	                }
+	                catch (e) { alert(e); }
+	            }
+	        });
+
+	    }
+	    function showresult(data) {
+	        console.log(data);
+
+	    }
+
+	    function RetPos(id) {
+	        FindPos();
+	    }
+
+	    function RetPosTestValid() {
+	        alert('测试默认位置:');
+	        var lng = 120.53049732538;
+	        var lat = 31.137585831154;//120.455639	31.429375 望亭镇政府
+
+	        lng = 120.455639;
+	        lat = 31.429375;
+            
+	        var lnglat = '120.482194,31.442379';
+	        var ss = lnglat.split(',');
+	        var projection = new BMap.MercatorProjection();
+	        var point = projection.lngLatToPoint(new BMap.Point(ss[0], ss[1]));
+	        alert(point.x + ", " + point.y);
+	        console.log(point.x + ", " + point.y);
+	        return;
+
+	            var earthRad = 6378137.0;  
+	            var x = lng * Math.PI / 180 * earthRad;  
+	            var a = lat * Math.PI / 180;  
+	            var y = earthRad / 2 * Math.log((1.0 + Math.sin(a)) / (1.0 - Math.sin(a)));  
+	            alert(x + "," + y);
+
+	        $.get('/BdMapCoorsUtil/GcsToBD09II?lng=' + lng + '&lat=' + lat, function (data) {
+	            alert('gps您的位置是:' + data);
+	            var ss = data.split(",")
+	            var glng = ss[0];
+	            var glat = ss[1];
+	            var latlng = new esri.geometry.Point(glng, glat);
+	            var webMercator = esri.geometry.geographicToWebMercator(latlng);//地理坐标系必须要转换摩卡托的投影坐标系,不然聚合没效果
+
+	            alert('mercator您的位置：' + webMercator.x + ',' + webMercator.y);
+
+	            //描点
+	            var pt = new esri.geometry.Point(webMercator.x, webMercator.y, { "wkid": 4326 });
+	            var simpleMarkerSymbol1 = new esri.symbol.SimpleMarkerSymbol();
+	            var sms = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_SQUARE, 20,
+                            new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
+                                    new dojo.Color([255, 0, 0]), 1),
+                            new dojo.Color([0, 255, 0, 0.25]));
+
+	            var graphic1 = new esri.Graphic(pt, sms);
+	            map.graphics.clear();
+	            map.graphics.add(graphic1);
+
+	            var showExtent = pt.getExtent();
+	       
+                //设置地图的视图范围  
+               // map.setExtent(showExtent.expand(5));
+       
+
+	           // var pms = new esri.symbol.PictureMarkerSymbol("/themes/imgs/retPos.png", 24, 26)
+	           // var gImg = new Graphic();
+	            //gImg.setGeometry(pt);
+	            
+	           // map.graphics.add(gImg);
+
+
+	        });
+	    }
+	    function locationError(error) {
+	        switch (error.code) {
+	            case error.TIMEOUT:
+	                alert("超时，请重试!");
+	                break;
+	            case error.POSITION_UNAVAILABLE:
+	                alert('对不起，不能检测您的位置!');
+	                break;
+	            case error.PERMISSION_DENIED:
+	                alert('定位被拒绝，请允许定位.');
+	                break;
+	            case error.UNKNOWN_ERROR:
+	                alert('未知错误!');
+	                break;
+	            default:
+	                alert('其他错误');
+	        }
+
+	     
+	       
+	    }
+	    function locationSuccess(position) {
+	        var coords = position.coords;
+            
+	        CurrPosition = coords.latitude + ',' + coords.longitude;
+	        alert(CurrPosition);
+
+	        if (esri.geometry.webMercatorUtils.canProject(pt, map)) {
+	            result = webMercatorUtils.project(pt, map);
+	        }
+	        //var latlng = new google.maps.LatLng(
+	        //    // 维度
+	        //    coords.latitude,
+	        //    // 精度
+	        //    coords.longitude
+	        //);
+	        //在图中显示位置
+	        //alert(coords.longitude);
+	    }
+
+	    function iosgetpositioncallback(str) {
+	        alert('获得定位数据为：' + str);
+	        var infos = str.split(',');//double wgB, double wgL, double wgH
+	        //$.get('/td_gis/GisUtil/WGS84ToWT?wgB=' + infos[3] + '&wgL=' + infos[1] + '&wgH=' + infos[5], function (data) {
+	        //    //alert(data);
+	        //    DrawPosition(data[1], data[0]);GcsToBD09II
+	        //});
+
+
+	        $.get('/td_gis/BdMapCoorsUtil/Wgs84ToBd09?Lng=' + infos[3] + '&Lat=' + infos[1], function (data) {
+	            alert(data);
+	            DrawPosition(data[0], data[1]);
+	        });
+
+	        
+	    }
+	    function GetCurrIosPosition() {
+	        try
+	        {
+	            ios.Getposition();
+	        }
+	        catch (e) {
+	            console.log(e);
+	           
+	            PositionStartFlag = false;
+	            clearInterval(StartPositinoIntervalId);
+	            $("#F203").attr("class", "btn btn-default retPosBtn");
+	        }
+	    }
+
+	    function FindPos() {
+	        //if (navigator.geolocation) {
+	        //    navigator.geolocation.getCurrentPosition(locationSuccess, locationError, {
+	        //    //navigator.geolocation.watchPosition(locationSuccess, locationError, {
+	        //        // 指示浏览器获取高精度的位置，默认为false
+	        //        enableHighAccuracy: true,
+	        //        // 指定获取地理位置的超时时间，默认不限时，单位为毫秒
+	        //        timeout: 5000,
+	        //        // 最长有效期，在重复获取地理位置时，此参数指定多久再次获取位置。
+	        //        maximumAge: 3000
+	        //    });
+	        //} else {
+	        //    alert("对不起，您的设备不支持定位!");
+	        //}
+	        //if (((navigator.userAgent.match(/(iPhone|iPod|Android|ios|SymbianOS)/i))){
+	        if (navigator.userAgent.match(/(iPhone|iPod|ios)/i)){
+	            if (PositionStartFlag != true) {
+	                PositionStartFlag = true;
+	                Startpositioning();;
+	                //Getposition();
+	                StartPositinoIntervalId=setInterval("GetCurrIosPosition()", 4000);
+	                $("#F203").attr("class", "btn btn-default stopPosBtn");
+	            }
+	            else {
+	                Endpositioning();;
+	                PositionStartFlag = false;
+	                clearInterval(StartPositinoIntervalId);
+	                $("#F203").attr("class", "btn btn-default retPosBtn");
+                }
+
+	        }
+	        else  //安卓百度定位
+	        {
+	            if (PositionStartFlag != true) {
+	                PositionStartFlag = true;
+	                //window.BMapAndroid.SetCurrCorrType("gcj02");
+	                //window.BMapAndroid.SetCurrCorrType("bd09ll");
+	                window.BMapAndroid.SetCurrCorrType("bd09");
+	                window.BMapAndroid.Startpositioning();
+	                StartPositinoIntervalId = setInterval("BdForAndroidPosition()", 4000);
+	                $("#F203").attr("class", "btn btn-default stopPosBtn");
+                }
+	            else {
+	                PositionStartFlag = false;
+	                window.BMapAndroid.Endpositioning();
+	                clearInterval(StartPositinoIntervalId);
+	                $("#F203").attr("class", "btn btn-default retPosBtn");
+                }
+	        }
+	    }
+
+	    function BdForAndroidPosition() {
+	        try
+	        {
+	            console.log('BMapAndroid.GetCurrPositionInfo();');
+	            //可选，设置返回经纬度坐标类型，默认gcj02
+	            //gcj02：国测局坐标；
+	            //bd09ll：百度经纬度坐标；
+	            //bd09：百度墨卡托坐标；
+	            //window.BMapAndroid.SetCurrCorrType("gcj02");
+	            //window.BMapAndroid.SetCurrCorrType("bd09ll");
+	            var data = window.BMapAndroid.GetCurrPositionInfo();
+	            if (typeof (data) == "undefined") {
+	                //alert('数据无效');
+	                return;
+	            }
+	            var items = data.split(/[:,]/);
+	            alert(items[0] + ":" + items[1] + "," + items[2] + ":" + items[3] + "," + items[4] + ":" + items[5] + "," + items[8] + ":" + items[9]);
+
+	            //$.get('/td_gis/GisUtil/WGS84ToWT?wgB=' + items[3] + '&wgL=' + items[1] + '&wgH=' + items[9], function (data) {
+	            //    alert(data);
+                //    DrawPosition(data[1], data[0]);
+	            //});
+	            DrawPosition(items[1],items[3]);
+
+	        }
+	        catch (e) {
+	            alert(e);
+	            PositionStartFlag = false;
+	            window.BMapAndroid.Endpositioning();
+	            clearInterval(StartPositinoIntervalId);
+	            $("#F203").attr("class", "btn btn-default retPosBtn");
+	        }
+            //return;
+	        //var geolocation = new BMap.Geolocation();
+	        //geolocation.getCurrentPosition(function (r) {
+	        //    if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+	        //        console.log(r.point.lng + ',' + r.point.lat);
+	        //        var xo = r.point.lng;//120.482198,31.442379
+	        //        var yo = r.point.lat;
+	        //        //var xo = 120.482198;
+	        //        //var yo = 31.442379;
+	        //        var projection = new BMap.MercatorProjection();
+	        //        var point = projection.lngLatToPoint(new BMap.Point(xo, yo));
+	        //        xo = point.y;
+	        //        yo = point.x;
+	        //        var Dx = -2995465.545121;
+	        //        var Dy = -11462568.553051;
+	        //        var Xt = 0.0074330865;//弧度
+	        //        var K = 0.855911728247;
+
+
+	        //        var x = Dx + K * (Math.cos(Xt) * xo - Math.sin(Xt) * yo);
+	        //        var y = Dy + K * (Math.sin(Xt) * xo + Math.cos(Xt) * yo);
+
+	        //        alert("lng,lat:" + r.point.lng + ',' + r.point.lat+",精度:"+r.accuracy+",平面坐标："+point.y+","+ point.x+"望亭坐标:"+y+","+x);;
+	        //        DrawPosition(y,x); 
+	        //    }
+	        //    else {
+	        //        if (this.getStatus() == BMAP_STATUS_UNKNOWN_LOCATION) {
+	        //            alert('位置结果未知');
+	        //        }
+	        //        else if (this.getStatus() == BMAP_STATUS_UNKNOWN_ROUTE) {
+	        //            alert('导航结果未知');
+	        //        }
+	        //        else if (this.getStatus() == BMAP_STATUS_INVALID_KEY) {
+	        //            alert('非法密钥');
+	        //        }
+	        //        else if (this.getStatus() == BMAP_STATUS_INVALID_REQUEST) {
+	        //            alert('非法请求');
+	        //        }
+	        //        else if (this.getStatus() == BMAP_STATUS_PERMISSION_DENIED) {
+	        //            alert('没有权限');
+	        //        }
+	        //        else if (this.getStatus() == BMAP_STATUS_SERVICE_UNAVAILABLE) {
+	        //            alert('服务不可用');
+	        //        }
+	        //        else if (this.getStatus() == BMAP_STATUS_TIMEOUT) {
+	        //            alert('定位超时');
+	        //        }
+	        //        PositionStartFlag = false;
+	        //        clearInterval(StartPositinoIntervalId);
+	        //        $("#F203").attr("class", "btn btn-default retPosBtn");
+
+	        //    }
+	        //}, { enableHighAccuracy: true,maximumAge:0 })
+	    }
+	    function DrawPosition(x, y) {
+	        if (PositionStartFlag ==false)
+	            return;
+	        if (x < ValidExtent[0] || x > ValidExtent[2] || y < ValidExtent[1] || y > ValidExtent[3]) {
+	            alert('您不在地图区域内，不能进行定位！');
+	            PositionStartFlag = false;
+	            clearInterval(StartPositinoIntervalId);
+	            $("#F203").attr("class", "btn btn-default retPosBtn");
+	        }
+	        else {
+	            //描点
+	            var pt = new esri.geometry.Point(x, y, map.spatialReference);//{ "wkid": 4326 });
+	            console.log('点坐标：' + pt.x + ',' + pt.y);
+	        
+	            var cms = new esri.symbol.SimpleMarkerSymbol(esri.symbol.SimpleMarkerSymbol.STYLE_CIRCLE, 25
+                                      ,new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([255, 69, 0]), 1), new dojo.Color([0, 255, 0, 0.25]));
+
+	                   
+	            var graphic1 = new esri.Graphic(pt, cms);
+	            map.graphics.clear();
+	            map.graphics.add(graphic1);
+
+	            var currRange = [];
+	            currRange.push(x - 500);
+	            currRange.push(y - 500);
+	            currRange.push(x + 500);
+	            currRange.push(y + 500);
+
+	            var startExtent = new esri.geometry.Extent(currRange[0], currRange[1], currRange[2], currRange[3], map.spatialReference);
+	            map.setExtent(startExtent);
+	            //var simpleMarkerSymbol1 = new esri.symbol.SimpleMarkerSymbol();
+	            //var sms = new esri.symbol.SimpleMarkerSymbol(esri.symbol.SimpleMarkerSymbol.STYLE_SQUARE, 20
+	            //       ,new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([255, 0, 0]), 1),new dojo.Color([0, 255, 0, 0.25]));
+	                   
+	            //if (isNaN(ext.extent.ymin) || isNaN(ext.extent.ymax)) {
+	            //    console.log('y is NaN is not valid');
+	            //    return;
+	            //}
+
+
+	            //if (isNaN(currRange[0]) || isNaN(currRange[1]) || isNaN(currRange[2]) || isNaN(currRange[3])) {
+	            //    console.log('NaN is not valid');
+	            //    //var startExtent = new esri.geometry.Extent(ValidExtent[0], ValidExtent[1], ValidExtent[2], ValidExtent[3], map.spatialReference);
+	            //    //map.setExtent(startExtent); 
+	            //$.get('/td_gis/BdMapCoorsUtil/GcsToBD09II?lng=' + r.point.lat + '&lat=' + r.point.lng , function (data) {
+	            //    alert('gcj02 gps您的位置是:' + data);
+
+	            //    var latlng = new esri.geometry.Point(r.point.lng, r.point.lat);
+	            //    var webMercator = esri.geometry.geographicToWebMercator(latlng);//地理坐标系必须要转换摩卡托的投影坐标系,不然聚合没效果
+
+	            //    alert('mercator您的位置：' + webMercator.x + ',' + webMercator.y);
+
+	            //});
+	        }
+	       
+	    }
+
+    </script>
+</head>
+
+<body>
+<div id="app"> 
+ 	<div id="container">
+              <div class="btn-group" id="btnTop" role="group" style="float:right">
+					    <!--<button type="button" class="btn btn-default" id="toggle-right">
+						    <span class="glyphicon glyphicon-list-alt"></span>
+					    </button>
+
+                       <button id="F203" type="button" onclick="RetPosTestValid()"  class="btn btn-default retPosBtn">　</button>-->
+                  
+                        <button id="F104" type="button" onclick="MenuClick(id,'透明度设置')" class="btn btn-default layernodisp">透</button>
+				    <button id="F206" type="button"   class="btn btn-default">　</button>
+					 	 
+					      <button id="F201" type="button" onclick="MenuClick(id,'企业范围')" class="btn btn-default layernodisp">企</button>
+					  <button id="F202" type="button" onclick="MenuClick(id,'房屋')" class="btn btn-default layernodisp">房</button>
+					
+                       <button id="F204" type="button"   class="btn btn-default">　</button>
+					     <button id="F203" type="button" onclick="RetPos(id)"  class="btn btn-default retPosBtn">　</button>
+					   
+					   @* <button id="btnTdxz" type="button" onclick="btnDispLayer(id,'土地现状')"  class="btn btn-default layerdisp">现</button>
+					    <button id="btnFw" type="button" onclick="btnDispLayer(id,'房屋')" class="btn btn-default layernodisp">房</button>
+					    <button id="btnLnpc" type="button" onclick="btnDispLayer(id,'历年批次')" class="btn btn-default  layernodisp">批</button>
+					    <button id="btnTdgh" type="button" onclick="btnDispLayer(id,'土地规划')" class="btn btn-default layernodisp">土</button>
+					    <button id="btnCsgh" type="button" onclick="btnDispLayer(id,'城市规划')" class="btn btn-default layernodisp">城</button>*@
+				  	    <button id="F205" type="button" onclick="btnDispLayer(id,'影像')" class="btn btn-default DituBtnWei">　</button>
+				  	    <!--<button id="Button1" type="button" onclick="MenuClick('401','土地现状')"class="btn btn-default">测试</button>
+				-->
+                       </div>
+         <div id="map">	
+           	     
+			
+		        </div>
+        
+            <!--<div data-role="widget" data-widget="nav4" class="nav4">//不触发map click-->
+            <div  class="nav4">
+	            <nav>
+		            <div id="nav4_ul" class="nav_4" style="color:yellow">
+			            <ul class="box">
+				            <li>
+					            <a href="javascript:;" class="" id="FunGroup1"><span>企业核查</span></a>
+					            <dl>
+						            @*<dd><a href="#"  class="menuitem"><span  onclick="MenuClick(id,'镇界')" id="F101">镇统计</span></a></dd>
+		                            <dd><a href="#" class="menuitem"><span   onclick="MenuClick(id,'村界')" id="102">村统计</span></a></dd>
+                                    
+                                    <dd><a href="#" class="menuitem"><span   onclick="ShowGpsTranModal()">转换坐标测试</span></a></dd>
+                                
+                                     <dd><a href="#" class="menuitem"><span   onclick="MenuClick(id,'透明度设置')" id="F104">透明度设置</span></a></dd>
+                                  *@ <dd><a href="#"  class="menuitem"><span  onclick="btnDispLayer(id,'基本农田核查')" id="F101">基本农田核查</span></a></dd>
+		                             <dd><a href="#" class="menuitem"><span   onclick="btnDispLayer(id,'建设管制核查')" id="F102">建设管制核查 </span></a></dd>
+					                 <dd><a href="#" class="menuitem"><span   onclick="btnDispLayer(id,'城市规划核查')" id="F103">城市规划核查</span></a></dd>
+					                 
+					            </dl>
+				            </li>
+				            <li>
+					       <!--     <a href="#"   data-toggle="modal" data-target="#PosLtd" ><span  onclick="MenuClick(id)" id="301">企业定位</span></a>
+    			           --> 
+                                  <a href="#"><span  onclick="MenuClick(id)" id="F301">企业定位</span></a>
+    			           
+				            </li>
+				            <li>
+					            <a href="javascript:;" class="off" id="FunGroup4"><span>图层控制</span></a>
+					            <dl>
+                                    <dd>	<a href="#" class="menuitem"><span  onclick="btnDispLayer(id,'房屋')" id="F405" class="layerdisp">房屋建筑</span></a></dd>	
+					                <dd>	<a href="#" class="menuitem"><span   onclick="btnDispLayer(id,'企业范围')" id="F406"  class="layerdisp">企业信息</span></a>	</dd>
+						            <dd>	<a href="#" class="menuitem"><span onclick="btnDispLayer(id,'历年批次')" id="F403">历年批次</span></a></dd>	
+						            <dd>	<a href="#" class="menuitem"><span  onclick="btnDispLayer(id,'未供及建设项目')" id="F407">未供及建设项目</span></a></dd>	
+					                <dd>	<a href="#" class="menuitem"><span  onclick="btnDispLayer(id,'违法用地')" id="F408">违法用地</span></a></dd>	
+						            <dd>	<a href="#" class="menuitem"><span   onclick="btnDispLayer(id,'土地现状')" id="F401">土地现状</span></a>	</dd>
+						            <dd>	<a href="#" class="menuitem"><span  onclick="btnDispLayer(id,'土地规划')" id="F404">土地规划</span></a></dd>	
+					                <dd>	<a href="#" class="menuitem"><span onclick="btnDispLayer(id,'城市规划')" id="F402">城市规划</span></a>	</dd>
+						        </dl>
+				            </li>
+			
+			            </ul>
+		            </div>
+	            </nav>
+	
+	           <!-- <div id="nav4_masklayer" class="masklayer_div on">&nbsp;</div>-->
+                <script src="~/Scripts/QyTech/nav4.js"></script>
+                <script type="text/javascript">
+                    nav4.bindClick(document.getElementById("nav4_ul").querySelectorAll("li>a"), document.getElementById("nav4_masklayer"));
+                </script>
+            </div>
+
+
+
+       </div>
+	   <!-- <div class="modal fade" id="PosLtd">
+			<div class="modal-dialog">
+			    <div class="modal-content">-->
+				    <div class="div100 title" id="LtdPos" style="display:none">
+					<!--<form action="/lyRemote/AppLtdQuery" method="post">-->
+							<div class="div100 yellow" style="text-align:center"><a href="javascript:" style="float:left"  onclick="SetPosVisible(false);">
+                                 <span class="btnReturn" style="color:white"> 返回 </span></a>
+                                企业名称
+							</div>
+							<div class="div70">
+								<div style="width: 70%; float: left;">
+									<input type="text" style="color:black" name="ltdname" id="ltdname" value=""/>
+								</div>
+							</div>
+							<div>
+								<input id="postQuery" style="width:15%;color:black;text-align:center" type="button" onclick="SubmitQueryLtd();" value="查询"/>
+							</div>
+						
+					<!--</form>-->
+					<div>
+						<div id="content" class="div100">
+							<table class="altrowstable" id="LtdTable" style="width:inherit">
+								<thead>
+									<tr style="background-color:#036C85;color:yellow;">
+										<th ></th>
+										<th style="text-align:center; vertical-align:middle">用地单位名称</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr> 
+											
+									</tr>
+								</tbody>
+							</table>
+					    </div>
+				    </div>
+			   <!-- </div>
+		    </div>
+		</div>-->
+     </div>
+
+    <div>
+        <div class="modal fade" id="divLoadPage" >
+		    <div class="modal-dialog" style="background-color:blue">
+			    <div class="modal-content" style="width:100%; height:800px;background-color:blue">
+			       <div class="modal-body">
+			          
+			
+				    </div>
+			    </div>
+		    </div>
+	    </div>
+    </div> 
+     <div>
+        <div id="divSettingTransparent" class="modal fade"  role="dialog" aria-labelledby="abcde" aria-hidden="true">
+		    <div class="modal-dialog">
+			    <div class="modal-content" style="width:100%; height:270px;color:blue">
+                    <div class="modal-header">
+                      <a class="close" data-dismiss="modal">×</a>
+                        <h3 style="text-align:center" >核查图层透明度设置</h3>
+                    </div>
+			       <div class="modal-body">
+                        <div class="div100">
+                            <div style="text-align:center">
+                                <div style="float:left">透明</div>
+                                ------>
+                                <div style="float:right">不透明</div>
+
+                            </div>
+                        </div>
+                        <div class="div100">
+                            
+                            @*规划基本农田保护区:<input id="st_hgjbntbhq" type="range" step="5" min="0" max="100" value="40"/>
+                            面 状 基 础 设 施:<input id="st_mzjcss" type="range" step="5" min="0" max="100" value="40"/>
+                            建设用地管制区:<input id="st_jsydgzq" type="range" step="5" min="0" max="100" value="40"/>
+                            城市规划:<input id="st_csgh" type="range" step="5" min="0" max="100" value="40"/>*@
+
+                            <input id="st_checktrans" type="range" step="5" min="0" max="100" value="40"/>
+						</div>
+                        <div style="text-align:center">
+                            <br /> <br /> <br />
+							<input id="postSetTrans" style="width:15%;color:black" type="button" onclick="SubmitSetTrans();" value="确认"/>
+						</div>
+			            
+				    </div>
+                   <div class="modal-footer">
+                       <a href="#" class="btn" style="color:black" data-dismiss="modal">关闭</a>
+                    </div>
+			    </div>
+		    </div>
+	    </div>
+     </div> 
+
+     <div>
+        <div id="divTestGps" class="modal fade"  role="dialog" aria-labelledby="abcde" aria-hidden="true">
+		    <div class="modal-dialog">
+			    <div class="modal-content" style="width:100%; height:400px;color:blue">
+                    <div class="modal-header">
+                      <a class="close" data-dismiss="modal">×</a>
+                        <h3 style="text-align:center" >转换测试</h3>
+                    </div>
+			       <div class="modal-body">
+                        
+                        <div class="div100">
+                            
+                            经纬度（百度）:　<input id="lnglat" type="text"　style="width:100%" />
+                           
+						</div>
+                          <div class="div100">
+                            
+                           webMokatuo:　<input id="mkt" type="text" value=""　style="width:100%" />
+                           
+						</div>
+                        <div style="text-align:center">
+                            <br /> <br /> <br />
+							<input id="postSetTrans" style="width:15%;color:black" type="button" onclick="Bd2WebMkt();" value="百度接口转莫卡托"/>
+						</div>
+			            
+				    </div>
+                   <div class="modal-footer">
+                       <a href="#" class="btn" data-dismiss="modal">关闭</a>
+                    </div>
+			    </div>
+		    </div>
+	    </div>
+     </div> 
+    <!-- <a href="#" id="aLoadPage" data-toggle='modal'   data-target='#divLoadPage' data-backdrop="static"  onclick="ShowUrl()"></a>
+	 
+
+</div> <!-- #app END -->
+     	
+    <script>
+        //circle.play();
+
+        document.body.appendChild(circle.canvas);
+        //document.onreadystatechange = completeLoading;
+        //function completeLoading() {
+
+        //    if (document.readyState == "complete") {
+
+        //        document.body.removeChild(circle.canvas);
+        //        //var loadingMask = document.getElementById(‘loadingDiv’);
+        //        //loadingMask.parentNode.removeChild(loadingMask);
+
+        //    }
+
+        //}
+
+        function ShowGpsTranModal() {
+            $("#divTestGps").modal();
+        }
+        function Bd2WebMkt() {
+            //$("#divSettingTransparent").modal({
+            //    backdrop: 'static',
+            //    keyboard: false
+            //});
+            //var lnglat = '120.482194,31.442379';
+            lnglat=$('#lnglat').val();
+            var ss = lnglat.split(',');
+            var projection = new BMap.MercatorProjection();
+            var point = projection.lngLatToPoint(new BMap.Point(ss[0], ss[1]));
+            $("#mkt").val(point.x + ", " + point.y);
+        }
+
+        function ShowSettingTransModel(CheckLayerName) {
+            if (DjFeatureLayers[0] == '基本农田核查') {
+                $("#st_checktrans").val(100 * dic_LayerTrans[16]);
+            }
+            else if (DjFeatureLayers[0] == '建设管制核查') {
+                $("#st_checktrans").val(100 * dic_LayerTrans[19]);
+            }
+            else if (DjFeatureLayers[0] == '城市规划核查') {
+                $("#st_checktrans").val(100 * dic_LayerTrans[21]);//"城市规划核查"
+            }
+          
+                //$("#st_hgjbntbhq").val(100 * dic_LayerTrans[16]);
+                //$("#st_mzjcss").val(100 * dic_LayerTrans[17]);
+                //$("#st_jsydgzq").val(100 * dic_LayerTrans[19]);
+                //$("#st_csgh").val(100 * dic_LayerTrans[21]);
+
+                $("#divSettingTransparent").modal();
+           
+        }
+
+        function SubmitSetTrans() {
+            if (DjFeatureLayers[0]=='基本农田核查')
+            {
+                dic_LayerTrans[16] = $("#st_checktrans").val() / 100;
+                dic_LayerTrans[17] = $("#st_checktrans").val() / 100;//面状基础设施
+            }
+            else if (DjFeatureLayers[0]=='建设管制核查'){
+                dic_LayerTrans[19] = $("#st_checktrans").val() / 100;// 建设管制
+            }
+            else if (DjFeatureLayers[0]=='城市规划核查'){
+                dic_LayerTrans[21] = $("#st_checktrans").val() / 100;//"城市规划核查"
+            }
+
+            //Trans_Nt16=$("#st_hgjbntbhq").val()/100;;//规划基本农田
+            //rans_Nt17=$("#st_mzjcss").val()/100;//面状基础设施
+            //Trans_Jsgz19=$("#st_jsydgzq").val()/100;// 建设管制
+            //Trans_Csgh21 = $("#st_csgh").val() / 100;//"城市规划核查"
+
+            //再次刷新叠加图层
+            RefreshFeatureDisplay();
+
+        }
+
+      
+
+        $("#divLoadPage").on("hidden.bs.modal", function () {
+            //alert("a1");
+            $(this).removeData("bs.modal");
+            //alert("a2");
+        });
+        </script>
+	</body>
+</html>

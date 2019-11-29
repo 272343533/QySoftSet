@@ -4,9 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="wj_GisDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--生成过程中发现错误:
-警告 6002: 表/视图“WjGis2.dbo.blCityPlan”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+    <Schema Namespace="QyBllAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="blCityPlan">
           <Key>
             <PropertyRef Name="Id" />
@@ -18,8 +16,6 @@
           <Property Name="CityPlanCode" Type="varchar" MaxLength="50" />
           <Property Name="PreCode" Type="varchar" MaxLength="50" />
         </EntityType>
-        <!--生成过程中发现错误:
-警告 6002: 表/视图“WjGis2.dbo.blLayer”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="blLayer">
           <Key>
             <PropertyRef Name="Id" />
@@ -78,12 +74,25 @@
           <Property Name="PId" Type="int" />
           <Property Name="IsUse" Type="bit" />
         </EntityType>
+        <EntityType Name="bsLtdIndustries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="HNo" Type="varchar" MaxLength="50" />
+          <Property Name="HLevel" Type="int" />
+          <Property Name="PId" Type="int" />
+          <Property Name="IsUse" Type="bit" />
+          <Property Name="bsS_Codes" Type="varchar" MaxLength="1000" />
+          <Property Name="bsS_Value" Type="int" />
+        </EntityType>
         <EntityType Name="bsLtdInfo">
           <Key>
             <PropertyRef Name="Ltd_Id" />
           </Key>
           <Property Name="Ltd_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="序号" Type="varchar" MaxLength="50" />
+          <Property Name="序号" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="纳税人识别号" Type="varchar" MaxLength="50" />
           <Property Name="纳税人名称" Type="varchar" MaxLength="100" />
           <Property Name="地块编号" Type="varchar" MaxLength="50" />
@@ -104,7 +113,7 @@
           <Property Name="智能车间" Type="varchar" MaxLength="50" />
           <Property Name="新地标企业目标" Type="int" />
           <Property Name="上市类型" Type="varchar" MaxLength="50" />
-          <Property Name="清洁生产历年年度" Type="int" />
+          <Property Name="清洁生产历年年度" Type="varchar" MaxLength="100" />
           <Property Name="技术中心类型" Type="varchar" MaxLength="50" />
           <Property Name="技术中心市级获批年度" Type="int" />
           <Property Name="技术中心省级获批年度" Type="int" />
@@ -165,7 +174,9 @@
           <Property Name="QYZPBM" Type="varchar" MaxLength="50" />
           <Property Name="PICTURE" Type="varchar" MaxLength="100" />
           <Property Name="PhotoType" Type="int" />
+          <Property Name="PicureObj" Type="image" />
           <Property Name="PicMemo" Type="varchar" MaxLength="500" />
+          <Property Name="UpDt" Type="datetime" />
         </EntityType>
         <EntityType Name="LtdProblem">
           <Key>
@@ -258,6 +269,8 @@
           <Property Name="年份" Type="varchar" MaxLength="10" />
           <Property Name="公司名称" Type="varchar" MaxLength="100" />
           <Property Name="事故类型" Type="varchar" MaxLength="50" />
+          <Property Name="地块编号" Type="varchar" MaxLength="20" />
+          <Property Name="纳税人识别号" Type="varchar" MaxLength="25" />
         </EntityType>
         <EntityType Name="t标准化级别">
           <Key>
@@ -270,6 +283,7 @@
           <Property Name="是否公告" Type="varchar" MaxLength="10" />
           <Property Name="标准化级别" Type="varchar" MaxLength="10" />
           <Property Name="地块编号" Type="varchar" MaxLength="20" />
+          <Property Name="纳税人识别号" Type="varchar" MaxLength="25" />
         </EntityType>
         <EntityType Name="t高企">
           <Key>
@@ -281,8 +295,8 @@
           <Property Name="企业名称" Type="varchar" MaxLength="100" />
           <Property Name="证书编号" Type="varchar" MaxLength="50" />
           <Property Name="发证日期" Type="varchar" MaxLength="50" />
-          <Property Name="是否“四上”企业" Type="varchar" MaxLength="50" />
-          <Property Name="地块编号" Type="varchar" MaxLength="50" />
+          <Property Name="是否_四上_企业" Type="varchar" MaxLength="50" />
+          <Property Name="地块编号" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="t工程技术研究中心">
           <Key>
@@ -296,6 +310,7 @@
           <Property Name="研发机构类型" Type="varchar" MaxLength="50" />
           <Property Name="研发机构级别" Type="varchar" MaxLength="50" />
           <Property Name="认定文件名称或文号" Type="varchar" MaxLength="50" />
+          <Property Name="地块编号" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="t工业固定资产">
           <Key>
@@ -308,6 +323,8 @@
           <Property Name="建设性质" Type="varchar" MaxLength="50" />
           <Property Name="项目类别" Type="varchar" MaxLength="50" />
           <Property Name="本年完成投资" Type="varchar" MaxLength="50" />
+          <Property Name="地块编号" Type="varchar" MaxLength="20" />
+          <Property Name="纳税人识别号" Type="varchar" MaxLength="25" />
         </EntityType>
         <EntityType Name="t规上企业名单">
           <Key>
@@ -318,6 +335,8 @@
           <Property Name="序号" Type="int" />
           <Property Name="法人代码" Type="varchar" MaxLength="50" />
           <Property Name="企业名称" Type="varchar" MaxLength="100" />
+          <Property Name="地块编号" Type="varchar" MaxLength="20" />
+          <Property Name="纳税人识别号" Type="varchar" MaxLength="25" />
         </EntityType>
         <EntityType Name="t经发局表格">
           <Key>
@@ -366,6 +385,8 @@
           <Property Name="企业名称" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="立案查处类型" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="年份" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="地块编号" Type="varchar" MaxLength="50" />
+          <Property Name="纳税人识别号" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="t能耗数据">
           <Key>
@@ -420,6 +441,7 @@
           <Property Name="税收" Type="float" />
           <Property Name="增加值" Type="float" />
           <Property Name="亩均税收" Type="float" />
+          <Property Name="地块编号" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="t企业技术中心台账">
           <Key>
@@ -433,6 +455,7 @@
           <Property Name="镇区" Type="nvarchar" MaxLength="20" />
           <Property Name="备注" Type="nvarchar" MaxLength="20" />
           <Property Name="地块编号" Type="varchar" MaxLength="20" />
+          <Property Name="纳税人识别号" Type="varchar" MaxLength="25" />
         </EntityType>
         <EntityType Name="t清洁生产历年">
           <Key>
@@ -444,6 +467,7 @@
           <Property Name="序号" Type="int" />
           <Property Name="备注" Type="nvarchar" MaxLength="40" />
           <Property Name="地块编号" Type="varchar" MaxLength="20" />
+          <Property Name="纳税人识别号" Type="varchar" MaxLength="25" />
         </EntityType>
         <EntityType Name="t市局表格">
           <Key>
@@ -514,6 +538,7 @@
           <Property Name="职务" Type="nvarchar" MaxLength="50" />
           <Property Name="联系电话" Type="nvarchar" MaxLength="80" />
           <Property Name="地块编号" Type="varchar" MaxLength="20" />
+          <Property Name="纳税人识别号" Type="varchar" MaxLength="25" />
         </EntityType>
         <EntityType Name="t同里镇开发区上市企业台帐主版后备">
           <Key>
@@ -549,6 +574,8 @@
           <Property Name="区镇" Type="nvarchar" MaxLength="20" />
           <Property Name="类型" Type="nvarchar" MaxLength="20" />
           <Property Name="年份" Type="varchar" MaxLength="10" />
+          <Property Name="地块编号" Type="varchar" MaxLength="50" />
+          <Property Name="纳税人识别号" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="t闲置土地盘活计划表">
           <Key>
@@ -577,6 +604,7 @@
           <Property Name="销售" Type="float" />
           <Property Name="目标" Type="nvarchar" MaxLength="60" />
           <Property Name="地块编号" Type="varchar" MaxLength="20" />
+          <Property Name="纳税人识别号" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="t智能车间">
           <Key>
@@ -589,6 +617,7 @@
           <Property Name="获评年份" Type="varchar" MaxLength="50" />
           <Property Name="区镇" Type="nvarchar" MaxLength="20" />
           <Property Name="地块编号" Type="varchar" MaxLength="20" />
+          <Property Name="纳税人识别号" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="z企业变化信息表">
           <Key>
@@ -771,8 +800,8 @@
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="地块编号" Type="varchar" MaxLength="50" />
           <Property Name="序号" Type="int" />
-          <Property Name="年度" Type="nvarchar" MaxLength="255" />
-          <Property Name="月份" Type="nvarchar" MaxLength="255" />
+          <Property Name="年度" Type="nvarchar" MaxLength="10" />
+          <Property Name="月份" Type="nvarchar" MaxLength="10" />
           <Property Name="单位代码" Type="nvarchar" MaxLength="255" />
           <Property Name="单位" Type="nvarchar" MaxLength="255" />
           <Property Name="市区" Type="nvarchar" MaxLength="255" />
@@ -868,10 +897,13 @@
           <Property Name="organization_coordsys_id" Type="int" />
           <Property Name="definition" Type="varchar" MaxLength="1024" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="wj_GisDbModelStoreContainer">
+        <EntityContainer Name="QyBllAppModelStoreContainer">
+          <EntitySet Name="blCityPlan" EntityType="Self.blCityPlan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="blLayer" EntityType="Self.blLayer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bsArcLayer" EntityType="Self.bsArcLayer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bsDynCondition" EntityType="Self.bsDynCondition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bsHYDL" EntityType="Self.bsHYDL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bsLtdIndustries" EntityType="Self.bsLtdIndustries" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bsLtdInfo" EntityType="Self.bsLtdInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bsTableImportType" EntityType="Self.bsTableImportType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bsTotalResult" EntityType="Self.bsTotalResult" Schema="dbo" store:Type="Tables" />
@@ -908,27 +940,6 @@
           <EntitySet Name="城市规划" EntityType="Self.城市规划" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="房屋建筑" EntityType="Self.房屋建筑" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="企业范围" EntityType="Self.企业范围" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="blCityPlan" EntityType="Self.blCityPlan" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[blCityPlan].[Id] AS [Id], 
-[blCityPlan].[bsO_Id] AS [bsO_Id], 
-[blCityPlan].[RegionCode] AS [RegionCode], 
-[blCityPlan].[Name] AS [Name], 
-[blCityPlan].[CityPlanCode] AS [CityPlanCode], 
-[blCityPlan].[PreCode] AS [PreCode]
-FROM [dbo].[blCityPlan] AS [blCityPlan]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="blLayer" EntityType="Self.blLayer" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[blLayer].[Id] AS [Id], 
-[blLayer].[bsS_Id] AS [bsS_Id], 
-[blLayer].[Name] AS [Name], 
-[blLayer].[Code] AS [Code], 
-[blLayer].[FullName] AS [FullName], 
-[blLayer].[DispNo] AS [DispNo], 
-[blLayer].[LoadVisible] AS [LoadVisible]
-FROM [dbo].[blLayer] AS [blLayer]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="vwLtdJcSj" EntityType="Self.vwLtdJcSj" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [vwLtdJcSj].[Id] AS [Id], 
@@ -1012,53 +1023,54 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="wj_GisDbModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="wj_GisDbEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="bsArcLayer" EntityType="wj_GisDbModel.bsArcLayer" />
-          <EntitySet Name="bsDynCondition" EntityType="wj_GisDbModel.bsDynCondition" />
-          <EntitySet Name="bsHYDL" EntityType="wj_GisDbModel.bsHYDL" />
-          <EntitySet Name="bsLtdInfo" EntityType="wj_GisDbModel.bsLtdInfo" />
-          <EntitySet Name="bsTableImportType" EntityType="wj_GisDbModel.bsTableImportType" />
-          <EntitySet Name="bsTotalResult" EntityType="wj_GisDbModel.bsTotalResult" />
-          <EntitySet Name="bsUser_Ex" EntityType="wj_GisDbModel.bsUser_Ex" />
-          <EntitySet Name="bsVisitLog" EntityType="wj_GisDbModel.bsVisitLog" />
-          <EntitySet Name="LtdPhoto" EntityType="wj_GisDbModel.LtdPhoto" />
-          <EntitySet Name="LtdProblem" EntityType="wj_GisDbModel.LtdProblem" />
-          <EntitySet Name="LtdRegular" EntityType="wj_GisDbModel.LtdRegular" />
-          <EntitySet Name="tmpLtdXx" EntityType="wj_GisDbModel.tmpLtdXx" />
-          <EntitySet Name="t安全事故情况" EntityType="wj_GisDbModel.t安全事故情况" />
-          <EntitySet Name="t标准化级别" EntityType="wj_GisDbModel.t标准化级别" />
-          <EntitySet Name="t高企" EntityType="wj_GisDbModel.t高企" />
-          <EntitySet Name="t工程技术研究中心" EntityType="wj_GisDbModel.t工程技术研究中心" />
-          <EntitySet Name="t工业固定资产" EntityType="wj_GisDbModel.t工业固定资产" />
-          <EntitySet Name="t规上企业名单" EntityType="wj_GisDbModel.t规上企业名单" />
-          <EntitySet Name="t经发局表格" EntityType="wj_GisDbModel.t经发局表格" />
-          <EntitySet Name="t开发区2000万企业" EntityType="wj_GisDbModel.t开发区2000万企业" />
-          <EntitySet Name="t立案处罚情况" EntityType="wj_GisDbModel.t立案处罚情况" />
-          <EntitySet Name="t能耗数据" EntityType="wj_GisDbModel.t能耗数据" />
-          <EntitySet Name="t企业基础数据" EntityType="wj_GisDbModel.t企业基础数据" />
-          <EntitySet Name="t企业技术中心台账" EntityType="wj_GisDbModel.t企业技术中心台账" />
-          <EntitySet Name="t清洁生产历年" EntityType="wj_GisDbModel.t清洁生产历年" />
-          <EntitySet Name="t市局表格" EntityType="wj_GisDbModel.t市局表格" />
-          <EntitySet Name="t同里镇开发区上市企业台帐三板" EntityType="wj_GisDbModel.t同里镇开发区上市企业台帐三板" />
-          <EntitySet Name="t同里镇开发区上市企业台帐台资" EntityType="wj_GisDbModel.t同里镇开发区上市企业台帐台资" />
-          <EntitySet Name="t同里镇开发区上市企业台帐主版后备" EntityType="wj_GisDbModel.t同里镇开发区上市企业台帐主版后备" />
-          <EntitySet Name="t吴江区智能制造示范试点企业名单" EntityType="wj_GisDbModel.t吴江区智能制造示范试点企业名单" />
-          <EntitySet Name="t闲置土地盘活计划表" EntityType="wj_GisDbModel.t闲置土地盘活计划表" />
-          <EntitySet Name="t新地标计划企业名单" EntityType="wj_GisDbModel.t新地标计划企业名单" />
-          <EntitySet Name="t智能车间" EntityType="wj_GisDbModel.t智能车间" />
-          <EntitySet Name="z企业变化信息表" EntityType="wj_GisDbModel.z企业变化信息表" />
-          <EntitySet Name="z新增企业信息表" EntityType="wj_GisDbModel.z新增企业信息表" />
-          <EntitySet Name="z租赁企业信息表" EntityType="wj_GisDbModel.z租赁企业信息表" />
-          <EntitySet Name="城市规划" EntityType="wj_GisDbModel.城市规划" />
-          <EntitySet Name="房屋建筑" EntityType="wj_GisDbModel.房屋建筑" />
-          <EntitySet Name="企业范围" EntityType="wj_GisDbModel.企业范围" />
-          <EntitySet Name="blCityPlan" EntityType="wj_GisDbModel.blCityPlan" />
-          <EntitySet Name="blLayer" EntityType="wj_GisDbModel.blLayer" />
-          <EntitySet Name="vwLtdJcSj" EntityType="wj_GisDbModel.vwLtdJcSj" />
-          <EntitySet Name="dbtune" EntityType="wj_GisDbModel.dbtune" />
-          <EntitySet Name="ST_GEOMETRY_COLUMNS" EntityType="wj_GisDbModel.ST_GEOMETRY_COLUMNS" />
-          <EntitySet Name="ST_SPATIAL_REFERENCE_SYSTEMS" EntityType="wj_GisDbModel.ST_SPATIAL_REFERENCE_SYSTEMS" />
+      <Schema Namespace="QyBllAppModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="QyBllAppEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="bsArcLayer" EntityType="QyBllAppModel.bsArcLayer" />
+          <EntitySet Name="bsDynCondition" EntityType="QyBllAppModel.bsDynCondition" />
+          <EntitySet Name="bsHYDL" EntityType="QyBllAppModel.bsHYDL" />
+          <EntitySet Name="bsTableImportType" EntityType="QyBllAppModel.bsTableImportType" />
+          <EntitySet Name="bsTotalResult" EntityType="QyBllAppModel.bsTotalResult" />
+          <EntitySet Name="bsUser_Ex" EntityType="QyBllAppModel.bsUser_Ex" />
+          <EntitySet Name="bsVisitLog" EntityType="QyBllAppModel.bsVisitLog" />
+          <EntitySet Name="LtdProblem" EntityType="QyBllAppModel.LtdProblem" />
+          <EntitySet Name="LtdRegular" EntityType="QyBllAppModel.LtdRegular" />
+          <EntitySet Name="tmpLtdXx" EntityType="QyBllAppModel.tmpLtdXx" />
+          <EntitySet Name="t安全事故情况" EntityType="QyBllAppModel.t安全事故情况" />
+          <EntitySet Name="t标准化级别" EntityType="QyBllAppModel.t标准化级别" />
+          <EntitySet Name="t工程技术研究中心" EntityType="QyBllAppModel.t工程技术研究中心" />
+          <EntitySet Name="t工业固定资产" EntityType="QyBllAppModel.t工业固定资产" />
+          <EntitySet Name="t规上企业名单" EntityType="QyBllAppModel.t规上企业名单" />
+          <EntitySet Name="t经发局表格" EntityType="QyBllAppModel.t经发局表格" />
+          <EntitySet Name="t开发区2000万企业" EntityType="QyBllAppModel.t开发区2000万企业" />
+          <EntitySet Name="t立案处罚情况" EntityType="QyBllAppModel.t立案处罚情况" />
+          <EntitySet Name="t能耗数据" EntityType="QyBllAppModel.t能耗数据" />
+          <EntitySet Name="t企业基础数据" EntityType="QyBllAppModel.t企业基础数据" />
+          <EntitySet Name="t企业技术中心台账" EntityType="QyBllAppModel.t企业技术中心台账" />
+          <EntitySet Name="t清洁生产历年" EntityType="QyBllAppModel.t清洁生产历年" />
+          <EntitySet Name="t市局表格" EntityType="QyBllAppModel.t市局表格" />
+          <EntitySet Name="t同里镇开发区上市企业台帐三板" EntityType="QyBllAppModel.t同里镇开发区上市企业台帐三板" />
+          <EntitySet Name="t同里镇开发区上市企业台帐台资" EntityType="QyBllAppModel.t同里镇开发区上市企业台帐台资" />
+          <EntitySet Name="t同里镇开发区上市企业台帐主版后备" EntityType="QyBllAppModel.t同里镇开发区上市企业台帐主版后备" />
+          <EntitySet Name="t吴江区智能制造示范试点企业名单" EntityType="QyBllAppModel.t吴江区智能制造示范试点企业名单" />
+          <EntitySet Name="t闲置土地盘活计划表" EntityType="QyBllAppModel.t闲置土地盘活计划表" />
+          <EntitySet Name="t新地标计划企业名单" EntityType="QyBllAppModel.t新地标计划企业名单" />
+          <EntitySet Name="t智能车间" EntityType="QyBllAppModel.t智能车间" />
+          <EntitySet Name="z企业变化信息表" EntityType="QyBllAppModel.z企业变化信息表" />
+          <EntitySet Name="z新增企业信息表" EntityType="QyBllAppModel.z新增企业信息表" />
+          <EntitySet Name="z租赁企业信息表" EntityType="QyBllAppModel.z租赁企业信息表" />
+          <EntitySet Name="城市规划" EntityType="QyBllAppModel.城市规划" />
+          <EntitySet Name="房屋建筑" EntityType="QyBllAppModel.房屋建筑" />
+          <EntitySet Name="企业范围" EntityType="QyBllAppModel.企业范围" />
+          <EntitySet Name="blCityPlan" EntityType="QyBllAppModel.blCityPlan" />
+          <EntitySet Name="blLayer" EntityType="QyBllAppModel.blLayer" />
+          <EntitySet Name="dbtune" EntityType="QyBllAppModel.dbtune" />
+          <EntitySet Name="ST_GEOMETRY_COLUMNS" EntityType="QyBllAppModel.ST_GEOMETRY_COLUMNS" />
+          <EntitySet Name="ST_SPATIAL_REFERENCE_SYSTEMS" EntityType="QyBllAppModel.ST_SPATIAL_REFERENCE_SYSTEMS" />
+          <EntitySet Name="bsLtdIndustries" EntityType="QyBllAppModel.bsLtdIndustries" />
+          <EntitySet Name="t高企" EntityType="QyBllAppModel.t高企" />
+          <EntitySet Name="LtdPhoto" EntityType="QyBllAppModel.LtdPhoto" />
+          <EntitySet Name="bsLtdInfo" EntityType="QyBllAppModel.bsLtdInfo" />
+          <EntitySet Name="vwLtdJcSj" EntityType="QyBllAppModel.vwLtdJcSj" />
         </EntityContainer>
         <EntityType Name="bsArcLayer">
           <Key>
@@ -1106,44 +1118,6 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="PId" Type="Int32" />
           <Property Name="IsUse" Type="Boolean" />
         </EntityType>
-        <EntityType Name="bsLtdInfo">
-          <Key>
-            <PropertyRef Name="Ltd_Id" />
-          </Key>
-          <Property Name="Ltd_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="序号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="纳税人识别号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="纳税人名称" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="地块编号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="所属管理区名称" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="所属管理区" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="租赁企业否" Type="Boolean" />
-          <Property Name="行业大类" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="经营范围" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Name="销售收入" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="入库税金" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="工业投资总量" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="工业投资性质" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="企业占地面积" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="亩均销售" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="亩均税收" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="智能制造示范环节" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="开发区试点企业" Type="Boolean" />
-          <Property Name="智能车间" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="新地标企业目标" Type="Int32" />
-          <Property Name="上市类型" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="清洁生产历年年度" Type="Int32" />
-          <Property Name="技术中心类型" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="技术中心市级获批年度" Type="Int32" />
-          <Property Name="技术中心省级获批年度" Type="Int32" />
-          <Property Name="技术中心国家级获批年度" Type="Int32" />
-          <Property Name="安全事故类型" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="国家安全标准化级别" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="立案处罚情况" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="高新技术企业发证日期" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="规上企业年度" Type="Int32" />
-          <Property Name="登记日期" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="bsTableImportType">
           <Key>
             <PropertyRef Name="Id" />
@@ -1180,20 +1154,6 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="VisitDesp" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Brower" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="VisitId" Type="Guid" Nullable="false" />
-        </EntityType>
-        <EntityType Name="LtdPhoto">
-          <Key>
-            <PropertyRef Name="OBJECTID" />
-          </Key>
-          <Property Name="OBJECTID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SSDKBM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SSQYMC" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="QYZPDBM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="WZZB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="QYZPBM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PICTURE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="PhotoType" Type="Int32" />
-          <Property Name="PicMemo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="LtdProblem">
           <Key>
@@ -1286,6 +1246,8 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="年份" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="公司名称" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="事故类型" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="地块编号" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="纳税人识别号" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="t标准化级别">
           <Key>
@@ -1298,19 +1260,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="是否公告" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="标准化级别" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="地块编号" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="t高企">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="统一社会信用代码" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="组织机构代码" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="企业名称" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="证书编号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="发证日期" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="是否_四上_企业" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="地块编号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="纳税人识别号" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="t工程技术研究中心">
           <Key>
@@ -1324,6 +1274,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="研发机构类型" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="研发机构级别" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="认定文件名称或文号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="地块编号" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="t工业固定资产">
           <Key>
@@ -1336,6 +1287,8 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="建设性质" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="项目类别" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="本年完成投资" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="地块编号" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="纳税人识别号" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="t规上企业名单">
           <Key>
@@ -1346,6 +1299,8 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="序号" Type="Int32" />
           <Property Name="法人代码" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="企业名称" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="地块编号" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="纳税人识别号" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="t经发局表格">
           <Key>
@@ -1394,6 +1349,8 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="企业名称" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="立案查处类型" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="年份" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="地块编号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="纳税人识别号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="t能耗数据">
           <Key>
@@ -1448,6 +1405,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="税收" Type="Double" />
           <Property Name="增加值" Type="Double" />
           <Property Name="亩均税收" Type="Double" />
+          <Property Name="地块编号" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="t企业技术中心台账">
           <Key>
@@ -1461,6 +1419,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="镇区" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="备注" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="地块编号" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="纳税人识别号" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="t清洁生产历年">
           <Key>
@@ -1472,6 +1431,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="序号" Type="Int32" />
           <Property Name="备注" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
           <Property Name="地块编号" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="纳税人识别号" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="t市局表格">
           <Key>
@@ -1542,6 +1502,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="职务" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="联系电话" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
           <Property Name="地块编号" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="纳税人识别号" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="t同里镇开发区上市企业台帐主版后备">
           <Key>
@@ -1577,6 +1538,8 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="区镇" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="类型" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="年份" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="地块编号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="纳税人识别号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="t闲置土地盘活计划表">
           <Key>
@@ -1605,6 +1568,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="销售" Type="Double" />
           <Property Name="目标" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
           <Property Name="地块编号" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="纳税人识别号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="t智能车间">
           <Key>
@@ -1617,6 +1581,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="获评年份" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="区镇" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="地块编号" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="纳税人识别号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="z企业变化信息表">
           <Key>
@@ -1706,7 +1671,6 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             <PropertyRef Name="OBJECTID" />
           </Key>
           <Property Name="OBJECTID" Type="Int32" Nullable="false" />
-          <Property Name="Shape" Type="Geometry" />
           <Property Name="地块编码" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="城规地类名称" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="城规代码" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
@@ -1737,7 +1701,6 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="SSXZQMC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SSGLQDM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SSGLQMC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Shape" Type="Geometry" />
         </EntityType>
         <EntityType Name="企业范围">
           <Key>
@@ -1788,7 +1751,6 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="DYQK_" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ZLWZ_" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="XSZD_" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Shape" Type="Geometry" />
         </EntityType>
         <EntityType Name="blCityPlan">
           <Key>
@@ -1812,53 +1774,6 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DispNo" Type="Int32" />
           <Property Name="LoadVisible" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="vwLtdJcSj">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="地块编号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="序号" Type="Int32" />
-          <Property Name="年度" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="月份" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="单位代码" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="单位" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="市区" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="区域" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="经营现状" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="是否工业" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="等级" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="住所" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="经营范围" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="注册时间" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="企业类型" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="法人代表" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="注册资金" Type="Double" />
-          <Property Name="主行业" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="行业细分" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="规模" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="规上" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="企业数" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="参保人数" Type="Double" />
-          <Property Name="就业人数" Type="Double" />
-          <Property Name="国税" Type="Double" />
-          <Property Name="地税" Type="Double" />
-          <Property Name="销售" Type="Double" />
-          <Property Name="占地" Type="Double" />
-          <Property Name="其中持证" Type="Double" />
-          <Property Name="用能" Type="Double" />
-          <Property Name="用电" Type="Double" />
-          <Property Name="排放" Type="Double" />
-          <Property Name="研发经费支出" Type="Double" />
-          <Property Name="平均职工人数" Type="Double" />
-          <Property Name="固定资产折旧" Type="Double" />
-          <Property Name="生产税净额" Type="Double" />
-          <Property Name="营业盈余" Type="Double" />
-          <Property Name="职工工资总额" Type="Double" />
-          <Property Name="税收" Type="Double" />
-          <Property Name="增加值" Type="Double" />
-          <Property Name="亩均税收" Type="Double" />
         </EntityType>
         <EntityType Name="dbtune">
           <Key>
@@ -1911,14 +1826,141 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="organization_coordsys_id" Type="Int32" />
           <Property Name="definition" Type="String" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="bsLtdIndustries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HLevel" Type="Int32" />
+          <Property Name="PId" Type="Int32" />
+          <Property Name="IsUse" Type="Boolean" />
+          <Property Name="bsS_Codes" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="bsS_Value" Type="Int32" />
+        </EntityType>
+        <EntityType Name="t高企">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="统一社会信用代码" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="组织机构代码" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="企业名称" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="证书编号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="发证日期" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="是否_四上_企业" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="地块编号" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="LtdPhoto">
+          <Key>
+            <PropertyRef Name="OBJECTID" />
+          </Key>
+          <Property Name="OBJECTID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SSDKBM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SSQYMC" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="QYZPDBM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WZZB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="QYZPBM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PICTURE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PhotoType" Type="Int32" />
+          <Property Name="PicureObj" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PicMemo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UpDt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="bsLtdInfo">
+          <Key>
+            <PropertyRef Name="Ltd_Id" />
+          </Key>
+          <Property Name="Ltd_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="序号" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="纳税人识别号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="纳税人名称" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="地块编号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="所属管理区名称" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="所属管理区" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="租赁企业否" Type="Boolean" />
+          <Property Name="行业大类" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="经营范围" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="销售收入" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="入库税金" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="工业投资总量" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="工业投资性质" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="企业占地面积" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="亩均销售" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="亩均税收" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="智能制造示范环节" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="开发区试点企业" Type="Boolean" />
+          <Property Name="智能车间" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="新地标企业目标" Type="Int32" />
+          <Property Name="上市类型" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="清洁生产历年年度" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="技术中心类型" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="技术中心市级获批年度" Type="Int32" />
+          <Property Name="技术中心省级获批年度" Type="Int32" />
+          <Property Name="技术中心国家级获批年度" Type="Int32" />
+          <Property Name="安全事故类型" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="国家安全标准化级别" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="立案处罚情况" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="高新技术企业发证日期" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="规上企业年度" Type="Int32" />
+          <Property Name="登记日期" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vwLtdJcSj">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="地块编号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="序号" Type="Int32" />
+          <Property Name="年度" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="月份" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="单位代码" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="单位" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="市区" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="区域" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="经营现状" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="是否工业" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="等级" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="住所" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="经营范围" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="注册时间" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="企业类型" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="法人代表" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="注册资金" Type="Double" />
+          <Property Name="主行业" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="行业细分" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="规模" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="规上" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="企业数" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="参保人数" Type="Double" />
+          <Property Name="就业人数" Type="Double" />
+          <Property Name="国税" Type="Double" />
+          <Property Name="地税" Type="Double" />
+          <Property Name="销售" Type="Double" />
+          <Property Name="占地" Type="Double" />
+          <Property Name="其中持证" Type="Double" />
+          <Property Name="用能" Type="Double" />
+          <Property Name="用电" Type="Double" />
+          <Property Name="排放" Type="Double" />
+          <Property Name="研发经费支出" Type="Double" />
+          <Property Name="平均职工人数" Type="Double" />
+          <Property Name="固定资产折旧" Type="Double" />
+          <Property Name="生产税净额" Type="Double" />
+          <Property Name="营业盈余" Type="Double" />
+          <Property Name="职工工资总额" Type="Double" />
+          <Property Name="税收" Type="Double" />
+          <Property Name="增加值" Type="Double" />
+          <Property Name="亩均税收" Type="Double" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="wj_GisDbModelStoreContainer" CdmEntityContainer="wj_GisDbEntities">
+        <EntityContainerMapping StorageEntityContainer="QyBllAppModelStoreContainer" CdmEntityContainer="QyBllAppEntities">
           <EntitySetMapping Name="bsArcLayer">
-            <EntityTypeMapping TypeName="wj_GisDbModel.bsArcLayer">
+            <EntityTypeMapping TypeName="QyBllAppModel.bsArcLayer">
               <MappingFragment StoreEntitySet="bsArcLayer">
                 <ScalarProperty Name="ClickFeatureEnumValue" ColumnName="ClickFeatureEnumValue" />
                 <ScalarProperty Name="webEditPage" ColumnName="webEditPage" />
@@ -1939,7 +1981,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="bsDynCondition">
-            <EntityTypeMapping TypeName="wj_GisDbModel.bsDynCondition">
+            <EntityTypeMapping TypeName="QyBllAppModel.bsDynCondition">
               <MappingFragment StoreEntitySet="bsDynCondition">
                 <ScalarProperty Name="MulSql" ColumnName="MulSql" />
                 <ScalarProperty Name="PId" ColumnName="PId" />
@@ -1955,7 +1997,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="bsHYDL">
-            <EntityTypeMapping TypeName="wj_GisDbModel.bsHYDL">
+            <EntityTypeMapping TypeName="QyBllAppModel.bsHYDL">
               <MappingFragment StoreEntitySet="bsHYDL">
                 <ScalarProperty Name="IsUse" ColumnName="IsUse" />
                 <ScalarProperty Name="PId" ColumnName="PId" />
@@ -1966,47 +2008,8 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="bsLtdInfo">
-            <EntityTypeMapping TypeName="wj_GisDbModel.bsLtdInfo">
-              <MappingFragment StoreEntitySet="bsLtdInfo">
-                <ScalarProperty Name="登记日期" ColumnName="登记日期" />
-                <ScalarProperty Name="规上企业年度" ColumnName="规上企业年度" />
-                <ScalarProperty Name="高新技术企业发证日期" ColumnName="高新技术企业发证日期" />
-                <ScalarProperty Name="立案处罚情况" ColumnName="立案处罚情况" />
-                <ScalarProperty Name="国家安全标准化级别" ColumnName="国家安全标准化级别" />
-                <ScalarProperty Name="安全事故类型" ColumnName="安全事故类型" />
-                <ScalarProperty Name="技术中心国家级获批年度" ColumnName="技术中心国家级获批年度" />
-                <ScalarProperty Name="技术中心省级获批年度" ColumnName="技术中心省级获批年度" />
-                <ScalarProperty Name="技术中心市级获批年度" ColumnName="技术中心市级获批年度" />
-                <ScalarProperty Name="技术中心类型" ColumnName="技术中心类型" />
-                <ScalarProperty Name="清洁生产历年年度" ColumnName="清洁生产历年年度" />
-                <ScalarProperty Name="上市类型" ColumnName="上市类型" />
-                <ScalarProperty Name="新地标企业目标" ColumnName="新地标企业目标" />
-                <ScalarProperty Name="智能车间" ColumnName="智能车间" />
-                <ScalarProperty Name="开发区试点企业" ColumnName="开发区试点企业" />
-                <ScalarProperty Name="智能制造示范环节" ColumnName="智能制造示范环节" />
-                <ScalarProperty Name="亩均税收" ColumnName="亩均税收" />
-                <ScalarProperty Name="亩均销售" ColumnName="亩均销售" />
-                <ScalarProperty Name="企业占地面积" ColumnName="企业占地面积" />
-                <ScalarProperty Name="工业投资性质" ColumnName="工业投资性质" />
-                <ScalarProperty Name="工业投资总量" ColumnName="工业投资总量" />
-                <ScalarProperty Name="入库税金" ColumnName="入库税金" />
-                <ScalarProperty Name="销售收入" ColumnName="销售收入" />
-                <ScalarProperty Name="经营范围" ColumnName="经营范围" />
-                <ScalarProperty Name="行业大类" ColumnName="行业大类" />
-                <ScalarProperty Name="租赁企业否" ColumnName="租赁企业否" />
-                <ScalarProperty Name="所属管理区" ColumnName="所属管理区" />
-                <ScalarProperty Name="所属管理区名称" ColumnName="所属管理区名称" />
-                <ScalarProperty Name="地块编号" ColumnName="地块编号" />
-                <ScalarProperty Name="纳税人名称" ColumnName="纳税人名称" />
-                <ScalarProperty Name="纳税人识别号" ColumnName="纳税人识别号" />
-                <ScalarProperty Name="序号" ColumnName="序号" />
-                <ScalarProperty Name="Ltd_Id" ColumnName="Ltd_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="bsTableImportType">
-            <EntityTypeMapping TypeName="wj_GisDbModel.bsTableImportType">
+            <EntityTypeMapping TypeName="QyBllAppModel.bsTableImportType">
               <MappingFragment StoreEntitySet="bsTableImportType">
                 <ScalarProperty Name="bsOName" ColumnName="bsOName" />
                 <ScalarProperty Name="ImportType" ColumnName="ImportType" />
@@ -2016,7 +2019,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="bsTotalResult">
-            <EntityTypeMapping TypeName="wj_GisDbModel.bsTotalResult">
+            <EntityTypeMapping TypeName="QyBllAppModel.bsTotalResult">
               <MappingFragment StoreEntitySet="bsTotalResult">
                 <ScalarProperty Name="TotalValue" ColumnName="TotalValue" />
                 <ScalarProperty Name="TypeDesp" ColumnName="TypeDesp" />
@@ -2028,7 +2031,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="bsUser_Ex">
-            <EntityTypeMapping TypeName="wj_GisDbModel.bsUser_Ex">
+            <EntityTypeMapping TypeName="QyBllAppModel.bsUser_Ex">
               <MappingFragment StoreEntitySet="bsUser_Ex">
                 <ScalarProperty Name="ExComplQueryCond" ColumnName="ExComplQueryCond" />
                 <ScalarProperty Name="bsU_Id" ColumnName="bsU_Id" />
@@ -2036,7 +2039,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="bsVisitLog">
-            <EntityTypeMapping TypeName="wj_GisDbModel.bsVisitLog">
+            <EntityTypeMapping TypeName="QyBllAppModel.bsVisitLog">
               <MappingFragment StoreEntitySet="bsVisitLog">
                 <ScalarProperty Name="VisitId" ColumnName="VisitId" />
                 <ScalarProperty Name="Brower" ColumnName="Brower" />
@@ -2046,23 +2049,8 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="LtdPhoto">
-            <EntityTypeMapping TypeName="wj_GisDbModel.LtdPhoto">
-              <MappingFragment StoreEntitySet="LtdPhoto">
-                <ScalarProperty Name="PicMemo" ColumnName="PicMemo" />
-                <ScalarProperty Name="PhotoType" ColumnName="PhotoType" />
-                <ScalarProperty Name="PICTURE" ColumnName="PICTURE" />
-                <ScalarProperty Name="QYZPBM" ColumnName="QYZPBM" />
-                <ScalarProperty Name="WZZB" ColumnName="WZZB" />
-                <ScalarProperty Name="QYZPDBM" ColumnName="QYZPDBM" />
-                <ScalarProperty Name="SSQYMC" ColumnName="SSQYMC" />
-                <ScalarProperty Name="SSDKBM" ColumnName="SSDKBM" />
-                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="LtdProblem">
-            <EntityTypeMapping TypeName="wj_GisDbModel.LtdProblem">
+            <EntityTypeMapping TypeName="QyBllAppModel.LtdProblem">
               <MappingFragment StoreEntitySet="LtdProblem">
                 <ScalarProperty Name="AQZPDBM" ColumnName="AQZPDBM" />
                 <ScalarProperty Name="SSQYBM" ColumnName="SSQYBM" />
@@ -2080,7 +2068,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LtdRegular">
-            <EntityTypeMapping TypeName="wj_GisDbModel.LtdRegular">
+            <EntityTypeMapping TypeName="QyBllAppModel.LtdRegular">
               <MappingFragment StoreEntitySet="LtdRegular">
                 <ScalarProperty Name="IsRentLtd" ColumnName="IsRentLtd" />
                 <ScalarProperty Name="DWMC" ColumnName="DWMC" />
@@ -2097,7 +2085,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tmpLtdXx">
-            <EntityTypeMapping TypeName="wj_GisDbModel.tmpLtdXx">
+            <EntityTypeMapping TypeName="QyBllAppModel.tmpLtdXx">
               <MappingFragment StoreEntitySet="tmpLtdXx">
                 <ScalarProperty Name="XSZD_" ColumnName="XSZD_" />
                 <ScalarProperty Name="ZLWZ_" ColumnName="ZLWZ_" />
@@ -2148,8 +2136,10 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="t安全事故情况">
-            <EntityTypeMapping TypeName="wj_GisDbModel.t安全事故情况">
+            <EntityTypeMapping TypeName="QyBllAppModel.t安全事故情况">
               <MappingFragment StoreEntitySet="t安全事故情况">
+                <ScalarProperty Name="纳税人识别号" ColumnName="纳税人识别号" />
+                <ScalarProperty Name="地块编号" ColumnName="地块编号" />
                 <ScalarProperty Name="事故类型" ColumnName="事故类型" />
                 <ScalarProperty Name="公司名称" ColumnName="公司名称" />
                 <ScalarProperty Name="年份" ColumnName="年份" />
@@ -2158,8 +2148,9 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="t标准化级别">
-            <EntityTypeMapping TypeName="wj_GisDbModel.t标准化级别">
+            <EntityTypeMapping TypeName="QyBllAppModel.t标准化级别">
               <MappingFragment StoreEntitySet="t标准化级别">
+                <ScalarProperty Name="纳税人识别号" ColumnName="纳税人识别号" />
                 <ScalarProperty Name="地块编号" ColumnName="地块编号" />
                 <ScalarProperty Name="标准化级别" ColumnName="标准化级别" />
                 <ScalarProperty Name="是否公告" ColumnName="是否公告" />
@@ -2170,23 +2161,10 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="t高企">
-            <EntityTypeMapping TypeName="wj_GisDbModel.t高企">
-              <MappingFragment StoreEntitySet="t高企">
-                <ScalarProperty Name="地块编号" ColumnName="地块编号" />
-                <ScalarProperty Name="是否_四上_企业" ColumnName="是否“四上”企业" />
-                <ScalarProperty Name="发证日期" ColumnName="发证日期" />
-                <ScalarProperty Name="证书编号" ColumnName="证书编号" />
-                <ScalarProperty Name="企业名称" ColumnName="企业名称" />
-                <ScalarProperty Name="组织机构代码" ColumnName="组织机构代码" />
-                <ScalarProperty Name="统一社会信用代码" ColumnName="统一社会信用代码" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="t工程技术研究中心">
-            <EntityTypeMapping TypeName="wj_GisDbModel.t工程技术研究中心">
+            <EntityTypeMapping TypeName="QyBllAppModel.t工程技术研究中心">
               <MappingFragment StoreEntitySet="t工程技术研究中心">
+                <ScalarProperty Name="地块编号" ColumnName="地块编号" />
                 <ScalarProperty Name="认定文件名称或文号" ColumnName="认定文件名称或文号" />
                 <ScalarProperty Name="研发机构级别" ColumnName="研发机构级别" />
                 <ScalarProperty Name="研发机构类型" ColumnName="研发机构类型" />
@@ -2199,8 +2177,10 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="t工业固定资产">
-            <EntityTypeMapping TypeName="wj_GisDbModel.t工业固定资产">
+            <EntityTypeMapping TypeName="QyBllAppModel.t工业固定资产">
               <MappingFragment StoreEntitySet="t工业固定资产">
+                <ScalarProperty Name="纳税人识别号" ColumnName="纳税人识别号" />
+                <ScalarProperty Name="地块编号" ColumnName="地块编号" />
                 <ScalarProperty Name="本年完成投资" ColumnName="本年完成投资" />
                 <ScalarProperty Name="项目类别" ColumnName="项目类别" />
                 <ScalarProperty Name="建设性质" ColumnName="建设性质" />
@@ -2212,8 +2192,10 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="t规上企业名单">
-            <EntityTypeMapping TypeName="wj_GisDbModel.t规上企业名单">
+            <EntityTypeMapping TypeName="QyBllAppModel.t规上企业名单">
               <MappingFragment StoreEntitySet="t规上企业名单">
+                <ScalarProperty Name="纳税人识别号" ColumnName="纳税人识别号" />
+                <ScalarProperty Name="地块编号" ColumnName="地块编号" />
                 <ScalarProperty Name="企业名称" ColumnName="企业名称" />
                 <ScalarProperty Name="法人代码" ColumnName="法人代码" />
                 <ScalarProperty Name="序号" ColumnName="序号" />
@@ -2223,7 +2205,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="t经发局表格">
-            <EntityTypeMapping TypeName="wj_GisDbModel.t经发局表格">
+            <EntityTypeMapping TypeName="QyBllAppModel.t经发局表格">
               <MappingFragment StoreEntitySet="t经发局表格">
                 <ScalarProperty Name="SSGLQDM" ColumnName="SSGLQDM" />
                 <ScalarProperty Name="SNTQ_2" ColumnName="SNTQ_2" />
@@ -2247,7 +2229,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="t开发区2000万企业">
-            <EntityTypeMapping TypeName="wj_GisDbModel.t开发区2000万企业">
+            <EntityTypeMapping TypeName="QyBllAppModel.t开发区2000万企业">
               <MappingFragment StoreEntitySet="t开发区2000万企业">
                 <ScalarProperty Name="地块编号" ColumnName="地块编号" />
                 <ScalarProperty Name="税收增减率" ColumnName="税收增减率" />
@@ -2264,8 +2246,10 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="t立案处罚情况">
-            <EntityTypeMapping TypeName="wj_GisDbModel.t立案处罚情况">
+            <EntityTypeMapping TypeName="QyBllAppModel.t立案处罚情况">
               <MappingFragment StoreEntitySet="t立案处罚情况">
+                <ScalarProperty Name="纳税人识别号" ColumnName="纳税人识别号" />
+                <ScalarProperty Name="地块编号" ColumnName="地块编号" />
                 <ScalarProperty Name="年份" ColumnName="年份" />
                 <ScalarProperty Name="立案查处类型" ColumnName="立案查处类型" />
                 <ScalarProperty Name="企业名称" ColumnName="企业名称" />
@@ -2274,7 +2258,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="t能耗数据">
-            <EntityTypeMapping TypeName="wj_GisDbModel.t能耗数据">
+            <EntityTypeMapping TypeName="QyBllAppModel.t能耗数据">
               <MappingFragment StoreEntitySet="t能耗数据">
                 <ScalarProperty Name="评价值" ColumnName="评价值" />
                 <ScalarProperty Name="企业名称" ColumnName="企业名称" />
@@ -2283,8 +2267,9 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="t企业基础数据">
-            <EntityTypeMapping TypeName="wj_GisDbModel.t企业基础数据">
+            <EntityTypeMapping TypeName="QyBllAppModel.t企业基础数据">
               <MappingFragment StoreEntitySet="t企业基础数据">
+                <ScalarProperty Name="地块编号" ColumnName="地块编号" />
                 <ScalarProperty Name="亩均税收" ColumnName="亩均税收" />
                 <ScalarProperty Name="增加值" ColumnName="增加值" />
                 <ScalarProperty Name="税收" ColumnName="税收" />
@@ -2330,8 +2315,9 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="t企业技术中心台账">
-            <EntityTypeMapping TypeName="wj_GisDbModel.t企业技术中心台账">
+            <EntityTypeMapping TypeName="QyBllAppModel.t企业技术中心台账">
               <MappingFragment StoreEntitySet="t企业技术中心台账">
+                <ScalarProperty Name="纳税人识别号" ColumnName="纳税人识别号" />
                 <ScalarProperty Name="地块编号" ColumnName="地块编号" />
                 <ScalarProperty Name="备注" ColumnName="备注" />
                 <ScalarProperty Name="镇区" ColumnName="镇区" />
@@ -2344,8 +2330,9 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="t清洁生产历年">
-            <EntityTypeMapping TypeName="wj_GisDbModel.t清洁生产历年">
+            <EntityTypeMapping TypeName="QyBllAppModel.t清洁生产历年">
               <MappingFragment StoreEntitySet="t清洁生产历年">
+                <ScalarProperty Name="纳税人识别号" ColumnName="纳税人识别号" />
                 <ScalarProperty Name="地块编号" ColumnName="地块编号" />
                 <ScalarProperty Name="备注" ColumnName="备注" />
                 <ScalarProperty Name="序号" ColumnName="序号" />
@@ -2356,7 +2343,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="t市局表格">
-            <EntityTypeMapping TypeName="wj_GisDbModel.t市局表格">
+            <EntityTypeMapping TypeName="QyBllAppModel.t市局表格">
               <MappingFragment StoreEntitySet="t市局表格">
                 <ScalarProperty Name="SSGLQDM" ColumnName="SSGLQDM" />
                 <ScalarProperty Name="MJSS" ColumnName="MJSS" />
@@ -2397,7 +2384,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="t同里镇开发区上市企业台帐三板">
-            <EntityTypeMapping TypeName="wj_GisDbModel.t同里镇开发区上市企业台帐三板">
+            <EntityTypeMapping TypeName="QyBllAppModel.t同里镇开发区上市企业台帐三板">
               <MappingFragment StoreEntitySet="t同里镇开发区上市企业台帐三板">
                 <ScalarProperty Name="地块编号" ColumnName="地块编号" />
                 <ScalarProperty Name="备注" ColumnName="备注" />
@@ -2415,8 +2402,9 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="t同里镇开发区上市企业台帐台资">
-            <EntityTypeMapping TypeName="wj_GisDbModel.t同里镇开发区上市企业台帐台资">
+            <EntityTypeMapping TypeName="QyBllAppModel.t同里镇开发区上市企业台帐台资">
               <MappingFragment StoreEntitySet="t同里镇开发区上市企业台帐台资">
+                <ScalarProperty Name="纳税人识别号" ColumnName="纳税人识别号" />
                 <ScalarProperty Name="地块编号" ColumnName="地块编号" />
                 <ScalarProperty Name="联系电话" ColumnName="联系电话" />
                 <ScalarProperty Name="职务" ColumnName="职务" />
@@ -2429,7 +2417,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="t同里镇开发区上市企业台帐主版后备">
-            <EntityTypeMapping TypeName="wj_GisDbModel.t同里镇开发区上市企业台帐主版后备">
+            <EntityTypeMapping TypeName="QyBllAppModel.t同里镇开发区上市企业台帐主版后备">
               <MappingFragment StoreEntitySet="t同里镇开发区上市企业台帐主版后备">
                 <ScalarProperty Name="地块编号" ColumnName="地块编号" />
                 <ScalarProperty Name="成功上市" ColumnName="成功上市" />
@@ -2453,8 +2441,10 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="t吴江区智能制造示范试点企业名单">
-            <EntityTypeMapping TypeName="wj_GisDbModel.t吴江区智能制造示范试点企业名单">
+            <EntityTypeMapping TypeName="QyBllAppModel.t吴江区智能制造示范试点企业名单">
               <MappingFragment StoreEntitySet="t吴江区智能制造示范试点企业名单">
+                <ScalarProperty Name="纳税人识别号" ColumnName="纳税人识别号" />
+                <ScalarProperty Name="地块编号" ColumnName="地块编号" />
                 <ScalarProperty Name="年份" ColumnName="年份" />
                 <ScalarProperty Name="类型" ColumnName="类型" />
                 <ScalarProperty Name="区镇" ColumnName="区镇" />
@@ -2466,7 +2456,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="t闲置土地盘活计划表">
-            <EntityTypeMapping TypeName="wj_GisDbModel.t闲置土地盘活计划表">
+            <EntityTypeMapping TypeName="QyBllAppModel.t闲置土地盘活计划表">
               <MappingFragment StoreEntitySet="t闲置土地盘活计划表">
                 <ScalarProperty Name="地块编号" ColumnName="地块编号" />
                 <ScalarProperty Name="回购情况" ColumnName="回购情况" />
@@ -2480,8 +2470,9 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="t新地标计划企业名单">
-            <EntityTypeMapping TypeName="wj_GisDbModel.t新地标计划企业名单">
+            <EntityTypeMapping TypeName="QyBllAppModel.t新地标计划企业名单">
               <MappingFragment StoreEntitySet="t新地标计划企业名单">
+                <ScalarProperty Name="纳税人识别号" ColumnName="纳税人识别号" />
                 <ScalarProperty Name="地块编号" ColumnName="地块编号" />
                 <ScalarProperty Name="目标" ColumnName="目标" />
                 <ScalarProperty Name="销售" ColumnName="销售" />
@@ -2496,8 +2487,9 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="t智能车间">
-            <EntityTypeMapping TypeName="wj_GisDbModel.t智能车间">
+            <EntityTypeMapping TypeName="QyBllAppModel.t智能车间">
               <MappingFragment StoreEntitySet="t智能车间">
+                <ScalarProperty Name="纳税人识别号" ColumnName="纳税人识别号" />
                 <ScalarProperty Name="地块编号" ColumnName="地块编号" />
                 <ScalarProperty Name="区镇" ColumnName="区镇" />
                 <ScalarProperty Name="获评年份" ColumnName="获评年份" />
@@ -2509,7 +2501,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="z企业变化信息表">
-            <EntityTypeMapping TypeName="wj_GisDbModel.z企业变化信息表">
+            <EntityTypeMapping TypeName="QyBllAppModel.z企业变化信息表">
               <MappingFragment StoreEntitySet="z企业变化信息表">
                 <ScalarProperty Name="IsUpdMap" ColumnName="IsUpdMap" />
                 <ScalarProperty Name="DKBH" ColumnName="DKBH" />
@@ -2527,7 +2519,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="z新增企业信息表">
-            <EntityTypeMapping TypeName="wj_GisDbModel.z新增企业信息表">
+            <EntityTypeMapping TypeName="QyBllAppModel.z新增企业信息表">
               <MappingFragment StoreEntitySet="z新增企业信息表">
                 <ScalarProperty Name="IsUpdMap" ColumnName="IsUpdMap" />
                 <ScalarProperty Name="DKBH" ColumnName="DKBH" />
@@ -2544,7 +2536,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="z租赁企业信息表">
-            <EntityTypeMapping TypeName="wj_GisDbModel.z租赁企业信息表">
+            <EntityTypeMapping TypeName="QyBllAppModel.z租赁企业信息表">
               <MappingFragment StoreEntitySet="z租赁企业信息表">
                 <ScalarProperty Name="XSZD_" ColumnName="XSZD_" />
                 <ScalarProperty Name="ZLWZ_" ColumnName="ZLWZ_" />
@@ -2595,7 +2587,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="城市规划">
-            <EntityTypeMapping TypeName="wj_GisDbModel.城市规划">
+            <EntityTypeMapping TypeName="QyBllAppModel.城市规划">
               <MappingFragment StoreEntitySet="城市规划">
                 <ScalarProperty Name="Shape_Area" ColumnName="Shape_Area" />
                 <ScalarProperty Name="Shape_Length" ColumnName="Shape_Length" />
@@ -2608,15 +2600,13 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
                 <ScalarProperty Name="城规代码" ColumnName="城规代码" />
                 <ScalarProperty Name="城规地类名称" ColumnName="城规地类名称" />
                 <ScalarProperty Name="地块编码" ColumnName="地块编码" />
-                <ScalarProperty Name="Shape" ColumnName="Shape" />
                 <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="房屋建筑">
-            <EntityTypeMapping TypeName="wj_GisDbModel.房屋建筑">
+            <EntityTypeMapping TypeName="QyBllAppModel.房屋建筑">
               <MappingFragment StoreEntitySet="房屋建筑">
-                <ScalarProperty Name="Shape" ColumnName="Shape" />
                 <ScalarProperty Name="SSGLQMC" ColumnName="SSGLQMC" />
                 <ScalarProperty Name="SSGLQDM" ColumnName="SSGLQDM" />
                 <ScalarProperty Name="SSXZQMC" ColumnName="SSXZQMC" />
@@ -2635,9 +2625,8 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="企业范围">
-            <EntityTypeMapping TypeName="wj_GisDbModel.企业范围">
+            <EntityTypeMapping TypeName="QyBllAppModel.企业范围">
               <MappingFragment StoreEntitySet="企业范围">
-                <ScalarProperty Name="Shape" ColumnName="Shape" />
                 <ScalarProperty Name="XSZD_" ColumnName="XSZD_" />
                 <ScalarProperty Name="ZLWZ_" ColumnName="ZLWZ_" />
                 <ScalarProperty Name="DYQK_" ColumnName="DYQK_" />
@@ -2687,7 +2676,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="blCityPlan">
-            <EntityTypeMapping TypeName="wj_GisDbModel.blCityPlan">
+            <EntityTypeMapping TypeName="QyBllAppModel.blCityPlan">
               <MappingFragment StoreEntitySet="blCityPlan">
                 <ScalarProperty Name="PreCode" ColumnName="PreCode" />
                 <ScalarProperty Name="CityPlanCode" ColumnName="CityPlanCode" />
@@ -2699,7 +2688,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="blLayer">
-            <EntityTypeMapping TypeName="wj_GisDbModel.blLayer">
+            <EntityTypeMapping TypeName="QyBllAppModel.blLayer">
               <MappingFragment StoreEntitySet="blLayer">
                 <ScalarProperty Name="LoadVisible" ColumnName="LoadVisible" />
                 <ScalarProperty Name="DispNo" ColumnName="DispNo" />
@@ -2711,8 +2700,131 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="dbtune">
+            <EntityTypeMapping TypeName="QyBllAppModel.dbtune">
+              <MappingFragment StoreEntitySet="dbtune">
+                <ScalarProperty Name="config_string" ColumnName="config_string" />
+                <ScalarProperty Name="parameter_name" ColumnName="parameter_name" />
+                <ScalarProperty Name="keyword" ColumnName="keyword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ST_GEOMETRY_COLUMNS">
+            <EntityTypeMapping TypeName="QyBllAppModel.ST_GEOMETRY_COLUMNS">
+              <MappingFragment StoreEntitySet="ST_GEOMETRY_COLUMNS">
+                <ScalarProperty Name="srs_id" ColumnName="srs_id" />
+                <ScalarProperty Name="type_name" ColumnName="type_name" />
+                <ScalarProperty Name="type_schema" ColumnName="type_schema" />
+                <ScalarProperty Name="column_name" ColumnName="column_name" />
+                <ScalarProperty Name="table_name" ColumnName="table_name" />
+                <ScalarProperty Name="table_schema" ColumnName="table_schema" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ST_SPATIAL_REFERENCE_SYSTEMS">
+            <EntityTypeMapping TypeName="QyBllAppModel.ST_SPATIAL_REFERENCE_SYSTEMS">
+              <MappingFragment StoreEntitySet="ST_SPATIAL_REFERENCE_SYSTEMS">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="organization_coordsys_id" ColumnName="organization_coordsys_id" />
+                <ScalarProperty Name="organization" ColumnName="organization" />
+                <ScalarProperty Name="m_scale" ColumnName="m_scale" />
+                <ScalarProperty Name="m_offset" ColumnName="m_offset" />
+                <ScalarProperty Name="z_scale" ColumnName="z_scale" />
+                <ScalarProperty Name="z_offset" ColumnName="z_offset" />
+                <ScalarProperty Name="y_scale" ColumnName="y_scale" />
+                <ScalarProperty Name="y_offset" ColumnName="y_offset" />
+                <ScalarProperty Name="x_scale" ColumnName="x_scale" />
+                <ScalarProperty Name="x_offset" ColumnName="x_offset" />
+                <ScalarProperty Name="srs_id" ColumnName="srs_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsLtdIndustries">
+            <EntityTypeMapping TypeName="QyBllAppModel.bsLtdIndustries">
+              <MappingFragment StoreEntitySet="bsLtdIndustries">
+                <ScalarProperty Name="bsS_Value" ColumnName="bsS_Value" />
+                <ScalarProperty Name="bsS_Codes" ColumnName="bsS_Codes" />
+                <ScalarProperty Name="IsUse" ColumnName="IsUse" />
+                <ScalarProperty Name="PId" ColumnName="PId" />
+                <ScalarProperty Name="HLevel" ColumnName="HLevel" />
+                <ScalarProperty Name="HNo" ColumnName="HNo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t高企">
+            <EntityTypeMapping TypeName="QyBllAppModel.t高企">
+              <MappingFragment StoreEntitySet="t高企">
+                <ScalarProperty Name="地块编号" ColumnName="地块编号" />
+                <ScalarProperty Name="是否_四上_企业" ColumnName="是否_四上_企业" />
+                <ScalarProperty Name="发证日期" ColumnName="发证日期" />
+                <ScalarProperty Name="证书编号" ColumnName="证书编号" />
+                <ScalarProperty Name="企业名称" ColumnName="企业名称" />
+                <ScalarProperty Name="组织机构代码" ColumnName="组织机构代码" />
+                <ScalarProperty Name="统一社会信用代码" ColumnName="统一社会信用代码" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LtdPhoto">
+            <EntityTypeMapping TypeName="QyBllAppModel.LtdPhoto">
+              <MappingFragment StoreEntitySet="LtdPhoto">
+                <ScalarProperty Name="UpDt" ColumnName="UpDt" />
+                <ScalarProperty Name="PicMemo" ColumnName="PicMemo" />
+                <ScalarProperty Name="PicureObj" ColumnName="PicureObj" />
+                <ScalarProperty Name="PhotoType" ColumnName="PhotoType" />
+                <ScalarProperty Name="PICTURE" ColumnName="PICTURE" />
+                <ScalarProperty Name="QYZPBM" ColumnName="QYZPBM" />
+                <ScalarProperty Name="WZZB" ColumnName="WZZB" />
+                <ScalarProperty Name="QYZPDBM" ColumnName="QYZPDBM" />
+                <ScalarProperty Name="SSQYMC" ColumnName="SSQYMC" />
+                <ScalarProperty Name="SSDKBM" ColumnName="SSDKBM" />
+                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsLtdInfo">
+            <EntityTypeMapping TypeName="QyBllAppModel.bsLtdInfo">
+              <MappingFragment StoreEntitySet="bsLtdInfo">
+                <ScalarProperty Name="登记日期" ColumnName="登记日期" />
+                <ScalarProperty Name="规上企业年度" ColumnName="规上企业年度" />
+                <ScalarProperty Name="高新技术企业发证日期" ColumnName="高新技术企业发证日期" />
+                <ScalarProperty Name="立案处罚情况" ColumnName="立案处罚情况" />
+                <ScalarProperty Name="国家安全标准化级别" ColumnName="国家安全标准化级别" />
+                <ScalarProperty Name="安全事故类型" ColumnName="安全事故类型" />
+                <ScalarProperty Name="技术中心国家级获批年度" ColumnName="技术中心国家级获批年度" />
+                <ScalarProperty Name="技术中心省级获批年度" ColumnName="技术中心省级获批年度" />
+                <ScalarProperty Name="技术中心市级获批年度" ColumnName="技术中心市级获批年度" />
+                <ScalarProperty Name="技术中心类型" ColumnName="技术中心类型" />
+                <ScalarProperty Name="清洁生产历年年度" ColumnName="清洁生产历年年度" />
+                <ScalarProperty Name="上市类型" ColumnName="上市类型" />
+                <ScalarProperty Name="新地标企业目标" ColumnName="新地标企业目标" />
+                <ScalarProperty Name="智能车间" ColumnName="智能车间" />
+                <ScalarProperty Name="开发区试点企业" ColumnName="开发区试点企业" />
+                <ScalarProperty Name="智能制造示范环节" ColumnName="智能制造示范环节" />
+                <ScalarProperty Name="亩均税收" ColumnName="亩均税收" />
+                <ScalarProperty Name="亩均销售" ColumnName="亩均销售" />
+                <ScalarProperty Name="企业占地面积" ColumnName="企业占地面积" />
+                <ScalarProperty Name="工业投资性质" ColumnName="工业投资性质" />
+                <ScalarProperty Name="工业投资总量" ColumnName="工业投资总量" />
+                <ScalarProperty Name="入库税金" ColumnName="入库税金" />
+                <ScalarProperty Name="销售收入" ColumnName="销售收入" />
+                <ScalarProperty Name="经营范围" ColumnName="经营范围" />
+                <ScalarProperty Name="行业大类" ColumnName="行业大类" />
+                <ScalarProperty Name="租赁企业否" ColumnName="租赁企业否" />
+                <ScalarProperty Name="所属管理区" ColumnName="所属管理区" />
+                <ScalarProperty Name="所属管理区名称" ColumnName="所属管理区名称" />
+                <ScalarProperty Name="地块编号" ColumnName="地块编号" />
+                <ScalarProperty Name="纳税人名称" ColumnName="纳税人名称" />
+                <ScalarProperty Name="纳税人识别号" ColumnName="纳税人识别号" />
+                <ScalarProperty Name="序号" ColumnName="序号" />
+                <ScalarProperty Name="Ltd_Id" ColumnName="Ltd_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="vwLtdJcSj">
-            <EntityTypeMapping TypeName="wj_GisDbModel.vwLtdJcSj">
+            <EntityTypeMapping TypeName="QyBllAppModel.vwLtdJcSj">
               <MappingFragment StoreEntitySet="vwLtdJcSj">
                 <ScalarProperty Name="亩均税收" ColumnName="亩均税收" />
                 <ScalarProperty Name="增加值" ColumnName="增加值" />
@@ -2756,45 +2868,6 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
                 <ScalarProperty Name="序号" ColumnName="序号" />
                 <ScalarProperty Name="地块编号" ColumnName="地块编号" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="dbtune">
-            <EntityTypeMapping TypeName="wj_GisDbModel.dbtune">
-              <MappingFragment StoreEntitySet="dbtune">
-                <ScalarProperty Name="config_string" ColumnName="config_string" />
-                <ScalarProperty Name="parameter_name" ColumnName="parameter_name" />
-                <ScalarProperty Name="keyword" ColumnName="keyword" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ST_GEOMETRY_COLUMNS">
-            <EntityTypeMapping TypeName="wj_GisDbModel.ST_GEOMETRY_COLUMNS">
-              <MappingFragment StoreEntitySet="ST_GEOMETRY_COLUMNS">
-                <ScalarProperty Name="srs_id" ColumnName="srs_id" />
-                <ScalarProperty Name="type_name" ColumnName="type_name" />
-                <ScalarProperty Name="type_schema" ColumnName="type_schema" />
-                <ScalarProperty Name="column_name" ColumnName="column_name" />
-                <ScalarProperty Name="table_name" ColumnName="table_name" />
-                <ScalarProperty Name="table_schema" ColumnName="table_schema" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ST_SPATIAL_REFERENCE_SYSTEMS">
-            <EntityTypeMapping TypeName="wj_GisDbModel.ST_SPATIAL_REFERENCE_SYSTEMS">
-              <MappingFragment StoreEntitySet="ST_SPATIAL_REFERENCE_SYSTEMS">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="organization_coordsys_id" ColumnName="organization_coordsys_id" />
-                <ScalarProperty Name="organization" ColumnName="organization" />
-                <ScalarProperty Name="m_scale" ColumnName="m_scale" />
-                <ScalarProperty Name="m_offset" ColumnName="m_offset" />
-                <ScalarProperty Name="z_scale" ColumnName="z_scale" />
-                <ScalarProperty Name="z_offset" ColumnName="z_offset" />
-                <ScalarProperty Name="y_scale" ColumnName="y_scale" />
-                <ScalarProperty Name="y_offset" ColumnName="y_offset" />
-                <ScalarProperty Name="x_scale" ColumnName="x_scale" />
-                <ScalarProperty Name="x_offset" ColumnName="x_offset" />
-                <ScalarProperty Name="srs_id" ColumnName="srs_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
