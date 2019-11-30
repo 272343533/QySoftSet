@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0e43c68c61b646cca7d46ac351d09f8b" Name="关系图1" ZoomLevel="101">
+        <EntityTypeShape EntityType="QyTech_AuthModel.bsAppName" Width="1.5" PointX="2.8128671789601758" PointY="5.8426290032652339" />
+        <EntityTypeShape EntityType="QyTech_AuthModel.bsAreaRegistration" Width="1.5" PointX="4.07749969515833" PointY="30.929249032833265" />
+        <EntityTypeShape EntityType="QyTech_AuthModel.bsBaseInfo" Width="1.5" PointX="4.7841924134568279" PointY="29.216718955532052" />
+        <EntityTypeShape EntityType="QyTech_AuthModel.bsDb" Width="1.5" PointX="6.0543583994984438" PointY="15.225963852939179" />
+        <EntityTypeShape EntityType="QyTech_AuthModel.bsEmployee" Width="1.5" PointX="9.9618002259925937" PointY="5.4579713220978023" />
+        <EntityTypeShape EntityType="QyTech_AuthModel.bsField" Width="1.5" PointX="0.52164751501830642" PointY="25.864255797986061" />
+        <EntityTypeShape EntityType="QyTech_AuthModel.bsFunConf" Width="1.5" PointX="3.3222126640948524" PointY="21.152646789864008" />
+        <EntityTypeShape EntityType="QyTech_AuthModel.bsFunField" Width="1.5" PointX="2.5177056950133787" PointY="9.9768592761721742" />
+        <EntityTypeShape EntityType="QyTech_AuthModel.bsFunInterface" Width="1.5" PointX="10.246151055323962" PointY="1.5906180895821276" />
+        <EntityTypeShape EntityType="QyTech_AuthModel.bsFunOper" Width="1.5" PointX="6.2355353265234905" PointY="31.620282754125206" />
+        <EntityTypeShape EntityType="QyTech_AuthModel.bsFunQuery" Width="1.5" PointX="6.1215178566619377" PointY="18.106019848075704" />
+        <EntityTypeShape EntityType="QyTech_AuthModel.bsNavigation" Width="1.5" PointX="9.08856671354201" PointY="19.162870907766219" />
+        <EntityTypeShape EntityType="QyTech_AuthModel.bsOperLog" Width="1.5" PointX="1.3530164888841176" PointY="18.687319838761965" />
+        <EntityTypeShape EntityType="QyTech_AuthModel.bsOrganize" Width="1.5" PointX="8.36361406946723" PointY="26.976935622737248" />
+        <EntityTypeShape EntityType="QyTech_AuthModel.bsRole" Width="1.5" PointX="5.4539242188697328" PointY="30.238581090345317" />
+        <EntityTypeShape EntityType="QyTech_AuthModel.bsRoleFunOperRel" Width="1.5" PointX="7.6797808966039591" PointY="19.700165951484891" />
+        <EntityTypeShape EntityType="QyTech_AuthModel.bsRolNaviRel" Width="1.5" PointX="11.341223079404433" PointY="4.1667197366090116" />
+        <EntityTypeShape EntityType="QyTech_AuthModel.bsSoftCustInfo" Width="1.5" PointX="11.064002595406027" PointY="1.4995369918176611" />
+        <EntityTypeShape EntityType="QyTech_AuthModel.bsTable" Width="1.5" PointX="0.035950988547853654" PointY="11.29066917825987" />
+        <EntityTypeShape EntityType="QyTech_AuthModel.bsUser" Width="1.5" PointX="5.0883134478183063" PointY="28.946004448899071" />
+        <EntityTypeShape EntityType="QyTech_AuthModel.bsUserFieldsRel" Width="1.5" PointX="10.132245981196057" PointY="1.1084685628807491" />
+        <EntityTypeShape EntityType="QyTech_AuthModel.GisLayer_nouse" Width="1.5" PointX="1.2371541341939727" PointY="24.709146958174717" />
+        <AssociationConnector Association="QyTech_AuthModel.FK_BSEMPLOY_RELATIONS_BSORGANI" />
+        <AssociationConnector Association="QyTech_AuthModel.FK_BSFIELD_RELATIONS_BSTABLE" />
+        <AssociationConnector Association="QyTech_AuthModel.FK_BSFUNFIE_RELATIONS_BSFIELD" />
+        <AssociationConnector Association="QyTech_AuthModel.FK_BSFUNCON_RELATIONS_BSNAVIGA" />
+        <AssociationConnector Association="QyTech_AuthModel.FK_BSFUNFIE_RELATIONS_BSFUNCON" />
+        <AssociationConnector Association="QyTech_AuthModel.FK_bsFunInt_RELATIONS_BSFUNCON" />
+        <AssociationConnector Association="QyTech_AuthModel.FK_BSFUNOPE_RELATIONS_BSFUNCON" />
+        <AssociationConnector Association="QyTech_AuthModel.FK_BSFUNQUE_RELATIONS_BSFUNCON" />
+        <AssociationConnector Association="QyTech_AuthModel.FK_bsUserFieldsRel_bsFunConf" />
+        <AssociationConnector Association="QyTech_AuthModel.FK_BSFUNFIE_RELATIONS_BSTABLE" />
+        <AssociationConnector Association="QyTech_AuthModel.FK_BSFUNQUE_RELATIONS_BSFUNFIE" />
+        <AssociationConnector Association="QyTech_AuthModel.FK_BSROLEFU_BSROLEFUN_BSFUNOPE" />
+        <AssociationConnector Association="QyTech_AuthModel.FK_BSOPERLO_RELATIONS_BSUSER" />
+        <AssociationConnector Association="QyTech_AuthModel.FK_BSORGANI_RELATIONS_BSSOFTCU" />
+        <AssociationConnector Association="QyTech_AuthModel.FK_BSROLE_RELATIONS_BSORGANI" />
+        <AssociationConnector Association="QyTech_AuthModel.FK_BSUSER_RELATIONS_BSORGANI" />
+        <AssociationConnector Association="QyTech_AuthModel.FK_BSROLEFU_BSROLEFUN_BSROLE" />
+        <AssociationConnector Association="QyTech_AuthModel.FK_GISLAYER_RELATIONS_BSSOFTCU" />
+        <AssociationConnector Association="QyTech_AuthModel.FK_bsUserFieldsRel_bsTable" />
+        <AssociationConnector Association="QyTech_AuthModel.FK_bsUserFieldsRel_bsUser" />
+        <AssociationConnector Association="QyTech_AuthModel.bsRoleFieldRel" />
+        <AssociationConnector Association="QyTech_AuthModel.bsSoftRelFuns" />
+        <AssociationConnector Association="QyTech_AuthModel.bsUserOrgRel" />
+        <AssociationConnector Association="QyTech_AuthModel.bsUserRoleRel" />
+        <AssociationConnector Association="QyTech_AuthModel.RoleRelFields_nouse" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

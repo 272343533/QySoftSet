@@ -13,7 +13,7 @@ using QyTech.Core.BLL;
 using QyTech.Core.Common;
 using QyTech.Core.ExController.Bll;
 
-using QyExpress.Dao;
+using qyExpress.Dao;
 
 namespace QyTech.Core.ExController
 {
@@ -55,7 +55,7 @@ namespace QyTech.Core.ExController
 
         public QyTechController()
         {
-            EManager_ = new EntityManager(new QyExpressEntities());
+            EManager_ = new EntityManager(new qyExpressEntities());
         }
 
         public EntityManager EM_Base
@@ -307,7 +307,7 @@ namespace QyTech.Core.ExController
                                 orderDefaultSql = bsT.InitOrderBy;
                             }
                             objClassName = bsT.TName;
-                            ObjectClassFullName = ObjectClassFullName.Replace(strForReplaceObject, objNameSpace + "." + ObjectClassName);// +", QyExpress.Dao, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null";
+                            ObjectClassFullName = ObjectClassFullName.Replace(strForReplaceObject, objNameSpace + "." + ObjectClassName);// +", qyExpress.Dao, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null";
                         }
                         else
                         {

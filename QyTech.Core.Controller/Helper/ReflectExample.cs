@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Reflection;
 using log4net;
 using QyTech.Core.Helpers;
-using QyExpress.Dao;
+using qyExpress.Dao;
 using QyTech.Core;
 using System.Data.Objects;
 using QyTech.Core.BLL;
@@ -23,7 +23,7 @@ namespace QyTech.Core.ExController
         //    Type dbtype;
         //    MethodInfo miObj;
         //    Type typeEm = typeof(EntityManager);
-        //    dbtype = Type.GetType("QyExpress.Dao." + objClassName + ", QyExpress.Dao, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null");
+        //    dbtype = Type.GetType("qyExpress.Dao." + objClassName + ", qyExpress.Dao, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null");
 
         //    dbobj = dbtype.Assembly.CreateInstance(dbtype.FullName);
         //    miObj = typeEm.GetMethod("GetListNoPaging").MakeGenericMethod(dbtype);

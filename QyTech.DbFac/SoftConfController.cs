@@ -5,7 +5,7 @@ using System.Text;
 using System.Web.Mvc;
 using System.Reflection;
 using log4net;
-using QyExpress.Dao;
+using qyExpress.Dao;
 using System.Data.Objects;
 
 using QyTech.Core;
@@ -18,9 +18,9 @@ namespace QyExpress
         public SoftConfController()
             : base()
         {
-            DbContext = new QyExpress.Dao.QyExpressEntities();
-            objNameSpace = "QyExpress.Dao";
-            ObjectClassFullName = StrForReplaceObject + ", QyExpress.Dao, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null";
+            DbContext = new qyExpress.Dao.qyExpressEntities();
+            objNameSpace = "qyExpress.Dao";
+            ObjectClassFullName = StrForReplaceObject + ", qyExpress.Dao, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null";
         }
 
 

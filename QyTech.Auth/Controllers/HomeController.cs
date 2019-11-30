@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using QyTech.Core.ExController;
-using QyExpress.Dao;
+using qyExpress.Dao;
 using QyTech.Core.BLL;
 using QyTech.Core;
 using QyTech.Core.Common;
@@ -10,7 +10,7 @@ using System.Collections;
 using System.Collections.Generic;
 using log4net;
 
-namespace QyExpress.Controllers
+namespace qyExpress.Controllers
 {
     public class HomeController : Controller
     {

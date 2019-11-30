@@ -26,7 +26,7 @@ using QyTech.Core.Common;
 using QyTech.Core.ExController.Bll;
 using QyTech.Core.ExController;
 
-using QyExpress.Dao;
+using qyExpress.Dao;
 
 namespace QyTech.Core.ExController
 {
@@ -34,7 +34,7 @@ namespace QyTech.Core.ExController
     {
         //
         // GET: /FolerControllerFactory/
-        EntityManager EM = new EntityManager(new QyExpress.Dao.QyExpressEntities());
+        EntityManager EM = new EntityManager(new qyExpress.Dao.qyExpressEntities());
                   
         /// <summary>
         /// 如果没有实现具体的控制器，则转为使用默认的控制器，具体的控制器只需要实现私有的action即可

@@ -18,7 +18,7 @@ using QyTech.Core.Common;
 using System.Collections;
 using QyTech.Core.ExController.Bll;
 
-using QyExpress.Dao;
+using qyExpress.Dao;
 using QyTech.ExcelOper;
 
 namespace QyTech.Core.ExController

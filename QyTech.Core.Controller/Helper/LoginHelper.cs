@@ -5,7 +5,7 @@ using System.Web;
 //-------------新增引用
 using System.Web.Security;
 using QyTech.Core.BLL ;
-using QyExpress.Dao;
+using qyExpress.Dao;
 using System.Data.Objects;
 using QyTech.Core.Common;
 
@@ -20,7 +20,7 @@ namespace QyTech.Core.Helpers
     public class LoginHelper
     {
         private static ILog log = log4net.LogManager.GetLogger("LoginHelper");
-        private static QyExpressEntities db_ = new QyExpressEntities();
+        private static qyExpressEntities db_ = new qyExpressEntities();
         private static QyTech.Core.BLL.EntityManager EManager= new QyTech.Core.BLL.EntityManager(db_);
 
         #region Login登录相关

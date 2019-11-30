@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="35d48a3d98c54680a1c05cc00b1a45ac" Name="Diagram1" ZoomLevel="27">
+        <EntityTypeShape EntityType="qyExpress.Dao.bl.ltdNotice" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="qyExpress.Dao.bl.LtdRegInfo" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="qyExpress.Dao.bl.LtdUpInfo" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="qyExpress.Dao.bl.LtdUpInfoAudit" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="qyExpress.Dao.bl.LtdUpInfoRent" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="qyExpress.Dao.bl.LtdUpPics" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="qyExpress.Dao.bl.meeting" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="qyExpress.Dao.bl.meeting_ltd_list" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="qyExpress.Dao.bl.meeting_notice_list" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="qyExpress.Dao.bl.meeting_registration" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="qyExpress.Dao.bl.rptLandLtdUpInfo" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="qyExpress.Dao.bl.rptLandLtdUpRent" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="qyExpress.Dao.bl.rptLtdCheck" Width="1.5" PointX="11.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="qyExpress.Dao.bl.rptLtdPostition" Width="1.5" PointX="5.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="qyExpress.Dao.bl.rptLtdRegInfo" Width="1.5" PointX="11.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="qyExpress.Dao.bl.rptRentLtdUpInfo" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="qyExpress.Dao.bl.bsParams" Width="1.5" PointX="2.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="qyExpress.Dao.bl.vwLandLtdUpInfo" Width="1.5" PointX="11.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="qyExpress.Dao.bl.vwLandLtdUpRent" Width="1.5" PointX="13.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="qyExpress.Dao.bl.vwRentLtdUpInfo" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="qyExpress.Dao.bl.FK_LtdUpInfoAudit_LtdUpInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="qyExpress.Dao.bl.FK_LtdUpInfoRent_LtdUpInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="qyExpress.Dao.bl.FK_LtdUpPics_LtdUpInfo" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

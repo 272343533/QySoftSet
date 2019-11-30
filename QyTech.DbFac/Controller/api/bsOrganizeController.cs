@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using QyTech.Core.ExController;
-using QyExpress.Dao;
+using qyExpress.Dao;
 using QyTech.Core.BLL;
 using QyTech.Core;
 using QyTech.Core.Common;
@@ -54,11 +54,11 @@ namespace QyExpress.Controllers.api
 
 
                 if (objs.Count < 50)
-                    treenode.openFlag = true;
+                    treenode.open = true;
                 else if (cc.OrgType == "公司")
-                    treenode.openFlag = true;
+                    treenode.open = true;
                 else
-                    treenode.openFlag = false;
+                    treenode.open = false;
 
                 treelist.Add(treenode);
             }

@@ -1,0 +1,1940 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="qyExpress.Dao.bl.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“ltdUp_Wj.dbo.bsParams”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="bsParams">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bsO_Id" Type="uniqueidentifier" />
+          <Property Name="ParamDesp" Type="varchar" MaxLength="200" />
+          <Property Name="ParamValue" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="ltdNotice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bsO_Id" Type="uniqueidentifier" />
+          <Property Name="NTitle" Type="varchar" MaxLength="100" />
+          <Property Name="NContent" Type="varchar" MaxLength="1000" />
+          <Property Name="NPubDate" Type="date" />
+          <Property Name="NPublisher" Type="varchar" MaxLength="50" />
+          <Property Name="NValidDt" Type="date" />
+          <Property Name="NUse" Type="int" />
+        </EntityType>
+        <EntityType Name="LtdRegInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bsS_Code" Type="varchar" MaxLength="50" />
+          <Property Name="bsO_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LtdName" Type="varchar" MaxLength="255" />
+          <Property Name="LtdNameOri" Type="varchar" MaxLength="255" />
+          <Property Name="IsLandLtd" Type="int" />
+          <Property Name="UseDKBH" Type="varchar" MaxLength="50" />
+          <Property Name="NSRSBH" Type="varchar" MaxLength="100" />
+          <Property Name="LicenseFile" Type="varchar" MaxLength="200" />
+          <Property Name="landcertificate" Type="varchar" MaxLength="200" />
+          <Property Name="LtdAddr" Type="varchar" MaxLength="300" />
+          <Property Name="Contacter" Type="varchar" MaxLength="50" />
+          <Property Name="ContactTel" Type="varchar" MaxLength="50" />
+          <Property Name="LongLatitude" Type="varchar" MaxLength="50" />
+          <Property Name="ElecMeters" Type="varchar" MaxLength="1000" />
+          <Property Name="WaterMeters" Type="varchar" MaxLength="1000" />
+          <Property Name="RegDt" Type="date" />
+          <Property Name="IsCheck" Type="int" />
+          <Property Name="FlowStatus" Type="varchar(max)" />
+          <Property Name="Auditor" Type="varchar" MaxLength="50" />
+          <Property Name="AuditDt" Type="datetime" />
+          <Property Name="AuditDesp" Type="varchar" MaxLength="200" />
+          <Property Name="LtdChar" Type="varchar" MaxLength="50" />
+          <Property Name="CurrCheckStatus" Type="varchar" MaxLength="50" />
+          <Property Name="HaveRelLtd" Type="bit" />
+          <Property Name="RelLtdCode" Type="varchar" MaxLength="50" />
+          <Property Name="HaveLandCert" Type="varchar" MaxLength="10" />
+          <Property Name="LandOwner" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LtdUpInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bsO_Id" Type="uniqueidentifier" />
+          <Property Name="Cycle" Type="varchar" MaxLength="20" />
+          <Property Name="UpDt" Type="datetime" />
+          <Property Name="IsLandHolderLtd" Type="int" />
+          <Property Name="LtdName" Type="varchar" MaxLength="100" />
+          <Property Name="DKBH" Type="varchar" MaxLength="20" />
+          <Property Name="FDDBR" Type="varchar" MaxLength="20" />
+          <Property Name="IsGYQY" Type="varchar" MaxLength="50" />
+          <Property Name="LicenceRegDt" Type="varchar" MaxLength="50" />
+          <Property Name="Addr1" Type="varchar" MaxLength="50" />
+          <Property Name="Addr2" Type="varchar" MaxLength="50" />
+          <Property Name="Addr3" Type="varchar" MaxLength="100" />
+          <Property Name="Addr" Type="varchar" MaxLength="200" />
+          <Property Name="Contacter" Type="varchar" MaxLength="20" />
+          <Property Name="ContactTel" Type="varchar" MaxLength="20" />
+          <Property Name="ElecMeters" Type="varchar" MaxLength="1000" />
+          <Property Name="PreYearElecQuality" Type="float" />
+          <Property Name="ThisYearElecQuality" Type="float" />
+          <Property Name="WaterMeters" Type="varchar" MaxLength="1000" />
+          <Property Name="PreYearWaterQuality" Type="float" />
+          <Property Name="ThisYearWaterQuality" Type="float" />
+          <Property Name="LandInfo_PJArea" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="LandInfo_CZArea" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PjAreaChar_1" Type="varchar" MaxLength="50" />
+          <Property Name="PjAreaChar_2_Self" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PjAreaChar_2_Rent" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PjAreaChar_3" Type="varchar" MaxLength="200" />
+          <Property Name="PjAreaChar_4" Type="varchar" MaxLength="200" />
+          <Property Name="RentLtdSignature" Type="varchar" MaxLength="1000" />
+          <Property Name="AddScore_Research" Type="varchar" MaxLength="50" />
+          <Property Name="AddScore_Brand" Type="varchar" MaxLength="50" />
+          <Property Name="AddScore_Quality" Type="varchar" MaxLength="50" />
+          <Property Name="AddScore_Standard" Type="varchar" MaxLength="50" />
+          <Property Name="AddScore_Credit" Type="varchar" MaxLength="50" />
+          <Property Name="AddScore_Safety" Type="varchar" MaxLength="50" />
+          <Property Name="AddScore_EnviProtect" Type="varchar" MaxLength="50" />
+          <Property Name="AddScore_Tax" Type="varchar" MaxLength="20" />
+          <Property Name="AddScroe_Patent" Type="varchar" MaxLength="20" />
+          <Property Name="GradUD_Cost" Type="varchar" MaxLength="100" />
+          <Property Name="GradUD_Leader" Type="varchar" MaxLength="20" />
+          <Property Name="GradUD_HiTech" Type="varchar" MaxLength="20" />
+          <Property Name="GradUD_Specialty" Type="varchar" MaxLength="20" />
+          <Property Name="GradUD_Safety" Type="varchar" MaxLength="20" />
+          <Property Name="GradUD_LandSupplyLess3Years" Type="varchar" MaxLength="20" />
+          <Property Name="GradUD_ReOrgnizeLess2Years" Type="varchar" MaxLength="20" />
+          <Property Name="GradUD_Inappropriate" Type="varchar" MaxLength="20" />
+          <Property Name="RentLtd_LandHolderType" Type="varchar" MaxLength="50" />
+          <Property Name="RentLtd_LandHolderName" Type="varchar" MaxLength="100" />
+          <Property Name="RentLtd_LandHolderNSRSBH" Type="varchar" MaxLength="50" />
+          <Property Name="RentLtd_PJArea_Land" Type="varchar" MaxLength="50" />
+          <Property Name="RentLtd_PJArea_House" Type="varchar" MaxLength="50" />
+          <Property Name="FlowStatus" Type="varchar" MaxLength="20" />
+          <Property Name="Operator" Type="varchar" MaxLength="20" />
+          <Property Name="Auditor" Type="varchar" MaxLength="50" />
+          <Property Name="AuditDt" Type="datetime" />
+          <Property Name="AuditDesp" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="LtdUpInfoAudit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LUI_Id" Type="int" Nullable="false" />
+          <Property Name="AutitType" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="AuditbsO_Id" Type="uniqueidentifier" />
+          <Property Name="AuditbsO_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Auditor" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AuditDt" Type="datetime" Nullable="false" />
+          <Property Name="AuditDesp" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="LtdUpInfoRent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LUI_Id" Type="int" Nullable="false" />
+          <Property Name="SelfOrRent" Type="varchar" MaxLength="50" />
+          <Property Name="LtdName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LicenseCode" Type="varchar" MaxLength="50" />
+          <Property Name="IsGY" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FTYD" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DBHH" Type="varchar" MaxLength="1000" />
+          <Property Name="SBHH" Type="varchar" MaxLength="1000" />
+          <Property Name="BZ" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="LtdUpPics">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LUI_Id" Type="int" />
+          <Property Name="PicNo" Type="int" />
+          <Property Name="Item" Type="varchar" MaxLength="100" />
+          <Property Name="PicDesp" Type="varchar" MaxLength="1000" />
+          <Property Name="PicFile" Type="varchar" MaxLength="1000" />
+          <Property Name="PicMemo" Type="varchar" MaxLength="1000" />
+          <Property Name="IsUse" Type="bit" />
+        </EntityType>
+        <EntityType Name="meeting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="meeting_title" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="publish_dep" Type="varchar" MaxLength="100" />
+          <Property Name="publish_date" Type="date" />
+          <Property Name="Registration_last_date" Type="date" />
+          <Property Name="diy_content" Type="varchar" MaxLength="8000" />
+        </EntityType>
+        <EntityType Name="meeting_ltd_list">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ltd_name" Type="varchar" MaxLength="100" />
+          <Property Name="ltd_contacter" Type="varchar" MaxLength="20" />
+          <Property Name="ltd_contact_mphone" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="meeting_notice_list">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="meeting_id" Type="int" />
+          <Property Name="ltd_name" Type="varchar" MaxLength="100" />
+          <Property Name="ltd_contacter" Type="varchar" MaxLength="20" />
+          <Property Name="ltd_contact_mphone" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="meeting_registration">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="meeting_id" Type="nchar" MaxLength="10" />
+          <Property Name="reg_name" Type="varchar" MaxLength="20" />
+          <Property Name="ltd_name" Type="varchar" MaxLength="100" />
+          <Property Name="postition" Type="varchar" MaxLength="50" />
+          <Property Name="telephone" Type="nvarchar" MaxLength="11" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="weixin" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="rptLandLtdUpInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="bsO_Id" Type="uniqueidentifier" />
+          <Property Name="Cycle" Type="varchar" MaxLength="20" />
+          <Property Name="CheckStatus" Type="varchar" MaxLength="50" />
+          <Property Name="AuditStatus" Type="varchar" MaxLength="50" />
+          <Property Name="UpDt" Type="datetime" />
+          <Property Name="IsLandHolderLtd" Type="int" />
+          <Property Name="B" Type="varchar" MaxLength="20" />
+          <Property Name="B_1" Type="varchar" MaxLength="50" />
+          <Property Name="C" Type="varchar" MaxLength="100" />
+          <Property Name="D" Type="varchar" MaxLength="100" />
+          <Property Name="E" Type="varchar" MaxLength="20" />
+          <Property Name="F" Type="varchar" MaxLength="50" />
+          <Property Name="G" Type="varchar" MaxLength="50" />
+          <Property Name="H" Type="varchar" MaxLength="50" />
+          <Property Name="I" Type="varchar" MaxLength="50" />
+          <Property Name="J" Type="varchar" MaxLength="100" />
+          <Property Name="K" Type="varchar" MaxLength="20" />
+          <Property Name="L" Type="varchar" MaxLength="20" />
+          <Property Name="M" Type="varchar" MaxLength="1000" />
+          <Property Name="N" Type="float" />
+          <Property Name="O" Type="float" />
+          <Property Name="P" Type="varchar" MaxLength="1000" />
+          <Property Name="Q" Type="float" />
+          <Property Name="R" Type="float" />
+          <Property Name="S" Type="float" />
+          <Property Name="T" Type="float" />
+          <Property Name="U" Type="varchar" MaxLength="50" />
+          <Property Name="V" Type="varchar" MaxLength="59" />
+          <Property Name="W" Type="varchar" MaxLength="20" />
+          <Property Name="X" Type="varchar" MaxLength="20" />
+          <Property Name="Y" Type="varchar" MaxLength="200" />
+          <Property Name="Z" Type="varchar" MaxLength="200" />
+          <Property Name="AA" Type="varchar" MaxLength="50" />
+          <Property Name="AB" Type="varchar" MaxLength="50" />
+          <Property Name="AC" Type="varchar" MaxLength="50" />
+          <Property Name="AD" Type="varchar" MaxLength="50" />
+          <Property Name="AE" Type="varchar" MaxLength="50" />
+          <Property Name="AF" Type="varchar" MaxLength="50" />
+          <Property Name="AG" Type="varchar" MaxLength="50" />
+          <Property Name="AH" Type="varchar" MaxLength="20" />
+          <Property Name="AI" Type="varchar" MaxLength="20" />
+          <Property Name="AJ" Type="varchar" MaxLength="2" />
+          <Property Name="AK" Type="varchar" MaxLength="2" />
+          <Property Name="AL" Type="varchar" MaxLength="2" />
+          <Property Name="AM" Type="varchar" MaxLength="20" />
+          <Property Name="AN" Type="varchar" MaxLength="20" />
+          <Property Name="AO" Type="varchar" MaxLength="20" />
+          <Property Name="AP" Type="varchar" MaxLength="20" />
+          <Property Name="AQ" Type="varchar" MaxLength="20" />
+          <Property Name="AR" Type="varchar" MaxLength="20" />
+          <Property Name="AS1" Type="varchar" MaxLength="20" />
+          <Property Name="AT" Type="int" />
+          <Property Name="AU" Type="int" />
+          <Property Name="AV" Type="int" />
+          <Property Name="AW" Type="int" />
+          <Property Name="AX" Type="int" />
+          <Property Name="AY" Type="int" />
+          <Property Name="AZ" Type="int" />
+        </EntityType>
+        <EntityType Name="rptLandLtdUpRent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="LUI_Id" Type="int" Nullable="false" />
+          <Property Name="CheckStatus" Type="varchar" MaxLength="50" />
+          <Property Name="AuditStatus" Type="varchar" MaxLength="50" />
+          <Property Name="B" Type="varchar" MaxLength="20" />
+          <Property Name="C" Type="varchar" MaxLength="10" />
+          <Property Name="D" Type="varchar" MaxLength="200" />
+          <Property Name="E" Type="varchar" MaxLength="50" />
+          <Property Name="F" Type="varchar" MaxLength="50" />
+          <Property Name="G" Type="varchar" MaxLength="50" />
+          <Property Name="H" Type="varchar" MaxLength="1000" />
+          <Property Name="I" Type="varchar" MaxLength="1000" />
+          <Property Name="J" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="rptLtdCheck">
+          <Key>
+            <PropertyRef Name="bsO_Id" />
+          </Key>
+          <Property Name="bsO_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Cycle" Type="varchar" MaxLength="50" />
+          <Property Name="LtdName" Type="varchar" MaxLength="200" />
+          <Property Name="NSRSBH" Type="varchar" MaxLength="50" />
+          <Property Name="LtdAddr" Type="varchar" MaxLength="50" />
+          <Property Name="UseDKBH" Type="varchar" MaxLength="50" />
+          <Property Name="Contacter" Type="varchar" MaxLength="50" />
+          <Property Name="ContactTel" Type="varchar" MaxLength="50" />
+          <Property Name="CurrCheckStatus" Type="varchar" MaxLength="50" />
+          <Property Name="FlowStatus" Type="varchar" MaxLength="50" />
+          <Property Name="RelLtdCode" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="rptLtdPostition">
+          <Key>
+            <PropertyRef Name="bsO_Id" />
+          </Key>
+          <Property Name="bsO_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="No" Type="int" />
+          <Property Name="LtdName" Type="varchar" MaxLength="200" />
+          <Property Name="NSRSBH" Type="varchar" MaxLength="50" />
+          <Property Name="DKBH" Type="varchar" MaxLength="50" />
+          <Property Name="Addr" Type="varchar" MaxLength="300" />
+          <Property Name="LongLatitude" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="rptLtdRegInfo">
+          <Key>
+            <PropertyRef Name="bsO_Id" />
+          </Key>
+          <Property Name="bsO_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LtdName" Type="varchar" MaxLength="255" />
+          <Property Name="IsLandLtd" Type="varchar" MaxLength="10" />
+          <Property Name="UseDKBH" Type="varchar" MaxLength="50" />
+          <Property Name="NSRSBH" Type="varchar" MaxLength="100" />
+          <Property Name="LtdAddr" Type="varchar" MaxLength="300" />
+          <Property Name="Contacter" Type="varchar" MaxLength="50" />
+          <Property Name="ContactTel" Type="varchar" MaxLength="50" />
+          <Property Name="RegDt" Type="date" />
+          <Property Name="IsCheck" Type="varchar" MaxLength="10" />
+          <Property Name="LtdChar" Type="varchar" MaxLength="50" />
+          <Property Name="CurrCheckStatus" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="rptRentLtdUpInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="bsO_Id" Type="uniqueidentifier" />
+          <Property Name="Cycle" Type="varchar" MaxLength="20" />
+          <Property Name="CheckStatus" Type="varchar" MaxLength="50" />
+          <Property Name="AuditStatus" Type="varchar" MaxLength="50" />
+          <Property Name="UpDt" Type="datetime" />
+          <Property Name="IsLandHolderLtd" Type="int" />
+          <Property Name="B" Type="varchar" MaxLength="20" />
+          <Property Name="C" Type="varchar" MaxLength="100" />
+          <Property Name="D" Type="varchar" MaxLength="100" />
+          <Property Name="E" Type="varchar" MaxLength="100" />
+          <Property Name="F" Type="varchar" MaxLength="50" />
+          <Property Name="G" Type="varchar" MaxLength="20" />
+          <Property Name="H" Type="varchar" MaxLength="50" />
+          <Property Name="I" Type="varchar" MaxLength="50" />
+          <Property Name="J" Type="varchar" MaxLength="200" />
+          <Property Name="K" Type="varchar" MaxLength="20" />
+          <Property Name="L" Type="varchar" MaxLength="20" />
+          <Property Name="M" Type="varchar" MaxLength="1000" />
+          <Property Name="N" Type="float" />
+          <Property Name="O" Type="float" />
+          <Property Name="P" Type="varchar" MaxLength="1000" />
+          <Property Name="Q" Type="float" />
+          <Property Name="R" Type="float" />
+          <Property Name="S" Type="varchar" MaxLength="50" />
+          <Property Name="T" Type="varchar" MaxLength="50" />
+          <Property Name="U" Type="varchar" MaxLength="50" />
+          <Property Name="V" Type="varchar" MaxLength="50" />
+          <Property Name="W" Type="varchar" MaxLength="50" />
+          <Property Name="X" Type="varchar" MaxLength="50" />
+          <Property Name="Y" Type="varchar" MaxLength="50" />
+          <Property Name="Z" Type="varchar" MaxLength="50" />
+          <Property Name="AA" Type="varchar" MaxLength="50" />
+          <Property Name="AB" Type="varchar" MaxLength="50" />
+          <Property Name="AC" Type="varchar" MaxLength="20" />
+          <Property Name="AD" Type="varchar" MaxLength="20" />
+          <Property Name="AE" Type="varchar" MaxLength="2" />
+          <Property Name="AF" Type="varchar" MaxLength="2" />
+          <Property Name="AG" Type="varchar" MaxLength="2" />
+          <Property Name="AH" Type="varchar" MaxLength="20" />
+          <Property Name="AI" Type="varchar" MaxLength="20" />
+          <Property Name="AJ" Type="varchar" MaxLength="20" />
+          <Property Name="AK" Type="varchar" MaxLength="20" />
+          <Property Name="AL" Type="varchar" MaxLength="20" />
+          <Property Name="AM" Type="varchar" MaxLength="20" />
+          <Property Name="AN" Type="varchar" MaxLength="20" />
+          <Property Name="AO" Type="int" />
+          <Property Name="AP" Type="int" />
+          <Property Name="AQ" Type="int" />
+          <Property Name="AR" Type="int" />
+          <Property Name="AS1" Type="int" />
+          <Property Name="AT" Type="int" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“ltdUp_Wj.dbo.vwLandLtdUpInfo”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="vwLandLtdUpInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Ltd_Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Ltd_Id" Type="int" Nullable="false" />
+          <Property Name="Cycle" Type="varchar" MaxLength="20" />
+          <Property Name="UpDt" Type="datetime" />
+          <Property Name="IsLandHolderLtd" Type="int" />
+          <Property Name="B" Type="varchar" MaxLength="20" />
+          <Property Name="C" Type="varchar" MaxLength="100" />
+          <Property Name="D" Type="varchar" MaxLength="100" />
+          <Property Name="E" Type="varchar" MaxLength="20" />
+          <Property Name="F" Type="varchar" MaxLength="50" />
+          <Property Name="G" Type="varchar" MaxLength="50" />
+          <Property Name="H" Type="varchar" MaxLength="50" />
+          <Property Name="I" Type="varchar" MaxLength="50" />
+          <Property Name="J" Type="varchar" MaxLength="100" />
+          <Property Name="K" Type="varchar" MaxLength="20" />
+          <Property Name="L" Type="varchar" MaxLength="20" />
+          <Property Name="M" Type="varchar" MaxLength="1000" />
+          <Property Name="N" Type="float" />
+          <Property Name="O" Type="float" />
+          <Property Name="P" Type="varchar" MaxLength="1000" />
+          <Property Name="Q" Type="float" />
+          <Property Name="R" Type="float" />
+          <Property Name="S" Type="float" />
+          <Property Name="T" Type="float" />
+          <Property Name="U" Type="varchar" MaxLength="50" />
+          <Property Name="V" Type="varchar" MaxLength="59" />
+          <Property Name="W" Type="varchar" MaxLength="20" />
+          <Property Name="X" Type="varchar" MaxLength="20" />
+          <Property Name="Y" Type="varchar" MaxLength="200" />
+          <Property Name="Z" Type="varchar" MaxLength="200" />
+          <Property Name="AA" Type="varchar" MaxLength="50" />
+          <Property Name="AB" Type="varchar" MaxLength="50" />
+          <Property Name="AC" Type="varchar" MaxLength="50" />
+          <Property Name="AD" Type="varchar" MaxLength="50" />
+          <Property Name="AE" Type="varchar" MaxLength="50" />
+          <Property Name="AF" Type="varchar" MaxLength="50" />
+          <Property Name="AG" Type="varchar" MaxLength="50" />
+          <Property Name="AH" Type="varchar" MaxLength="20" />
+          <Property Name="AI" Type="varchar" MaxLength="20" />
+          <Property Name="AJ" Type="varchar" MaxLength="2" />
+          <Property Name="AK" Type="varchar" MaxLength="2" />
+          <Property Name="AL" Type="varchar" MaxLength="2" />
+          <Property Name="AM" Type="varchar" MaxLength="20" />
+          <Property Name="AN" Type="varchar" MaxLength="20" />
+          <Property Name="AO" Type="varchar" MaxLength="20" />
+          <Property Name="AP" Type="varchar" MaxLength="20" />
+          <Property Name="AQ" Type="varchar" MaxLength="20" />
+          <Property Name="AR" Type="varchar" MaxLength="20" />
+          <Property Name="AS1" Type="varchar" MaxLength="20" />
+          <Property Name="AT" Type="int" />
+          <Property Name="AU" Type="int" />
+          <Property Name="AV" Type="int" />
+          <Property Name="AW" Type="int" />
+          <Property Name="AX" Type="int" />
+          <Property Name="AY" Type="int" />
+          <Property Name="AZ" Type="int" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“ltdUp_Wj.dbo.vwLandLtdUpRent”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="vwLandLtdUpRent">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="LUI_Id" />
+            <PropertyRef Name="C" />
+            <PropertyRef Name="D" />
+            <PropertyRef Name="F" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="LUI_Id" Type="int" Nullable="false" />
+          <Property Name="B" Type="varchar" MaxLength="20" />
+          <Property Name="C" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="D" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="E" Type="varchar" MaxLength="50" />
+          <Property Name="F" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="G" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="H" Type="varchar" MaxLength="200" />
+          <Property Name="I" Type="varchar" MaxLength="200" />
+          <Property Name="J" Type="varchar" MaxLength="100" />
+          <Property Name="K" Type="int" />
+          <Property Name="L" Type="int" />
+          <Property Name="M" Type="int" />
+          <Property Name="N" Type="int" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“ltdUp_Wj.dbo.vwRentLtdUpInfo”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="vwRentLtdUpInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Ltd_Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Ltd_Id" Type="int" Nullable="false" />
+          <Property Name="Cycle" Type="varchar" MaxLength="20" />
+          <Property Name="UpDt" Type="datetime" />
+          <Property Name="IsLandHolderLtd" Type="int" />
+          <Property Name="B" Type="varchar" MaxLength="20" />
+          <Property Name="C" Type="varchar" MaxLength="100" />
+          <Property Name="D" Type="varchar" MaxLength="100" />
+          <Property Name="E" Type="varchar" MaxLength="100" />
+          <Property Name="F" Type="varchar" MaxLength="50" />
+          <Property Name="G" Type="varchar" MaxLength="20" />
+          <Property Name="H" Type="varchar" MaxLength="50" />
+          <Property Name="I" Type="varchar" MaxLength="50" />
+          <Property Name="J" Type="varchar" MaxLength="200" />
+          <Property Name="K" Type="varchar" MaxLength="20" />
+          <Property Name="L" Type="varchar" MaxLength="20" />
+          <Property Name="M" Type="varchar" MaxLength="1000" />
+          <Property Name="N" Type="float" />
+          <Property Name="O" Type="float" />
+          <Property Name="P" Type="varchar" MaxLength="1000" />
+          <Property Name="Q" Type="float" />
+          <Property Name="R" Type="float" />
+          <Property Name="S" Type="varchar" MaxLength="50" />
+          <Property Name="T" Type="varchar" MaxLength="50" />
+          <Property Name="U" Type="varchar" MaxLength="50" />
+          <Property Name="V" Type="varchar" MaxLength="50" />
+          <Property Name="W" Type="varchar" MaxLength="50" />
+          <Property Name="X" Type="varchar" MaxLength="50" />
+          <Property Name="Y" Type="varchar" MaxLength="50" />
+          <Property Name="Z" Type="varchar" MaxLength="50" />
+          <Property Name="AA" Type="varchar" MaxLength="50" />
+          <Property Name="AB" Type="varchar" MaxLength="50" />
+          <Property Name="AC" Type="varchar" MaxLength="20" />
+          <Property Name="AD" Type="varchar" MaxLength="20" />
+          <Property Name="AE" Type="varchar" MaxLength="2" />
+          <Property Name="AF" Type="varchar" MaxLength="2" />
+          <Property Name="AG" Type="varchar" MaxLength="2" />
+          <Property Name="AH" Type="varchar" MaxLength="20" />
+          <Property Name="AI" Type="varchar" MaxLength="20" />
+          <Property Name="AJ" Type="varchar" MaxLength="20" />
+          <Property Name="AK" Type="varchar" MaxLength="20" />
+          <Property Name="AL" Type="varchar" MaxLength="20" />
+          <Property Name="AM" Type="varchar" MaxLength="20" />
+          <Property Name="AN" Type="varchar" MaxLength="20" />
+          <Property Name="AO" Type="int" />
+          <Property Name="AP" Type="int" />
+          <Property Name="AQ" Type="int" />
+          <Property Name="AR" Type="int" />
+          <Property Name="AS1" Type="int" />
+          <Property Name="AT" Type="int" />
+        </EntityType>
+        <Association Name="FK_LtdUpInfoAudit_LtdUpInfo">
+          <End Role="LtdUpInfo" Type="Self.LtdUpInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LtdUpInfoAudit" Type="Self.LtdUpInfoAudit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LtdUpInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LtdUpInfoAudit">
+              <PropertyRef Name="LUI_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LtdUpInfoRent_LtdUpInfo">
+          <End Role="LtdUpInfo" Type="Self.LtdUpInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LtdUpInfoRent" Type="Self.LtdUpInfoRent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LtdUpInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LtdUpInfoRent">
+              <PropertyRef Name="LUI_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LtdUpPics_LtdUpInfo">
+          <End Role="LtdUpInfo" Type="Self.LtdUpInfo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LtdUpPics" Type="Self.LtdUpPics" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LtdUpInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LtdUpPics">
+              <PropertyRef Name="LUI_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="qyExpressDaoblStoreContainer">
+          <EntitySet Name="ltdNotice" EntityType="Self.ltdNotice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LtdRegInfo" EntityType="Self.LtdRegInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LtdUpInfo" EntityType="Self.LtdUpInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LtdUpInfoAudit" EntityType="Self.LtdUpInfoAudit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LtdUpInfoRent" EntityType="Self.LtdUpInfoRent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LtdUpPics" EntityType="Self.LtdUpPics" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="meeting" EntityType="Self.meeting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="meeting_ltd_list" EntityType="Self.meeting_ltd_list" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="meeting_notice_list" EntityType="Self.meeting_notice_list" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="meeting_registration" EntityType="Self.meeting_registration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rptLandLtdUpInfo" EntityType="Self.rptLandLtdUpInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rptLandLtdUpRent" EntityType="Self.rptLandLtdUpRent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rptLtdCheck" EntityType="Self.rptLtdCheck" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rptLtdPostition" EntityType="Self.rptLtdPostition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rptLtdRegInfo" EntityType="Self.rptLtdRegInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rptRentLtdUpInfo" EntityType="Self.rptRentLtdUpInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bsParams" EntityType="Self.bsParams" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[bsParams].[Id] AS [Id], 
+[bsParams].[bsO_Id] AS [bsO_Id], 
+[bsParams].[ParamDesp] AS [ParamDesp], 
+[bsParams].[ParamValue] AS [ParamValue]
+FROM [dbo].[bsParams] AS [bsParams]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwLandLtdUpInfo" EntityType="Self.vwLandLtdUpInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vwLandLtdUpInfo].[Id] AS [Id], 
+[vwLandLtdUpInfo].[Ltd_Id] AS [Ltd_Id], 
+[vwLandLtdUpInfo].[Cycle] AS [Cycle], 
+[vwLandLtdUpInfo].[UpDt] AS [UpDt], 
+[vwLandLtdUpInfo].[IsLandHolderLtd] AS [IsLandHolderLtd], 
+[vwLandLtdUpInfo].[B] AS [B], 
+[vwLandLtdUpInfo].[C] AS [C], 
+[vwLandLtdUpInfo].[D] AS [D], 
+[vwLandLtdUpInfo].[E] AS [E], 
+[vwLandLtdUpInfo].[F] AS [F], 
+[vwLandLtdUpInfo].[G] AS [G], 
+[vwLandLtdUpInfo].[H] AS [H], 
+[vwLandLtdUpInfo].[I] AS [I], 
+[vwLandLtdUpInfo].[J] AS [J], 
+[vwLandLtdUpInfo].[K] AS [K], 
+[vwLandLtdUpInfo].[L] AS [L], 
+[vwLandLtdUpInfo].[M] AS [M], 
+[vwLandLtdUpInfo].[N] AS [N], 
+[vwLandLtdUpInfo].[O] AS [O], 
+[vwLandLtdUpInfo].[P] AS [P], 
+[vwLandLtdUpInfo].[Q] AS [Q], 
+[vwLandLtdUpInfo].[R] AS [R], 
+[vwLandLtdUpInfo].[S] AS [S], 
+[vwLandLtdUpInfo].[T] AS [T], 
+[vwLandLtdUpInfo].[U] AS [U], 
+[vwLandLtdUpInfo].[V] AS [V], 
+[vwLandLtdUpInfo].[W] AS [W], 
+[vwLandLtdUpInfo].[X] AS [X], 
+[vwLandLtdUpInfo].[Y] AS [Y], 
+[vwLandLtdUpInfo].[Z] AS [Z], 
+[vwLandLtdUpInfo].[AA] AS [AA], 
+[vwLandLtdUpInfo].[AB] AS [AB], 
+[vwLandLtdUpInfo].[AC] AS [AC], 
+[vwLandLtdUpInfo].[AD] AS [AD], 
+[vwLandLtdUpInfo].[AE] AS [AE], 
+[vwLandLtdUpInfo].[AF] AS [AF], 
+[vwLandLtdUpInfo].[AG] AS [AG], 
+[vwLandLtdUpInfo].[AH] AS [AH], 
+[vwLandLtdUpInfo].[AI] AS [AI], 
+[vwLandLtdUpInfo].[AJ] AS [AJ], 
+[vwLandLtdUpInfo].[AK] AS [AK], 
+[vwLandLtdUpInfo].[AL] AS [AL], 
+[vwLandLtdUpInfo].[AM] AS [AM], 
+[vwLandLtdUpInfo].[AN] AS [AN], 
+[vwLandLtdUpInfo].[AO] AS [AO], 
+[vwLandLtdUpInfo].[AP] AS [AP], 
+[vwLandLtdUpInfo].[AQ] AS [AQ], 
+[vwLandLtdUpInfo].[AR] AS [AR], 
+[vwLandLtdUpInfo].[AS1] AS [AS1], 
+[vwLandLtdUpInfo].[AT] AS [AT], 
+[vwLandLtdUpInfo].[AU] AS [AU], 
+[vwLandLtdUpInfo].[AV] AS [AV], 
+[vwLandLtdUpInfo].[AW] AS [AW], 
+[vwLandLtdUpInfo].[AX] AS [AX], 
+[vwLandLtdUpInfo].[AY] AS [AY], 
+[vwLandLtdUpInfo].[AZ] AS [AZ]
+FROM [dbo].[vwLandLtdUpInfo] AS [vwLandLtdUpInfo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwLandLtdUpRent" EntityType="Self.vwLandLtdUpRent" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vwLandLtdUpRent].[Id] AS [Id], 
+[vwLandLtdUpRent].[LUI_Id] AS [LUI_Id], 
+[vwLandLtdUpRent].[B] AS [B], 
+[vwLandLtdUpRent].[C] AS [C], 
+[vwLandLtdUpRent].[D] AS [D], 
+[vwLandLtdUpRent].[E] AS [E], 
+[vwLandLtdUpRent].[F] AS [F], 
+[vwLandLtdUpRent].[G] AS [G], 
+[vwLandLtdUpRent].[H] AS [H], 
+[vwLandLtdUpRent].[I] AS [I], 
+[vwLandLtdUpRent].[J] AS [J], 
+[vwLandLtdUpRent].[K] AS [K], 
+[vwLandLtdUpRent].[L] AS [L], 
+[vwLandLtdUpRent].[M] AS [M], 
+[vwLandLtdUpRent].[N] AS [N]
+FROM [dbo].[vwLandLtdUpRent] AS [vwLandLtdUpRent]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwRentLtdUpInfo" EntityType="Self.vwRentLtdUpInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vwRentLtdUpInfo].[Id] AS [Id], 
+[vwRentLtdUpInfo].[Ltd_Id] AS [Ltd_Id], 
+[vwRentLtdUpInfo].[Cycle] AS [Cycle], 
+[vwRentLtdUpInfo].[UpDt] AS [UpDt], 
+[vwRentLtdUpInfo].[IsLandHolderLtd] AS [IsLandHolderLtd], 
+[vwRentLtdUpInfo].[B] AS [B], 
+[vwRentLtdUpInfo].[C] AS [C], 
+[vwRentLtdUpInfo].[D] AS [D], 
+[vwRentLtdUpInfo].[E] AS [E], 
+[vwRentLtdUpInfo].[F] AS [F], 
+[vwRentLtdUpInfo].[G] AS [G], 
+[vwRentLtdUpInfo].[H] AS [H], 
+[vwRentLtdUpInfo].[I] AS [I], 
+[vwRentLtdUpInfo].[J] AS [J], 
+[vwRentLtdUpInfo].[K] AS [K], 
+[vwRentLtdUpInfo].[L] AS [L], 
+[vwRentLtdUpInfo].[M] AS [M], 
+[vwRentLtdUpInfo].[N] AS [N], 
+[vwRentLtdUpInfo].[O] AS [O], 
+[vwRentLtdUpInfo].[P] AS [P], 
+[vwRentLtdUpInfo].[Q] AS [Q], 
+[vwRentLtdUpInfo].[R] AS [R], 
+[vwRentLtdUpInfo].[S] AS [S], 
+[vwRentLtdUpInfo].[T] AS [T], 
+[vwRentLtdUpInfo].[U] AS [U], 
+[vwRentLtdUpInfo].[V] AS [V], 
+[vwRentLtdUpInfo].[W] AS [W], 
+[vwRentLtdUpInfo].[X] AS [X], 
+[vwRentLtdUpInfo].[Y] AS [Y], 
+[vwRentLtdUpInfo].[Z] AS [Z], 
+[vwRentLtdUpInfo].[AA] AS [AA], 
+[vwRentLtdUpInfo].[AB] AS [AB], 
+[vwRentLtdUpInfo].[AC] AS [AC], 
+[vwRentLtdUpInfo].[AD] AS [AD], 
+[vwRentLtdUpInfo].[AE] AS [AE], 
+[vwRentLtdUpInfo].[AF] AS [AF], 
+[vwRentLtdUpInfo].[AG] AS [AG], 
+[vwRentLtdUpInfo].[AH] AS [AH], 
+[vwRentLtdUpInfo].[AI] AS [AI], 
+[vwRentLtdUpInfo].[AJ] AS [AJ], 
+[vwRentLtdUpInfo].[AK] AS [AK], 
+[vwRentLtdUpInfo].[AL] AS [AL], 
+[vwRentLtdUpInfo].[AM] AS [AM], 
+[vwRentLtdUpInfo].[AN] AS [AN], 
+[vwRentLtdUpInfo].[AO] AS [AO], 
+[vwRentLtdUpInfo].[AP] AS [AP], 
+[vwRentLtdUpInfo].[AQ] AS [AQ], 
+[vwRentLtdUpInfo].[AR] AS [AR], 
+[vwRentLtdUpInfo].[AS1] AS [AS1], 
+[vwRentLtdUpInfo].[AT] AS [AT]
+FROM [dbo].[vwRentLtdUpInfo] AS [vwRentLtdUpInfo]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_LtdUpInfoAudit_LtdUpInfo" Association="Self.FK_LtdUpInfoAudit_LtdUpInfo">
+            <End Role="LtdUpInfo" EntitySet="LtdUpInfo" />
+            <End Role="LtdUpInfoAudit" EntitySet="LtdUpInfoAudit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LtdUpInfoRent_LtdUpInfo" Association="Self.FK_LtdUpInfoRent_LtdUpInfo">
+            <End Role="LtdUpInfo" EntitySet="LtdUpInfo" />
+            <End Role="LtdUpInfoRent" EntitySet="LtdUpInfoRent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LtdUpPics_LtdUpInfo" Association="Self.FK_LtdUpPics_LtdUpInfo">
+            <End Role="LtdUpInfo" EntitySet="LtdUpInfo" />
+            <End Role="LtdUpPics" EntitySet="LtdUpPics" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="qyExpress.Dao.bl" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ltdNotice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bsO_Id" Type="Guid" />
+          <Property Name="NTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NContent" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="NPubDate" Type="DateTime" Precision="0" />
+          <Property Name="NPublisher" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NValidDt" Type="DateTime" Precision="0" />
+          <Property Name="NUse" Type="Int32" />
+        </EntityType>
+        <EntityType Name="LtdRegInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bsS_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bsO_Id" Type="Guid" Nullable="false" />
+          <Property Name="LtdName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LtdNameOri" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsLandLtd" Type="Int32" />
+          <Property Name="UseDKBH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NSRSBH" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LicenseFile" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="landcertificate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LtdAddr" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Contacter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactTel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LongLatitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ElecMeters" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="WaterMeters" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="RegDt" Type="DateTime" Precision="0" />
+          <Property Name="IsCheck" Type="Int32" />
+          <Property Name="FlowStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Auditor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AuditDt" Type="DateTime" Precision="3" />
+          <Property Name="AuditDesp" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LtdChar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CurrCheckStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HaveRelLtd" Type="Boolean" />
+          <Property Name="RelLtdCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HaveLandCert" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LandOwner" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="LtdUpInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bsO_Id" Type="Guid" />
+          <Property Name="Cycle" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UpDt" Type="DateTime" Precision="3" />
+          <Property Name="IsLandHolderLtd" Type="Int32" />
+          <Property Name="LtdName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DKBH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FDDBR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IsGYQY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LicenceRegDt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Addr1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Addr2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Addr3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Addr" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Contacter" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ContactTel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ElecMeters" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="PreYearElecQuality" Type="Double" />
+          <Property Name="ThisYearElecQuality" Type="Double" />
+          <Property Name="WaterMeters" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="PreYearWaterQuality" Type="Double" />
+          <Property Name="ThisYearWaterQuality" Type="Double" />
+          <Property Name="LandInfo_PJArea" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="LandInfo_CZArea" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PjAreaChar_1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PjAreaChar_2_Self" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PjAreaChar_2_Rent" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PjAreaChar_3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PjAreaChar_4" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="RentLtdSignature" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="AddScore_Research" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AddScore_Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AddScore_Quality" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AddScore_Standard" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AddScore_Credit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AddScore_Safety" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AddScore_EnviProtect" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AddScore_Tax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AddScroe_Patent" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GradUD_Cost" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GradUD_Leader" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GradUD_HiTech" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GradUD_Specialty" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GradUD_Safety" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GradUD_LandSupplyLess3Years" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GradUD_ReOrgnizeLess2Years" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GradUD_Inappropriate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RentLtd_LandHolderType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RentLtd_LandHolderName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RentLtd_LandHolderNSRSBH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RentLtd_PJArea_Land" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RentLtd_PJArea_House" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FlowStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Operator" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Auditor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AuditDt" Type="DateTime" Precision="3" />
+          <Property Name="AuditDesp" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LtdUpInfoAudit" Relationship="Self.FK_LtdUpInfoAudit_LtdUpInfo" FromRole="LtdUpInfo" ToRole="LtdUpInfoAudit" />
+          <NavigationProperty Name="LtdUpInfoRent" Relationship="Self.FK_LtdUpInfoRent_LtdUpInfo" FromRole="LtdUpInfo" ToRole="LtdUpInfoRent" />
+          <NavigationProperty Name="LtdUpPics" Relationship="Self.FK_LtdUpPics_LtdUpInfo" FromRole="LtdUpInfo" ToRole="LtdUpPics" />
+        </EntityType>
+        <EntityType Name="LtdUpInfoAudit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LUI_Id" Type="Int32" Nullable="false" />
+          <Property Name="AutitType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AuditbsO_Id" Type="Guid" />
+          <Property Name="AuditbsO_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Auditor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AuditDt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AuditDesp" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LtdUpInfo" Relationship="Self.FK_LtdUpInfoAudit_LtdUpInfo" FromRole="LtdUpInfoAudit" ToRole="LtdUpInfo" />
+        </EntityType>
+        <EntityType Name="LtdUpInfoRent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LUI_Id" Type="Int32" Nullable="false" />
+          <Property Name="SelfOrRent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LtdName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LicenseCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsGY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FTYD" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DBHH" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="SBHH" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="BZ" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LtdUpInfo" Relationship="Self.FK_LtdUpInfoRent_LtdUpInfo" FromRole="LtdUpInfoRent" ToRole="LtdUpInfo" />
+        </EntityType>
+        <EntityType Name="LtdUpPics">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LUI_Id" Type="Int32" />
+          <Property Name="PicNo" Type="Int32" />
+          <Property Name="Item" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PicDesp" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="PicFile" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="PicMemo" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="IsUse" Type="Boolean" />
+          <NavigationProperty Name="LtdUpInfo" Relationship="Self.FK_LtdUpPics_LtdUpInfo" FromRole="LtdUpPics" ToRole="LtdUpInfo" />
+        </EntityType>
+        <EntityType Name="meeting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="meeting_title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="publish_dep" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="publish_date" Type="DateTime" Precision="0" />
+          <Property Name="Registration_last_date" Type="DateTime" Precision="0" />
+          <Property Name="diy_content" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="meeting_ltd_list">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ltd_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ltd_contacter" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ltd_contact_mphone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="meeting_notice_list">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="meeting_id" Type="Int32" />
+          <Property Name="ltd_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ltd_contacter" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ltd_contact_mphone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="meeting_registration">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="meeting_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="reg_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ltd_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="postition" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telephone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="weixin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="rptLandLtdUpInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="bsO_Id" Type="Guid" />
+          <Property Name="Cycle" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CheckStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AuditStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpDt" Type="DateTime" Precision="3" />
+          <Property Name="IsLandHolderLtd" Type="Int32" />
+          <Property Name="B" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="B_1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="C" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="D" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="E" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="F" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="G" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="H" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="I" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="J" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="K" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="L" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="M" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="N" Type="Double" />
+          <Property Name="O" Type="Double" />
+          <Property Name="P" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Q" Type="Double" />
+          <Property Name="R" Type="Double" />
+          <Property Name="S" Type="Double" />
+          <Property Name="T" Type="Double" />
+          <Property Name="U" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="V" Type="String" MaxLength="59" FixedLength="false" Unicode="false" />
+          <Property Name="W" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="X" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Y" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Z" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AJ" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="AK" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="AL" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="AM" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AQ" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AS1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AT" Type="Int32" />
+          <Property Name="AU" Type="Int32" />
+          <Property Name="AV" Type="Int32" />
+          <Property Name="AW" Type="Int32" />
+          <Property Name="AX" Type="Int32" />
+          <Property Name="AY" Type="Int32" />
+          <Property Name="AZ" Type="Int32" />
+        </EntityType>
+        <EntityType Name="rptLandLtdUpRent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="LUI_Id" Type="Int32" Nullable="false" />
+          <Property Name="CheckStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AuditStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="B" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="D" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="E" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="G" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="H" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="I" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="J" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="rptLtdCheck">
+          <Key>
+            <PropertyRef Name="bsO_Id" />
+          </Key>
+          <Property Name="bsO_Id" Type="Guid" Nullable="false" />
+          <Property Name="Cycle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LtdName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="NSRSBH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LtdAddr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UseDKBH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Contacter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactTel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CurrCheckStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FlowStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RelLtdCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="rptLtdPostition">
+          <Key>
+            <PropertyRef Name="bsO_Id" />
+          </Key>
+          <Property Name="bsO_Id" Type="Guid" Nullable="false" />
+          <Property Name="No" Type="Int32" />
+          <Property Name="LtdName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="NSRSBH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DKBH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Addr" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="LongLatitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="rptLtdRegInfo">
+          <Key>
+            <PropertyRef Name="bsO_Id" />
+          </Key>
+          <Property Name="bsO_Id" Type="Guid" Nullable="false" />
+          <Property Name="LtdName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsLandLtd" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UseDKBH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NSRSBH" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LtdAddr" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Contacter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactTel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RegDt" Type="DateTime" Precision="0" />
+          <Property Name="IsCheck" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LtdChar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CurrCheckStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="rptRentLtdUpInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="bsO_Id" Type="Guid" />
+          <Property Name="Cycle" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CheckStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AuditStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpDt" Type="DateTime" Precision="3" />
+          <Property Name="IsLandHolderLtd" Type="Int32" />
+          <Property Name="B" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="D" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="E" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="F" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="G" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="H" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="I" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="J" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="K" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="L" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="M" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="N" Type="Double" />
+          <Property Name="O" Type="Double" />
+          <Property Name="P" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Q" Type="Double" />
+          <Property Name="R" Type="Double" />
+          <Property Name="S" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="T" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="U" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="V" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="W" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="X" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Y" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Z" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="AF" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="AG" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="AH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AJ" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AK" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AM" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AO" Type="Int32" />
+          <Property Name="AP" Type="Int32" />
+          <Property Name="AQ" Type="Int32" />
+          <Property Name="AR" Type="Int32" />
+          <Property Name="AS1" Type="Int32" />
+          <Property Name="AT" Type="Int32" />
+        </EntityType>
+        <EntityType Name="bsParams">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bsO_Id" Type="Guid" />
+          <Property Name="ParamDesp" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ParamValue" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vwLandLtdUpInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Ltd_Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Ltd_Id" Type="Int32" Nullable="false" />
+          <Property Name="Cycle" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UpDt" Type="DateTime" Precision="3" />
+          <Property Name="IsLandHolderLtd" Type="Int32" />
+          <Property Name="B" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="D" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="E" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="F" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="G" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="H" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="I" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="J" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="K" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="L" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="M" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="N" Type="Double" />
+          <Property Name="O" Type="Double" />
+          <Property Name="P" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Q" Type="Double" />
+          <Property Name="R" Type="Double" />
+          <Property Name="S" Type="Double" />
+          <Property Name="T" Type="Double" />
+          <Property Name="U" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="V" Type="String" MaxLength="59" FixedLength="false" Unicode="false" />
+          <Property Name="W" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="X" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Y" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Z" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AJ" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="AK" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="AL" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="AM" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AQ" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AS1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AT" Type="Int32" />
+          <Property Name="AU" Type="Int32" />
+          <Property Name="AV" Type="Int32" />
+          <Property Name="AW" Type="Int32" />
+          <Property Name="AX" Type="Int32" />
+          <Property Name="AY" Type="Int32" />
+          <Property Name="AZ" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vwLandLtdUpRent">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="LUI_Id" />
+            <PropertyRef Name="C" />
+            <PropertyRef Name="D" />
+            <PropertyRef Name="F" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="LUI_Id" Type="Int32" Nullable="false" />
+          <Property Name="B" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="D" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="E" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="G" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="H" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="I" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="J" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="K" Type="Int32" />
+          <Property Name="L" Type="Int32" />
+          <Property Name="M" Type="Int32" />
+          <Property Name="N" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vwRentLtdUpInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Ltd_Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Ltd_Id" Type="Int32" Nullable="false" />
+          <Property Name="Cycle" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UpDt" Type="DateTime" Precision="3" />
+          <Property Name="IsLandHolderLtd" Type="Int32" />
+          <Property Name="B" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="D" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="E" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="F" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="G" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="H" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="I" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="J" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="K" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="L" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="M" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="N" Type="Double" />
+          <Property Name="O" Type="Double" />
+          <Property Name="P" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Q" Type="Double" />
+          <Property Name="R" Type="Double" />
+          <Property Name="S" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="T" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="U" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="V" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="W" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="X" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Y" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Z" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="AF" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="AG" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="AH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AJ" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AK" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AM" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AO" Type="Int32" />
+          <Property Name="AP" Type="Int32" />
+          <Property Name="AQ" Type="Int32" />
+          <Property Name="AR" Type="Int32" />
+          <Property Name="AS1" Type="Int32" />
+          <Property Name="AT" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_LtdUpInfoAudit_LtdUpInfo">
+          <End Role="LtdUpInfo" Type="Self.LtdUpInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LtdUpInfoAudit" Type="Self.LtdUpInfoAudit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LtdUpInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LtdUpInfoAudit">
+              <PropertyRef Name="LUI_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LtdUpInfoRent_LtdUpInfo">
+          <End Role="LtdUpInfo" Type="Self.LtdUpInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LtdUpInfoRent" Type="Self.LtdUpInfoRent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LtdUpInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LtdUpInfoRent">
+              <PropertyRef Name="LUI_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LtdUpPics_LtdUpInfo">
+          <End Role="LtdUpInfo" Type="Self.LtdUpInfo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LtdUpPics" Type="Self.LtdUpPics" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LtdUpInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LtdUpPics">
+              <PropertyRef Name="LUI_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="qyExpressblEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ltdNotice" EntityType="Self.ltdNotice" />
+          <EntitySet Name="LtdRegInfo" EntityType="Self.LtdRegInfo" />
+          <EntitySet Name="LtdUpInfo" EntityType="Self.LtdUpInfo" />
+          <EntitySet Name="LtdUpInfoAudit" EntityType="Self.LtdUpInfoAudit" />
+          <EntitySet Name="LtdUpInfoRent" EntityType="Self.LtdUpInfoRent" />
+          <EntitySet Name="LtdUpPics" EntityType="Self.LtdUpPics" />
+          <EntitySet Name="meeting" EntityType="Self.meeting" />
+          <EntitySet Name="meeting_ltd_list" EntityType="Self.meeting_ltd_list" />
+          <EntitySet Name="meeting_notice_list" EntityType="Self.meeting_notice_list" />
+          <EntitySet Name="meeting_registration" EntityType="Self.meeting_registration" />
+          <EntitySet Name="rptLandLtdUpInfo" EntityType="Self.rptLandLtdUpInfo" />
+          <EntitySet Name="rptLandLtdUpRent" EntityType="Self.rptLandLtdUpRent" />
+          <EntitySet Name="rptLtdCheck" EntityType="Self.rptLtdCheck" />
+          <EntitySet Name="rptLtdPostition" EntityType="Self.rptLtdPostition" />
+          <EntitySet Name="rptLtdRegInfo" EntityType="Self.rptLtdRegInfo" />
+          <EntitySet Name="rptRentLtdUpInfo" EntityType="Self.rptRentLtdUpInfo" />
+          <EntitySet Name="bsParams" EntityType="Self.bsParams" />
+          <EntitySet Name="vwLandLtdUpInfo" EntityType="Self.vwLandLtdUpInfo" />
+          <EntitySet Name="vwLandLtdUpRent" EntityType="Self.vwLandLtdUpRent" />
+          <EntitySet Name="vwRentLtdUpInfo" EntityType="Self.vwRentLtdUpInfo" />
+          <AssociationSet Name="FK_LtdUpInfoAudit_LtdUpInfo" Association="Self.FK_LtdUpInfoAudit_LtdUpInfo">
+            <End Role="LtdUpInfo" EntitySet="LtdUpInfo" />
+            <End Role="LtdUpInfoAudit" EntitySet="LtdUpInfoAudit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LtdUpInfoRent_LtdUpInfo" Association="Self.FK_LtdUpInfoRent_LtdUpInfo">
+            <End Role="LtdUpInfo" EntitySet="LtdUpInfo" />
+            <End Role="LtdUpInfoRent" EntitySet="LtdUpInfoRent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LtdUpPics_LtdUpInfo" Association="Self.FK_LtdUpPics_LtdUpInfo">
+            <End Role="LtdUpInfo" EntitySet="LtdUpInfo" />
+            <End Role="LtdUpPics" EntitySet="LtdUpPics" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="qyExpressDaoblStoreContainer" CdmEntityContainer="qyExpressblEntities">
+          <EntitySetMapping Name="ltdNotice">
+            <EntityTypeMapping TypeName="qyExpress.Dao.bl.ltdNotice">
+              <MappingFragment StoreEntitySet="ltdNotice">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
+                <ScalarProperty Name="NTitle" ColumnName="NTitle" />
+                <ScalarProperty Name="NContent" ColumnName="NContent" />
+                <ScalarProperty Name="NPubDate" ColumnName="NPubDate" />
+                <ScalarProperty Name="NPublisher" ColumnName="NPublisher" />
+                <ScalarProperty Name="NValidDt" ColumnName="NValidDt" />
+                <ScalarProperty Name="NUse" ColumnName="NUse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LtdRegInfo">
+            <EntityTypeMapping TypeName="qyExpress.Dao.bl.LtdRegInfo">
+              <MappingFragment StoreEntitySet="LtdRegInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="bsS_Code" ColumnName="bsS_Code" />
+                <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
+                <ScalarProperty Name="LtdName" ColumnName="LtdName" />
+                <ScalarProperty Name="LtdNameOri" ColumnName="LtdNameOri" />
+                <ScalarProperty Name="IsLandLtd" ColumnName="IsLandLtd" />
+                <ScalarProperty Name="UseDKBH" ColumnName="UseDKBH" />
+                <ScalarProperty Name="NSRSBH" ColumnName="NSRSBH" />
+                <ScalarProperty Name="LicenseFile" ColumnName="LicenseFile" />
+                <ScalarProperty Name="landcertificate" ColumnName="landcertificate" />
+                <ScalarProperty Name="LtdAddr" ColumnName="LtdAddr" />
+                <ScalarProperty Name="Contacter" ColumnName="Contacter" />
+                <ScalarProperty Name="ContactTel" ColumnName="ContactTel" />
+                <ScalarProperty Name="LongLatitude" ColumnName="LongLatitude" />
+                <ScalarProperty Name="ElecMeters" ColumnName="ElecMeters" />
+                <ScalarProperty Name="WaterMeters" ColumnName="WaterMeters" />
+                <ScalarProperty Name="RegDt" ColumnName="RegDt" />
+                <ScalarProperty Name="IsCheck" ColumnName="IsCheck" />
+                <ScalarProperty Name="FlowStatus" ColumnName="FlowStatus" />
+                <ScalarProperty Name="Auditor" ColumnName="Auditor" />
+                <ScalarProperty Name="AuditDt" ColumnName="AuditDt" />
+                <ScalarProperty Name="AuditDesp" ColumnName="AuditDesp" />
+                <ScalarProperty Name="LtdChar" ColumnName="LtdChar" />
+                <ScalarProperty Name="CurrCheckStatus" ColumnName="CurrCheckStatus" />
+                <ScalarProperty Name="HaveRelLtd" ColumnName="HaveRelLtd" />
+                <ScalarProperty Name="RelLtdCode" ColumnName="RelLtdCode" />
+                <ScalarProperty Name="HaveLandCert" ColumnName="HaveLandCert" />
+                <ScalarProperty Name="LandOwner" ColumnName="LandOwner" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LtdUpInfo">
+            <EntityTypeMapping TypeName="qyExpress.Dao.bl.LtdUpInfo">
+              <MappingFragment StoreEntitySet="LtdUpInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
+                <ScalarProperty Name="Cycle" ColumnName="Cycle" />
+                <ScalarProperty Name="UpDt" ColumnName="UpDt" />
+                <ScalarProperty Name="IsLandHolderLtd" ColumnName="IsLandHolderLtd" />
+                <ScalarProperty Name="LtdName" ColumnName="LtdName" />
+                <ScalarProperty Name="DKBH" ColumnName="DKBH" />
+                <ScalarProperty Name="FDDBR" ColumnName="FDDBR" />
+                <ScalarProperty Name="IsGYQY" ColumnName="IsGYQY" />
+                <ScalarProperty Name="LicenceRegDt" ColumnName="LicenceRegDt" />
+                <ScalarProperty Name="Addr1" ColumnName="Addr1" />
+                <ScalarProperty Name="Addr2" ColumnName="Addr2" />
+                <ScalarProperty Name="Addr3" ColumnName="Addr3" />
+                <ScalarProperty Name="Addr" ColumnName="Addr" />
+                <ScalarProperty Name="Contacter" ColumnName="Contacter" />
+                <ScalarProperty Name="ContactTel" ColumnName="ContactTel" />
+                <ScalarProperty Name="ElecMeters" ColumnName="ElecMeters" />
+                <ScalarProperty Name="PreYearElecQuality" ColumnName="PreYearElecQuality" />
+                <ScalarProperty Name="ThisYearElecQuality" ColumnName="ThisYearElecQuality" />
+                <ScalarProperty Name="WaterMeters" ColumnName="WaterMeters" />
+                <ScalarProperty Name="PreYearWaterQuality" ColumnName="PreYearWaterQuality" />
+                <ScalarProperty Name="ThisYearWaterQuality" ColumnName="ThisYearWaterQuality" />
+                <ScalarProperty Name="LandInfo_PJArea" ColumnName="LandInfo_PJArea" />
+                <ScalarProperty Name="LandInfo_CZArea" ColumnName="LandInfo_CZArea" />
+                <ScalarProperty Name="PjAreaChar_1" ColumnName="PjAreaChar_1" />
+                <ScalarProperty Name="PjAreaChar_2_Self" ColumnName="PjAreaChar_2_Self" />
+                <ScalarProperty Name="PjAreaChar_2_Rent" ColumnName="PjAreaChar_2_Rent" />
+                <ScalarProperty Name="PjAreaChar_3" ColumnName="PjAreaChar_3" />
+                <ScalarProperty Name="PjAreaChar_4" ColumnName="PjAreaChar_4" />
+                <ScalarProperty Name="RentLtdSignature" ColumnName="RentLtdSignature" />
+                <ScalarProperty Name="AddScore_Research" ColumnName="AddScore_Research" />
+                <ScalarProperty Name="AddScore_Brand" ColumnName="AddScore_Brand" />
+                <ScalarProperty Name="AddScore_Quality" ColumnName="AddScore_Quality" />
+                <ScalarProperty Name="AddScore_Standard" ColumnName="AddScore_Standard" />
+                <ScalarProperty Name="AddScore_Credit" ColumnName="AddScore_Credit" />
+                <ScalarProperty Name="AddScore_Safety" ColumnName="AddScore_Safety" />
+                <ScalarProperty Name="AddScore_EnviProtect" ColumnName="AddScore_EnviProtect" />
+                <ScalarProperty Name="AddScore_Tax" ColumnName="AddScore_Tax" />
+                <ScalarProperty Name="AddScroe_Patent" ColumnName="AddScroe_Patent" />
+                <ScalarProperty Name="GradUD_Cost" ColumnName="GradUD_Cost" />
+                <ScalarProperty Name="GradUD_Leader" ColumnName="GradUD_Leader" />
+                <ScalarProperty Name="GradUD_HiTech" ColumnName="GradUD_HiTech" />
+                <ScalarProperty Name="GradUD_Specialty" ColumnName="GradUD_Specialty" />
+                <ScalarProperty Name="GradUD_Safety" ColumnName="GradUD_Safety" />
+                <ScalarProperty Name="GradUD_LandSupplyLess3Years" ColumnName="GradUD_LandSupplyLess3Years" />
+                <ScalarProperty Name="GradUD_ReOrgnizeLess2Years" ColumnName="GradUD_ReOrgnizeLess2Years" />
+                <ScalarProperty Name="GradUD_Inappropriate" ColumnName="GradUD_Inappropriate" />
+                <ScalarProperty Name="RentLtd_LandHolderType" ColumnName="RentLtd_LandHolderType" />
+                <ScalarProperty Name="RentLtd_LandHolderName" ColumnName="RentLtd_LandHolderName" />
+                <ScalarProperty Name="RentLtd_LandHolderNSRSBH" ColumnName="RentLtd_LandHolderNSRSBH" />
+                <ScalarProperty Name="RentLtd_PJArea_Land" ColumnName="RentLtd_PJArea_Land" />
+                <ScalarProperty Name="RentLtd_PJArea_House" ColumnName="RentLtd_PJArea_House" />
+                <ScalarProperty Name="FlowStatus" ColumnName="FlowStatus" />
+                <ScalarProperty Name="Operator" ColumnName="Operator" />
+                <ScalarProperty Name="Auditor" ColumnName="Auditor" />
+                <ScalarProperty Name="AuditDt" ColumnName="AuditDt" />
+                <ScalarProperty Name="AuditDesp" ColumnName="AuditDesp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LtdUpInfoAudit">
+            <EntityTypeMapping TypeName="qyExpress.Dao.bl.LtdUpInfoAudit">
+              <MappingFragment StoreEntitySet="LtdUpInfoAudit">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LUI_Id" ColumnName="LUI_Id" />
+                <ScalarProperty Name="AutitType" ColumnName="AutitType" />
+                <ScalarProperty Name="AuditbsO_Id" ColumnName="AuditbsO_Id" />
+                <ScalarProperty Name="AuditbsO_Name" ColumnName="AuditbsO_Name" />
+                <ScalarProperty Name="Auditor" ColumnName="Auditor" />
+                <ScalarProperty Name="AuditDt" ColumnName="AuditDt" />
+                <ScalarProperty Name="AuditDesp" ColumnName="AuditDesp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LtdUpInfoRent">
+            <EntityTypeMapping TypeName="qyExpress.Dao.bl.LtdUpInfoRent">
+              <MappingFragment StoreEntitySet="LtdUpInfoRent">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LUI_Id" ColumnName="LUI_Id" />
+                <ScalarProperty Name="SelfOrRent" ColumnName="SelfOrRent" />
+                <ScalarProperty Name="LtdName" ColumnName="LtdName" />
+                <ScalarProperty Name="LicenseCode" ColumnName="LicenseCode" />
+                <ScalarProperty Name="IsGY" ColumnName="IsGY" />
+                <ScalarProperty Name="FTYD" ColumnName="FTYD" />
+                <ScalarProperty Name="DBHH" ColumnName="DBHH" />
+                <ScalarProperty Name="SBHH" ColumnName="SBHH" />
+                <ScalarProperty Name="BZ" ColumnName="BZ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LtdUpPics">
+            <EntityTypeMapping TypeName="qyExpress.Dao.bl.LtdUpPics">
+              <MappingFragment StoreEntitySet="LtdUpPics">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LUI_Id" ColumnName="LUI_Id" />
+                <ScalarProperty Name="PicNo" ColumnName="PicNo" />
+                <ScalarProperty Name="Item" ColumnName="Item" />
+                <ScalarProperty Name="PicDesp" ColumnName="PicDesp" />
+                <ScalarProperty Name="PicFile" ColumnName="PicFile" />
+                <ScalarProperty Name="PicMemo" ColumnName="PicMemo" />
+                <ScalarProperty Name="IsUse" ColumnName="IsUse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="meeting">
+            <EntityTypeMapping TypeName="qyExpress.Dao.bl.meeting">
+              <MappingFragment StoreEntitySet="meeting">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="meeting_title" ColumnName="meeting_title" />
+                <ScalarProperty Name="publish_dep" ColumnName="publish_dep" />
+                <ScalarProperty Name="publish_date" ColumnName="publish_date" />
+                <ScalarProperty Name="Registration_last_date" ColumnName="Registration_last_date" />
+                <ScalarProperty Name="diy_content" ColumnName="diy_content" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="meeting_ltd_list">
+            <EntityTypeMapping TypeName="qyExpress.Dao.bl.meeting_ltd_list">
+              <MappingFragment StoreEntitySet="meeting_ltd_list">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ltd_name" ColumnName="ltd_name" />
+                <ScalarProperty Name="ltd_contacter" ColumnName="ltd_contacter" />
+                <ScalarProperty Name="ltd_contact_mphone" ColumnName="ltd_contact_mphone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="meeting_notice_list">
+            <EntityTypeMapping TypeName="qyExpress.Dao.bl.meeting_notice_list">
+              <MappingFragment StoreEntitySet="meeting_notice_list">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="meeting_id" ColumnName="meeting_id" />
+                <ScalarProperty Name="ltd_name" ColumnName="ltd_name" />
+                <ScalarProperty Name="ltd_contacter" ColumnName="ltd_contacter" />
+                <ScalarProperty Name="ltd_contact_mphone" ColumnName="ltd_contact_mphone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="meeting_registration">
+            <EntityTypeMapping TypeName="qyExpress.Dao.bl.meeting_registration">
+              <MappingFragment StoreEntitySet="meeting_registration">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="meeting_id" ColumnName="meeting_id" />
+                <ScalarProperty Name="reg_name" ColumnName="reg_name" />
+                <ScalarProperty Name="ltd_name" ColumnName="ltd_name" />
+                <ScalarProperty Name="postition" ColumnName="postition" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="weixin" ColumnName="weixin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rptLandLtdUpInfo">
+            <EntityTypeMapping TypeName="qyExpress.Dao.bl.rptLandLtdUpInfo">
+              <MappingFragment StoreEntitySet="rptLandLtdUpInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
+                <ScalarProperty Name="Cycle" ColumnName="Cycle" />
+                <ScalarProperty Name="CheckStatus" ColumnName="CheckStatus" />
+                <ScalarProperty Name="AuditStatus" ColumnName="AuditStatus" />
+                <ScalarProperty Name="UpDt" ColumnName="UpDt" />
+                <ScalarProperty Name="IsLandHolderLtd" ColumnName="IsLandHolderLtd" />
+                <ScalarProperty Name="B" ColumnName="B" />
+                <ScalarProperty Name="B_1" ColumnName="B_1" />
+                <ScalarProperty Name="C" ColumnName="C" />
+                <ScalarProperty Name="D" ColumnName="D" />
+                <ScalarProperty Name="E" ColumnName="E" />
+                <ScalarProperty Name="F" ColumnName="F" />
+                <ScalarProperty Name="G" ColumnName="G" />
+                <ScalarProperty Name="H" ColumnName="H" />
+                <ScalarProperty Name="I" ColumnName="I" />
+                <ScalarProperty Name="J" ColumnName="J" />
+                <ScalarProperty Name="K" ColumnName="K" />
+                <ScalarProperty Name="L" ColumnName="L" />
+                <ScalarProperty Name="M" ColumnName="M" />
+                <ScalarProperty Name="N" ColumnName="N" />
+                <ScalarProperty Name="O" ColumnName="O" />
+                <ScalarProperty Name="P" ColumnName="P" />
+                <ScalarProperty Name="Q" ColumnName="Q" />
+                <ScalarProperty Name="R" ColumnName="R" />
+                <ScalarProperty Name="S" ColumnName="S" />
+                <ScalarProperty Name="T" ColumnName="T" />
+                <ScalarProperty Name="U" ColumnName="U" />
+                <ScalarProperty Name="V" ColumnName="V" />
+                <ScalarProperty Name="W" ColumnName="W" />
+                <ScalarProperty Name="X" ColumnName="X" />
+                <ScalarProperty Name="Y" ColumnName="Y" />
+                <ScalarProperty Name="Z" ColumnName="Z" />
+                <ScalarProperty Name="AA" ColumnName="AA" />
+                <ScalarProperty Name="AB" ColumnName="AB" />
+                <ScalarProperty Name="AC" ColumnName="AC" />
+                <ScalarProperty Name="AD" ColumnName="AD" />
+                <ScalarProperty Name="AE" ColumnName="AE" />
+                <ScalarProperty Name="AF" ColumnName="AF" />
+                <ScalarProperty Name="AG" ColumnName="AG" />
+                <ScalarProperty Name="AH" ColumnName="AH" />
+                <ScalarProperty Name="AI" ColumnName="AI" />
+                <ScalarProperty Name="AJ" ColumnName="AJ" />
+                <ScalarProperty Name="AK" ColumnName="AK" />
+                <ScalarProperty Name="AL" ColumnName="AL" />
+                <ScalarProperty Name="AM" ColumnName="AM" />
+                <ScalarProperty Name="AN" ColumnName="AN" />
+                <ScalarProperty Name="AO" ColumnName="AO" />
+                <ScalarProperty Name="AP" ColumnName="AP" />
+                <ScalarProperty Name="AQ" ColumnName="AQ" />
+                <ScalarProperty Name="AR" ColumnName="AR" />
+                <ScalarProperty Name="AS1" ColumnName="AS1" />
+                <ScalarProperty Name="AT" ColumnName="AT" />
+                <ScalarProperty Name="AU" ColumnName="AU" />
+                <ScalarProperty Name="AV" ColumnName="AV" />
+                <ScalarProperty Name="AW" ColumnName="AW" />
+                <ScalarProperty Name="AX" ColumnName="AX" />
+                <ScalarProperty Name="AY" ColumnName="AY" />
+                <ScalarProperty Name="AZ" ColumnName="AZ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rptLandLtdUpRent">
+            <EntityTypeMapping TypeName="qyExpress.Dao.bl.rptLandLtdUpRent">
+              <MappingFragment StoreEntitySet="rptLandLtdUpRent">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LUI_Id" ColumnName="LUI_Id" />
+                <ScalarProperty Name="CheckStatus" ColumnName="CheckStatus" />
+                <ScalarProperty Name="AuditStatus" ColumnName="AuditStatus" />
+                <ScalarProperty Name="B" ColumnName="B" />
+                <ScalarProperty Name="C" ColumnName="C" />
+                <ScalarProperty Name="D" ColumnName="D" />
+                <ScalarProperty Name="E" ColumnName="E" />
+                <ScalarProperty Name="F" ColumnName="F" />
+                <ScalarProperty Name="G" ColumnName="G" />
+                <ScalarProperty Name="H" ColumnName="H" />
+                <ScalarProperty Name="I" ColumnName="I" />
+                <ScalarProperty Name="J" ColumnName="J" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rptLtdCheck">
+            <EntityTypeMapping TypeName="qyExpress.Dao.bl.rptLtdCheck">
+              <MappingFragment StoreEntitySet="rptLtdCheck">
+                <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
+                <ScalarProperty Name="Cycle" ColumnName="Cycle" />
+                <ScalarProperty Name="LtdName" ColumnName="LtdName" />
+                <ScalarProperty Name="NSRSBH" ColumnName="NSRSBH" />
+                <ScalarProperty Name="LtdAddr" ColumnName="LtdAddr" />
+                <ScalarProperty Name="UseDKBH" ColumnName="UseDKBH" />
+                <ScalarProperty Name="Contacter" ColumnName="Contacter" />
+                <ScalarProperty Name="ContactTel" ColumnName="ContactTel" />
+                <ScalarProperty Name="CurrCheckStatus" ColumnName="CurrCheckStatus" />
+                <ScalarProperty Name="FlowStatus" ColumnName="FlowStatus" />
+                <ScalarProperty Name="RelLtdCode" ColumnName="RelLtdCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rptLtdPostition">
+            <EntityTypeMapping TypeName="qyExpress.Dao.bl.rptLtdPostition">
+              <MappingFragment StoreEntitySet="rptLtdPostition">
+                <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
+                <ScalarProperty Name="No" ColumnName="No" />
+                <ScalarProperty Name="LtdName" ColumnName="LtdName" />
+                <ScalarProperty Name="NSRSBH" ColumnName="NSRSBH" />
+                <ScalarProperty Name="DKBH" ColumnName="DKBH" />
+                <ScalarProperty Name="Addr" ColumnName="Addr" />
+                <ScalarProperty Name="LongLatitude" ColumnName="LongLatitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rptLtdRegInfo">
+            <EntityTypeMapping TypeName="qyExpress.Dao.bl.rptLtdRegInfo">
+              <MappingFragment StoreEntitySet="rptLtdRegInfo">
+                <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
+                <ScalarProperty Name="LtdName" ColumnName="LtdName" />
+                <ScalarProperty Name="IsLandLtd" ColumnName="IsLandLtd" />
+                <ScalarProperty Name="UseDKBH" ColumnName="UseDKBH" />
+                <ScalarProperty Name="NSRSBH" ColumnName="NSRSBH" />
+                <ScalarProperty Name="LtdAddr" ColumnName="LtdAddr" />
+                <ScalarProperty Name="Contacter" ColumnName="Contacter" />
+                <ScalarProperty Name="ContactTel" ColumnName="ContactTel" />
+                <ScalarProperty Name="RegDt" ColumnName="RegDt" />
+                <ScalarProperty Name="IsCheck" ColumnName="IsCheck" />
+                <ScalarProperty Name="LtdChar" ColumnName="LtdChar" />
+                <ScalarProperty Name="CurrCheckStatus" ColumnName="CurrCheckStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rptRentLtdUpInfo">
+            <EntityTypeMapping TypeName="qyExpress.Dao.bl.rptRentLtdUpInfo">
+              <MappingFragment StoreEntitySet="rptRentLtdUpInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
+                <ScalarProperty Name="Cycle" ColumnName="Cycle" />
+                <ScalarProperty Name="CheckStatus" ColumnName="CheckStatus" />
+                <ScalarProperty Name="AuditStatus" ColumnName="AuditStatus" />
+                <ScalarProperty Name="UpDt" ColumnName="UpDt" />
+                <ScalarProperty Name="IsLandHolderLtd" ColumnName="IsLandHolderLtd" />
+                <ScalarProperty Name="B" ColumnName="B" />
+                <ScalarProperty Name="C" ColumnName="C" />
+                <ScalarProperty Name="D" ColumnName="D" />
+                <ScalarProperty Name="E" ColumnName="E" />
+                <ScalarProperty Name="F" ColumnName="F" />
+                <ScalarProperty Name="G" ColumnName="G" />
+                <ScalarProperty Name="H" ColumnName="H" />
+                <ScalarProperty Name="I" ColumnName="I" />
+                <ScalarProperty Name="J" ColumnName="J" />
+                <ScalarProperty Name="K" ColumnName="K" />
+                <ScalarProperty Name="L" ColumnName="L" />
+                <ScalarProperty Name="M" ColumnName="M" />
+                <ScalarProperty Name="N" ColumnName="N" />
+                <ScalarProperty Name="O" ColumnName="O" />
+                <ScalarProperty Name="P" ColumnName="P" />
+                <ScalarProperty Name="Q" ColumnName="Q" />
+                <ScalarProperty Name="R" ColumnName="R" />
+                <ScalarProperty Name="S" ColumnName="S" />
+                <ScalarProperty Name="T" ColumnName="T" />
+                <ScalarProperty Name="U" ColumnName="U" />
+                <ScalarProperty Name="V" ColumnName="V" />
+                <ScalarProperty Name="W" ColumnName="W" />
+                <ScalarProperty Name="X" ColumnName="X" />
+                <ScalarProperty Name="Y" ColumnName="Y" />
+                <ScalarProperty Name="Z" ColumnName="Z" />
+                <ScalarProperty Name="AA" ColumnName="AA" />
+                <ScalarProperty Name="AB" ColumnName="AB" />
+                <ScalarProperty Name="AC" ColumnName="AC" />
+                <ScalarProperty Name="AD" ColumnName="AD" />
+                <ScalarProperty Name="AE" ColumnName="AE" />
+                <ScalarProperty Name="AF" ColumnName="AF" />
+                <ScalarProperty Name="AG" ColumnName="AG" />
+                <ScalarProperty Name="AH" ColumnName="AH" />
+                <ScalarProperty Name="AI" ColumnName="AI" />
+                <ScalarProperty Name="AJ" ColumnName="AJ" />
+                <ScalarProperty Name="AK" ColumnName="AK" />
+                <ScalarProperty Name="AL" ColumnName="AL" />
+                <ScalarProperty Name="AM" ColumnName="AM" />
+                <ScalarProperty Name="AN" ColumnName="AN" />
+                <ScalarProperty Name="AO" ColumnName="AO" />
+                <ScalarProperty Name="AP" ColumnName="AP" />
+                <ScalarProperty Name="AQ" ColumnName="AQ" />
+                <ScalarProperty Name="AR" ColumnName="AR" />
+                <ScalarProperty Name="AS1" ColumnName="AS1" />
+                <ScalarProperty Name="AT" ColumnName="AT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsParams">
+            <EntityTypeMapping TypeName="qyExpress.Dao.bl.bsParams">
+              <MappingFragment StoreEntitySet="bsParams">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
+                <ScalarProperty Name="ParamDesp" ColumnName="ParamDesp" />
+                <ScalarProperty Name="ParamValue" ColumnName="ParamValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwLandLtdUpInfo">
+            <EntityTypeMapping TypeName="qyExpress.Dao.bl.vwLandLtdUpInfo">
+              <MappingFragment StoreEntitySet="vwLandLtdUpInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ltd_Id" ColumnName="Ltd_Id" />
+                <ScalarProperty Name="Cycle" ColumnName="Cycle" />
+                <ScalarProperty Name="UpDt" ColumnName="UpDt" />
+                <ScalarProperty Name="IsLandHolderLtd" ColumnName="IsLandHolderLtd" />
+                <ScalarProperty Name="B" ColumnName="B" />
+                <ScalarProperty Name="C" ColumnName="C" />
+                <ScalarProperty Name="D" ColumnName="D" />
+                <ScalarProperty Name="E" ColumnName="E" />
+                <ScalarProperty Name="F" ColumnName="F" />
+                <ScalarProperty Name="G" ColumnName="G" />
+                <ScalarProperty Name="H" ColumnName="H" />
+                <ScalarProperty Name="I" ColumnName="I" />
+                <ScalarProperty Name="J" ColumnName="J" />
+                <ScalarProperty Name="K" ColumnName="K" />
+                <ScalarProperty Name="L" ColumnName="L" />
+                <ScalarProperty Name="M" ColumnName="M" />
+                <ScalarProperty Name="N" ColumnName="N" />
+                <ScalarProperty Name="O" ColumnName="O" />
+                <ScalarProperty Name="P" ColumnName="P" />
+                <ScalarProperty Name="Q" ColumnName="Q" />
+                <ScalarProperty Name="R" ColumnName="R" />
+                <ScalarProperty Name="S" ColumnName="S" />
+                <ScalarProperty Name="T" ColumnName="T" />
+                <ScalarProperty Name="U" ColumnName="U" />
+                <ScalarProperty Name="V" ColumnName="V" />
+                <ScalarProperty Name="W" ColumnName="W" />
+                <ScalarProperty Name="X" ColumnName="X" />
+                <ScalarProperty Name="Y" ColumnName="Y" />
+                <ScalarProperty Name="Z" ColumnName="Z" />
+                <ScalarProperty Name="AA" ColumnName="AA" />
+                <ScalarProperty Name="AB" ColumnName="AB" />
+                <ScalarProperty Name="AC" ColumnName="AC" />
+                <ScalarProperty Name="AD" ColumnName="AD" />
+                <ScalarProperty Name="AE" ColumnName="AE" />
+                <ScalarProperty Name="AF" ColumnName="AF" />
+                <ScalarProperty Name="AG" ColumnName="AG" />
+                <ScalarProperty Name="AH" ColumnName="AH" />
+                <ScalarProperty Name="AI" ColumnName="AI" />
+                <ScalarProperty Name="AJ" ColumnName="AJ" />
+                <ScalarProperty Name="AK" ColumnName="AK" />
+                <ScalarProperty Name="AL" ColumnName="AL" />
+                <ScalarProperty Name="AM" ColumnName="AM" />
+                <ScalarProperty Name="AN" ColumnName="AN" />
+                <ScalarProperty Name="AO" ColumnName="AO" />
+                <ScalarProperty Name="AP" ColumnName="AP" />
+                <ScalarProperty Name="AQ" ColumnName="AQ" />
+                <ScalarProperty Name="AR" ColumnName="AR" />
+                <ScalarProperty Name="AS1" ColumnName="AS1" />
+                <ScalarProperty Name="AT" ColumnName="AT" />
+                <ScalarProperty Name="AU" ColumnName="AU" />
+                <ScalarProperty Name="AV" ColumnName="AV" />
+                <ScalarProperty Name="AW" ColumnName="AW" />
+                <ScalarProperty Name="AX" ColumnName="AX" />
+                <ScalarProperty Name="AY" ColumnName="AY" />
+                <ScalarProperty Name="AZ" ColumnName="AZ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwLandLtdUpRent">
+            <EntityTypeMapping TypeName="qyExpress.Dao.bl.vwLandLtdUpRent">
+              <MappingFragment StoreEntitySet="vwLandLtdUpRent">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LUI_Id" ColumnName="LUI_Id" />
+                <ScalarProperty Name="B" ColumnName="B" />
+                <ScalarProperty Name="C" ColumnName="C" />
+                <ScalarProperty Name="D" ColumnName="D" />
+                <ScalarProperty Name="E" ColumnName="E" />
+                <ScalarProperty Name="F" ColumnName="F" />
+                <ScalarProperty Name="G" ColumnName="G" />
+                <ScalarProperty Name="H" ColumnName="H" />
+                <ScalarProperty Name="I" ColumnName="I" />
+                <ScalarProperty Name="J" ColumnName="J" />
+                <ScalarProperty Name="K" ColumnName="K" />
+                <ScalarProperty Name="L" ColumnName="L" />
+                <ScalarProperty Name="M" ColumnName="M" />
+                <ScalarProperty Name="N" ColumnName="N" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwRentLtdUpInfo">
+            <EntityTypeMapping TypeName="qyExpress.Dao.bl.vwRentLtdUpInfo">
+              <MappingFragment StoreEntitySet="vwRentLtdUpInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ltd_Id" ColumnName="Ltd_Id" />
+                <ScalarProperty Name="Cycle" ColumnName="Cycle" />
+                <ScalarProperty Name="UpDt" ColumnName="UpDt" />
+                <ScalarProperty Name="IsLandHolderLtd" ColumnName="IsLandHolderLtd" />
+                <ScalarProperty Name="B" ColumnName="B" />
+                <ScalarProperty Name="C" ColumnName="C" />
+                <ScalarProperty Name="D" ColumnName="D" />
+                <ScalarProperty Name="E" ColumnName="E" />
+                <ScalarProperty Name="F" ColumnName="F" />
+                <ScalarProperty Name="G" ColumnName="G" />
+                <ScalarProperty Name="H" ColumnName="H" />
+                <ScalarProperty Name="I" ColumnName="I" />
+                <ScalarProperty Name="J" ColumnName="J" />
+                <ScalarProperty Name="K" ColumnName="K" />
+                <ScalarProperty Name="L" ColumnName="L" />
+                <ScalarProperty Name="M" ColumnName="M" />
+                <ScalarProperty Name="N" ColumnName="N" />
+                <ScalarProperty Name="O" ColumnName="O" />
+                <ScalarProperty Name="P" ColumnName="P" />
+                <ScalarProperty Name="Q" ColumnName="Q" />
+                <ScalarProperty Name="R" ColumnName="R" />
+                <ScalarProperty Name="S" ColumnName="S" />
+                <ScalarProperty Name="T" ColumnName="T" />
+                <ScalarProperty Name="U" ColumnName="U" />
+                <ScalarProperty Name="V" ColumnName="V" />
+                <ScalarProperty Name="W" ColumnName="W" />
+                <ScalarProperty Name="X" ColumnName="X" />
+                <ScalarProperty Name="Y" ColumnName="Y" />
+                <ScalarProperty Name="Z" ColumnName="Z" />
+                <ScalarProperty Name="AA" ColumnName="AA" />
+                <ScalarProperty Name="AB" ColumnName="AB" />
+                <ScalarProperty Name="AC" ColumnName="AC" />
+                <ScalarProperty Name="AD" ColumnName="AD" />
+                <ScalarProperty Name="AE" ColumnName="AE" />
+                <ScalarProperty Name="AF" ColumnName="AF" />
+                <ScalarProperty Name="AG" ColumnName="AG" />
+                <ScalarProperty Name="AH" ColumnName="AH" />
+                <ScalarProperty Name="AI" ColumnName="AI" />
+                <ScalarProperty Name="AJ" ColumnName="AJ" />
+                <ScalarProperty Name="AK" ColumnName="AK" />
+                <ScalarProperty Name="AL" ColumnName="AL" />
+                <ScalarProperty Name="AM" ColumnName="AM" />
+                <ScalarProperty Name="AN" ColumnName="AN" />
+                <ScalarProperty Name="AO" ColumnName="AO" />
+                <ScalarProperty Name="AP" ColumnName="AP" />
+                <ScalarProperty Name="AQ" ColumnName="AQ" />
+                <ScalarProperty Name="AR" ColumnName="AR" />
+                <ScalarProperty Name="AS1" ColumnName="AS1" />
+                <ScalarProperty Name="AT" ColumnName="AT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="默认值" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

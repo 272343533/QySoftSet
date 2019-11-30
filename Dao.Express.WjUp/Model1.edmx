@@ -1,0 +1,2152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QyTech_AuthModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="QyTech_AuthModelStoreContainer">
+          <EntitySet Name="bsAppName" EntityType="QyTech_AuthModel.Store.bsAppName" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsAreaRegistration" EntityType="QyTech_AuthModel.Store.bsAreaRegistration" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsBaseInfo" EntityType="QyTech_AuthModel.Store.bsBaseInfo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsDb" EntityType="QyTech_AuthModel.Store.bsDb" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsEmployee" EntityType="QyTech_AuthModel.Store.bsEmployee" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsField" EntityType="QyTech_AuthModel.Store.bsField" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsFunConf" EntityType="QyTech_AuthModel.Store.bsFunConf" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsFunField" EntityType="QyTech_AuthModel.Store.bsFunField" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsFunInterface" EntityType="QyTech_AuthModel.Store.bsFunInterface" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsFunOper" EntityType="QyTech_AuthModel.Store.bsFunOper" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsFunQuery" EntityType="QyTech_AuthModel.Store.bsFunQuery" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsNavigation" EntityType="QyTech_AuthModel.Store.bsNavigation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsOperLog" EntityType="QyTech_AuthModel.Store.bsOperLog" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsOrganize" EntityType="QyTech_AuthModel.Store.bsOrganize" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsRole" EntityType="QyTech_AuthModel.Store.bsRole" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsRoleFieldRel" EntityType="QyTech_AuthModel.Store.bsRoleFieldRel" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsRoleFunOperRel" EntityType="QyTech_AuthModel.Store.bsRoleFunOperRel" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsRolNaviRel" EntityType="QyTech_AuthModel.Store.bsRolNaviRel" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsSoftCustInfo" EntityType="QyTech_AuthModel.Store.bsSoftCustInfo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsSoftRelFuns" EntityType="QyTech_AuthModel.Store.bsSoftRelFuns" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsTable" EntityType="QyTech_AuthModel.Store.bsTable" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsUser" EntityType="QyTech_AuthModel.Store.bsUser" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsUserFieldsRel" EntityType="QyTech_AuthModel.Store.bsUserFieldsRel" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsUserOrgRel" EntityType="QyTech_AuthModel.Store.bsUserOrgRel" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bsUserRoleRel" EntityType="QyTech_AuthModel.Store.bsUserRoleRel" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GisLayer_nouse" EntityType="QyTech_AuthModel.Store.GisLayer_nouse" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RoleRelFields_nouse" EntityType="QyTech_AuthModel.Store.RoleRelFields_nouse" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_BSEMPLOY_RELATIONS_BSORGANI" Association="QyTech_AuthModel.Store.FK_BSEMPLOY_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="bsEmployee" EntitySet="bsEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSFIELD_RELATIONS_BSTABLE" Association="QyTech_AuthModel.Store.FK_BSFIELD_RELATIONS_BSTABLE">
+            <End Role="bsTable" EntitySet="bsTable" />
+            <End Role="bsField" EntitySet="bsField" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSFUNCON_RELATIONS_BSNAVIGA" Association="QyTech_AuthModel.Store.FK_BSFUNCON_RELATIONS_BSNAVIGA">
+            <End Role="bsNavigation" EntitySet="bsNavigation" />
+            <End Role="bsFunConf" EntitySet="bsFunConf" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSFUNFIE_RELATIONS_BSFIELD" Association="QyTech_AuthModel.Store.FK_BSFUNFIE_RELATIONS_BSFIELD">
+            <End Role="bsField" EntitySet="bsField" />
+            <End Role="bsFunField" EntitySet="bsFunField" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSFUNFIE_RELATIONS_BSFUNCON" Association="QyTech_AuthModel.Store.FK_BSFUNFIE_RELATIONS_BSFUNCON">
+            <End Role="bsFunConf" EntitySet="bsFunConf" />
+            <End Role="bsFunField" EntitySet="bsFunField" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSFUNFIE_RELATIONS_BSTABLE" Association="QyTech_AuthModel.Store.FK_BSFUNFIE_RELATIONS_BSTABLE">
+            <End Role="bsTable" EntitySet="bsTable" />
+            <End Role="bsFunField" EntitySet="bsFunField" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bsFunInt_RELATIONS_BSFUNCON" Association="QyTech_AuthModel.Store.FK_bsFunInt_RELATIONS_BSFUNCON">
+            <End Role="bsFunConf" EntitySet="bsFunConf" />
+            <End Role="bsFunInterface" EntitySet="bsFunInterface" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSFUNOPE_RELATIONS_BSFUNCON" Association="QyTech_AuthModel.Store.FK_BSFUNOPE_RELATIONS_BSFUNCON">
+            <End Role="bsFunConf" EntitySet="bsFunConf" />
+            <End Role="bsFunOper" EntitySet="bsFunOper" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSFUNQUE_RELATIONS_BSFUNCON" Association="QyTech_AuthModel.Store.FK_BSFUNQUE_RELATIONS_BSFUNCON">
+            <End Role="bsFunConf" EntitySet="bsFunConf" />
+            <End Role="bsFunQuery" EntitySet="bsFunQuery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSFUNQUE_RELATIONS_BSFUNFIE" Association="QyTech_AuthModel.Store.FK_BSFUNQUE_RELATIONS_BSFUNFIE">
+            <End Role="bsFunField" EntitySet="bsFunField" />
+            <End Role="bsFunQuery" EntitySet="bsFunQuery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSOPERLO_RELATIONS_BSUSER" Association="QyTech_AuthModel.Store.FK_BSOPERLO_RELATIONS_BSUSER">
+            <End Role="bsUser" EntitySet="bsUser" />
+            <End Role="bsOperLog" EntitySet="bsOperLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSORGANI_RELATIONS_BSSOFTCU" Association="QyTech_AuthModel.Store.FK_BSORGANI_RELATIONS_BSSOFTCU">
+            <End Role="bsSoftCustInfo" EntitySet="bsSoftCustInfo" />
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSROLE_RELATIONS_BSORGANI" Association="QyTech_AuthModel.Store.FK_BSROLE_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="bsRole" EntitySet="bsRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSROLEFU_BSROLEFUN_BSFUNOPE" Association="QyTech_AuthModel.Store.FK_BSROLEFU_BSROLEFUN_BSFUNOPE">
+            <End Role="bsFunOper" EntitySet="bsFunOper" />
+            <End Role="bsRoleFunOperRel" EntitySet="bsRoleFunOperRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSROLEFU_BSROLEFUN_BSROLE" Association="QyTech_AuthModel.Store.FK_BSROLEFU_BSROLEFUN_BSROLE">
+            <End Role="bsRole" EntitySet="bsRole" />
+            <End Role="bsRoleFunOperRel" EntitySet="bsRoleFunOperRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSROLERI_RELATIONS_BSFUNFIE" Association="QyTech_AuthModel.Store.FK_BSROLERI_RELATIONS_BSFUNFIE">
+            <End Role="bsFunField" EntitySet="bsFunField" />
+            <End Role="bsRoleFieldRel" EntitySet="bsRoleFieldRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSROLERI_RELATIONS_BSROLE" Association="QyTech_AuthModel.Store.FK_BSROLERI_RELATIONS_BSROLE">
+            <End Role="bsRole" EntitySet="bsRole" />
+            <End Role="bsRoleFieldRel" EntitySet="bsRoleFieldRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bsSoftRelFuns_bsNavigation" Association="QyTech_AuthModel.Store.FK_bsSoftRelFuns_bsNavigation">
+            <End Role="bsNavigation" EntitySet="bsNavigation" />
+            <End Role="bsSoftRelFuns" EntitySet="bsSoftRelFuns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bsSoftRelFuns_bsSoftCustInfo" Association="QyTech_AuthModel.Store.FK_bsSoftRelFuns_bsSoftCustInfo">
+            <End Role="bsSoftCustInfo" EntitySet="bsSoftCustInfo" />
+            <End Role="bsSoftRelFuns" EntitySet="bsSoftRelFuns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSUSER_RELATIONS_BSORGANI" Association="QyTech_AuthModel.Store.FK_BSUSER_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="bsUser" EntitySet="bsUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bsUserFieldsRel_bsFunConf" Association="QyTech_AuthModel.Store.FK_bsUserFieldsRel_bsFunConf">
+            <End Role="bsFunConf" EntitySet="bsFunConf" />
+            <End Role="bsUserFieldsRel" EntitySet="bsUserFieldsRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bsUserFieldsRel_bsTable" Association="QyTech_AuthModel.Store.FK_bsUserFieldsRel_bsTable">
+            <End Role="bsTable" EntitySet="bsTable" />
+            <End Role="bsUserFieldsRel" EntitySet="bsUserFieldsRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bsUserFieldsRel_bsUser" Association="QyTech_AuthModel.Store.FK_bsUserFieldsRel_bsUser">
+            <End Role="bsUser" EntitySet="bsUser" />
+            <End Role="bsUserFieldsRel" EntitySet="bsUserFieldsRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bsUserRightsOrg_bsOrganize" Association="QyTech_AuthModel.Store.FK_bsUserRightsOrg_bsOrganize">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="bsUserOrgRel" EntitySet="bsUserOrgRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bsUserRightsOrg_bsUser" Association="QyTech_AuthModel.Store.FK_bsUserRightsOrg_bsUser">
+            <End Role="bsUser" EntitySet="bsUser" />
+            <End Role="bsUserOrgRel" EntitySet="bsUserOrgRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bsUserRoleRel_bsRole" Association="QyTech_AuthModel.Store.FK_bsUserRoleRel_bsRole">
+            <End Role="bsRole" EntitySet="bsRole" />
+            <End Role="bsUserRoleRel" EntitySet="bsUserRoleRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bsUserRoleRel_bsUser" Association="QyTech_AuthModel.Store.FK_bsUserRoleRel_bsUser">
+            <End Role="bsUser" EntitySet="bsUser" />
+            <End Role="bsUserRoleRel" EntitySet="bsUserRoleRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GISLAYER_RELATIONS_BSSOFTCU" Association="QyTech_AuthModel.Store.FK_GISLAYER_RELATIONS_BSSOFTCU">
+            <End Role="bsSoftCustInfo" EntitySet="bsSoftCustInfo" />
+            <End Role="GisLayer_nouse" EntitySet="GisLayer_nouse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleRelFields_bsField" Association="QyTech_AuthModel.Store.FK_RoleRelFields_bsField">
+            <End Role="bsField" EntitySet="bsField" />
+            <End Role="RoleRelFields_nouse" EntitySet="RoleRelFields_nouse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleRelFields_bsRole" Association="QyTech_AuthModel.Store.FK_RoleRelFields_bsRole">
+            <End Role="bsRole" EntitySet="bsRole" />
+            <End Role="RoleRelFields_nouse" EntitySet="RoleRelFields_nouse" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="bsAppName">
+          <Key>
+            <PropertyRef Name="AppId" />
+          </Key>
+          <Property Name="AppId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AppName" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="bsAreaRegistration">
+          <Key>
+            <PropertyRef Name="bsA_Id" />
+          </Key>
+          <Property Name="bsA_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AreaName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="DbName" Type="varchar" MaxLength="50" />
+          <Property Name="AppName" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="bsBaseInfo">
+          <Key>
+            <PropertyRef Name="bsB_Id" />
+          </Key>
+          <Property Name="bsB_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FType" Type="varchar" MaxLength="50" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Desp" Type="varchar" MaxLength="50" />
+          <Property Name="Rank" Type="int" />
+        </EntityType>
+        <EntityType Name="bsDb">
+          <Key>
+            <PropertyRef Name="bsD_Id" />
+          </Key>
+          <Property Name="bsD_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DbName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="DbDesp" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="DbContextName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="objNameSpace" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="ObjectClassFullName" Type="varchar" Nullable="false" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="bsEmployee">
+          <Key>
+            <PropertyRef Name="bsE_Id" />
+          </Key>
+          <Property Name="bsE_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsO_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="JobNo" Type="varchar" MaxLength="50" />
+          <Property Name="IdCard" Type="varchar" MaxLength="50" />
+          <Property Name="MinZu" Type="varchar" MaxLength="50" />
+          <Property Name="JiGuan" Type="varchar" MaxLength="50" />
+          <Property Name="ZhengZhiMm" Type="varchar" MaxLength="50" />
+          <Property Name="BirthDt" Type="datetime" />
+          <Property Name="Tel" Type="varchar" MaxLength="20" />
+          <Property Name="Sex" Type="varchar" MaxLength="20" />
+          <Property Name="XueLi" Type="varchar" MaxLength="50" />
+          <Property Name="OrgName" Type="varchar" MaxLength="50" />
+          <Property Name="Position" Type="varchar" MaxLength="50" />
+          <Property Name="IsUpper" Type="bit" />
+          <Property Name="IMDI" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="bsField">
+          <Key>
+            <PropertyRef Name="bsF_Id" />
+          </Key>
+          <Property Name="bsF_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsT_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TName" Type="varchar" MaxLength="50" />
+          <Property Name="FNo" Type="int" />
+          <Property Name="FName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="FDesp" Type="varchar" MaxLength="50" />
+          <Property Name="FType" Type="varchar" MaxLength="50" />
+          <Property Name="FLength" Type="int" />
+          <Property Name="DeciDigits" Type="int" />
+          <Property Name="NotNull" Type="bit" />
+        </EntityType>
+        <EntityType Name="bsFunConf">
+          <Key>
+            <PropertyRef Name="bsFC_Id" />
+          </Key>
+          <Property Name="bsFC_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsN_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="pId" Type="uniqueidentifier" />
+          <Property Name="FunCode" Type="varchar" MaxLength="50" />
+          <Property Name="FunName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="FunDesp" Type="varchar" MaxLength="100" />
+          <Property Name="FunType" Type="varchar" MaxLength="100" />
+          <Property Name="FunUrl" Type="varchar" MaxLength="50" />
+          <Property Name="FunLayout" Type="int" />
+          <Property Name="bsD_Name" Type="varchar" MaxLength="50" />
+          <Property Name="TName" Type="varchar" MaxLength="100" />
+          <Property Name="TPk" Type="varchar" MaxLength="100" />
+          <Property Name="NotNullField" Type="varchar" MaxLength="50" />
+          <Property Name="OrderBySql" Type="varchar" MaxLength="500" />
+          <Property Name="FilterField" Type="varchar" MaxLength="100" />
+          <Property Name="FilterValue" Type="varchar" MaxLength="100" />
+          <Property Name="ChildTName" Type="varchar" MaxLength="50" />
+          <Property Name="ChildTPk" Type="varchar" MaxLength="50" />
+          <Property Name="PFk" Type="varchar" MaxLength="100" />
+          <Property Name="Operartor" Type="varchar" MaxLength="50" />
+          <Property Name="UpdateDt" Type="datetime" />
+          <Property Name="UseStatus" Type="int" />
+          <Property Name="VisibleInList" Type="varchar" MaxLength="50" />
+          <Property Name="ListDispType" Type="varchar" MaxLength="20" />
+          <Property Name="UseUserPolicy" Type="bit" />
+          <Property Name="UseRoleFields" Type="bit" />
+        </EntityType>
+        <EntityType Name="bsFunField">
+          <Key>
+            <PropertyRef Name="bsFF_Id" />
+          </Key>
+          <Property Name="bsFF_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsFC_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsT_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsF_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TName" Type="varchar" MaxLength="50" />
+          <Property Name="FNo" Type="int" />
+          <Property Name="FName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="FDesp" Type="varchar" MaxLength="50" />
+          <Property Name="FIsNull" Type="bit" />
+          <Property Name="IsFieldRight" Type="bit" />
+          <Property Name="FType" Type="varchar" MaxLength="50" />
+          <Property Name="OType" Type="varchar" MaxLength="50" />
+          <Property Name="FEditable" Type="varchar" MaxLength="50" />
+          <Property Name="DefalutValue" Type="varchar" MaxLength="50" />
+          <Property Name="FEditType" Type="varchar" MaxLength="50" />
+          <Property Name="FEditValueEx" Type="varchar" MaxLength="500" />
+          <Property Name="NoInList" Type="int" />
+          <Property Name="FWidthInList" Type="int" />
+          <Property Name="VisibleInList" Type="bit" />
+          <Property Name="NoInForm" Type="int" />
+          <Property Name="FWidthInForm" Type="int" />
+          <Property Name="VisibleInForm" Type="bit" />
+        </EntityType>
+        <EntityType Name="bsFunInterface">
+          <Key>
+            <PropertyRef Name="bsFI_Id" />
+          </Key>
+          <Property Name="bsFI_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsFC_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="InterfaceName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="AreaName" Type="varchar" MaxLength="50" />
+          <Property Name="LinkController" Type="varchar" MaxLength="50" />
+          <Property Name="LinkAction" Type="varchar" MaxLength="50" />
+          <Property Name="UrlServerEx" Type="varchar" MaxLength="100" />
+          <Property Name="InterfaceUrl" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="bsFunOper">
+          <Key>
+            <PropertyRef Name="bsFO_Id" />
+          </Key>
+          <Property Name="bsFO_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsFC_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OperType" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="BtnType" Type="varchar" MaxLength="20" />
+          <Property Name="btnSize" Type="varchar" MaxLength="20" />
+          <Property Name="btnClickGetPost" Type="varchar" MaxLength="50" />
+          <Property Name="btnClass" Type="varchar" MaxLength="50" />
+          <Property Name="btnPos" Type="varchar" MaxLength="50" />
+          <Property Name="NewPageType" Type="varchar" MaxLength="50" />
+          <Property Name="OperName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="InterFaceName" Type="varchar" MaxLength="50" />
+          <Property Name="UrlServerEx" Type="varchar" MaxLength="100" />
+          <Property Name="LinkUrl" Type="varchar" MaxLength="100" />
+          <Property Name="PostUrl" Type="varchar" MaxLength="100" />
+          <Property Name="LinkController" Type="varchar" MaxLength="50" />
+          <Property Name="LinkAction" Type="varchar" MaxLength="50" />
+          <Property Name="Icon" Type="varchar" MaxLength="50" />
+          <Property Name="Split" Type="int" />
+          <Property Name="Enabled" Type="int" />
+          <Property Name="ParentId" Type="uniqueidentifier" />
+          <Property Name="SortCode" Type="int" />
+        </EntityType>
+        <EntityType Name="bsFunQuery">
+          <Key>
+            <PropertyRef Name="bsFQ_Id" />
+          </Key>
+          <Property Name="bsFQ_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsFC_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsFF_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FName" Type="varchar" MaxLength="50" />
+          <Property Name="OperName" Type="varchar" MaxLength="50" />
+          <Property Name="OperType" Type="varchar" MaxLength="50" />
+          <Property Name="ItemPos" Type="varchar" MaxLength="50" />
+          <Property Name="DataEx" Type="varchar" MaxLength="50" />
+          <Property Name="Size" Type="int" />
+          <Property Name="FQNo" Type="int" />
+        </EntityType>
+        <EntityType Name="bsNavigation">
+          <Key>
+            <PropertyRef Name="bsN_Id" />
+          </Key>
+          <Property Name="bsN_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NaviName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Route" Type="varchar" MaxLength="100" />
+          <Property Name="Icon" Type="varchar" MaxLength="50" />
+          <Property Name="pId" Type="uniqueidentifier" />
+          <Property Name="NaviNo" Type="int" />
+          <Property Name="NaviType" Type="varchar" MaxLength="100" />
+          <Property Name="NaviStatus" Type="varchar" MaxLength="20" />
+          <Property Name="UrlServerEx" Type="varchar" MaxLength="100" />
+          <Property Name="IsSysNavi" Type="bit" />
+          <Property Name="IsShortkey" Type="bit" />
+          <Property Name="ShortkeyPic" Type="varchar" MaxLength="100" />
+          <Property Name="UseUserPolicy" Type="bit" />
+          <Property Name="UseRoleFields" Type="bit" />
+        </EntityType>
+        <EntityType Name="bsOperLog">
+          <Key>
+            <PropertyRef Name="bsOL_Id" />
+          </Key>
+          <Property Name="bsOL_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsU_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OpreationModuleName" Type="varchar" MaxLength="100" />
+          <Property Name="LoginModuleTime" Type="datetime" />
+          <Property Name="LogoutModuleTime" Type="datetime" />
+          <Property Name="OprType" Type="int" />
+          <Property Name="OprDesp" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="bsOrganize">
+          <Key>
+            <PropertyRef Name="bsO_Id" />
+          </Key>
+          <Property Name="bsO_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsS_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Desp" Type="varchar" MaxLength="100" />
+          <Property Name="PId" Type="uniqueidentifier" />
+          <Property Name="OrgType" Type="varchar" MaxLength="100" />
+          <Property Name="OrgParty" Type="uniqueidentifier" />
+          <Property Name="LongLati_Gcj" Type="varchar" MaxLength="50" />
+          <Property Name="LongLati_Bd" Type="varchar" MaxLength="50" />
+          <Property Name="Operater" Type="varchar" MaxLength="20" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="SaveTime" Type="datetime" />
+          <Property Name="OrganizeStatus" Type="varchar" MaxLength="20" />
+          <Property Name="Nature" Type="varchar" MaxLength="20" />
+          <Property Name="TeamAss" Type="int" />
+        </EntityType>
+        <EntityType Name="bsRole">
+          <Key>
+            <PropertyRef Name="bsR_Id" />
+          </Key>
+          <Property Name="bsR_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsO_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Desp" Type="varchar" MaxLength="100" />
+          <Property Name="IsSysRole" Type="bit" />
+        </EntityType>
+        <EntityType Name="bsRoleFieldRel">
+          <Key>
+            <PropertyRef Name="bsR_Id" />
+            <PropertyRef Name="bsFF_Id" />
+          </Key>
+          <Property Name="bsR_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsFF_Id" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bsRoleFunOperRel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsR_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsFO_Id" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bsRolNaviRel">
+          <Key>
+            <PropertyRef Name="bsR_Id" />
+            <PropertyRef Name="bsN_Id" />
+          </Key>
+          <Property Name="bsR_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsN_Id" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bsSoftCustInfo">
+          <Key>
+            <PropertyRef Name="bsS_Id" />
+          </Key>
+          <Property Name="bsS_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="SimpleName" Type="varchar" MaxLength="50" />
+          <Property Name="MaxUserCount" Type="int" />
+          <Property Name="Logo" Type="varchar" MaxLength="100" />
+          <Property Name="Contacter" Type="varchar" MaxLength="50" />
+          <Property Name="ContactTel" Type="varchar" MaxLength="50" />
+          <Property Name="ContactMail" Type="varchar" MaxLength="50" />
+          <Property Name="Addr" Type="varchar" MaxLength="100" />
+          <Property Name="UseDeadDate" Type="datetime" />
+          <Property Name="UseKeyAudited" Type="bit" />
+          <Property Name="MessageSendFlag" Type="bit" />
+          <Property Name="DayCalHour" Type="int" />
+          <Property Name="MonthCalDay" Type="int" />
+          <Property Name="WebUrl" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="bsSoftRelFuns">
+          <Key>
+            <PropertyRef Name="bsS_Id" />
+            <PropertyRef Name="bsN_Id" />
+          </Key>
+          <Property Name="bsS_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsN_Id" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bsTable">
+          <Key>
+            <PropertyRef Name="bsT_Id" />
+          </Key>
+          <Property Name="bsT_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="No" Type="int" />
+          <Property Name="TName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="TPk" Type="varchar" MaxLength="20" />
+          <Property Name="Desp" Type="varchar" MaxLength="100" />
+          <Property Name="TType" Type="varchar" MaxLength="20" />
+          <Property Name="bsD_Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="bsUser">
+          <Key>
+            <PropertyRef Name="bsU_Id" />
+          </Key>
+          <Property Name="bsU_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsO_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsS_Code" Type="varchar" MaxLength="10" />
+          <Property Name="UserType" Type="varchar" MaxLength="50" />
+          <Property Name="bsE_bsC_Id" Type="uniqueidentifier" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="LoginName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="LoginPwd" Type="varchar" MaxLength="50" />
+          <Property Name="NickName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ContactTel" Type="varchar" MaxLength="50" />
+          <Property Name="IsSysUser" Type="bit" />
+          <Property Name="RegDt" Type="datetime" Nullable="false" />
+          <Property Name="ValidDate" Type="date" Nullable="false" />
+          <Property Name="AccountStatus" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="LoginDt" Type="datetime" />
+          <Property Name="IsOnline" Type="bit" />
+          <Property Name="HeadPic" Type="image" />
+          <Property Name="WebUrl" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="bsUserFieldsRel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsU_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsFC_Id" Type="uniqueidentifier" />
+          <Property Name="bsT_Id" Type="uniqueidentifier" />
+          <Property Name="bsFF_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DispNo" Type="int" />
+          <Property Name="FName" Type="varchar" MaxLength="50" />
+          <Property Name="FDesp" Type="varchar" MaxLength="50" />
+          <Property Name="IsDisp" Type="bit" />
+          <Property Name="UserIsDisp" Type="bit" />
+        </EntityType>
+        <EntityType Name="bsUserOrgRel">
+          <Key>
+            <PropertyRef Name="bsO_Id" />
+            <PropertyRef Name="bsU_Id" />
+          </Key>
+          <Property Name="bsO_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsU_Id" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bsUserRoleRel">
+          <Key>
+            <PropertyRef Name="bsU_Id" />
+            <PropertyRef Name="bsR_Id" />
+          </Key>
+          <Property Name="bsU_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsR_Id" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GisLayer_nouse">
+          <Key>
+            <PropertyRef Name="bsL_Id" />
+          </Key>
+          <Property Name="bsL_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsS_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="LType" Type="varchar" MaxLength="20" />
+          <Property Name="Covering" Type="varchar" MaxLength="100" />
+          <Property Name="LMemo" Type="varchar" MaxLength="100" />
+          <Property Name="OrderNo" Type="int" />
+          <Property Name="LayerCode" Type="varchar" MaxLength="20" />
+          <Property Name="Icon" Type="varchar" MaxLength="50" />
+          <Property Name="LIsUse" Type="bit" />
+          <Property Name="Display" Type="bit" />
+          <Property Name="DisplyMemo" Type="bit" />
+          <Property Name="DisplyPrecision" Type="int" />
+          <Property Name="LineType" Type="varchar" MaxLength="20" />
+          <Property Name="LineWidth" Type="int" />
+        </EntityType>
+        <EntityType Name="RoleRelFields_nouse">
+          <Key>
+            <PropertyRef Name="bsR_Id" />
+            <PropertyRef Name="bsF_Id" />
+          </Key>
+          <Property Name="bsR_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="bsF_Id" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BSEMPLOY_RELATIONS_BSORGANI">
+          <End Role="bsOrganize" Type="QyTech_AuthModel.Store.bsOrganize" Multiplicity="1" />
+          <End Role="bsEmployee" Type="QyTech_AuthModel.Store.bsEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="bsEmployee">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSFIELD_RELATIONS_BSTABLE">
+          <End Role="bsTable" Type="QyTech_AuthModel.Store.bsTable" Multiplicity="1" />
+          <End Role="bsField" Type="QyTech_AuthModel.Store.bsField" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsTable">
+              <PropertyRef Name="bsT_Id" />
+            </Principal>
+            <Dependent Role="bsField">
+              <PropertyRef Name="bsT_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSFUNCON_RELATIONS_BSNAVIGA">
+          <End Role="bsNavigation" Type="QyTech_AuthModel.Store.bsNavigation" Multiplicity="1" />
+          <End Role="bsFunConf" Type="QyTech_AuthModel.Store.bsFunConf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsNavigation">
+              <PropertyRef Name="bsN_Id" />
+            </Principal>
+            <Dependent Role="bsFunConf">
+              <PropertyRef Name="bsN_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSFUNFIE_RELATIONS_BSFIELD">
+          <End Role="bsField" Type="QyTech_AuthModel.Store.bsField" Multiplicity="1" />
+          <End Role="bsFunField" Type="QyTech_AuthModel.Store.bsFunField" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsField">
+              <PropertyRef Name="bsF_Id" />
+            </Principal>
+            <Dependent Role="bsFunField">
+              <PropertyRef Name="bsF_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSFUNFIE_RELATIONS_BSFUNCON">
+          <End Role="bsFunConf" Type="QyTech_AuthModel.Store.bsFunConf" Multiplicity="1" />
+          <End Role="bsFunField" Type="QyTech_AuthModel.Store.bsFunField" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsFunConf">
+              <PropertyRef Name="bsFC_Id" />
+            </Principal>
+            <Dependent Role="bsFunField">
+              <PropertyRef Name="bsFC_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSFUNFIE_RELATIONS_BSTABLE">
+          <End Role="bsTable" Type="QyTech_AuthModel.Store.bsTable" Multiplicity="1" />
+          <End Role="bsFunField" Type="QyTech_AuthModel.Store.bsFunField" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsTable">
+              <PropertyRef Name="bsT_Id" />
+            </Principal>
+            <Dependent Role="bsFunField">
+              <PropertyRef Name="bsT_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bsFunInt_RELATIONS_BSFUNCON">
+          <End Role="bsFunConf" Type="QyTech_AuthModel.Store.bsFunConf" Multiplicity="1" />
+          <End Role="bsFunInterface" Type="QyTech_AuthModel.Store.bsFunInterface" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsFunConf">
+              <PropertyRef Name="bsFC_Id" />
+            </Principal>
+            <Dependent Role="bsFunInterface">
+              <PropertyRef Name="bsFC_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSFUNOPE_RELATIONS_BSFUNCON">
+          <End Role="bsFunConf" Type="QyTech_AuthModel.Store.bsFunConf" Multiplicity="1" />
+          <End Role="bsFunOper" Type="QyTech_AuthModel.Store.bsFunOper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsFunConf">
+              <PropertyRef Name="bsFC_Id" />
+            </Principal>
+            <Dependent Role="bsFunOper">
+              <PropertyRef Name="bsFC_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSFUNQUE_RELATIONS_BSFUNCON">
+          <End Role="bsFunConf" Type="QyTech_AuthModel.Store.bsFunConf" Multiplicity="1" />
+          <End Role="bsFunQuery" Type="QyTech_AuthModel.Store.bsFunQuery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsFunConf">
+              <PropertyRef Name="bsFC_Id" />
+            </Principal>
+            <Dependent Role="bsFunQuery">
+              <PropertyRef Name="bsFC_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSFUNQUE_RELATIONS_BSFUNFIE">
+          <End Role="bsFunField" Type="QyTech_AuthModel.Store.bsFunField" Multiplicity="1" />
+          <End Role="bsFunQuery" Type="QyTech_AuthModel.Store.bsFunQuery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsFunField">
+              <PropertyRef Name="bsFF_Id" />
+            </Principal>
+            <Dependent Role="bsFunQuery">
+              <PropertyRef Name="bsFF_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSOPERLO_RELATIONS_BSUSER">
+          <End Role="bsUser" Type="QyTech_AuthModel.Store.bsUser" Multiplicity="1" />
+          <End Role="bsOperLog" Type="QyTech_AuthModel.Store.bsOperLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsUser">
+              <PropertyRef Name="bsU_Id" />
+            </Principal>
+            <Dependent Role="bsOperLog">
+              <PropertyRef Name="bsU_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSORGANI_RELATIONS_BSSOFTCU">
+          <End Role="bsSoftCustInfo" Type="QyTech_AuthModel.Store.bsSoftCustInfo" Multiplicity="1" />
+          <End Role="bsOrganize" Type="QyTech_AuthModel.Store.bsOrganize" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsSoftCustInfo">
+              <PropertyRef Name="bsS_Id" />
+            </Principal>
+            <Dependent Role="bsOrganize">
+              <PropertyRef Name="bsS_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSROLE_RELATIONS_BSORGANI">
+          <End Role="bsOrganize" Type="QyTech_AuthModel.Store.bsOrganize" Multiplicity="1" />
+          <End Role="bsRole" Type="QyTech_AuthModel.Store.bsRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="bsRole">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSROLEFU_BSROLEFUN_BSFUNOPE">
+          <End Role="bsFunOper" Type="QyTech_AuthModel.Store.bsFunOper" Multiplicity="1" />
+          <End Role="bsRoleFunOperRel" Type="QyTech_AuthModel.Store.bsRoleFunOperRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsFunOper">
+              <PropertyRef Name="bsFO_Id" />
+            </Principal>
+            <Dependent Role="bsRoleFunOperRel">
+              <PropertyRef Name="bsFO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSROLEFU_BSROLEFUN_BSROLE">
+          <End Role="bsRole" Type="QyTech_AuthModel.Store.bsRole" Multiplicity="1" />
+          <End Role="bsRoleFunOperRel" Type="QyTech_AuthModel.Store.bsRoleFunOperRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsRole">
+              <PropertyRef Name="bsR_Id" />
+            </Principal>
+            <Dependent Role="bsRoleFunOperRel">
+              <PropertyRef Name="bsR_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSROLERI_RELATIONS_BSFUNFIE">
+          <End Role="bsFunField" Type="QyTech_AuthModel.Store.bsFunField" Multiplicity="1" />
+          <End Role="bsRoleFieldRel" Type="QyTech_AuthModel.Store.bsRoleFieldRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsFunField">
+              <PropertyRef Name="bsFF_Id" />
+            </Principal>
+            <Dependent Role="bsRoleFieldRel">
+              <PropertyRef Name="bsFF_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSROLERI_RELATIONS_BSROLE">
+          <End Role="bsRole" Type="QyTech_AuthModel.Store.bsRole" Multiplicity="1" />
+          <End Role="bsRoleFieldRel" Type="QyTech_AuthModel.Store.bsRoleFieldRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsRole">
+              <PropertyRef Name="bsR_Id" />
+            </Principal>
+            <Dependent Role="bsRoleFieldRel">
+              <PropertyRef Name="bsR_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bsSoftRelFuns_bsNavigation">
+          <End Role="bsNavigation" Type="QyTech_AuthModel.Store.bsNavigation" Multiplicity="1" />
+          <End Role="bsSoftRelFuns" Type="QyTech_AuthModel.Store.bsSoftRelFuns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsNavigation">
+              <PropertyRef Name="bsN_Id" />
+            </Principal>
+            <Dependent Role="bsSoftRelFuns">
+              <PropertyRef Name="bsN_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bsSoftRelFuns_bsSoftCustInfo">
+          <End Role="bsSoftCustInfo" Type="QyTech_AuthModel.Store.bsSoftCustInfo" Multiplicity="1" />
+          <End Role="bsSoftRelFuns" Type="QyTech_AuthModel.Store.bsSoftRelFuns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsSoftCustInfo">
+              <PropertyRef Name="bsS_Id" />
+            </Principal>
+            <Dependent Role="bsSoftRelFuns">
+              <PropertyRef Name="bsS_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSUSER_RELATIONS_BSORGANI">
+          <End Role="bsOrganize" Type="QyTech_AuthModel.Store.bsOrganize" Multiplicity="1" />
+          <End Role="bsUser" Type="QyTech_AuthModel.Store.bsUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="bsUser">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bsUserFieldsRel_bsFunConf">
+          <End Role="bsFunConf" Type="QyTech_AuthModel.Store.bsFunConf" Multiplicity="0..1" />
+          <End Role="bsUserFieldsRel" Type="QyTech_AuthModel.Store.bsUserFieldsRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsFunConf">
+              <PropertyRef Name="bsFC_Id" />
+            </Principal>
+            <Dependent Role="bsUserFieldsRel">
+              <PropertyRef Name="bsFC_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bsUserFieldsRel_bsTable">
+          <End Role="bsTable" Type="QyTech_AuthModel.Store.bsTable" Multiplicity="0..1" />
+          <End Role="bsUserFieldsRel" Type="QyTech_AuthModel.Store.bsUserFieldsRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsTable">
+              <PropertyRef Name="bsT_Id" />
+            </Principal>
+            <Dependent Role="bsUserFieldsRel">
+              <PropertyRef Name="bsT_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bsUserFieldsRel_bsUser">
+          <End Role="bsUser" Type="QyTech_AuthModel.Store.bsUser" Multiplicity="1" />
+          <End Role="bsUserFieldsRel" Type="QyTech_AuthModel.Store.bsUserFieldsRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsUser">
+              <PropertyRef Name="bsU_Id" />
+            </Principal>
+            <Dependent Role="bsUserFieldsRel">
+              <PropertyRef Name="bsU_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bsUserRightsOrg_bsOrganize">
+          <End Role="bsOrganize" Type="QyTech_AuthModel.Store.bsOrganize" Multiplicity="1" />
+          <End Role="bsUserOrgRel" Type="QyTech_AuthModel.Store.bsUserOrgRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="bsUserOrgRel">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bsUserRightsOrg_bsUser">
+          <End Role="bsUser" Type="QyTech_AuthModel.Store.bsUser" Multiplicity="1" />
+          <End Role="bsUserOrgRel" Type="QyTech_AuthModel.Store.bsUserOrgRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsUser">
+              <PropertyRef Name="bsU_Id" />
+            </Principal>
+            <Dependent Role="bsUserOrgRel">
+              <PropertyRef Name="bsU_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bsUserRoleRel_bsRole">
+          <End Role="bsRole" Type="QyTech_AuthModel.Store.bsRole" Multiplicity="1" />
+          <End Role="bsUserRoleRel" Type="QyTech_AuthModel.Store.bsUserRoleRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsRole">
+              <PropertyRef Name="bsR_Id" />
+            </Principal>
+            <Dependent Role="bsUserRoleRel">
+              <PropertyRef Name="bsR_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bsUserRoleRel_bsUser">
+          <End Role="bsUser" Type="QyTech_AuthModel.Store.bsUser" Multiplicity="1" />
+          <End Role="bsUserRoleRel" Type="QyTech_AuthModel.Store.bsUserRoleRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsUser">
+              <PropertyRef Name="bsU_Id" />
+            </Principal>
+            <Dependent Role="bsUserRoleRel">
+              <PropertyRef Name="bsU_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GISLAYER_RELATIONS_BSSOFTCU">
+          <End Role="bsSoftCustInfo" Type="QyTech_AuthModel.Store.bsSoftCustInfo" Multiplicity="1" />
+          <End Role="GisLayer_nouse" Type="QyTech_AuthModel.Store.GisLayer_nouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsSoftCustInfo">
+              <PropertyRef Name="bsS_Id" />
+            </Principal>
+            <Dependent Role="GisLayer_nouse">
+              <PropertyRef Name="bsS_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleRelFields_bsField">
+          <End Role="bsField" Type="QyTech_AuthModel.Store.bsField" Multiplicity="1" />
+          <End Role="RoleRelFields_nouse" Type="QyTech_AuthModel.Store.RoleRelFields_nouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsField">
+              <PropertyRef Name="bsF_Id" />
+            </Principal>
+            <Dependent Role="RoleRelFields_nouse">
+              <PropertyRef Name="bsF_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleRelFields_bsRole">
+          <End Role="bsRole" Type="QyTech_AuthModel.Store.bsRole" Multiplicity="1" />
+          <End Role="RoleRelFields_nouse" Type="QyTech_AuthModel.Store.RoleRelFields_nouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsRole">
+              <PropertyRef Name="bsR_Id" />
+            </Principal>
+            <Dependent Role="RoleRelFields_nouse">
+              <PropertyRef Name="bsR_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QyTech_AuthModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="QyTech_AuthEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="bsAppName" EntityType="QyTech_AuthModel.bsAppName" />
+          <EntitySet Name="bsAreaRegistration" EntityType="QyTech_AuthModel.bsAreaRegistration" />
+          <EntitySet Name="bsBaseInfo" EntityType="QyTech_AuthModel.bsBaseInfo" />
+          <EntitySet Name="bsDb" EntityType="QyTech_AuthModel.bsDb" />
+          <EntitySet Name="bsEmployee" EntityType="QyTech_AuthModel.bsEmployee" />
+          <EntitySet Name="bsField" EntityType="QyTech_AuthModel.bsField" />
+          <EntitySet Name="bsFunConf" EntityType="QyTech_AuthModel.bsFunConf" />
+          <EntitySet Name="bsFunField" EntityType="QyTech_AuthModel.bsFunField" />
+          <EntitySet Name="bsFunInterface" EntityType="QyTech_AuthModel.bsFunInterface" />
+          <EntitySet Name="bsFunOper" EntityType="QyTech_AuthModel.bsFunOper" />
+          <EntitySet Name="bsFunQuery" EntityType="QyTech_AuthModel.bsFunQuery" />
+          <EntitySet Name="bsNavigation" EntityType="QyTech_AuthModel.bsNavigation" />
+          <EntitySet Name="bsOperLog" EntityType="QyTech_AuthModel.bsOperLog" />
+          <EntitySet Name="bsOrganize" EntityType="QyTech_AuthModel.bsOrganize" />
+          <EntitySet Name="bsRole" EntityType="QyTech_AuthModel.bsRole" />
+          <EntitySet Name="bsRoleFunOperRel" EntityType="QyTech_AuthModel.bsRoleFunOperRel" />
+          <EntitySet Name="bsRolNaviRel" EntityType="QyTech_AuthModel.bsRolNaviRel" />
+          <EntitySet Name="bsSoftCustInfo" EntityType="QyTech_AuthModel.bsSoftCustInfo" />
+          <EntitySet Name="bsTable" EntityType="QyTech_AuthModel.bsTable" />
+          <EntitySet Name="bsUser" EntityType="QyTech_AuthModel.bsUser" />
+          <EntitySet Name="bsUserFieldsRel" EntityType="QyTech_AuthModel.bsUserFieldsRel" />
+          <EntitySet Name="GisLayer_nouse" EntityType="QyTech_AuthModel.GisLayer_nouse" />
+          <AssociationSet Name="FK_BSEMPLOY_RELATIONS_BSORGANI" Association="QyTech_AuthModel.FK_BSEMPLOY_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="bsEmployee" EntitySet="bsEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSFIELD_RELATIONS_BSTABLE" Association="QyTech_AuthModel.FK_BSFIELD_RELATIONS_BSTABLE">
+            <End Role="bsTable" EntitySet="bsTable" />
+            <End Role="bsField" EntitySet="bsField" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSFUNFIE_RELATIONS_BSFIELD" Association="QyTech_AuthModel.FK_BSFUNFIE_RELATIONS_BSFIELD">
+            <End Role="bsField" EntitySet="bsField" />
+            <End Role="bsFunField" EntitySet="bsFunField" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSFUNCON_RELATIONS_BSNAVIGA" Association="QyTech_AuthModel.FK_BSFUNCON_RELATIONS_BSNAVIGA">
+            <End Role="bsNavigation" EntitySet="bsNavigation" />
+            <End Role="bsFunConf" EntitySet="bsFunConf" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSFUNFIE_RELATIONS_BSFUNCON" Association="QyTech_AuthModel.FK_BSFUNFIE_RELATIONS_BSFUNCON">
+            <End Role="bsFunConf" EntitySet="bsFunConf" />
+            <End Role="bsFunField" EntitySet="bsFunField" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bsFunInt_RELATIONS_BSFUNCON" Association="QyTech_AuthModel.FK_bsFunInt_RELATIONS_BSFUNCON">
+            <End Role="bsFunConf" EntitySet="bsFunConf" />
+            <End Role="bsFunInterface" EntitySet="bsFunInterface" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSFUNOPE_RELATIONS_BSFUNCON" Association="QyTech_AuthModel.FK_BSFUNOPE_RELATIONS_BSFUNCON">
+            <End Role="bsFunConf" EntitySet="bsFunConf" />
+            <End Role="bsFunOper" EntitySet="bsFunOper" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSFUNQUE_RELATIONS_BSFUNCON" Association="QyTech_AuthModel.FK_BSFUNQUE_RELATIONS_BSFUNCON">
+            <End Role="bsFunConf" EntitySet="bsFunConf" />
+            <End Role="bsFunQuery" EntitySet="bsFunQuery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bsUserFieldsRel_bsFunConf" Association="QyTech_AuthModel.FK_bsUserFieldsRel_bsFunConf">
+            <End Role="bsFunConf" EntitySet="bsFunConf" />
+            <End Role="bsUserFieldsRel" EntitySet="bsUserFieldsRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSFUNFIE_RELATIONS_BSTABLE" Association="QyTech_AuthModel.FK_BSFUNFIE_RELATIONS_BSTABLE">
+            <End Role="bsTable" EntitySet="bsTable" />
+            <End Role="bsFunField" EntitySet="bsFunField" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSFUNQUE_RELATIONS_BSFUNFIE" Association="QyTech_AuthModel.FK_BSFUNQUE_RELATIONS_BSFUNFIE">
+            <End Role="bsFunField" EntitySet="bsFunField" />
+            <End Role="bsFunQuery" EntitySet="bsFunQuery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSROLEFU_BSROLEFUN_BSFUNOPE" Association="QyTech_AuthModel.FK_BSROLEFU_BSROLEFUN_BSFUNOPE">
+            <End Role="bsFunOper" EntitySet="bsFunOper" />
+            <End Role="bsRoleFunOperRel" EntitySet="bsRoleFunOperRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSOPERLO_RELATIONS_BSUSER" Association="QyTech_AuthModel.FK_BSOPERLO_RELATIONS_BSUSER">
+            <End Role="bsUser" EntitySet="bsUser" />
+            <End Role="bsOperLog" EntitySet="bsOperLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSORGANI_RELATIONS_BSSOFTCU" Association="QyTech_AuthModel.FK_BSORGANI_RELATIONS_BSSOFTCU">
+            <End Role="bsSoftCustInfo" EntitySet="bsSoftCustInfo" />
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSROLE_RELATIONS_BSORGANI" Association="QyTech_AuthModel.FK_BSROLE_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="bsRole" EntitySet="bsRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSUSER_RELATIONS_BSORGANI" Association="QyTech_AuthModel.FK_BSUSER_RELATIONS_BSORGANI">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="bsUser" EntitySet="bsUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BSROLEFU_BSROLEFUN_BSROLE" Association="QyTech_AuthModel.FK_BSROLEFU_BSROLEFUN_BSROLE">
+            <End Role="bsRole" EntitySet="bsRole" />
+            <End Role="bsRoleFunOperRel" EntitySet="bsRoleFunOperRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GISLAYER_RELATIONS_BSSOFTCU" Association="QyTech_AuthModel.FK_GISLAYER_RELATIONS_BSSOFTCU">
+            <End Role="bsSoftCustInfo" EntitySet="bsSoftCustInfo" />
+            <End Role="GisLayer_nouse" EntitySet="GisLayer_nouse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bsUserFieldsRel_bsTable" Association="QyTech_AuthModel.FK_bsUserFieldsRel_bsTable">
+            <End Role="bsTable" EntitySet="bsTable" />
+            <End Role="bsUserFieldsRel" EntitySet="bsUserFieldsRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bsUserFieldsRel_bsUser" Association="QyTech_AuthModel.FK_bsUserFieldsRel_bsUser">
+            <End Role="bsUser" EntitySet="bsUser" />
+            <End Role="bsUserFieldsRel" EntitySet="bsUserFieldsRel" />
+          </AssociationSet>
+          <AssociationSet Name="bsRoleFieldRel" Association="QyTech_AuthModel.bsRoleFieldRel">
+            <End Role="bsFunField" EntitySet="bsFunField" />
+            <End Role="bsRole" EntitySet="bsRole" />
+          </AssociationSet>
+          <AssociationSet Name="bsSoftRelFuns" Association="QyTech_AuthModel.bsSoftRelFuns">
+            <End Role="bsNavigation" EntitySet="bsNavigation" />
+            <End Role="bsSoftCustInfo" EntitySet="bsSoftCustInfo" />
+          </AssociationSet>
+          <AssociationSet Name="bsUserOrgRel" Association="QyTech_AuthModel.bsUserOrgRel">
+            <End Role="bsOrganize" EntitySet="bsOrganize" />
+            <End Role="bsUser" EntitySet="bsUser" />
+          </AssociationSet>
+          <AssociationSet Name="bsUserRoleRel" Association="QyTech_AuthModel.bsUserRoleRel">
+            <End Role="bsRole" EntitySet="bsRole" />
+            <End Role="bsUser" EntitySet="bsUser" />
+          </AssociationSet>
+          <AssociationSet Name="RoleRelFields_nouse" Association="QyTech_AuthModel.RoleRelFields_nouse">
+            <End Role="bsField" EntitySet="bsField" />
+            <End Role="bsRole" EntitySet="bsRole" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="bsAppName">
+          <Key>
+            <PropertyRef Name="AppId" />
+          </Key>
+          <Property Type="Guid" Name="AppId" Nullable="false" />
+          <Property Type="String" Name="AppName" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="bsAreaRegistration">
+          <Key>
+            <PropertyRef Name="bsA_Id" />
+          </Key>
+          <Property Type="Guid" Name="bsA_Id" Nullable="false" />
+          <Property Type="String" Name="AreaName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DbName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AppName" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="bsBaseInfo">
+          <Key>
+            <PropertyRef Name="bsB_Id" />
+          </Key>
+          <Property Type="Guid" Name="bsB_Id" Nullable="false" />
+          <Property Type="String" Name="FType" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Code" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Desp" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Rank" />
+        </EntityType>
+        <EntityType Name="bsDb">
+          <Key>
+            <PropertyRef Name="bsD_Id" />
+          </Key>
+          <Property Type="Guid" Name="bsD_Id" Nullable="false" />
+          <Property Type="String" Name="DbName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DbDesp" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DbContextName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="objNameSpace" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ObjectClassFullName" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="bsEmployee">
+          <Key>
+            <PropertyRef Name="bsE_Id" />
+          </Key>
+          <Property Type="Guid" Name="bsE_Id" Nullable="false" />
+          <Property Type="Guid" Name="bsO_Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="JobNo" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IdCard" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MinZu" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="JiGuan" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ZhengZhiMm" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="BirthDt" Precision="3" />
+          <Property Type="String" Name="Tel" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Sex" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="XueLi" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OrgName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Position" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="IsUpper" />
+          <Property Type="String" Name="IMDI" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="bsOrganize" Relationship="QyTech_AuthModel.FK_BSEMPLOY_RELATIONS_BSORGANI" FromRole="bsEmployee" ToRole="bsOrganize" />
+        </EntityType>
+        <EntityType Name="bsField">
+          <Key>
+            <PropertyRef Name="bsF_Id" />
+          </Key>
+          <Property Type="Guid" Name="bsF_Id" Nullable="false" />
+          <Property Type="Guid" Name="bsT_Id" Nullable="false" />
+          <Property Type="String" Name="TName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="FNo" />
+          <Property Type="String" Name="FName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FDesp" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FType" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="FLength" />
+          <Property Type="Int32" Name="DeciDigits" />
+          <Property Type="Boolean" Name="NotNull" />
+          <NavigationProperty Name="bsTable" Relationship="QyTech_AuthModel.FK_BSFIELD_RELATIONS_BSTABLE" FromRole="bsField" ToRole="bsTable" />
+          <NavigationProperty Name="bsFunField" Relationship="QyTech_AuthModel.FK_BSFUNFIE_RELATIONS_BSFIELD" FromRole="bsField" ToRole="bsFunField" />
+          <NavigationProperty Name="bsRole" Relationship="QyTech_AuthModel.RoleRelFields_nouse" FromRole="bsField" ToRole="bsRole" />
+        </EntityType>
+        <EntityType Name="bsFunConf">
+          <Key>
+            <PropertyRef Name="bsFC_Id" />
+          </Key>
+          <Property Type="Guid" Name="bsFC_Id" Nullable="false" />
+          <Property Type="Guid" Name="bsN_Id" Nullable="false" />
+          <Property Type="Guid" Name="pId" />
+          <Property Type="String" Name="FunCode" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FunName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FunDesp" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FunType" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FunUrl" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="FunLayout" />
+          <Property Type="String" Name="bsD_Name" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TName" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TPk" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NotNullField" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OrderBySql" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FilterField" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FilterValue" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ChildTName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ChildTPk" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PFk" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Operartor" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UpdateDt" Precision="3" />
+          <Property Type="Int32" Name="UseStatus" />
+          <Property Type="String" Name="VisibleInList" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ListDispType" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="UseUserPolicy" />
+          <Property Type="Boolean" Name="UseRoleFields" />
+          <NavigationProperty Name="bsNavigation" Relationship="QyTech_AuthModel.FK_BSFUNCON_RELATIONS_BSNAVIGA" FromRole="bsFunConf" ToRole="bsNavigation" />
+          <NavigationProperty Name="bsFunField" Relationship="QyTech_AuthModel.FK_BSFUNFIE_RELATIONS_BSFUNCON" FromRole="bsFunConf" ToRole="bsFunField" />
+          <NavigationProperty Name="bsFunInterface" Relationship="QyTech_AuthModel.FK_bsFunInt_RELATIONS_BSFUNCON" FromRole="bsFunConf" ToRole="bsFunInterface" />
+          <NavigationProperty Name="bsFunOper" Relationship="QyTech_AuthModel.FK_BSFUNOPE_RELATIONS_BSFUNCON" FromRole="bsFunConf" ToRole="bsFunOper" />
+          <NavigationProperty Name="bsFunQuery" Relationship="QyTech_AuthModel.FK_BSFUNQUE_RELATIONS_BSFUNCON" FromRole="bsFunConf" ToRole="bsFunQuery" />
+          <NavigationProperty Name="bsUserFieldsRel" Relationship="QyTech_AuthModel.FK_bsUserFieldsRel_bsFunConf" FromRole="bsFunConf" ToRole="bsUserFieldsRel" />
+        </EntityType>
+        <EntityType Name="bsFunField">
+          <Key>
+            <PropertyRef Name="bsFF_Id" />
+          </Key>
+          <Property Type="Guid" Name="bsFF_Id" Nullable="false" />
+          <Property Type="Guid" Name="bsFC_Id" Nullable="false" />
+          <Property Type="Guid" Name="bsT_Id" Nullable="false" />
+          <Property Type="Guid" Name="bsF_Id" Nullable="false" />
+          <Property Type="String" Name="TName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="FNo" />
+          <Property Type="String" Name="FName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FDesp" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="FIsNull" />
+          <Property Type="Boolean" Name="IsFieldRight" />
+          <Property Type="String" Name="FType" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OType" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FEditable" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DefalutValue" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FEditType" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FEditValueEx" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="NoInList" />
+          <Property Type="Int32" Name="FWidthInList" />
+          <Property Type="Boolean" Name="VisibleInList" />
+          <Property Type="Int32" Name="NoInForm" />
+          <Property Type="Int32" Name="FWidthInForm" />
+          <Property Type="Boolean" Name="VisibleInForm" />
+          <NavigationProperty Name="bsField" Relationship="QyTech_AuthModel.FK_BSFUNFIE_RELATIONS_BSFIELD" FromRole="bsFunField" ToRole="bsField" />
+          <NavigationProperty Name="bsFunConf" Relationship="QyTech_AuthModel.FK_BSFUNFIE_RELATIONS_BSFUNCON" FromRole="bsFunField" ToRole="bsFunConf" />
+          <NavigationProperty Name="bsTable" Relationship="QyTech_AuthModel.FK_BSFUNFIE_RELATIONS_BSTABLE" FromRole="bsFunField" ToRole="bsTable" />
+          <NavigationProperty Name="bsFunQuery" Relationship="QyTech_AuthModel.FK_BSFUNQUE_RELATIONS_BSFUNFIE" FromRole="bsFunField" ToRole="bsFunQuery" />
+          <NavigationProperty Name="bsRole" Relationship="QyTech_AuthModel.bsRoleFieldRel" FromRole="bsFunField" ToRole="bsRole" />
+        </EntityType>
+        <EntityType Name="bsFunInterface">
+          <Key>
+            <PropertyRef Name="bsFI_Id" />
+          </Key>
+          <Property Type="Guid" Name="bsFI_Id" Nullable="false" />
+          <Property Type="Guid" Name="bsFC_Id" Nullable="false" />
+          <Property Type="String" Name="InterfaceName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AreaName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LinkController" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LinkAction" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UrlServerEx" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="InterfaceUrl" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="bsFunConf" Relationship="QyTech_AuthModel.FK_bsFunInt_RELATIONS_BSFUNCON" FromRole="bsFunInterface" ToRole="bsFunConf" />
+        </EntityType>
+        <EntityType Name="bsFunOper">
+          <Key>
+            <PropertyRef Name="bsFO_Id" />
+          </Key>
+          <Property Type="Guid" Name="bsFO_Id" Nullable="false" />
+          <Property Type="Guid" Name="bsFC_Id" Nullable="false" />
+          <Property Type="String" Name="OperType" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BtnType" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="btnSize" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="btnClickGetPost" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="btnClass" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="btnPos" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NewPageType" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OperName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="InterFaceName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UrlServerEx" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LinkUrl" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PostUrl" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LinkController" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LinkAction" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Icon" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Split" />
+          <Property Type="Int32" Name="Enabled" />
+          <Property Type="Guid" Name="ParentId" />
+          <Property Type="Int32" Name="SortCode" />
+          <NavigationProperty Name="bsFunConf" Relationship="QyTech_AuthModel.FK_BSFUNOPE_RELATIONS_BSFUNCON" FromRole="bsFunOper" ToRole="bsFunConf" />
+          <NavigationProperty Name="bsRoleFunOperRel" Relationship="QyTech_AuthModel.FK_BSROLEFU_BSROLEFUN_BSFUNOPE" FromRole="bsFunOper" ToRole="bsRoleFunOperRel" />
+        </EntityType>
+        <EntityType Name="bsFunQuery">
+          <Key>
+            <PropertyRef Name="bsFQ_Id" />
+          </Key>
+          <Property Type="Guid" Name="bsFQ_Id" Nullable="false" />
+          <Property Type="Guid" Name="bsFC_Id" Nullable="false" />
+          <Property Type="Guid" Name="bsFF_Id" Nullable="false" />
+          <Property Type="String" Name="FName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OperName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OperType" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ItemPos" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DataEx" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Size" />
+          <Property Type="Int32" Name="FQNo" />
+          <NavigationProperty Name="bsFunConf" Relationship="QyTech_AuthModel.FK_BSFUNQUE_RELATIONS_BSFUNCON" FromRole="bsFunQuery" ToRole="bsFunConf" />
+          <NavigationProperty Name="bsFunField" Relationship="QyTech_AuthModel.FK_BSFUNQUE_RELATIONS_BSFUNFIE" FromRole="bsFunQuery" ToRole="bsFunField" />
+        </EntityType>
+        <EntityType Name="bsNavigation">
+          <Key>
+            <PropertyRef Name="bsN_Id" />
+          </Key>
+          <Property Type="Guid" Name="bsN_Id" Nullable="false" />
+          <Property Type="String" Name="NaviName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Route" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Icon" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Guid" Name="pId" />
+          <Property Type="Int32" Name="NaviNo" />
+          <Property Type="String" Name="NaviType" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NaviStatus" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UrlServerEx" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="IsSysNavi" />
+          <Property Type="Boolean" Name="IsShortkey" />
+          <Property Type="String" Name="ShortkeyPic" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="UseUserPolicy" />
+          <Property Type="Boolean" Name="UseRoleFields" />
+          <NavigationProperty Name="bsFunConf" Relationship="QyTech_AuthModel.FK_BSFUNCON_RELATIONS_BSNAVIGA" FromRole="bsNavigation" ToRole="bsFunConf" />
+          <NavigationProperty Name="bsSoftCustInfo" Relationship="QyTech_AuthModel.bsSoftRelFuns" FromRole="bsNavigation" ToRole="bsSoftCustInfo" />
+        </EntityType>
+        <EntityType Name="bsOperLog">
+          <Key>
+            <PropertyRef Name="bsOL_Id" />
+          </Key>
+          <Property Type="Guid" Name="bsOL_Id" Nullable="false" />
+          <Property Type="Guid" Name="bsU_Id" Nullable="false" />
+          <Property Type="String" Name="OpreationModuleName" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="LoginModuleTime" Precision="3" />
+          <Property Type="DateTime" Name="LogoutModuleTime" Precision="3" />
+          <Property Type="Int32" Name="OprType" />
+          <Property Type="String" Name="OprDesp" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="bsUser" Relationship="QyTech_AuthModel.FK_BSOPERLO_RELATIONS_BSUSER" FromRole="bsOperLog" ToRole="bsUser" />
+        </EntityType>
+        <EntityType Name="bsOrganize">
+          <Key>
+            <PropertyRef Name="bsO_Id" />
+          </Key>
+          <Property Type="Guid" Name="bsO_Id" Nullable="false" />
+          <Property Type="Guid" Name="bsS_Id" Nullable="false" />
+          <Property Type="String" Name="Code" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Desp" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Guid" Name="PId" />
+          <Property Type="String" Name="OrgType" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Guid" Name="OrgParty" />
+          <Property Type="String" Name="LongLati_Gcj" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LongLati_Bd" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Operater" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreateTime" Precision="3" />
+          <Property Type="DateTime" Name="SaveTime" Precision="3" />
+          <Property Type="String" Name="OrganizeStatus" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Nature" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="TeamAss" />
+          <NavigationProperty Name="bsEmployee" Relationship="QyTech_AuthModel.FK_BSEMPLOY_RELATIONS_BSORGANI" FromRole="bsOrganize" ToRole="bsEmployee" />
+          <NavigationProperty Name="bsSoftCustInfo" Relationship="QyTech_AuthModel.FK_BSORGANI_RELATIONS_BSSOFTCU" FromRole="bsOrganize" ToRole="bsSoftCustInfo" />
+          <NavigationProperty Name="bsRole" Relationship="QyTech_AuthModel.FK_BSROLE_RELATIONS_BSORGANI" FromRole="bsOrganize" ToRole="bsRole" />
+          <NavigationProperty Name="bsUser" Relationship="QyTech_AuthModel.FK_BSUSER_RELATIONS_BSORGANI" FromRole="bsOrganize" ToRole="bsUser" />
+          <NavigationProperty Name="bsUser1" Relationship="QyTech_AuthModel.bsUserOrgRel" FromRole="bsOrganize" ToRole="bsUser" />
+        </EntityType>
+        <EntityType Name="bsRole">
+          <Key>
+            <PropertyRef Name="bsR_Id" />
+          </Key>
+          <Property Type="Guid" Name="bsR_Id" Nullable="false" />
+          <Property Type="Guid" Name="bsO_Id" Nullable="false" />
+          <Property Type="String" Name="Code" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Desp" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="IsSysRole" />
+          <NavigationProperty Name="bsOrganize" Relationship="QyTech_AuthModel.FK_BSROLE_RELATIONS_BSORGANI" FromRole="bsRole" ToRole="bsOrganize" />
+          <NavigationProperty Name="bsRoleFunOperRel" Relationship="QyTech_AuthModel.FK_BSROLEFU_BSROLEFUN_BSROLE" FromRole="bsRole" ToRole="bsRoleFunOperRel" />
+          <NavigationProperty Name="bsFunField" Relationship="QyTech_AuthModel.bsRoleFieldRel" FromRole="bsRole" ToRole="bsFunField" />
+          <NavigationProperty Name="bsUser" Relationship="QyTech_AuthModel.bsUserRoleRel" FromRole="bsRole" ToRole="bsUser" />
+          <NavigationProperty Name="bsField" Relationship="QyTech_AuthModel.RoleRelFields_nouse" FromRole="bsRole" ToRole="bsField" />
+        </EntityType>
+        <EntityType Name="bsRoleFunOperRel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="Guid" Name="bsR_Id" Nullable="false" />
+          <Property Type="Guid" Name="bsFO_Id" Nullable="false" />
+          <NavigationProperty Name="bsFunOper" Relationship="QyTech_AuthModel.FK_BSROLEFU_BSROLEFUN_BSFUNOPE" FromRole="bsRoleFunOperRel" ToRole="bsFunOper" />
+          <NavigationProperty Name="bsRole" Relationship="QyTech_AuthModel.FK_BSROLEFU_BSROLEFUN_BSROLE" FromRole="bsRoleFunOperRel" ToRole="bsRole" />
+        </EntityType>
+        <EntityType Name="bsRolNaviRel">
+          <Key>
+            <PropertyRef Name="bsR_Id" />
+            <PropertyRef Name="bsN_Id" />
+          </Key>
+          <Property Type="Guid" Name="bsR_Id" Nullable="false" />
+          <Property Type="Guid" Name="bsN_Id" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bsSoftCustInfo">
+          <Key>
+            <PropertyRef Name="bsS_Id" />
+          </Key>
+          <Property Type="Guid" Name="bsS_Id" Nullable="false" />
+          <Property Type="String" Name="Code" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SimpleName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="MaxUserCount" />
+          <Property Type="String" Name="Logo" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Contacter" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ContactTel" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ContactMail" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Addr" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UseDeadDate" Precision="3" />
+          <Property Type="Boolean" Name="UseKeyAudited" />
+          <Property Type="Boolean" Name="MessageSendFlag" />
+          <Property Type="Int32" Name="DayCalHour" />
+          <Property Type="Int32" Name="MonthCalDay" />
+          <Property Type="String" Name="WebUrl" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="bsOrganize" Relationship="QyTech_AuthModel.FK_BSORGANI_RELATIONS_BSSOFTCU" FromRole="bsSoftCustInfo" ToRole="bsOrganize" />
+          <NavigationProperty Name="GisLayer_nouse" Relationship="QyTech_AuthModel.FK_GISLAYER_RELATIONS_BSSOFTCU" FromRole="bsSoftCustInfo" ToRole="GisLayer_nouse" />
+          <NavigationProperty Name="bsNavigation" Relationship="QyTech_AuthModel.bsSoftRelFuns" FromRole="bsSoftCustInfo" ToRole="bsNavigation" />
+        </EntityType>
+        <EntityType Name="bsTable">
+          <Key>
+            <PropertyRef Name="bsT_Id" />
+          </Key>
+          <Property Type="Guid" Name="bsT_Id" Nullable="false" />
+          <Property Type="Int32" Name="No" />
+          <Property Type="String" Name="TName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TPk" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Desp" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TType" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="bsD_Name" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="bsField" Relationship="QyTech_AuthModel.FK_BSFIELD_RELATIONS_BSTABLE" FromRole="bsTable" ToRole="bsField" />
+          <NavigationProperty Name="bsFunField" Relationship="QyTech_AuthModel.FK_BSFUNFIE_RELATIONS_BSTABLE" FromRole="bsTable" ToRole="bsFunField" />
+          <NavigationProperty Name="bsUserFieldsRel" Relationship="QyTech_AuthModel.FK_bsUserFieldsRel_bsTable" FromRole="bsTable" ToRole="bsUserFieldsRel" />
+        </EntityType>
+        <EntityType Name="bsUser">
+          <Key>
+            <PropertyRef Name="bsU_Id" />
+          </Key>
+          <Property Type="Guid" Name="bsU_Id" Nullable="false" />
+          <Property Type="Guid" Name="bsO_Id" Nullable="false" />
+          <Property Type="String" Name="bsS_Code" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UserType" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Guid" Name="bsE_bsC_Id" />
+          <Property Type="String" Name="UserName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LoginName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LoginPwd" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NickName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ContactTel" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="IsSysUser" />
+          <Property Type="DateTime" Name="RegDt" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ValidDate" Nullable="false" Precision="0" />
+          <Property Type="String" Name="AccountStatus" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="LoginDt" Precision="3" />
+          <Property Type="Boolean" Name="IsOnline" />
+          <Property Type="Binary" Name="HeadPic" MaxLength="Max" FixedLength="false" />
+          <Property Type="String" Name="WebUrl" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="bsOperLog" Relationship="QyTech_AuthModel.FK_BSOPERLO_RELATIONS_BSUSER" FromRole="bsUser" ToRole="bsOperLog" />
+          <NavigationProperty Name="bsOrganize" Relationship="QyTech_AuthModel.FK_BSUSER_RELATIONS_BSORGANI" FromRole="bsUser" ToRole="bsOrganize" />
+          <NavigationProperty Name="bsUserFieldsRel" Relationship="QyTech_AuthModel.FK_bsUserFieldsRel_bsUser" FromRole="bsUser" ToRole="bsUserFieldsRel" />
+          <NavigationProperty Name="bsOrganize1" Relationship="QyTech_AuthModel.bsUserOrgRel" FromRole="bsUser" ToRole="bsOrganize" />
+          <NavigationProperty Name="bsRole" Relationship="QyTech_AuthModel.bsUserRoleRel" FromRole="bsUser" ToRole="bsRole" />
+        </EntityType>
+        <EntityType Name="bsUserFieldsRel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="Guid" Name="bsU_Id" Nullable="false" />
+          <Property Type="Guid" Name="bsFC_Id" />
+          <Property Type="Guid" Name="bsT_Id" />
+          <Property Type="Guid" Name="bsFF_Id" Nullable="false" />
+          <Property Type="Int32" Name="DispNo" />
+          <Property Type="String" Name="FName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FDesp" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="IsDisp" />
+          <Property Type="Boolean" Name="UserIsDisp" />
+          <NavigationProperty Name="bsFunConf" Relationship="QyTech_AuthModel.FK_bsUserFieldsRel_bsFunConf" FromRole="bsUserFieldsRel" ToRole="bsFunConf" />
+          <NavigationProperty Name="bsTable" Relationship="QyTech_AuthModel.FK_bsUserFieldsRel_bsTable" FromRole="bsUserFieldsRel" ToRole="bsTable" />
+          <NavigationProperty Name="bsUser" Relationship="QyTech_AuthModel.FK_bsUserFieldsRel_bsUser" FromRole="bsUserFieldsRel" ToRole="bsUser" />
+        </EntityType>
+        <EntityType Name="GisLayer_nouse">
+          <Key>
+            <PropertyRef Name="bsL_Id" />
+          </Key>
+          <Property Type="Guid" Name="bsL_Id" Nullable="false" />
+          <Property Type="Guid" Name="bsS_Id" Nullable="false" />
+          <Property Type="String" Name="LName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LType" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Covering" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LMemo" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="OrderNo" />
+          <Property Type="String" Name="LayerCode" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Icon" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="LIsUse" />
+          <Property Type="Boolean" Name="Display" />
+          <Property Type="Boolean" Name="DisplyMemo" />
+          <Property Type="Int32" Name="DisplyPrecision" />
+          <Property Type="String" Name="LineType" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="LineWidth" />
+          <NavigationProperty Name="bsSoftCustInfo" Relationship="QyTech_AuthModel.FK_GISLAYER_RELATIONS_BSSOFTCU" FromRole="GisLayer_nouse" ToRole="bsSoftCustInfo" />
+        </EntityType>
+        <Association Name="FK_BSEMPLOY_RELATIONS_BSORGANI">
+          <End Type="QyTech_AuthModel.bsOrganize" Role="bsOrganize" Multiplicity="1" />
+          <End Type="QyTech_AuthModel.bsEmployee" Role="bsEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="bsEmployee">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSFIELD_RELATIONS_BSTABLE">
+          <End Type="QyTech_AuthModel.bsTable" Role="bsTable" Multiplicity="1" />
+          <End Type="QyTech_AuthModel.bsField" Role="bsField" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsTable">
+              <PropertyRef Name="bsT_Id" />
+            </Principal>
+            <Dependent Role="bsField">
+              <PropertyRef Name="bsT_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSFUNFIE_RELATIONS_BSFIELD">
+          <End Type="QyTech_AuthModel.bsField" Role="bsField" Multiplicity="1" />
+          <End Type="QyTech_AuthModel.bsFunField" Role="bsFunField" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsField">
+              <PropertyRef Name="bsF_Id" />
+            </Principal>
+            <Dependent Role="bsFunField">
+              <PropertyRef Name="bsF_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSFUNCON_RELATIONS_BSNAVIGA">
+          <End Type="QyTech_AuthModel.bsNavigation" Role="bsNavigation" Multiplicity="1" />
+          <End Type="QyTech_AuthModel.bsFunConf" Role="bsFunConf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsNavigation">
+              <PropertyRef Name="bsN_Id" />
+            </Principal>
+            <Dependent Role="bsFunConf">
+              <PropertyRef Name="bsN_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSFUNFIE_RELATIONS_BSFUNCON">
+          <End Type="QyTech_AuthModel.bsFunConf" Role="bsFunConf" Multiplicity="1" />
+          <End Type="QyTech_AuthModel.bsFunField" Role="bsFunField" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsFunConf">
+              <PropertyRef Name="bsFC_Id" />
+            </Principal>
+            <Dependent Role="bsFunField">
+              <PropertyRef Name="bsFC_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bsFunInt_RELATIONS_BSFUNCON">
+          <End Type="QyTech_AuthModel.bsFunConf" Role="bsFunConf" Multiplicity="1" />
+          <End Type="QyTech_AuthModel.bsFunInterface" Role="bsFunInterface" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsFunConf">
+              <PropertyRef Name="bsFC_Id" />
+            </Principal>
+            <Dependent Role="bsFunInterface">
+              <PropertyRef Name="bsFC_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSFUNOPE_RELATIONS_BSFUNCON">
+          <End Type="QyTech_AuthModel.bsFunConf" Role="bsFunConf" Multiplicity="1" />
+          <End Type="QyTech_AuthModel.bsFunOper" Role="bsFunOper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsFunConf">
+              <PropertyRef Name="bsFC_Id" />
+            </Principal>
+            <Dependent Role="bsFunOper">
+              <PropertyRef Name="bsFC_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSFUNQUE_RELATIONS_BSFUNCON">
+          <End Type="QyTech_AuthModel.bsFunConf" Role="bsFunConf" Multiplicity="1" />
+          <End Type="QyTech_AuthModel.bsFunQuery" Role="bsFunQuery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsFunConf">
+              <PropertyRef Name="bsFC_Id" />
+            </Principal>
+            <Dependent Role="bsFunQuery">
+              <PropertyRef Name="bsFC_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bsUserFieldsRel_bsFunConf">
+          <End Type="QyTech_AuthModel.bsFunConf" Role="bsFunConf" Multiplicity="0..1" />
+          <End Type="QyTech_AuthModel.bsUserFieldsRel" Role="bsUserFieldsRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsFunConf">
+              <PropertyRef Name="bsFC_Id" />
+            </Principal>
+            <Dependent Role="bsUserFieldsRel">
+              <PropertyRef Name="bsFC_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSFUNFIE_RELATIONS_BSTABLE">
+          <End Type="QyTech_AuthModel.bsTable" Role="bsTable" Multiplicity="1" />
+          <End Type="QyTech_AuthModel.bsFunField" Role="bsFunField" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsTable">
+              <PropertyRef Name="bsT_Id" />
+            </Principal>
+            <Dependent Role="bsFunField">
+              <PropertyRef Name="bsT_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSFUNQUE_RELATIONS_BSFUNFIE">
+          <End Type="QyTech_AuthModel.bsFunField" Role="bsFunField" Multiplicity="1" />
+          <End Type="QyTech_AuthModel.bsFunQuery" Role="bsFunQuery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsFunField">
+              <PropertyRef Name="bsFF_Id" />
+            </Principal>
+            <Dependent Role="bsFunQuery">
+              <PropertyRef Name="bsFF_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSROLEFU_BSROLEFUN_BSFUNOPE">
+          <End Type="QyTech_AuthModel.bsFunOper" Role="bsFunOper" Multiplicity="1" />
+          <End Type="QyTech_AuthModel.bsRoleFunOperRel" Role="bsRoleFunOperRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsFunOper">
+              <PropertyRef Name="bsFO_Id" />
+            </Principal>
+            <Dependent Role="bsRoleFunOperRel">
+              <PropertyRef Name="bsFO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSOPERLO_RELATIONS_BSUSER">
+          <End Type="QyTech_AuthModel.bsUser" Role="bsUser" Multiplicity="1" />
+          <End Type="QyTech_AuthModel.bsOperLog" Role="bsOperLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsUser">
+              <PropertyRef Name="bsU_Id" />
+            </Principal>
+            <Dependent Role="bsOperLog">
+              <PropertyRef Name="bsU_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSORGANI_RELATIONS_BSSOFTCU">
+          <End Type="QyTech_AuthModel.bsSoftCustInfo" Role="bsSoftCustInfo" Multiplicity="1" />
+          <End Type="QyTech_AuthModel.bsOrganize" Role="bsOrganize" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsSoftCustInfo">
+              <PropertyRef Name="bsS_Id" />
+            </Principal>
+            <Dependent Role="bsOrganize">
+              <PropertyRef Name="bsS_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSROLE_RELATIONS_BSORGANI">
+          <End Type="QyTech_AuthModel.bsOrganize" Role="bsOrganize" Multiplicity="1" />
+          <End Type="QyTech_AuthModel.bsRole" Role="bsRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="bsRole">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSUSER_RELATIONS_BSORGANI">
+          <End Type="QyTech_AuthModel.bsOrganize" Role="bsOrganize" Multiplicity="1" />
+          <End Type="QyTech_AuthModel.bsUser" Role="bsUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsOrganize">
+              <PropertyRef Name="bsO_Id" />
+            </Principal>
+            <Dependent Role="bsUser">
+              <PropertyRef Name="bsO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BSROLEFU_BSROLEFUN_BSROLE">
+          <End Type="QyTech_AuthModel.bsRole" Role="bsRole" Multiplicity="1" />
+          <End Type="QyTech_AuthModel.bsRoleFunOperRel" Role="bsRoleFunOperRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsRole">
+              <PropertyRef Name="bsR_Id" />
+            </Principal>
+            <Dependent Role="bsRoleFunOperRel">
+              <PropertyRef Name="bsR_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GISLAYER_RELATIONS_BSSOFTCU">
+          <End Type="QyTech_AuthModel.bsSoftCustInfo" Role="bsSoftCustInfo" Multiplicity="1" />
+          <End Type="QyTech_AuthModel.GisLayer_nouse" Role="GisLayer_nouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsSoftCustInfo">
+              <PropertyRef Name="bsS_Id" />
+            </Principal>
+            <Dependent Role="GisLayer_nouse">
+              <PropertyRef Name="bsS_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bsUserFieldsRel_bsTable">
+          <End Type="QyTech_AuthModel.bsTable" Role="bsTable" Multiplicity="0..1" />
+          <End Type="QyTech_AuthModel.bsUserFieldsRel" Role="bsUserFieldsRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsTable">
+              <PropertyRef Name="bsT_Id" />
+            </Principal>
+            <Dependent Role="bsUserFieldsRel">
+              <PropertyRef Name="bsT_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bsUserFieldsRel_bsUser">
+          <End Type="QyTech_AuthModel.bsUser" Role="bsUser" Multiplicity="1" />
+          <End Type="QyTech_AuthModel.bsUserFieldsRel" Role="bsUserFieldsRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bsUser">
+              <PropertyRef Name="bsU_Id" />
+            </Principal>
+            <Dependent Role="bsUserFieldsRel">
+              <PropertyRef Name="bsU_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="bsRoleFieldRel">
+          <End Type="QyTech_AuthModel.bsFunField" Role="bsFunField" Multiplicity="*" />
+          <End Type="QyTech_AuthModel.bsRole" Role="bsRole" Multiplicity="*" />
+        </Association>
+        <Association Name="bsSoftRelFuns">
+          <End Type="QyTech_AuthModel.bsNavigation" Role="bsNavigation" Multiplicity="*" />
+          <End Type="QyTech_AuthModel.bsSoftCustInfo" Role="bsSoftCustInfo" Multiplicity="*" />
+        </Association>
+        <Association Name="bsUserOrgRel">
+          <End Type="QyTech_AuthModel.bsOrganize" Role="bsOrganize" Multiplicity="*" />
+          <End Type="QyTech_AuthModel.bsUser" Role="bsUser" Multiplicity="*" />
+        </Association>
+        <Association Name="bsUserRoleRel">
+          <End Type="QyTech_AuthModel.bsRole" Role="bsRole" Multiplicity="*" />
+          <End Type="QyTech_AuthModel.bsUser" Role="bsUser" Multiplicity="*" />
+        </Association>
+        <Association Name="RoleRelFields_nouse">
+          <End Type="QyTech_AuthModel.bsField" Role="bsField" Multiplicity="*" />
+          <End Type="QyTech_AuthModel.bsRole" Role="bsRole" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QyTech_AuthModelStoreContainer" CdmEntityContainer="QyTech_AuthEntities">
+          <EntitySetMapping Name="bsAppName">
+            <EntityTypeMapping TypeName="QyTech_AuthModel.bsAppName">
+              <MappingFragment StoreEntitySet="bsAppName">
+                <ScalarProperty Name="AppName" ColumnName="AppName" />
+                <ScalarProperty Name="AppId" ColumnName="AppId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsAreaRegistration">
+            <EntityTypeMapping TypeName="QyTech_AuthModel.bsAreaRegistration">
+              <MappingFragment StoreEntitySet="bsAreaRegistration">
+                <ScalarProperty Name="AppName" ColumnName="AppName" />
+                <ScalarProperty Name="DbName" ColumnName="DbName" />
+                <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+                <ScalarProperty Name="bsA_Id" ColumnName="bsA_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsBaseInfo">
+            <EntityTypeMapping TypeName="QyTech_AuthModel.bsBaseInfo">
+              <MappingFragment StoreEntitySet="bsBaseInfo">
+                <ScalarProperty Name="Rank" ColumnName="Rank" />
+                <ScalarProperty Name="Desp" ColumnName="Desp" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="FType" ColumnName="FType" />
+                <ScalarProperty Name="bsB_Id" ColumnName="bsB_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsDb">
+            <EntityTypeMapping TypeName="QyTech_AuthModel.bsDb">
+              <MappingFragment StoreEntitySet="bsDb">
+                <ScalarProperty Name="ObjectClassFullName" ColumnName="ObjectClassFullName" />
+                <ScalarProperty Name="objNameSpace" ColumnName="objNameSpace" />
+                <ScalarProperty Name="DbContextName" ColumnName="DbContextName" />
+                <ScalarProperty Name="DbDesp" ColumnName="DbDesp" />
+                <ScalarProperty Name="DbName" ColumnName="DbName" />
+                <ScalarProperty Name="bsD_Id" ColumnName="bsD_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsEmployee">
+            <EntityTypeMapping TypeName="QyTech_AuthModel.bsEmployee">
+              <MappingFragment StoreEntitySet="bsEmployee">
+                <ScalarProperty Name="IMDI" ColumnName="IMDI" />
+                <ScalarProperty Name="IsUpper" ColumnName="IsUpper" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="OrgName" ColumnName="OrgName" />
+                <ScalarProperty Name="XueLi" ColumnName="XueLi" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="BirthDt" ColumnName="BirthDt" />
+                <ScalarProperty Name="ZhengZhiMm" ColumnName="ZhengZhiMm" />
+                <ScalarProperty Name="JiGuan" ColumnName="JiGuan" />
+                <ScalarProperty Name="MinZu" ColumnName="MinZu" />
+                <ScalarProperty Name="IdCard" ColumnName="IdCard" />
+                <ScalarProperty Name="JobNo" ColumnName="JobNo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
+                <ScalarProperty Name="bsE_Id" ColumnName="bsE_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsField">
+            <EntityTypeMapping TypeName="QyTech_AuthModel.bsField">
+              <MappingFragment StoreEntitySet="bsField">
+                <ScalarProperty Name="NotNull" ColumnName="NotNull" />
+                <ScalarProperty Name="DeciDigits" ColumnName="DeciDigits" />
+                <ScalarProperty Name="FLength" ColumnName="FLength" />
+                <ScalarProperty Name="FType" ColumnName="FType" />
+                <ScalarProperty Name="FDesp" ColumnName="FDesp" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="FNo" ColumnName="FNo" />
+                <ScalarProperty Name="TName" ColumnName="TName" />
+                <ScalarProperty Name="bsT_Id" ColumnName="bsT_Id" />
+                <ScalarProperty Name="bsF_Id" ColumnName="bsF_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsFunConf">
+            <EntityTypeMapping TypeName="QyTech_AuthModel.bsFunConf">
+              <MappingFragment StoreEntitySet="bsFunConf">
+                <ScalarProperty Name="UseRoleFields" ColumnName="UseRoleFields" />
+                <ScalarProperty Name="UseUserPolicy" ColumnName="UseUserPolicy" />
+                <ScalarProperty Name="ListDispType" ColumnName="ListDispType" />
+                <ScalarProperty Name="VisibleInList" ColumnName="VisibleInList" />
+                <ScalarProperty Name="UseStatus" ColumnName="UseStatus" />
+                <ScalarProperty Name="UpdateDt" ColumnName="UpdateDt" />
+                <ScalarProperty Name="Operartor" ColumnName="Operartor" />
+                <ScalarProperty Name="PFk" ColumnName="PFk" />
+                <ScalarProperty Name="ChildTPk" ColumnName="ChildTPk" />
+                <ScalarProperty Name="ChildTName" ColumnName="ChildTName" />
+                <ScalarProperty Name="FilterValue" ColumnName="FilterValue" />
+                <ScalarProperty Name="FilterField" ColumnName="FilterField" />
+                <ScalarProperty Name="OrderBySql" ColumnName="OrderBySql" />
+                <ScalarProperty Name="NotNullField" ColumnName="NotNullField" />
+                <ScalarProperty Name="TPk" ColumnName="TPk" />
+                <ScalarProperty Name="TName" ColumnName="TName" />
+                <ScalarProperty Name="bsD_Name" ColumnName="bsD_Name" />
+                <ScalarProperty Name="FunLayout" ColumnName="FunLayout" />
+                <ScalarProperty Name="FunUrl" ColumnName="FunUrl" />
+                <ScalarProperty Name="FunType" ColumnName="FunType" />
+                <ScalarProperty Name="FunDesp" ColumnName="FunDesp" />
+                <ScalarProperty Name="FunName" ColumnName="FunName" />
+                <ScalarProperty Name="FunCode" ColumnName="FunCode" />
+                <ScalarProperty Name="pId" ColumnName="pId" />
+                <ScalarProperty Name="bsN_Id" ColumnName="bsN_Id" />
+                <ScalarProperty Name="bsFC_Id" ColumnName="bsFC_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsFunField">
+            <EntityTypeMapping TypeName="QyTech_AuthModel.bsFunField">
+              <MappingFragment StoreEntitySet="bsFunField">
+                <ScalarProperty Name="VisibleInForm" ColumnName="VisibleInForm" />
+                <ScalarProperty Name="FWidthInForm" ColumnName="FWidthInForm" />
+                <ScalarProperty Name="NoInForm" ColumnName="NoInForm" />
+                <ScalarProperty Name="VisibleInList" ColumnName="VisibleInList" />
+                <ScalarProperty Name="FWidthInList" ColumnName="FWidthInList" />
+                <ScalarProperty Name="NoInList" ColumnName="NoInList" />
+                <ScalarProperty Name="FEditValueEx" ColumnName="FEditValueEx" />
+                <ScalarProperty Name="FEditType" ColumnName="FEditType" />
+                <ScalarProperty Name="DefalutValue" ColumnName="DefalutValue" />
+                <ScalarProperty Name="FEditable" ColumnName="FEditable" />
+                <ScalarProperty Name="OType" ColumnName="OType" />
+                <ScalarProperty Name="FType" ColumnName="FType" />
+                <ScalarProperty Name="IsFieldRight" ColumnName="IsFieldRight" />
+                <ScalarProperty Name="FIsNull" ColumnName="FIsNull" />
+                <ScalarProperty Name="FDesp" ColumnName="FDesp" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="FNo" ColumnName="FNo" />
+                <ScalarProperty Name="TName" ColumnName="TName" />
+                <ScalarProperty Name="bsF_Id" ColumnName="bsF_Id" />
+                <ScalarProperty Name="bsT_Id" ColumnName="bsT_Id" />
+                <ScalarProperty Name="bsFC_Id" ColumnName="bsFC_Id" />
+                <ScalarProperty Name="bsFF_Id" ColumnName="bsFF_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsFunInterface">
+            <EntityTypeMapping TypeName="QyTech_AuthModel.bsFunInterface">
+              <MappingFragment StoreEntitySet="bsFunInterface">
+                <ScalarProperty Name="InterfaceUrl" ColumnName="InterfaceUrl" />
+                <ScalarProperty Name="UrlServerEx" ColumnName="UrlServerEx" />
+                <ScalarProperty Name="LinkAction" ColumnName="LinkAction" />
+                <ScalarProperty Name="LinkController" ColumnName="LinkController" />
+                <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+                <ScalarProperty Name="InterfaceName" ColumnName="InterfaceName" />
+                <ScalarProperty Name="bsFC_Id" ColumnName="bsFC_Id" />
+                <ScalarProperty Name="bsFI_Id" ColumnName="bsFI_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsFunOper">
+            <EntityTypeMapping TypeName="QyTech_AuthModel.bsFunOper">
+              <MappingFragment StoreEntitySet="bsFunOper">
+                <ScalarProperty Name="SortCode" ColumnName="SortCode" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="Split" ColumnName="Split" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="LinkAction" ColumnName="LinkAction" />
+                <ScalarProperty Name="LinkController" ColumnName="LinkController" />
+                <ScalarProperty Name="PostUrl" ColumnName="PostUrl" />
+                <ScalarProperty Name="LinkUrl" ColumnName="LinkUrl" />
+                <ScalarProperty Name="UrlServerEx" ColumnName="UrlServerEx" />
+                <ScalarProperty Name="InterFaceName" ColumnName="InterFaceName" />
+                <ScalarProperty Name="OperName" ColumnName="OperName" />
+                <ScalarProperty Name="NewPageType" ColumnName="NewPageType" />
+                <ScalarProperty Name="btnPos" ColumnName="btnPos" />
+                <ScalarProperty Name="btnClass" ColumnName="btnClass" />
+                <ScalarProperty Name="btnClickGetPost" ColumnName="btnClickGetPost" />
+                <ScalarProperty Name="btnSize" ColumnName="btnSize" />
+                <ScalarProperty Name="BtnType" ColumnName="BtnType" />
+                <ScalarProperty Name="OperType" ColumnName="OperType" />
+                <ScalarProperty Name="bsFC_Id" ColumnName="bsFC_Id" />
+                <ScalarProperty Name="bsFO_Id" ColumnName="bsFO_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsFunQuery">
+            <EntityTypeMapping TypeName="QyTech_AuthModel.bsFunQuery">
+              <MappingFragment StoreEntitySet="bsFunQuery">
+                <ScalarProperty Name="FQNo" ColumnName="FQNo" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="DataEx" ColumnName="DataEx" />
+                <ScalarProperty Name="ItemPos" ColumnName="ItemPos" />
+                <ScalarProperty Name="OperType" ColumnName="OperType" />
+                <ScalarProperty Name="OperName" ColumnName="OperName" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="bsFF_Id" ColumnName="bsFF_Id" />
+                <ScalarProperty Name="bsFC_Id" ColumnName="bsFC_Id" />
+                <ScalarProperty Name="bsFQ_Id" ColumnName="bsFQ_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsNavigation">
+            <EntityTypeMapping TypeName="QyTech_AuthModel.bsNavigation">
+              <MappingFragment StoreEntitySet="bsNavigation">
+                <ScalarProperty Name="UseRoleFields" ColumnName="UseRoleFields" />
+                <ScalarProperty Name="UseUserPolicy" ColumnName="UseUserPolicy" />
+                <ScalarProperty Name="ShortkeyPic" ColumnName="ShortkeyPic" />
+                <ScalarProperty Name="IsShortkey" ColumnName="IsShortkey" />
+                <ScalarProperty Name="IsSysNavi" ColumnName="IsSysNavi" />
+                <ScalarProperty Name="UrlServerEx" ColumnName="UrlServerEx" />
+                <ScalarProperty Name="NaviStatus" ColumnName="NaviStatus" />
+                <ScalarProperty Name="NaviType" ColumnName="NaviType" />
+                <ScalarProperty Name="NaviNo" ColumnName="NaviNo" />
+                <ScalarProperty Name="pId" ColumnName="pId" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="Route" ColumnName="Route" />
+                <ScalarProperty Name="NaviName" ColumnName="NaviName" />
+                <ScalarProperty Name="bsN_Id" ColumnName="bsN_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsOperLog">
+            <EntityTypeMapping TypeName="QyTech_AuthModel.bsOperLog">
+              <MappingFragment StoreEntitySet="bsOperLog">
+                <ScalarProperty Name="OprDesp" ColumnName="OprDesp" />
+                <ScalarProperty Name="OprType" ColumnName="OprType" />
+                <ScalarProperty Name="LogoutModuleTime" ColumnName="LogoutModuleTime" />
+                <ScalarProperty Name="LoginModuleTime" ColumnName="LoginModuleTime" />
+                <ScalarProperty Name="OpreationModuleName" ColumnName="OpreationModuleName" />
+                <ScalarProperty Name="bsU_Id" ColumnName="bsU_Id" />
+                <ScalarProperty Name="bsOL_Id" ColumnName="bsOL_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsOrganize">
+            <EntityTypeMapping TypeName="QyTech_AuthModel.bsOrganize">
+              <MappingFragment StoreEntitySet="bsOrganize">
+                <ScalarProperty Name="TeamAss" ColumnName="TeamAss" />
+                <ScalarProperty Name="Nature" ColumnName="Nature" />
+                <ScalarProperty Name="OrganizeStatus" ColumnName="OrganizeStatus" />
+                <ScalarProperty Name="SaveTime" ColumnName="SaveTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Operater" ColumnName="Operater" />
+                <ScalarProperty Name="LongLati_Bd" ColumnName="LongLati_Bd" />
+                <ScalarProperty Name="LongLati_Gcj" ColumnName="LongLati_Gcj" />
+                <ScalarProperty Name="OrgParty" ColumnName="OrgParty" />
+                <ScalarProperty Name="OrgType" ColumnName="OrgType" />
+                <ScalarProperty Name="PId" ColumnName="PId" />
+                <ScalarProperty Name="Desp" ColumnName="Desp" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="bsS_Id" ColumnName="bsS_Id" />
+                <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsRole">
+            <EntityTypeMapping TypeName="QyTech_AuthModel.bsRole">
+              <MappingFragment StoreEntitySet="bsRole">
+                <ScalarProperty Name="IsSysRole" ColumnName="IsSysRole" />
+                <ScalarProperty Name="Desp" ColumnName="Desp" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
+                <ScalarProperty Name="bsR_Id" ColumnName="bsR_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsRoleFunOperRel">
+            <EntityTypeMapping TypeName="QyTech_AuthModel.bsRoleFunOperRel">
+              <MappingFragment StoreEntitySet="bsRoleFunOperRel">
+                <ScalarProperty Name="bsFO_Id" ColumnName="bsFO_Id" />
+                <ScalarProperty Name="bsR_Id" ColumnName="bsR_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsRolNaviRel">
+            <EntityTypeMapping TypeName="QyTech_AuthModel.bsRolNaviRel">
+              <MappingFragment StoreEntitySet="bsRolNaviRel">
+                <ScalarProperty Name="bsN_Id" ColumnName="bsN_Id" />
+                <ScalarProperty Name="bsR_Id" ColumnName="bsR_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsSoftCustInfo">
+            <EntityTypeMapping TypeName="QyTech_AuthModel.bsSoftCustInfo">
+              <MappingFragment StoreEntitySet="bsSoftCustInfo">
+                <ScalarProperty Name="WebUrl" ColumnName="WebUrl" />
+                <ScalarProperty Name="MonthCalDay" ColumnName="MonthCalDay" />
+                <ScalarProperty Name="DayCalHour" ColumnName="DayCalHour" />
+                <ScalarProperty Name="MessageSendFlag" ColumnName="MessageSendFlag" />
+                <ScalarProperty Name="UseKeyAudited" ColumnName="UseKeyAudited" />
+                <ScalarProperty Name="UseDeadDate" ColumnName="UseDeadDate" />
+                <ScalarProperty Name="Addr" ColumnName="Addr" />
+                <ScalarProperty Name="ContactMail" ColumnName="ContactMail" />
+                <ScalarProperty Name="ContactTel" ColumnName="ContactTel" />
+                <ScalarProperty Name="Contacter" ColumnName="Contacter" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="MaxUserCount" ColumnName="MaxUserCount" />
+                <ScalarProperty Name="SimpleName" ColumnName="SimpleName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="bsS_Id" ColumnName="bsS_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsTable">
+            <EntityTypeMapping TypeName="QyTech_AuthModel.bsTable">
+              <MappingFragment StoreEntitySet="bsTable">
+                <ScalarProperty Name="bsD_Name" ColumnName="bsD_Name" />
+                <ScalarProperty Name="TType" ColumnName="TType" />
+                <ScalarProperty Name="Desp" ColumnName="Desp" />
+                <ScalarProperty Name="TPk" ColumnName="TPk" />
+                <ScalarProperty Name="TName" ColumnName="TName" />
+                <ScalarProperty Name="No" ColumnName="No" />
+                <ScalarProperty Name="bsT_Id" ColumnName="bsT_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsUser">
+            <EntityTypeMapping TypeName="QyTech_AuthModel.bsUser">
+              <MappingFragment StoreEntitySet="bsUser">
+                <ScalarProperty Name="WebUrl" ColumnName="WebUrl" />
+                <ScalarProperty Name="HeadPic" ColumnName="HeadPic" />
+                <ScalarProperty Name="IsOnline" ColumnName="IsOnline" />
+                <ScalarProperty Name="LoginDt" ColumnName="LoginDt" />
+                <ScalarProperty Name="AccountStatus" ColumnName="AccountStatus" />
+                <ScalarProperty Name="ValidDate" ColumnName="ValidDate" />
+                <ScalarProperty Name="RegDt" ColumnName="RegDt" />
+                <ScalarProperty Name="IsSysUser" ColumnName="IsSysUser" />
+                <ScalarProperty Name="ContactTel" ColumnName="ContactTel" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="LoginPwd" ColumnName="LoginPwd" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="bsE_bsC_Id" ColumnName="bsE_bsC_Id" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="bsS_Code" ColumnName="bsS_Code" />
+                <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
+                <ScalarProperty Name="bsU_Id" ColumnName="bsU_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsUserFieldsRel">
+            <EntityTypeMapping TypeName="QyTech_AuthModel.bsUserFieldsRel">
+              <MappingFragment StoreEntitySet="bsUserFieldsRel">
+                <ScalarProperty Name="UserIsDisp" ColumnName="UserIsDisp" />
+                <ScalarProperty Name="IsDisp" ColumnName="IsDisp" />
+                <ScalarProperty Name="FDesp" ColumnName="FDesp" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="DispNo" ColumnName="DispNo" />
+                <ScalarProperty Name="bsFF_Id" ColumnName="bsFF_Id" />
+                <ScalarProperty Name="bsT_Id" ColumnName="bsT_Id" />
+                <ScalarProperty Name="bsFC_Id" ColumnName="bsFC_Id" />
+                <ScalarProperty Name="bsU_Id" ColumnName="bsU_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GisLayer_nouse">
+            <EntityTypeMapping TypeName="QyTech_AuthModel.GisLayer_nouse">
+              <MappingFragment StoreEntitySet="GisLayer_nouse">
+                <ScalarProperty Name="LineWidth" ColumnName="LineWidth" />
+                <ScalarProperty Name="LineType" ColumnName="LineType" />
+                <ScalarProperty Name="DisplyPrecision" ColumnName="DisplyPrecision" />
+                <ScalarProperty Name="DisplyMemo" ColumnName="DisplyMemo" />
+                <ScalarProperty Name="Display" ColumnName="Display" />
+                <ScalarProperty Name="LIsUse" ColumnName="LIsUse" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="LayerCode" ColumnName="LayerCode" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="LMemo" ColumnName="LMemo" />
+                <ScalarProperty Name="Covering" ColumnName="Covering" />
+                <ScalarProperty Name="LType" ColumnName="LType" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="bsS_Id" ColumnName="bsS_Id" />
+                <ScalarProperty Name="bsL_Id" ColumnName="bsL_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="bsRoleFieldRel" TypeName="QyTech_AuthModel.bsRoleFieldRel" StoreEntitySet="bsRoleFieldRel">
+            <EndProperty Name="bsRole">
+              <ScalarProperty Name="bsR_Id" ColumnName="bsR_Id" />
+            </EndProperty>
+            <EndProperty Name="bsFunField">
+              <ScalarProperty Name="bsFF_Id" ColumnName="bsFF_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="bsSoftRelFuns" TypeName="QyTech_AuthModel.bsSoftRelFuns" StoreEntitySet="bsSoftRelFuns">
+            <EndProperty Name="bsSoftCustInfo">
+              <ScalarProperty Name="bsS_Id" ColumnName="bsS_Id" />
+            </EndProperty>
+            <EndProperty Name="bsNavigation">
+              <ScalarProperty Name="bsN_Id" ColumnName="bsN_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="bsUserOrgRel" TypeName="QyTech_AuthModel.bsUserOrgRel" StoreEntitySet="bsUserOrgRel">
+            <EndProperty Name="bsUser">
+              <ScalarProperty Name="bsU_Id" ColumnName="bsU_Id" />
+            </EndProperty>
+            <EndProperty Name="bsOrganize">
+              <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="bsUserRoleRel" TypeName="QyTech_AuthModel.bsUserRoleRel" StoreEntitySet="bsUserRoleRel">
+            <EndProperty Name="bsUser">
+              <ScalarProperty Name="bsU_Id" ColumnName="bsU_Id" />
+            </EndProperty>
+            <EndProperty Name="bsRole">
+              <ScalarProperty Name="bsR_Id" ColumnName="bsR_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="RoleRelFields_nouse" TypeName="QyTech_AuthModel.RoleRelFields_nouse" StoreEntitySet="RoleRelFields_nouse">
+            <EndProperty Name="bsRole">
+              <ScalarProperty Name="bsR_Id" ColumnName="bsR_Id" />
+            </EndProperty>
+            <EndProperty Name="bsField">
+              <ScalarProperty Name="bsF_Id" ColumnName="bsF_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="默认值" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

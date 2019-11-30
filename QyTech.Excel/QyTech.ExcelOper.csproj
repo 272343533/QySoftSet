@@ -59,9 +59,6 @@
     <Compile Include="QyExclSettingsLocal.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="..\Debug\QyTech.SkinForm.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D2374486-4716-4BDA-9EF2-C991D0BD954B}</ProjectGuid>
+    <ProjectGuid>{D4108147-EED1-448E-BC12-3EDCE5DEF7B4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>QyTech.Auth.Dao</RootNamespace>

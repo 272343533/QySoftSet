@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using QyTech.Core.Common;
-using QyExpress.Dao;
+using qyExpress.Dao;
 using System.Web.Configuration;
 using QyTech.Core.BLL;
 

@@ -18,7 +18,7 @@ using QyTech.Core.Common;
 using System.Collections;
 using QyTech.Core.ExController.Bll;
 
-using QyExpress.Dao;
+using qyExpress.Dao;
 using QyTech.ExcelOper;
 
 namespace QyTech.Core.ExController
@@ -332,7 +332,7 @@ namespace QyTech.Core.ExController
 
                 Type typeEm = typeof(EntityManager);
                 miObj = typeEm.GetMethod("DeleteBysqlwhere").MakeGenericMethod(dbtype);
-                if (bsT.bsD_Name.Contains("QyExpress"))
+                if (bsT.bsD_Name.Contains("qyExpress"))
                 {
                     rowdataobj = miObj.Invoke(EManager_, new object[] { sqlwhere });
                 }

@@ -41,9 +41,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\WebPub\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="QyExpress.Dao, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="qyExpress.Dao, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\WebPub\QyExpress.Dao.dll</HintPath>
+      <HintPath>..\WebPub\qyExpress.Dao.dll</HintPath>
     </Reference>
     <Reference Include="QyTech.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Reflection;
 using log4net;
 using QyTech.Core.Helpers;
-using QyExpress.Dao;
+using qyExpress.Dao;
 using QyTech.Core;
 using System.Data.Objects;
 using QyTech.Core.BLL;

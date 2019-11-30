@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using QyExpress.Dao;
+using qyExpress.Dao;
 using System.Web.Configuration;
 
-namespace QyExpress.GlobalStatic
+namespace qyExpress.GlobalStatic
 {
     public class Varibles
     {

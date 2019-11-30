@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using QyExpress.Dao;
+using qyExpress.Dao;
 using QyTech.Core.BLL;
 using QyTech.Core;
 namespace QyTech.Core.ExController.Bll
