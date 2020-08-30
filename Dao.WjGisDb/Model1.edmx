@@ -707,7 +707,6 @@
             <PropertyRef Name="OBJECTID" />
           </Key>
           <Property Name="OBJECTID" Type="int" Nullable="false" />
-          <Property Name="Shape" Type="geometry" />
           <Property Name="地块编码" Type="nvarchar" MaxLength="20" />
           <Property Name="城规地类名称" Type="nvarchar" MaxLength="30" />
           <Property Name="城规代码" Type="nvarchar" MaxLength="10" />
@@ -738,7 +737,6 @@
           <Property Name="SSXZQMC" Type="nvarchar" MaxLength="50" />
           <Property Name="SSGLQDM" Type="nvarchar" MaxLength="50" />
           <Property Name="SSGLQMC" Type="nvarchar" MaxLength="50" />
-          <Property Name="Shape" Type="geometry" />
         </EntityType>
         <EntityType Name="企业范围">
           <Key>
@@ -789,7 +787,9 @@
           <Property Name="DYQK_" Type="nvarchar" MaxLength="50" />
           <Property Name="ZLWZ_" Type="nvarchar" MaxLength="50" />
           <Property Name="XSZD_" Type="nvarchar" MaxLength="50" />
-          <Property Name="Shape" Type="geometry" />
+          <Property Name="SHAPE_Length" Type="float" />
+          <Property Name="SHAPE_Area" Type="float" />
+          <Property Name="M1_Out" Type="varchar" MaxLength="255" />
         </EntityType>
         <!--生成过程中发现错误:
 警告 6002: 表/视图“WjGis2.dbo.vwLtdJcSj”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
@@ -839,6 +839,43 @@
           <Property Name="税收" Type="float" />
           <Property Name="增加值" Type="float" />
           <Property Name="亩均税收" Type="float" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“WjGis2.dbo.vwlyLtdBaseInfoForKFQInterface”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="vwlyLtdBaseInfoForKFQInterface">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="单位" Type="nvarchar" MaxLength="255" />
+          <Property Name="单位代码" Type="nvarchar" MaxLength="255" />
+          <Property Name="地块编号" Type="varchar" MaxLength="20" />
+          <Property Name="区域" Type="nvarchar" MaxLength="255" />
+          <Property Name="经营现状" Type="varchar" MaxLength="50" />
+          <Property Name="是否工业" Type="nvarchar" MaxLength="255" />
+          <Property Name="等级" Type="nvarchar" MaxLength="255" />
+          <Property Name="年度" Type="nvarchar" MaxLength="10" />
+          <Property Name="住所" Type="nvarchar" MaxLength="255" />
+          <Property Name="经营范围" Type="nvarchar" MaxLength="1000" />
+          <Property Name="企业类型" Type="nvarchar" MaxLength="255" />
+          <Property Name="法人代表" Type="nvarchar" MaxLength="255" />
+          <Property Name="注册资金" Type="float" />
+          <Property Name="主行业" Type="nvarchar" MaxLength="255" />
+          <Property Name="规模" Type="nvarchar" MaxLength="255" />
+          <Property Name="规上" Type="nvarchar" MaxLength="255" />
+          <Property Name="参保人数" Type="float" />
+          <Property Name="就业人数" Type="float" />
+          <Property Name="销售" Type="float" />
+          <Property Name="国税" Type="float" />
+          <Property Name="地税" Type="float" />
+          <Property Name="税收" Type="float" />
+          <Property Name="亩均税收" Type="float" />
+          <Property Name="占地" Type="float" />
+          <Property Name="其中持证" Type="float" />
+          <Property Name="用能" Type="float" />
+          <Property Name="用电" Type="float" />
+          <Property Name="排放" Type="float" />
+          <Property Name="研发经费支出" Type="float" />
         </EntityType>
         <!--生成过程中发现错误:
 警告 6002: 表/视图“WjGis2.sde.dbtune”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
@@ -986,6 +1023,40 @@
 [vwLtdJcSj].[亩均税收] AS [亩均税收]
 FROM [dbo].[vwLtdJcSj] AS [vwLtdJcSj]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="vwlyLtdBaseInfoForKFQInterface" EntityType="Self.vwlyLtdBaseInfoForKFQInterface" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vwlyLtdBaseInfoForKFQInterface].[Id] AS [Id], 
+[vwlyLtdBaseInfoForKFQInterface].[单位] AS [单位], 
+[vwlyLtdBaseInfoForKFQInterface].[单位代码] AS [单位代码], 
+[vwlyLtdBaseInfoForKFQInterface].[地块编号] AS [地块编号], 
+[vwlyLtdBaseInfoForKFQInterface].[区域] AS [区域], 
+[vwlyLtdBaseInfoForKFQInterface].[经营现状] AS [经营现状], 
+[vwlyLtdBaseInfoForKFQInterface].[是否工业] AS [是否工业], 
+[vwlyLtdBaseInfoForKFQInterface].[等级] AS [等级], 
+[vwlyLtdBaseInfoForKFQInterface].[年度] AS [年度], 
+[vwlyLtdBaseInfoForKFQInterface].[住所] AS [住所], 
+[vwlyLtdBaseInfoForKFQInterface].[经营范围] AS [经营范围], 
+[vwlyLtdBaseInfoForKFQInterface].[企业类型] AS [企业类型], 
+[vwlyLtdBaseInfoForKFQInterface].[法人代表] AS [法人代表], 
+[vwlyLtdBaseInfoForKFQInterface].[注册资金] AS [注册资金], 
+[vwlyLtdBaseInfoForKFQInterface].[主行业] AS [主行业], 
+[vwlyLtdBaseInfoForKFQInterface].[规模] AS [规模], 
+[vwlyLtdBaseInfoForKFQInterface].[规上] AS [规上], 
+[vwlyLtdBaseInfoForKFQInterface].[参保人数] AS [参保人数], 
+[vwlyLtdBaseInfoForKFQInterface].[就业人数] AS [就业人数], 
+[vwlyLtdBaseInfoForKFQInterface].[销售] AS [销售], 
+[vwlyLtdBaseInfoForKFQInterface].[国税] AS [国税], 
+[vwlyLtdBaseInfoForKFQInterface].[地税] AS [地税], 
+[vwlyLtdBaseInfoForKFQInterface].[税收] AS [税收], 
+[vwlyLtdBaseInfoForKFQInterface].[亩均税收] AS [亩均税收], 
+[vwlyLtdBaseInfoForKFQInterface].[占地] AS [占地], 
+[vwlyLtdBaseInfoForKFQInterface].[其中持证] AS [其中持证], 
+[vwlyLtdBaseInfoForKFQInterface].[用能] AS [用能], 
+[vwlyLtdBaseInfoForKFQInterface].[用电] AS [用电], 
+[vwlyLtdBaseInfoForKFQInterface].[排放] AS [排放], 
+[vwlyLtdBaseInfoForKFQInterface].[研发经费支出] AS [研发经费支出]
+FROM [dbo].[vwlyLtdBaseInfoForKFQInterface] AS [vwlyLtdBaseInfoForKFQInterface]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="dbtune" EntityType="Self.dbtune" store:Type="Views" store:Schema="sde">
             <DefiningQuery>SELECT 
 [dbtune].[keyword] AS [keyword], 
@@ -1071,6 +1142,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <EntitySet Name="LtdPhoto" EntityType="QyBllAppModel.LtdPhoto" />
           <EntitySet Name="bsLtdInfo" EntityType="QyBllAppModel.bsLtdInfo" />
           <EntitySet Name="vwLtdJcSj" EntityType="QyBllAppModel.vwLtdJcSj" />
+          <EntitySet Name="vwlyLtdBaseInfoForKFQInterface" EntityType="QyBllAppModel.vwlyLtdBaseInfoForKFQInterface" />
         </EntityContainer>
         <EntityType Name="bsArcLayer">
           <Key>
@@ -1751,6 +1823,9 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="DYQK_" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ZLWZ_" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="XSZD_" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SHAPE_Length" Type="Double" />
+          <Property Name="SHAPE_Area" Type="Double" />
+          <Property Name="M1_Out" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="blCityPlan">
           <Key>
@@ -1952,6 +2027,41 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="税收" Type="Double" />
           <Property Name="增加值" Type="Double" />
           <Property Name="亩均税收" Type="Double" />
+        </EntityType>
+        <EntityType Name="vwlyLtdBaseInfoForKFQInterface">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="单位" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="单位代码" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="地块编号" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="区域" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="经营现状" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="是否工业" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="等级" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="年度" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="住所" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="经营范围" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="企业类型" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="法人代表" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="注册资金" Type="Double" />
+          <Property Name="主行业" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="规模" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="规上" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="参保人数" Type="Double" />
+          <Property Name="就业人数" Type="Double" />
+          <Property Name="销售" Type="Double" />
+          <Property Name="国税" Type="Double" />
+          <Property Name="地税" Type="Double" />
+          <Property Name="税收" Type="Double" />
+          <Property Name="亩均税收" Type="Double" />
+          <Property Name="占地" Type="Double" />
+          <Property Name="其中持证" Type="Double" />
+          <Property Name="用能" Type="Double" />
+          <Property Name="用电" Type="Double" />
+          <Property Name="排放" Type="Double" />
+          <Property Name="研发经费支出" Type="Double" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -2627,6 +2737,9 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <EntitySetMapping Name="企业范围">
             <EntityTypeMapping TypeName="QyBllAppModel.企业范围">
               <MappingFragment StoreEntitySet="企业范围">
+                <ScalarProperty Name="M1_Out" ColumnName="M1_Out" />
+                <ScalarProperty Name="SHAPE_Area" ColumnName="SHAPE_Area" />
+                <ScalarProperty Name="SHAPE_Length" ColumnName="SHAPE_Length" />
                 <ScalarProperty Name="XSZD_" ColumnName="XSZD_" />
                 <ScalarProperty Name="ZLWZ_" ColumnName="ZLWZ_" />
                 <ScalarProperty Name="DYQK_" ColumnName="DYQK_" />
@@ -2867,6 +2980,42 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
                 <ScalarProperty Name="年度" ColumnName="年度" />
                 <ScalarProperty Name="序号" ColumnName="序号" />
                 <ScalarProperty Name="地块编号" ColumnName="地块编号" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwlyLtdBaseInfoForKFQInterface">
+            <EntityTypeMapping TypeName="QyBllAppModel.vwlyLtdBaseInfoForKFQInterface">
+              <MappingFragment StoreEntitySet="vwlyLtdBaseInfoForKFQInterface">
+                <ScalarProperty Name="研发经费支出" ColumnName="研发经费支出" />
+                <ScalarProperty Name="排放" ColumnName="排放" />
+                <ScalarProperty Name="用电" ColumnName="用电" />
+                <ScalarProperty Name="用能" ColumnName="用能" />
+                <ScalarProperty Name="其中持证" ColumnName="其中持证" />
+                <ScalarProperty Name="占地" ColumnName="占地" />
+                <ScalarProperty Name="亩均税收" ColumnName="亩均税收" />
+                <ScalarProperty Name="税收" ColumnName="税收" />
+                <ScalarProperty Name="地税" ColumnName="地税" />
+                <ScalarProperty Name="国税" ColumnName="国税" />
+                <ScalarProperty Name="销售" ColumnName="销售" />
+                <ScalarProperty Name="就业人数" ColumnName="就业人数" />
+                <ScalarProperty Name="参保人数" ColumnName="参保人数" />
+                <ScalarProperty Name="规上" ColumnName="规上" />
+                <ScalarProperty Name="规模" ColumnName="规模" />
+                <ScalarProperty Name="主行业" ColumnName="主行业" />
+                <ScalarProperty Name="注册资金" ColumnName="注册资金" />
+                <ScalarProperty Name="法人代表" ColumnName="法人代表" />
+                <ScalarProperty Name="企业类型" ColumnName="企业类型" />
+                <ScalarProperty Name="经营范围" ColumnName="经营范围" />
+                <ScalarProperty Name="住所" ColumnName="住所" />
+                <ScalarProperty Name="年度" ColumnName="年度" />
+                <ScalarProperty Name="等级" ColumnName="等级" />
+                <ScalarProperty Name="是否工业" ColumnName="是否工业" />
+                <ScalarProperty Name="经营现状" ColumnName="经营现状" />
+                <ScalarProperty Name="区域" ColumnName="区域" />
+                <ScalarProperty Name="地块编号" ColumnName="地块编号" />
+                <ScalarProperty Name="单位代码" ColumnName="单位代码" />
+                <ScalarProperty Name="单位" ColumnName="单位" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

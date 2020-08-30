@@ -34,6 +34,47 @@ namespace QyTech.ExcelOper
 
         protected string formatDT = "yyyy-MM-dd HH:mm:ss";
 
+        protected string Title_ = "";
+        protected int TitlePosition_Row_ = 1;
+        protected int TitlePosition_Col_ = 1;
+
+        protected string HiddenColumns_;
+
+
+
+        /// <summary>
+        /// 隐藏的列，逗号分隔
+        /// </summary>
+        public string HiddenColumns
+        {
+            get { return HiddenColumns_; }
+            set { HiddenColumns_ = value; }
+        }
+
+        /// <summary>
+        /// 表格标题
+        /// </summary>
+        public string Title
+        {
+            get { return Title_; }
+            set { Title_ = value; }
+        }
+        /// <summary>
+        /// 表格行位置
+        /// </summary>
+        public int TitlePosition_Row
+        {
+            get { return TitlePosition_Row_; }
+            set { TitlePosition_Row_ = value; }
+        }
+        /// <summary>
+        /// 表格列位置
+        /// </summary>
+        public int TitlePosition_Col
+        {
+            get { return TitlePosition_Col_; }
+            set { TitlePosition_Col_ = value; }
+        }
 
         /// <summary>
         /// 导出时DateTime类型的格式化

@@ -14,16 +14,16 @@ namespace QyExpress.Controllers.BllApp
         {  
             get  
             {
-                return "BllApp";  
+                return "gis";  
             }  
         }
         public override void RegisterArea(AreaRegistrationContext context)  
         {  
             context.MapRoute(
-                "BllApp_default",
-                "BllApp/{controller}/{action}/{id}",
+                "gis_default",
+                "gis/{controller}/{action}/{id}",
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                new string[] { "QyExpress.Controllers.BllApp" }
+                new string[] { "qyExpress.Controllers.gis" }
             );  
         }  
     }

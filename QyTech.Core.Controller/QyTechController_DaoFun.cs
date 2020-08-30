@@ -37,6 +37,23 @@ namespace QyTech.Core.ExController
             return ret.ToString();
         }
 
+        private string DaoAddReturnEntity(Type dbtype, object rowdataobj)
+        {
+            //增加日志
+            AddLogTable("增加", bsT.TName, bsT.Desp, "");
+
+            Type typeEm = typeof(EntityManager);
+            MethodInfo miObj = typeEm.GetMethod("AddReturnEntity").MakeGenericMethod(dbtype);
+            object rowdbobj = miObj.Invoke(EManagerApp_, new object[] { rowdataobj });
+
+            if (rowdbobj != null)
+                return jsonMsgHelper.Create(0, rowdbobj, "保存成功", rowdbobj.GetType(),new List<string>());
+            else
+                return jsonMsgHelper.Create(1, null, "获取失败！");
+        }
+        
+
+
         private string DaoAdds(Type dbtype,List<object> rowobjs)
         {
             //增加日志
@@ -367,6 +384,10 @@ namespace QyTech.Core.ExController
                     {
                         sqlwhere += " and " + kv.key + " like '%" + kv.val + "%'";
                     }
+                }
+                else
+                {
+                    sqlwhere += " and " + kv.key + " like '%" + kv.val + "%'";
                 }
             }
             if (sqlwhere.Length > 0)

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0e43c68c61b646cca7d46ac351d09f8b" Name="关系图1" ZoomLevel="71">
+      <Diagram DiagramId="0e43c68c61b646cca7d46ac351d09f8b" Name="关系图1" ZoomLevel="63">
         <EntityTypeShape EntityType="QyExpressModel.blBaseInfo" Width="1.5" PointX="9.75" PointY="8.25" />
         <EntityTypeShape EntityType="QyExpressModel.blBtnStyleList" Width="1.5" PointX="9.75" PointY="18.25" />
         <EntityTypeShape EntityType="QyExpressModel.blEmployee" Width="1.5" PointX="18.75" PointY="3.25" />

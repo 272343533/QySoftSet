@@ -203,6 +203,48 @@ namespace QyTech.ExcelOper
             string filePath = QyExcel_.ExportListWithTemplate<T>(exDate, exportSetting);
             return filePath;
         }
+        public string ExportListToExclWithTitle<T>(List<T> exDate, string exFileName, string templateFileName,string title,int title_row,int title_col, string propertiesFilds,
+    string FormatDT = "yyyy-MM-dd HH:mm:ss", bool HaveNoColumn = true, int RowStart = 2, int ColStart = 2, string localOrWeb = "local")
+        {
+
+            int i = 1;
+            //传进来的列表都放入  错误的列不进行处理  内部实现
+            List<string> listStr = new List<string>();
+            string[] strs = propertiesFilds.Split(',');
+            foreach (string s in strs)
+            {
+                if (s != "")
+                {
+                    listStr.Add(s);
+                }
+            }
+            IQyExclSettings exportSetting;
+            if (localOrWeb.ToLower() == "local")
+                exportSetting = new QyExclSettingsLocal();
+            else
+                exportSetting = new QyExclSettingsWeb();
+
+            exportSetting.Title = title;
+            exportSetting.TitlePosition_Row = title_row;
+            exportSetting.TitlePosition_Col = title_col;
+            exportSetting.ExTemplateFileName += templateFileName;
+            exportSetting.ExFileName = exFileName;
+            exportSetting.PropertiesFilds = listStr;
+            exportSetting.NullValueHandling = NullValueHandling.Include;
+            exportSetting.FormatDT = FormatDT;
+            exportSetting.ColStartValue = ColStart;
+            exportSetting.RowStartValue = RowStart;
+            exportSetting.HaveNumberColumn = HaveNoColumn;
+
+            string filePath = QyExcel_.ExportListWithTemplate<T>(exDate, exportSetting);
+            return filePath;
+        }
+
+        public string ExportListToExclWithTitle<T>(List<T> exDate, IQyExclSettings exportSetting)
+        {
+            string filePath = QyExcel_.ExportListWithTemplate<T>(exDate, exportSetting);
+            return filePath;
+        }
 
         /// <summary>
         /// 

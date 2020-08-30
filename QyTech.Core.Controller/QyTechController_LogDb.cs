@@ -41,17 +41,23 @@ namespace QyTech.Core.ExController
             obj.bsLT_Id = Guid.NewGuid();
             try
             {
+                if (LoginUser.bsU_Id == Guid.Empty)
+                {
+                    LogHelper.Info("当前路由或配置不需登录！");
+                }
+                else
+                {
+                    obj.bsU_Id = LoginUser.bsU_Id;
+                    obj.bsU_Name = LoginUser.NickName;
 
-                obj.bsU_Id = LoginUser.bsU_Id;
-                obj.bsU_Name = LoginUser.NickName;
-
-                obj.AccType = SUID;
-                obj.AppName = "";
-                obj.logDt = DateTime.Now;
-                obj.TName = tName;
-                obj.TDesp = tDesp;
-                obj.IdValue = IdValue.Length <= 50 ? IdValue : IdValue.Substring(0, 50);
-                EManager_.Add<bsLog_Table>(obj);
+                    obj.AccType = SUID;
+                    obj.AppName = "";
+                    obj.logDt = DateTime.Now;
+                    obj.TName = tName;
+                    obj.TDesp = tDesp;
+                    obj.IdValue = IdValue.Length <= 50 ? IdValue : IdValue.Substring(0, 50);
+                    EManager_.Add<bsLog_Table>(obj);
+                }
             }
             catch (Exception ex) { LogHelper.Error(ex); }
             return obj.bsLT_Id;
@@ -78,18 +84,25 @@ namespace QyTech.Core.ExController
         {
             try
             {
-                bsLog_Oper obj = new bsLog_Oper();
-                obj.bsLO_Id = Guid.NewGuid();
-                obj.logDt = DateTime.Now;
+                if (LoginUser.bsU_Id == Guid.Empty)
+                {
+                    LogHelper.Info("当前路由或配置不需登录！");
+                }
+                else
+                {
+                    bsLog_Oper obj = new bsLog_Oper();
+                    obj.bsLO_Id = Guid.NewGuid();
+                    obj.logDt = DateTime.Now;
 
-                obj.bsU_Id = LoginUser.bsU_Id;
-                obj.bsU_Name = LoginUser.NickName;
+                    obj.bsU_Id = LoginUser.bsU_Id;
+                    obj.bsU_Name = LoginUser.NickName;
 
-                obj.FunName = fName;
-                obj.FunDesp = fDesp;
+                    obj.FunName = fName;
+                    obj.FunDesp = fDesp;
 
 
-                EManager_.Add<bsLog_Oper>(obj);
+                    EManager_.Add<bsLog_Oper>(obj);
+                }
             }
             catch (Exception ex) { LogHelper.Error(ex); }
         }

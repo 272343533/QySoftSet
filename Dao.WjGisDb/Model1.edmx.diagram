@@ -51,6 +51,7 @@
         <EntityTypeShape EntityType="QyBllAppModel.LtdPhoto" Width="1.5" PointX="0.75" PointY="22.75" />
         <EntityTypeShape EntityType="QyBllAppModel.bsLtdInfo" Width="1.5" PointX="23.375" PointY="0.75" />
         <EntityTypeShape EntityType="QyBllAppModel.vwLtdJcSj" Width="1.5" PointX="3.375" PointY="23.75" />
+        <EntityTypeShape EntityType="QyBllAppModel.vwlyLtdBaseInfoForKFQInterface" Width="1.5" PointX="5.375" PointY="22.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -73,6 +73,7 @@
     <Compile Include="Controllers\BllApp\BllAppDefaultController.cs" />
     <Compile Include="Controllers\BllApp\blLayerController.cs" />
     <Compile Include="Controllers\BllApp\bsDynConditionController.cs" />
+    <Compile Include="Controllers\BllApp\IKfqController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BllAppController.cs" />
     <Compile Include="Controllers\BllApp\BllAppAreaRegistration.cs" />

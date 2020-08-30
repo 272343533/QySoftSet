@@ -266,18 +266,25 @@ namespace QyExpress.Controllers.api
             try
             {
                 List<bsNavigation> objs = EntityManager_Static.GetAllByStorProcedure<bsNavigation>(DbContext, "splyGetUserNaviFuns", new object[] { LoginUser.bsU_Id.ToString() });
-                Type type = objs[0].GetType();
+                if (objs.Count > 0)
+                {
+                    Type type = objs[0].GetType();
 
-                List<string> dispitems = new List<string>();
-                dispitems.Add("bsN_Id");
-                dispitems.Add("NaviName");
-                dispitems.Add("Route");
-                dispitems.Add("Icon");
-                dispitems.Add("pId");
-                dispitems.Add("NaviType");
-                dispitems.Add("IsShortkey");
-                dispitems.Add("ShortkeyPic");
-                return jsonMsgHelper.Create(0, objs, "", type, dispitems);
+                    List<string> dispitems = new List<string>();
+                    dispitems.Add("bsN_Id");
+                    dispitems.Add("NaviName");
+                    dispitems.Add("Route");
+                    dispitems.Add("Icon");
+                    dispitems.Add("pId");
+                    dispitems.Add("NaviType");
+                    dispitems.Add("IsShortkey");
+                    dispitems.Add("ShortkeyPic");
+                    return jsonMsgHelper.Create(0, objs, "", type, dispitems);
+                }
+                else
+                {
+                    return jsonMsgHelper.Create(0, "", "没有数据");
+                }
             }
             catch (Exception ex)
             {

@@ -109,6 +109,11 @@ namespace QyTech.ExcelOper
             _Worksheet worksheet = (Microsoft.Office.Interop.Excel._Worksheet)app.Worksheets[1];
             try
             {
+                //标题处理
+                if (Settings.Title != "")
+                {
+                    worksheet.Cells[Settings.TitlePosition_Row, Settings.TitlePosition_Col] = Settings.Title;
+                }
                 //再此处进行excl的填充
                 int num = 1;
                 #region 表头的绑定  设置了模板可不用这个 统一改模板
@@ -125,6 +130,7 @@ namespace QyTech.ExcelOper
                 #endregion
                 num = Settings.RowStartValue;
                 int RowNo = 0;
+
                 foreach (DataRow dr in reportDt.Rows)
                 {
                     RowNo++;
@@ -158,6 +164,9 @@ namespace QyTech.ExcelOper
                     if (ExportNoChanged != null)
                         ExportNoChanged(RowNo, reportDt.Rows.Count);
                 }
+
+               
+
                 workbook.Save();
             }
             catch (Exception ex)
@@ -281,6 +290,12 @@ namespace QyTech.ExcelOper
             _Worksheet worksheet = (Microsoft.Office.Interop.Excel._Worksheet)app.Worksheets[1];
             try
             {
+                //标题处理
+                if (Settings.Title != "")
+                {
+                    worksheet.Cells[Settings.TitlePosition_Row, Settings.TitlePosition_Col] = Settings.Title;
+                }
+
                 int RowNo = 0;
                 int Rowth = Settings.RowStartValue;
                 foreach (T t in reportDate)
@@ -312,6 +327,23 @@ namespace QyTech.ExcelOper
                     if (ExportNoChanged != null)
                         ExportNoChanged(RowNo, reportDate.Count);
                 }
+
+                if (Settings.HiddenColumns != "")
+                {
+                    int colindex = 0;
+                    string[] hcs = Settings.HiddenColumns.Split(new char[] { ',' });
+                    foreach (string c in hcs)
+                    {
+                        try
+                        {
+                            colindex = Convert.ToInt32(c);
+                            Range range = worksheet.Range[worksheet.Cells[1, colindex], worksheet.Cells[worksheet.Rows.Count, colindex]];
+                            range.EntireColumn.Hidden = true;
+                        }
+                        catch (Exception ex) { LogHelper.Error(ex); }
+                    }
+                }
+
                 workbook.Save();
             }
             catch (Exception ex)

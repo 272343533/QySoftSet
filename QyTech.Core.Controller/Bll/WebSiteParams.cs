@@ -14,5 +14,9 @@ namespace QyTech.Core.ExController.Bll
         public static string currSoftCustCode = System.Web.Configuration.WebConfigurationManager.AppSettings["currSoftCustCode"];
         public static string currSoftCustUrl = System.Web.Configuration.WebConfigurationManager.AppSettings["currSoftCustUrl"];
         public static string currSoftCusMsg = System.Web.Configuration.WebConfigurationManager.AppSettings["currSoftCusMsg"];
+
+
+        public static string currCFilterSession = System.Web.Configuration.WebConfigurationManager.AppSettings["CFilterSession"];
+        public static string currCAFilterSession = System.Web.Configuration.WebConfigurationManager.AppSettings["CAFilterSession"];
     }
 }

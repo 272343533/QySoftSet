@@ -77,6 +77,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dao.qyExpress.WjUp", "Dao.E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QyApp.LtdUpWj", "QyApp.LtdUpWj\QyApp.LtdUpWj.csproj", "{0C763D31-BDE9-44F7-8ED4-732EC0CAA1C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "qyApp.szEIP", "qyApp.szEIP\qyApp.szEIP.csproj", "{E672E182-566E-425D-B756-9AE868680AE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dao.szEIPDb", "Dao.szEIPDb\Dao.szEIPDb.csproj", "{675B8B2E-8CC8-47C2-8A02-4D0D792292D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -493,6 +497,30 @@ Global
 		{0C763D31-BDE9-44F7-8ED4-732EC0CAA1C5}.Release|x64.Build.0 = Release|Any CPU
 		{0C763D31-BDE9-44F7-8ED4-732EC0CAA1C5}.Release|x86.ActiveCfg = Release|Any CPU
 		{0C763D31-BDE9-44F7-8ED4-732EC0CAA1C5}.Release|x86.Build.0 = Release|Any CPU
+		{E672E182-566E-425D-B756-9AE868680AE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E672E182-566E-425D-B756-9AE868680AE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E672E182-566E-425D-B756-9AE868680AE0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E672E182-566E-425D-B756-9AE868680AE0}.Debug|x64.Build.0 = Debug|Any CPU
+		{E672E182-566E-425D-B756-9AE868680AE0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E672E182-566E-425D-B756-9AE868680AE0}.Debug|x86.Build.0 = Debug|Any CPU
+		{E672E182-566E-425D-B756-9AE868680AE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E672E182-566E-425D-B756-9AE868680AE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E672E182-566E-425D-B756-9AE868680AE0}.Release|x64.ActiveCfg = Release|Any CPU
+		{E672E182-566E-425D-B756-9AE868680AE0}.Release|x64.Build.0 = Release|Any CPU
+		{E672E182-566E-425D-B756-9AE868680AE0}.Release|x86.ActiveCfg = Release|Any CPU
+		{E672E182-566E-425D-B756-9AE868680AE0}.Release|x86.Build.0 = Release|Any CPU
+		{675B8B2E-8CC8-47C2-8A02-4D0D792292D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{675B8B2E-8CC8-47C2-8A02-4D0D792292D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{675B8B2E-8CC8-47C2-8A02-4D0D792292D6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{675B8B2E-8CC8-47C2-8A02-4D0D792292D6}.Debug|x64.Build.0 = Debug|Any CPU
+		{675B8B2E-8CC8-47C2-8A02-4D0D792292D6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{675B8B2E-8CC8-47C2-8A02-4D0D792292D6}.Debug|x86.Build.0 = Debug|Any CPU
+		{675B8B2E-8CC8-47C2-8A02-4D0D792292D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{675B8B2E-8CC8-47C2-8A02-4D0D792292D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{675B8B2E-8CC8-47C2-8A02-4D0D792292D6}.Release|x64.ActiveCfg = Release|Any CPU
+		{675B8B2E-8CC8-47C2-8A02-4D0D792292D6}.Release|x64.Build.0 = Release|Any CPU
+		{675B8B2E-8CC8-47C2-8A02-4D0D792292D6}.Release|x86.ActiveCfg = Release|Any CPU
+		{675B8B2E-8CC8-47C2-8A02-4D0D792292D6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -273,9 +273,8 @@ namespace QyTech.Core.BLL
         /// </summary>
         /// <param name="t">要添加的实体对象</param>
         /// <returns></returns>
-        public T AddReturnEntity<T>(T t, out string errmsg)
+        public T AddReturnEntity<T>(T t)
         {
-            errmsg = "";
             try
             {
 
@@ -286,7 +285,6 @@ namespace QyTech.Core.BLL
             }
             catch (Exception ex)
             {
-                errmsg = ex.Message;
                 LogHelper.Error(ex);
                 return default(T);
             }

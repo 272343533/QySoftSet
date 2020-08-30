@@ -1,7 +1,6 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using QyTech.Core.ExController;
-using QyExpress.Dao;
 using QyTech.Core.BLL;
 using QyTech.Core;
 using QyTech.Core.Common;
@@ -44,7 +43,7 @@ namespace QyExpress.Controllers.BllApp
 
 
                 //if (objs.Count < 50)
-                    treenode.openFlag = true;
+                    treenode.open = true;
                 treelist.Add(treenode);
             }
             return jsonMsgHelper.Create(0, treelist, "", treenode.GetType(), null);

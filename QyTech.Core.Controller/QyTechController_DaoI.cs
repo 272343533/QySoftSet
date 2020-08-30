@@ -83,6 +83,45 @@ namespace QyTech.Core.ExController
         }
 
 
+        public virtual string AddReturnEntity(string sessionid, string strjson)
+        {
+
+            if (strjson == null || strjson.Equals(""))
+            {
+                return jsonMsgHelper.Create(1, null, "参数为空，无法增加");
+            }
+
+            object dbobj, rowdataobj;
+            Type dbtype;
+            MethodInfo miObj;
+            try
+            {
+                //生成主键
+                AddGuidTPk(ref strjson);
+
+                dbtype = Type.GetType(objClassFullName);//.Replace(strForReplaceObject, objNameSpace + "." + objClassName));
+                dbobj = dbtype.Assembly.CreateInstance(dbtype.FullName);
+
+                Type typeEm = typeof(JsonHelper);
+                miObj = typeEm.GetMethod("DeserializeJsonToObject").MakeGenericMethod(dbtype);
+                rowdataobj = miObj.Invoke(null, new object[] { strjson });
+                ////增加日志
+                //AddLogTable("增加", bsT.TName, bsT.Desp, "");
+
+                //typeEm = typeof(EntityManager);
+                //miObj = typeEm.GetMethod("Add").MakeGenericMethod(dbtype);
+                //rowdataobj = miObj.Invoke(EManagerApp_, new object[] { rowdataobj });
+                string ret = DaoAddReturnEntity(dbtype, rowdataobj);
+
+                return ret;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error("Add:" + ex.Message);
+                return jsonMsgHelper.Create(1, "", ex);
+            }
+        }
+
 
         public virtual string Adds(string sessionid, string strjson)
         {
@@ -422,7 +461,7 @@ namespace QyTech.Core.ExController
                 {
                     kvs[arrStr[i]] = arrStr[i + 1];
                 }
-                if (kvs.ContainsKey(bsT.TPk)&& kvs[bsT.TPk]!="null")
+                if (kvs.ContainsKey(bsT.TPk)&& kvs[bsT.TPk]!="null" && kvs[bsT.TPk] != "" && kvs[bsT.TPk]!="0")
                 {
                     return Edit(sessionid, strjson);
                 }
