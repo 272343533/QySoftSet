@@ -223,7 +223,7 @@ namespace QyTech.Core.ExController
                         {
                             //需要sessioniid，但是没有给
                             LogHelper.Info(Request.Url.ToString(), "没有登录信息，需转登录界面");
-                            HttpContext.Response.Redirect("http://122.112.245.147:8004/", true);
+                            HttpContext.Response.Redirect("http://119.3.21.35:9001/", true);
                             return;
                             //base.OnActionExecuting(filterContext);
                         }

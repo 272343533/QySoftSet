@@ -17,7 +17,7 @@ namespace QyTech.Core.ExController
         /// </summary>
         /// <param name="picString">逗号分隔的图片上传数据</param>
         /// <returns>逗号分隔的多个图片文件名</returns>
-        protected string UpPicture(string sessionid,string picString)
+        protected virtual string UpPicture(string sessionid,string picString)
         {
             LogHelper.Error(picString);
             string files = "";

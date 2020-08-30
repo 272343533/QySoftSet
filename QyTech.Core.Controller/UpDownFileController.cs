@@ -74,7 +74,7 @@ namespace QyTech.Core.ExController
             return filenames;
         }
 
-        public string Upload_Default(string subpath)
+        public string Uploads(string subpath)
         {
             LogHelper.Info(subpath);
             subpath = Request["subpath"];
@@ -126,7 +126,7 @@ namespace QyTech.Core.ExController
                 filenames = filenames.Substring(1);
             return filenames;
         }
-        public string Upload_Direct(string subpath)
+        public string Upload(string subpath)
         {
             string filename = "";
             

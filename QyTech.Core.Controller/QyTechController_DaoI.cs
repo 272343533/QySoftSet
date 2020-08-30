@@ -178,7 +178,7 @@ namespace QyTech.Core.ExController
             {
                 return jsonMsgHelper.Create(1, "", "参数为空，无法修改");
             }
-            strjson = strjson.Replace(" ", "");
+            //strjson = strjson.Replace(" ", ""); //因为日期数据，日期和时间中间的空格原因，把这个去掉了 2020-08-24
             try
             {
                 Type dbtype = Type.GetType(objClassFullName);//.Replace(strForReplaceObject, objNameSpace + "." + objClassName));
