@@ -5,90 +5,100 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="6d8566e5604d4a74ba97f88c416d9216" Name="关系图1" ZoomLevel="62">
-        <EntityTypeShape EntityType="szEIPAppModel.bcContentIndex" Width="1.5" PointX="0.75" PointY="0.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.bclink" Width="1.5" PointX="10.75" PointY="0.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.blCityPlan" Width="1.5" PointX="10.75" PointY="3.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.blLayer" Width="1.5" PointX="10.75" PointY="6.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.bnannounce" Width="1.5" PointX="10.75" PointY="10.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.bntask" Width="1.5" PointX="3.75" PointY="0.75" />
-        <EntityTypeShape EntityType="szEIPAppModel.bntask_audit" Width="1.5" PointX="3" PointY="19.25" />
-        <EntityTypeShape EntityType="szEIPAppModel.bntask_notice_list" Width="1.5" PointX="6" PointY="16.25" />
-        <EntityTypeShape EntityType="szEIPAppModel.bntask_upfiles" Width="1.5" PointX="6" PointY="20.375" />
-        <EntityTypeShape EntityType="szEIPAppModel.bsaddress_group" Width="1.5" PointX="5.75" PointY="10" />
-        <EntityTypeShape EntityType="szEIPAppModel.bsaddress_list" Width="1.5" PointX="8" PointY="9.125" />
-        <EntityTypeShape EntityType="szEIPAppModel.bsArcLayer" Width="1.5" PointX="12.75" PointY="0.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.bscomment" Width="1.5" PointX="5.75" PointY="5" />
-        <EntityTypeShape EntityType="szEIPAppModel.bscomment_reply" Width="1.5" PointX="8" PointY="5.125" />
-        <EntityTypeShape EntityType="szEIPAppModel.bsDynCondition" Width="1.5" PointX="12.75" PointY="5.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.bsHYDL" Width="1.5" PointX="12.75" PointY="9.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.bsLand_eval" Width="1.5" PointX="12.75" PointY="12.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.bsltd_base_audit" Width="1.5" PointX="3" PointY="26.75" />
-        <EntityTypeShape EntityType="szEIPAppModel.bsLtd_Base_fill" Width="1.5" PointX="3" PointY="14.5" />
-        <EntityTypeShape EntityType="szEIPAppModel.bsLtd_cred_photo" Width="1.5" PointX="3" PointY="30" />
-        <EntityTypeShape EntityType="szEIPAppModel.bsLtd_eval_rank" Width="1.5" PointX="3" PointY="11.125" />
-        <EntityTypeShape EntityType="szEIPAppModel.bsLtd_eval_upinfo" Width="1.5" PointX="3" PointY="33.375" />
-        <EntityTypeShape EntityType="szEIPAppModel.bsltd_eval_upinfoDetail" Width="1.5" PointX="3" PointY="6.375" />
-        <EntityTypeShape EntityType="szEIPAppModel.bsltd_legal_person_land" Width="1.5" PointX="5.75" PointY="1.25" />
-        <EntityTypeShape EntityType="szEIPAppModel.bsltd_legan_person_landdetail" Width="1.5" PointX="8" PointY="1" />
-        <EntityTypeShape EntityType="szEIPAppModel.bsltd_not_up_list" Width="1.5" PointX="14.75" PointY="0.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.bsLtdIndustries" Width="1.5" PointX="14.75" PointY="3.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.bsLtdInfo" Width="1.5" PointX="0.75" PointY="13.5" />
-        <EntityTypeShape EntityType="szEIPAppModel.bsLtdIntroduce" Width="1.5" PointX="0.75" PointY="3.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.bsTableImportType" Width="1.5" PointX="14.75" PointY="7.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.bsTestRecord" Width="1.5" PointX="14.75" PointY="10.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.bsTotalResult" Width="1.5" PointX="8.75" PointY="15.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.bsUser_Ex" Width="1.5" PointX="5.75" PointY="13.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.bsVisitLog" Width="1.5" PointX="14.75" PointY="15.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.LtdPhoto" Width="1.5" PointX="16.75" PointY="0.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.LtdProblem" Width="1.5" PointX="16.75" PointY="4.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.LtdRegular" Width="1.5" PointX="16.75" PointY="8.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.tA1企业基本信息表" Width="1.5" PointX="16.75" PointY="12.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.tA2企业曾用名信息表" Width="1.5" PointX="10.75" PointY="17.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.tA3企业基本信息关联表" Width="1.5" PointX="16.75" PointY="17.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.tB1地主地块数据" Width="1.5" PointX="18.75" PointY="0.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.tB2租户地块数据年度" Width="1.5" PointX="18.75" PointY="5.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.tC地主核实租赁关系年度" Width="1.5" PointX="18.75" PointY="10.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.tD企业集约利用信息填报表年度" Width="1.5" PointX="12.75" PointY="18.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.tE1地块年度综合评价表年度" Width="1.5" PointX="18.75" PointY="15.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.tE2企业综合评价表年度" Width="1.5" PointX="20.75" PointY="0.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.tmpLtdXx" Width="1.5" PointX="20.75" PointY="6.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.tS企业情况说明" Width="1.5" PointX="8.75" PointY="20.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.t安全事故情况" Width="1.5" PointX="20.75" PointY="17.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.t标准化级别" Width="1.5" PointX="18.75" PointY="21.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.t高企" Width="1.5" PointX="20.75" PointY="21.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.t工程技术研究中心" Width="1.5" PointX="22.75" PointY="0.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.t工业固定资产" Width="1.5" PointX="22.75" PointY="4.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.t规上企业名单" Width="1.5" PointX="22.75" PointY="8.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.t经发局表格" Width="1.5" PointX="22.75" PointY="12.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.t开发区2000万企业" Width="1.5" PointX="14.75" PointY="22.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.t立案处罚情况" Width="1.5" PointX="22.75" PointY="18.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.t能耗数据" Width="1.5" PointX="22.75" PointY="21.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.t企业基础数据" Width="1.5" PointX="24.75" PointY="0.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.t企业技术中心台账" Width="1.5" PointX="5.75" PointY="24.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.t企业台帐台资" Width="1.5" PointX="7.75" PointY="24.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.t企业台帐主版后备" Width="1.5" PointX="9.75" PointY="24.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.t清洁生产历年" Width="1.5" PointX="24.75" PointY="10.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.t上市企业台帐三板" Width="1.5" PointX="24.75" PointY="14.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.t市局表格" Width="1.5" PointX="24.75" PointY="18.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.t市局表格_Owner" Width="1.5" PointX="11.75" PointY="25.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.t市局表格_Rent" Width="1.5" PointX="16.75" PointY="25.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.t闲置土地盘活计划表" Width="1.5" PointX="18.75" PointY="25.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.t新地标计划企业名单" Width="1.5" PointX="20.75" PointY="25.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.t智能车间" Width="1.5" PointX="26.75" PointY="0.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.t智能制造示范试点企业名单" Width="1.5" PointX="26.75" PointY="4.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.z企业变化信息表" Width="1.5" PointX="26.75" PointY="8.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.z新增企业信息表" Width="1.5" PointX="26.75" PointY="12.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.z租赁企业信息表" Width="1.5" PointX="13.75" PointY="26.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.城市规划" Width="1.5" PointX="26.75" PointY="16.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.房屋建筑" Width="1.5" PointX="26.75" PointY="20.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.企业范围" Width="1.5" PointX="26.75" PointY="25.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.vwLtdJcSj" Width="1.5" PointX="22.75" PointY="27.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.vwlyLtdBaseInfoForKFQInterface" Width="1.5" PointX="28.75" PointY="0.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.vwQuery2Group" Width="1.5" PointX="5.75" PointY="28.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.vwTaskReview" Width="1.5" PointX="28.75" PointY="8.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.dbtune" Width="1.5" PointX="0.75" PointY="23.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.ST_GEOMETRY_COLUMNS" Width="1.5" PointX="2.75" PointY="23.875" />
-        <EntityTypeShape EntityType="szEIPAppModel.ST_SPATIAL_REFERENCE_SYSTEMS" Width="1.5" PointX="28.75" PointY="12.875" />
+        <EntityTypeShape EntityType="szEIPAppModel.bcContentIndex" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.bclink" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.blCityPlan" Width="1.5" PointX="13.75" PointY="3.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.blLayer" Width="1.5" PointX="13.75" PointY="6.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.bnannounce" Width="1.5" PointX="13.75" PointY="10.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.bnbaseInfo_audit" Width="1.5" PointX="5.75" PointY="14.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.bntask" Width="1.5" PointX="0.75" PointY="3.625" />
+        <EntityTypeShape EntityType="szEIPAppModel.bntask_audit" Width="1.5" PointX="3" PointY="10.125" />
+        <EntityTypeShape EntityType="szEIPAppModel.bntask_notice_list" Width="1.5" PointX="6" PointY="9.875" />
+        <EntityTypeShape EntityType="szEIPAppModel.bntask_upfiles" Width="1.5" PointX="3" PointY="27.25" />
+        <EntityTypeShape EntityType="szEIPAppModel.bsaddress_group" Width="1.5" PointX="2.75" PointY="5.875" />
+        <EntityTypeShape EntityType="szEIPAppModel.bsaddress_list" Width="1.5" PointX="5" PointY="5" />
+        <EntityTypeShape EntityType="szEIPAppModel.bsArcLayer" Width="1.5" PointX="7.75" PointY="14.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.bscomment" Width="1.5" PointX="2.75" PointY="1" />
+        <EntityTypeShape EntityType="szEIPAppModel.bscomment_reply" Width="1.5" PointX="5" PointY="1" />
+        <EntityTypeShape EntityType="szEIPAppModel.bsDynCondition" Width="1.5" PointX="9.75" PointY="14.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.bsHYDL" Width="1.5" PointX="15.75" PointY="0.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.bsLand_eval" Width="1.5" PointX="15.75" PointY="3.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.bsltd_base_audit" Width="1.5" PointX="11" PointY="10.625" />
+        <EntityTypeShape EntityType="szEIPAppModel.bsLtd_Base_fill" Width="1.5" PointX="3" PointY="17.875" />
+        <EntityTypeShape EntityType="szEIPAppModel.bsLtd_cred_photo" Width="1.5" PointX="3" PointY="22.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.bsLtd_eval_rank" Width="1.5" PointX="3" PointY="14.25" />
+        <EntityTypeShape EntityType="szEIPAppModel.bsLtd_eval_upinfo" Width="1.5" PointX="11" PointY="6.125" />
+        <EntityTypeShape EntityType="szEIPAppModel.bsltd_eval_upinfoDetail" Width="1.5" PointX="11" PointY="1.375" />
+        <EntityTypeShape EntityType="szEIPAppModel.bsltd_not_up_list" Width="1.5" PointX="15.75" PointY="8.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.bsLtdIndustries" Width="1.5" PointX="15.75" PointY="11.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.bsLtdInfo" Width="1.5" PointX="8.75" PointY="3.375" />
+        <EntityTypeShape EntityType="szEIPAppModel.bsLtdIntroduce" Width="1.5" PointX="11.75" PointY="15.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.bsquery_diy" Width="1.5" PointX="13.75" PointY="15.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.bsTableImportType" Width="1.5" PointX="15.75" PointY="15.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.bsTestRecord" Width="1.5" PointX="17.75" PointY="0.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.bsTotalResult" Width="1.5" PointX="17.75" PointY="5.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.bsUser_Ex" Width="1.5" PointX="17.75" PointY="8.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.bsVisitLog" Width="1.5" PointX="17.75" PointY="11.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.LtdPhoto" Width="1.5" PointX="17.75" PointY="14.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.LtdProblem" Width="1.5" PointX="9.75" PointY="18.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.LtdRegular" Width="1.5" PointX="11.75" PointY="18.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.tA1企业基本信息表" Width="1.5" PointX="0.75" PointY="8.875" />
+        <EntityTypeShape EntityType="szEIPAppModel.tA2企业曾用名信息表" Width="1.5" PointX="13.75" PointY="18.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.tA3企业基本信息关联表" Width="1.5" PointX="15.75" PointY="18.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.tB1地主地块数据" Width="1.5" PointX="17.75" PointY="18.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.tB2租户地块数据年度" Width="1.5" PointX="19.75" PointY="0.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.tC地主核实租赁关系年度" Width="1.5" PointX="5.75" PointY="19.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.tD企业集约利用信息填报表年度" Width="1.5" PointX="19.75" PointY="6.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.tE1地块年度综合评价表年度" Width="1.5" PointX="19.75" PointY="13.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.tE2企业综合评价表年度" Width="1.5" PointX="19.75" PointY="18.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.tmpLtdXx" Width="1.5" PointX="21.75" PointY="0.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.tS企业情况说明" Width="1.5" PointX="21.75" PointY="11.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.t安全事故情况" Width="1.5" PointX="21.75" PointY="15.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.t标准化级别" Width="1.5" PointX="21.75" PointY="19.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.t高企" Width="1.5" PointX="7.75" PointY="22.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.t工程技术研究中心" Width="1.5" PointX="9.75" PointY="22.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.t工业固定资产" Width="1.5" PointX="11.75" PointY="22.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.t规上企业名单" Width="1.5" PointX="23.75" PointY="0.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.t经发局表格" Width="1.5" PointX="23.75" PointY="4.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.t开发区2000万企业" Width="1.5" PointX="23.75" PointY="10.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.t立案处罚情况" Width="1.5" PointX="13.75" PointY="23.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.t能耗数据" Width="1.5" PointX="23.75" PointY="14.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.t企业基础数据" Width="1.5" PointX="23.75" PointY="17.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.t企业技术中心台账" Width="1.5" PointX="15.75" PointY="24.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.t企业台帐台资" Width="1.5" PointX="17.75" PointY="24.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.t企业台帐主版后备" Width="1.5" PointX="19.75" PointY="24.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.t清洁生产历年" Width="1.5" PointX="25.75" PointY="0.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.t上市企业台帐三板" Width="1.5" PointX="25.75" PointY="4.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.t市局表格" Width="1.5" PointX="25.75" PointY="8.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.t市局表格_Owner" Width="1.5" PointX="25.75" PointY="17.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.t市局表格_Rent" Width="1.5" PointX="25.75" PointY="24.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.t闲置土地盘活计划表" Width="1.5" PointX="5.75" PointY="26.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.t新地标计划企业名单" Width="1.5" PointX="7.75" PointY="26.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.t智能车间" Width="1.5" PointX="9.75" PointY="26.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.t智能制造示范试点企业名单" Width="1.5" PointX="11.75" PointY="26.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.z企业变化信息表" Width="1.5" PointX="27.75" PointY="0.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.z新增企业信息表" Width="1.5" PointX="27.75" PointY="4.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.z租赁企业信息表" Width="1.5" PointX="27.75" PointY="8.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.城市规划" Width="1.5" PointX="27.75" PointY="19.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.房屋建筑" Width="1.5" PointX="21.75" PointY="27.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.企业范围" Width="1.5" PointX="27.75" PointY="23.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.vw_bsltd_legal_person_land" Width="1.5" PointX="13.75" PointY="28.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.vw_bsltd_legan_person_landdetail" Width="1.5" PointX="15.75" PointY="28.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.vw_bsltd_not_up_list" Width="1.5" PointX="29.75" PointY="0.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.vw_dk_eval_Owner" Width="1.5" PointX="29.75" PointY="3.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.vw_dk_eval_Rent" Width="1.5" PointX="29.75" PointY="8.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.vw_dk_eval_total" Width="1.5" PointX="29.75" PointY="13.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.vw_ltd_up_eval_info" Width="1.5" PointX="29.75" PointY="18.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.vw_ltd_up_eval_info_detail" Width="1.5" PointX="29.75" PointY="23.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.vwdiyQuery_Owner" Width="1.5" PointX="29.75" PointY="28.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.vwdiyQuery_rent" Width="1.5" PointX="5.75" PointY="30.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.vwLtdJcSj" Width="1.5" PointX="7.75" PointY="30.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.vwlyLtdBaseInfoForKFQInterface" Width="1.5" PointX="9.75" PointY="30.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.vwQuery2Group" Width="1.5" PointX="17.75" PointY="30.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.vwTaskReview" Width="1.5" PointX="23.75" PointY="30.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.dbtune" Width="1.5" PointX="31.75" PointY="0.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.ST_GEOMETRY_COLUMNS" Width="1.5" PointX="0.75" PointY="31.75" />
+        <EntityTypeShape EntityType="szEIPAppModel.ST_SPATIAL_REFERENCE_SYSTEMS" Width="1.5" PointX="2.75" PointY="31.75" />
         <AssociationConnector Association="szEIPAppModel.FK_bntask_audit_bntask" />
         <AssociationConnector Association="szEIPAppModel.FK_bntask_notice_list_task" />
         <AssociationConnector Association="szEIPAppModel.FK_bntask_uppics_bntask" />
@@ -99,10 +109,9 @@
         <AssociationConnector Association="szEIPAppModel.FK_bsltd_base_audit_bsLtdInfo" />
         <AssociationConnector Association="szEIPAppModel.FK_bsLtd_Base_fill_bsLtdinfo" />
         <AssociationConnector Association="szEIPAppModel.FK_bsLtd_cred_phonto_bsLtd_cred_phonto" />
-        <AssociationConnector Association="szEIPAppModel.FK_bsLtd_pjdj_bsLtdInfo" />
+        <AssociationConnector Association="szEIPAppModel.FK_bsLtd_pjdj_tA1" />
         <AssociationConnector Association="szEIPAppModel.FK_bsLtd_eval_upinfo_bsLtdInfo" />
         <AssociationConnector Association="szEIPAppModel.FK_bsltd_eval_upinfoDetail_bsLtdInfo" />
-        <AssociationConnector Association="szEIPAppModel.FK_bsltd_legan_person_landdetail_bsltd_legal_person_land" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

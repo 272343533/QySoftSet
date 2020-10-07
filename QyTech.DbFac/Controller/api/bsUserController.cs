@@ -460,10 +460,11 @@ namespace QyExpress.Controllers.api
             }
         }
 
-        public override string Audit( string sessionid, string idValue, int YesOrNo, string AuditDesp)
+        public override string Audit(string sessionid, string idValues, string result, string desp)
         {
-            return base.Audit(sessionid, idValue, YesOrNo, AuditDesp);
+            return base.Audit(sessionid, idValues, result, desp);
         }
+
 
         public override string Add(string sessionid, string strjson)
         {

@@ -66,6 +66,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="apiController.cs" />
+    <Compile Include="BLL\bllbsNavigation.cs" />
+    <Compile Include="BLL\WebSiteParams.cs" />
     <Compile Include="Controller\api\ApiAreaRegistration.cs" />
     <Compile Include="Controller\api\apiDefaultController.cs" />
     <Compile Include="Controller\api\bsFileController.cs" />
@@ -76,14 +78,19 @@
     <Compile Include="Controller\api\bsTableController.cs" />
     <Compile Include="Controller\api\bsTInterfaceController.cs" />
     <Compile Include="Controller\api\bsUserController.cs" />
-    <Compile Include="BLL\bllbsNavigation.cs" />
-    <Compile Include="BLL\WebSiteParams.cs" />
+    <Compile Include="Controller\api\HomeController.cs" />
+    <Compile Include="Controller\SoftConf\bsFieldController.cs" />
+    <Compile Include="Controller\SoftConf\bsFunConfController.cs" />
+    <Compile Include="Controller\SoftConf\bsFunFieldController.cs" />
+    <Compile Include="Controller\SoftConf\bsFunInterfaceController.cs" />
+    <Compile Include="Controller\SoftConf\bsFunOperController.cs" />
+    <Compile Include="Controller\SoftConf\bsFunQueryController.cs" />
+    <Compile Include="Controller\SoftConf\bsTableController.cs" />
+    <Compile Include="Controller\SoftConf\SoftConfAreaRegistration.cs" />
+    <Compile Include="Controller\SoftConf\SoftConfDefaultController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SingletonLinkDb.cs" />
     <Compile Include="SoftConfController.cs" />
-    <Compile Include="Controller\SoftConf\bsFunConfController.cs" />
-    <Compile Include="Controller\SoftConf\SoftConfAreaRegistration.cs" />
-    <Compile Include="Controller\SoftConf\SoftConfDefaultController.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

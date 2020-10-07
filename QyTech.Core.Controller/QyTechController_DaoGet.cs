@@ -36,11 +36,14 @@ namespace QyTech.Core.ExController
         //[HttpPost]
         public virtual string GetAll(string sessionid, string fields="", string where="", string orderby="")
         {
-             try
+            try
             {
 
                 AddLogTable("获取", bsT.TName, bsT.Desp, where);
-
+            }
+            catch { }
+            try
+            { 
                 //ObjectClassFullName
                 if (where.Length > 0)
                     where = Ajustsqlwhere(where);
@@ -98,8 +101,14 @@ namespace QyTech.Core.ExController
         /// <returns></returns>
         public virtual string GetAllData(string sessionid, string fields = "", string where = "", string orderby = "")
         {
-            AddLogTable("获取", bsT.TName, bsT.Desp, where);
-            if (where.Length > 0)
+            try
+            {
+
+                AddLogTable("获取", bsT.TName, bsT.Desp, where);
+            }
+            catch { }
+
+                if (where.Length > 0)
                 where = Ajustsqlwhere(where);
             //如果表中有bsO_Id字段，还要获取数据的部门权限
 
@@ -170,7 +179,12 @@ namespace QyTech.Core.ExController
         /// <returns>json数据</returns>
         public virtual string GetAllWithPaging(string sessionid, string fields="", string where="", string orderby="", int currentPage = 1, int pageSize = 20)
         {
-            AddLogTable("分页获取", bsT.TName, bsT.Desp, where);
+            try
+            {
+
+                AddLogTable("分页获取", bsT.TName, bsT.Desp, where);
+            }
+            catch { }
             try
             {
                

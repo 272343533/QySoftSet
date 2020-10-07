@@ -71,7 +71,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\BllApp\BllAppDefaultController.cs" />
+    <Compile Include="Controllers\BllApp\bclinkController.cs" />
     <Compile Include="Controllers\BllApp\bntaskController.cs" />
+    <Compile Include="Controllers\BllApp\bsLtd_cred_photoController.cs" />
     <Compile Include="Controllers\BllApp\bntask_upfilesController.cs" />
     <Compile Include="Controllers\BllApp\bnannounceController.cs" />
     <Compile Include="Controllers\BllApp\bsaddress_groupController.cs" />

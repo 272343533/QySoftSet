@@ -1,6 +1,5 @@
 ﻿using System.Web;
 using System.Web.Mvc;
-using QyTech.Core.ExController;
 using qyExpress.Dao;
 using QyTech.Core.BLL;
 using QyTech.Core;

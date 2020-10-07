@@ -289,7 +289,10 @@ namespace QyTech.Core.ExController
             keyvalues = keyvalues.Replace(" ", "");
             try
             {
-                keyvalues = keyvalues.Replace("{", "{\"").Replace("}", "\"}").Replace(":", "\":\"");
+                if (!keyvalues.Contains("\""))
+                {
+                    keyvalues = keyvalues.Replace("{", "{\"").Replace("}", "\"}").Replace(":", "\":\"");
+                }
         
                 List<QyTech.Json.keyVal> kvs = JsonHelper.DeserializeJsonToKeyValList(keyvalues);
                 //进一步修改为keyvalues
@@ -419,7 +422,13 @@ namespace QyTech.Core.ExController
 
         public string ExcuteStoreProcedure(string sessionid, string spname,string paras)
         {
-            AddLogTable("执行", bsT.TName, bsT.Desp, spname+" "+paras);
+            try
+            {
+
+                AddLogTable("执行", bsT.TName, bsT.Desp, spname + " " + paras);
+            }
+            catch { }
+            
             if ((spname+paras).ToLower().Contains("delete"))
             {
                 return jsonMsgHelper.Create(1, "", "参数不合法");
@@ -581,7 +590,13 @@ namespace QyTech.Core.ExController
         /// <returns></returns>
         public virtual string GetAllByTFk(string sessionid, string tfkValue,string fields = "", string orderby = "")
         {
-            AddLogTable("获取", bsT.TName, bsT.Desp, "TFK");
+            try
+            {
+
+                AddLogTable("GetAllByTFk", bsT.TName, bsT.Desp, "TFK");
+            }
+            catch { }
+        
             //要明确外键的数据类型
             Dictionary<string, bsField> bsFs = getbsFields(bsT.bsT_Id);
 
@@ -642,7 +657,13 @@ namespace QyTech.Core.ExController
         /// <returns>json数据</returns>
         public virtual string GetAllByProcedure(string sessionid, string spname, string fields, string where, string orderby)
         {
-            AddLogTable("获取", bsT.TName, bsT.Desp, spname+" "+where);
+            try
+            {
+
+                AddLogTable("GetAllByProcedure", bsT.TName, bsT.Desp, spname + " " + where);
+            }
+            catch { }
+            
             where = Ajustsqlwhere(where);
             if (orderby == "")
             {
@@ -742,7 +763,14 @@ namespace QyTech.Core.ExController
         /// <returns></returns>
         public virtual string GetAllWithPagingByCommonProcedure(string sessionid, string fields, string where, string orderbyfield, string ascordesc, int currentPage = 1, int pageSize = 20)
         {
-            AddLogTable("获取", bsT.TName, bsT.Desp, where);
+            try
+            {
+
+                AddLogTable("GetAllWithPagingByCommonProcedure", bsT.TName, bsT.Desp, where);
+            }
+            catch { }
+
+            
             try
             {
                 where = Ajustsqlwhere(where);
@@ -783,7 +811,13 @@ namespace QyTech.Core.ExController
         /// <returns></returns>
         public virtual string GetAllWithPagingBySelfProcedure(string sessionid, string spname, string fields, string where, string orderby, int currentPage = 1, int pageSize = 20)
         {
-            AddLogTable("获取", bsT.TName, bsT.Desp, spname + " " + where);
+            try
+            {
+
+                AddLogTable("GetAllWithPagingBySelfProcedure", bsT.TName, bsT.Desp, spname + " " + where);
+            }
+            catch { }
+           
 
             try
             {
@@ -828,7 +862,14 @@ namespace QyTech.Core.ExController
         /// <returns>json格式对象</returns>
         public virtual string GetOne(string sessionid, string idValue)
         {
-            AddLogTable("获取", bsT.TName, bsT.Desp, idValue);
+           
+            try
+            {
+                AddLogTable("GetOne", bsT.TName, bsT.Desp, idValue);
+            }
+            catch { }
+
+
             if (idValue == null || idValue.Equals(""))
             {
                 return jsonMsgHelper.Create(1, "", "参数必须输入");
@@ -891,7 +932,12 @@ namespace QyTech.Core.ExController
         /// <returns></returns>
         public virtual string GetOneByFName(string sessionid, string FName,string FValue)
         {
-            AddLogTable("获取一个", bsT.TName, bsT.Desp, FValue);
+            try
+            {
+                AddLogTable("GetOneByFName", bsT.TName, bsT.Desp, FValue);
+            }
+            catch { }
+            
 
             if (FName == null || FName.Equals(""))
             {
@@ -914,7 +960,7 @@ namespace QyTech.Core.ExController
 
         }
 
-        protected virtual string GetOnebySql(string sessionid,string sql)
+        public virtual string GetOnebySql(string sessionid,string sql)
         {
           
             if (sql == null || sql.Equals(""))
@@ -1007,12 +1053,22 @@ namespace QyTech.Core.ExController
         /// <param name="idValue">记录主键</param>
         /// <param name="YesOrNo">1: 通过，0：不通过</param>
         /// <param name="AuditDesp">审核意见</param>
-        /// <returns></returns>
-        public virtual string Audit(string sessionid,string idValue,int YesOrNo,string AuditDesp)
+        /// <returns></returns> 与下面参数个数相同，不可用，已被替换
+        //public virtual string Audit(string sessionid,string idValue,int YesOrNo,string AuditDesp)
+        //{
+        //    return jsonMsgHelper.Create(1, null, "确定需要审核接口吗？需要请联系后台人员实现。");
+        //}
+
+
+
+        public virtual string Audit(string sessionid,string idValues, string result, string desp)
         {
             return jsonMsgHelper.Create(1, null, "确定需要审核接口吗？需要请联系后台人员实现。");
         }
-
+        public virtual string AuditWithFk(string sessionid, string fkIdValue, string idValues, string result, string desp)
+        {
+            return jsonMsgHelper.Create(1, null, "确定需要审核接口吗？需要请联系后台人员实现。");
+        }
 
 
         /// <summary>
@@ -1058,7 +1114,13 @@ namespace QyTech.Core.ExController
         protected string EditbyKeyValues(string FName, string FValue, Dictionary<string, string> dicKV)
         {
             //增加日志
-            AddLogTable("EditbydicKV", bsT.TName, bsT.Desp, FName + " " + FValue);
+            try
+            {
+                AddLogTable("EditbyKeyValues", bsT.TName, bsT.Desp, FName + " " + FValue);
+            }
+            catch { }
+
+           
 
             if (dicKV == null || dicKV.Count == 0)
             {

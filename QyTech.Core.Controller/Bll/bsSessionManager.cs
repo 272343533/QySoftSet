@@ -71,6 +71,10 @@ namespace QyTech.Core.ExController.Bll
             urls.Add("UpDownFile/Upload".ToLower());
             urls.Add("UpDownFile/PictureUpLoad".ToLower());
             urls.Add("ltdNotice/PublishInLogin".ToLower());
+            urls.Add("bnannounce/getall".ToLower());
+            urls.Add("bclink/getall".ToLower());
+            urls.Add("bsuser/register".ToLower());
+
             return urls;
         }
     }

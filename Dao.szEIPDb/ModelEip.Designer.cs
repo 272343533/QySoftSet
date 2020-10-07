@@ -22,17 +22,16 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("szEIPAppModel", "FK_bntask_audit_bntask", "bntask", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Dao.QyBllApp.bntask), "bntask_audit", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dao.QyBllApp.bntask_audit), true)]
 [assembly: EdmRelationshipAttribute("szEIPAppModel", "FK_bntask_notice_list_task", "bntask", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Dao.QyBllApp.bntask), "bntask_notice_list", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dao.QyBllApp.bntask_notice_list), true)]
 [assembly: EdmRelationshipAttribute("szEIPAppModel", "FK_bntask_uppics_bntask", "bntask", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Dao.QyBllApp.bntask), "bntask_upfiles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dao.QyBllApp.bntask_upfiles), true)]
-[assembly: EdmRelationshipAttribute("szEIPAppModel", "FK_bntask_audit_bsLtdInfo", "bsLtdInfo", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Dao.QyBllApp.bsLtdInfo), "bntask_audit", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dao.QyBllApp.bntask_audit), true)]
-[assembly: EdmRelationshipAttribute("szEIPAppModel", "FK_bntask_notice_list_bsLtdInfo", "bsLtdInfo", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Dao.QyBllApp.bsLtdInfo), "bntask_notice_list", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dao.QyBllApp.bntask_notice_list), true)]
+[assembly: EdmRelationshipAttribute("szEIPAppModel", "FK_bntask_audit_bsLtdInfo", "tA1企业基本信息表", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Dao.QyBllApp.tA1企业基本信息表), "bntask_audit", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dao.QyBllApp.bntask_audit), true)]
+[assembly: EdmRelationshipAttribute("szEIPAppModel", "FK_bntask_notice_list_bsLtdInfo", "tA1企业基本信息表", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Dao.QyBllApp.tA1企业基本信息表), "bntask_notice_list", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dao.QyBllApp.bntask_notice_list), true)]
 [assembly: EdmRelationshipAttribute("szEIPAppModel", "FK_bsaddress_list_bsaddress_group", "bsaddress_group", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Dao.QyBllApp.bsaddress_group), "bsaddress_list", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dao.QyBllApp.bsaddress_list), true)]
 [assembly: EdmRelationshipAttribute("szEIPAppModel", "FK_bsbbs_reply_bsbbs", "bscomment", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Dao.QyBllApp.bscomment), "bscomment_reply", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dao.QyBllApp.bscomment_reply), true)]
 [assembly: EdmRelationshipAttribute("szEIPAppModel", "FK_bsltd_base_audit_bsLtdInfo", "bsLtdInfo", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Dao.QyBllApp.bsLtdInfo), "bsltd_base_audit", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dao.QyBllApp.bsltd_base_audit), true)]
-[assembly: EdmRelationshipAttribute("szEIPAppModel", "FK_bsLtd_Base_fill_bsLtdinfo", "bsLtdInfo", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Dao.QyBllApp.bsLtdInfo), "bsLtd_Base_fill", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dao.QyBllApp.bsLtd_Base_fill), true)]
-[assembly: EdmRelationshipAttribute("szEIPAppModel", "FK_bsLtd_cred_phonto_bsLtd_cred_phonto", "bsLtdInfo", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Dao.QyBllApp.bsLtdInfo), "bsLtd_cred_photo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dao.QyBllApp.bsLtd_cred_photo), true)]
-[assembly: EdmRelationshipAttribute("szEIPAppModel", "FK_bsLtd_pjdj_bsLtdInfo", "bsLtdInfo", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Dao.QyBllApp.bsLtdInfo), "bsLtd_eval_rank", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dao.QyBllApp.bsLtd_eval_rank), true)]
+[assembly: EdmRelationshipAttribute("szEIPAppModel", "FK_bsLtd_Base_fill_bsLtdinfo", "tA1企业基本信息表", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Dao.QyBllApp.tA1企业基本信息表), "bsLtd_Base_fill", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dao.QyBllApp.bsLtd_Base_fill), true)]
+[assembly: EdmRelationshipAttribute("szEIPAppModel", "FK_bsLtd_cred_phonto_bsLtd_cred_phonto", "tA1企业基本信息表", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Dao.QyBllApp.tA1企业基本信息表), "bsLtd_cred_photo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dao.QyBllApp.bsLtd_cred_photo), true)]
+[assembly: EdmRelationshipAttribute("szEIPAppModel", "FK_bsLtd_pjdj_tA1", "tA1企业基本信息表", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Dao.QyBllApp.tA1企业基本信息表), "bsLtd_eval_rank", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dao.QyBllApp.bsLtd_eval_rank), true)]
 [assembly: EdmRelationshipAttribute("szEIPAppModel", "FK_bsLtd_eval_upinfo_bsLtdInfo", "bsLtdInfo", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Dao.QyBllApp.bsLtdInfo), "bsLtd_eval_upinfo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dao.QyBllApp.bsLtd_eval_upinfo), true)]
 [assembly: EdmRelationshipAttribute("szEIPAppModel", "FK_bsltd_eval_upinfoDetail_bsLtdInfo", "bsLtdInfo", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Dao.QyBllApp.bsLtdInfo), "bsltd_eval_upinfoDetail", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dao.QyBllApp.bsltd_eval_upinfoDetail), true)]
-[assembly: EdmRelationshipAttribute("szEIPAppModel", "FK_bsltd_legan_person_landdetail_bsltd_legal_person_land", "bsltd_legal_person_land", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Dao.QyBllApp.bsltd_legal_person_land), "bsltd_legan_person_landdetail", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Dao.QyBllApp.bsltd_legan_person_landdetail), true)]
 
 #endregion
 
@@ -163,6 +162,22 @@ namespace Dao.QyBllApp
             }
         }
         private ObjectSet<bnannounce> _bnannounce;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<bnbaseInfo_audit> bnbaseInfo_audit
+        {
+            get
+            {
+                if ((_bnbaseInfo_audit == null))
+                {
+                    _bnbaseInfo_audit = base.CreateObjectSet<bnbaseInfo_audit>("bnbaseInfo_audit");
+                }
+                return _bnbaseInfo_audit;
+            }
+        }
+        private ObjectSet<bnbaseInfo_audit> _bnbaseInfo_audit;
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -455,38 +470,6 @@ namespace Dao.QyBllApp
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        public ObjectSet<bsltd_legal_person_land> bsltd_legal_person_land
-        {
-            get
-            {
-                if ((_bsltd_legal_person_land == null))
-                {
-                    _bsltd_legal_person_land = base.CreateObjectSet<bsltd_legal_person_land>("bsltd_legal_person_land");
-                }
-                return _bsltd_legal_person_land;
-            }
-        }
-        private ObjectSet<bsltd_legal_person_land> _bsltd_legal_person_land;
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        public ObjectSet<bsltd_legan_person_landdetail> bsltd_legan_person_landdetail
-        {
-            get
-            {
-                if ((_bsltd_legan_person_landdetail == null))
-                {
-                    _bsltd_legan_person_landdetail = base.CreateObjectSet<bsltd_legan_person_landdetail>("bsltd_legan_person_landdetail");
-                }
-                return _bsltd_legan_person_landdetail;
-            }
-        }
-        private ObjectSet<bsltd_legan_person_landdetail> _bsltd_legan_person_landdetail;
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
         public ObjectSet<bsltd_not_up_list> bsltd_not_up_list
         {
             get
@@ -547,6 +530,22 @@ namespace Dao.QyBllApp
             }
         }
         private ObjectSet<bsLtdIntroduce> _bsLtdIntroduce;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<bsquery_diy> bsquery_diy
+        {
+            get
+            {
+                if ((_bsquery_diy == null))
+                {
+                    _bsquery_diy = base.CreateObjectSet<bsquery_diy>("bsquery_diy");
+                }
+                return _bsquery_diy;
+            }
+        }
+        private ObjectSet<bsquery_diy> _bsquery_diy;
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -1319,6 +1318,166 @@ namespace Dao.QyBllApp
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
+        public ObjectSet<vw_bsltd_legal_person_land> vw_bsltd_legal_person_land
+        {
+            get
+            {
+                if ((_vw_bsltd_legal_person_land == null))
+                {
+                    _vw_bsltd_legal_person_land = base.CreateObjectSet<vw_bsltd_legal_person_land>("vw_bsltd_legal_person_land");
+                }
+                return _vw_bsltd_legal_person_land;
+            }
+        }
+        private ObjectSet<vw_bsltd_legal_person_land> _vw_bsltd_legal_person_land;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<vw_bsltd_legan_person_landdetail> vw_bsltd_legan_person_landdetail
+        {
+            get
+            {
+                if ((_vw_bsltd_legan_person_landdetail == null))
+                {
+                    _vw_bsltd_legan_person_landdetail = base.CreateObjectSet<vw_bsltd_legan_person_landdetail>("vw_bsltd_legan_person_landdetail");
+                }
+                return _vw_bsltd_legan_person_landdetail;
+            }
+        }
+        private ObjectSet<vw_bsltd_legan_person_landdetail> _vw_bsltd_legan_person_landdetail;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<vw_bsltd_not_up_list> vw_bsltd_not_up_list
+        {
+            get
+            {
+                if ((_vw_bsltd_not_up_list == null))
+                {
+                    _vw_bsltd_not_up_list = base.CreateObjectSet<vw_bsltd_not_up_list>("vw_bsltd_not_up_list");
+                }
+                return _vw_bsltd_not_up_list;
+            }
+        }
+        private ObjectSet<vw_bsltd_not_up_list> _vw_bsltd_not_up_list;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<vw_dk_eval_Owner> vw_dk_eval_Owner
+        {
+            get
+            {
+                if ((_vw_dk_eval_Owner == null))
+                {
+                    _vw_dk_eval_Owner = base.CreateObjectSet<vw_dk_eval_Owner>("vw_dk_eval_Owner");
+                }
+                return _vw_dk_eval_Owner;
+            }
+        }
+        private ObjectSet<vw_dk_eval_Owner> _vw_dk_eval_Owner;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<vw_dk_eval_Rent> vw_dk_eval_Rent
+        {
+            get
+            {
+                if ((_vw_dk_eval_Rent == null))
+                {
+                    _vw_dk_eval_Rent = base.CreateObjectSet<vw_dk_eval_Rent>("vw_dk_eval_Rent");
+                }
+                return _vw_dk_eval_Rent;
+            }
+        }
+        private ObjectSet<vw_dk_eval_Rent> _vw_dk_eval_Rent;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<vw_dk_eval_total> vw_dk_eval_total
+        {
+            get
+            {
+                if ((_vw_dk_eval_total == null))
+                {
+                    _vw_dk_eval_total = base.CreateObjectSet<vw_dk_eval_total>("vw_dk_eval_total");
+                }
+                return _vw_dk_eval_total;
+            }
+        }
+        private ObjectSet<vw_dk_eval_total> _vw_dk_eval_total;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<vw_ltd_up_eval_info> vw_ltd_up_eval_info
+        {
+            get
+            {
+                if ((_vw_ltd_up_eval_info == null))
+                {
+                    _vw_ltd_up_eval_info = base.CreateObjectSet<vw_ltd_up_eval_info>("vw_ltd_up_eval_info");
+                }
+                return _vw_ltd_up_eval_info;
+            }
+        }
+        private ObjectSet<vw_ltd_up_eval_info> _vw_ltd_up_eval_info;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<vw_ltd_up_eval_info_detail> vw_ltd_up_eval_info_detail
+        {
+            get
+            {
+                if ((_vw_ltd_up_eval_info_detail == null))
+                {
+                    _vw_ltd_up_eval_info_detail = base.CreateObjectSet<vw_ltd_up_eval_info_detail>("vw_ltd_up_eval_info_detail");
+                }
+                return _vw_ltd_up_eval_info_detail;
+            }
+        }
+        private ObjectSet<vw_ltd_up_eval_info_detail> _vw_ltd_up_eval_info_detail;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<vwdiyQuery_Owner> vwdiyQuery_Owner
+        {
+            get
+            {
+                if ((_vwdiyQuery_Owner == null))
+                {
+                    _vwdiyQuery_Owner = base.CreateObjectSet<vwdiyQuery_Owner>("vwdiyQuery_Owner");
+                }
+                return _vwdiyQuery_Owner;
+            }
+        }
+        private ObjectSet<vwdiyQuery_Owner> _vwdiyQuery_Owner;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<vwdiyQuery_rent> vwdiyQuery_rent
+        {
+            get
+            {
+                if ((_vwdiyQuery_rent == null))
+                {
+                    _vwdiyQuery_rent = base.CreateObjectSet<vwdiyQuery_rent>("vwdiyQuery_rent");
+                }
+                return _vwdiyQuery_rent;
+            }
+        }
+        private ObjectSet<vwdiyQuery_rent> _vwdiyQuery_rent;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
         public ObjectSet<vwLtdJcSj> vwLtdJcSj
         {
             get
@@ -1473,6 +1632,14 @@ namespace Dao.QyBllApp
         }
     
         /// <summary>
+        /// 用于向 bnbaseInfo_audit EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddTobnbaseInfo_audit(bnbaseInfo_audit bnbaseInfo_audit)
+        {
+            base.AddObject("bnbaseInfo_audit", bnbaseInfo_audit);
+        }
+    
+        /// <summary>
         /// 用于向 bntask EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
         /// </summary>
         public void AddTobntask(bntask bntask)
@@ -1617,22 +1784,6 @@ namespace Dao.QyBllApp
         }
     
         /// <summary>
-        /// 用于向 bsltd_legal_person_land EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
-        /// </summary>
-        public void AddTobsltd_legal_person_land(bsltd_legal_person_land bsltd_legal_person_land)
-        {
-            base.AddObject("bsltd_legal_person_land", bsltd_legal_person_land);
-        }
-    
-        /// <summary>
-        /// 用于向 bsltd_legan_person_landdetail EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
-        /// </summary>
-        public void AddTobsltd_legan_person_landdetail(bsltd_legan_person_landdetail bsltd_legan_person_landdetail)
-        {
-            base.AddObject("bsltd_legan_person_landdetail", bsltd_legan_person_landdetail);
-        }
-    
-        /// <summary>
         /// 用于向 bsltd_not_up_list EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
         /// </summary>
         public void AddTobsltd_not_up_list(bsltd_not_up_list bsltd_not_up_list)
@@ -1662,6 +1813,14 @@ namespace Dao.QyBllApp
         public void AddTobsLtdIntroduce(bsLtdIntroduce bsLtdIntroduce)
         {
             base.AddObject("bsLtdIntroduce", bsLtdIntroduce);
+        }
+    
+        /// <summary>
+        /// 用于向 bsquery_diy EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddTobsquery_diy(bsquery_diy bsquery_diy)
+        {
+            base.AddObject("bsquery_diy", bsquery_diy);
         }
     
         /// <summary>
@@ -2046,6 +2205,86 @@ namespace Dao.QyBllApp
         public void AddTo企业范围(企业范围 企业范围)
         {
             base.AddObject("企业范围", 企业范围);
+        }
+    
+        /// <summary>
+        /// 用于向 vw_bsltd_legal_person_land EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddTovw_bsltd_legal_person_land(vw_bsltd_legal_person_land vw_bsltd_legal_person_land)
+        {
+            base.AddObject("vw_bsltd_legal_person_land", vw_bsltd_legal_person_land);
+        }
+    
+        /// <summary>
+        /// 用于向 vw_bsltd_legan_person_landdetail EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddTovw_bsltd_legan_person_landdetail(vw_bsltd_legan_person_landdetail vw_bsltd_legan_person_landdetail)
+        {
+            base.AddObject("vw_bsltd_legan_person_landdetail", vw_bsltd_legan_person_landdetail);
+        }
+    
+        /// <summary>
+        /// 用于向 vw_bsltd_not_up_list EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddTovw_bsltd_not_up_list(vw_bsltd_not_up_list vw_bsltd_not_up_list)
+        {
+            base.AddObject("vw_bsltd_not_up_list", vw_bsltd_not_up_list);
+        }
+    
+        /// <summary>
+        /// 用于向 vw_dk_eval_Owner EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddTovw_dk_eval_Owner(vw_dk_eval_Owner vw_dk_eval_Owner)
+        {
+            base.AddObject("vw_dk_eval_Owner", vw_dk_eval_Owner);
+        }
+    
+        /// <summary>
+        /// 用于向 vw_dk_eval_Rent EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddTovw_dk_eval_Rent(vw_dk_eval_Rent vw_dk_eval_Rent)
+        {
+            base.AddObject("vw_dk_eval_Rent", vw_dk_eval_Rent);
+        }
+    
+        /// <summary>
+        /// 用于向 vw_dk_eval_total EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddTovw_dk_eval_total(vw_dk_eval_total vw_dk_eval_total)
+        {
+            base.AddObject("vw_dk_eval_total", vw_dk_eval_total);
+        }
+    
+        /// <summary>
+        /// 用于向 vw_ltd_up_eval_info EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddTovw_ltd_up_eval_info(vw_ltd_up_eval_info vw_ltd_up_eval_info)
+        {
+            base.AddObject("vw_ltd_up_eval_info", vw_ltd_up_eval_info);
+        }
+    
+        /// <summary>
+        /// 用于向 vw_ltd_up_eval_info_detail EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddTovw_ltd_up_eval_info_detail(vw_ltd_up_eval_info_detail vw_ltd_up_eval_info_detail)
+        {
+            base.AddObject("vw_ltd_up_eval_info_detail", vw_ltd_up_eval_info_detail);
+        }
+    
+        /// <summary>
+        /// 用于向 vwdiyQuery_Owner EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddTovwdiyQuery_Owner(vwdiyQuery_Owner vwdiyQuery_Owner)
+        {
+            base.AddObject("vwdiyQuery_Owner", vwdiyQuery_Owner);
+        }
+    
+        /// <summary>
+        /// 用于向 vwdiyQuery_rent EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddTovwdiyQuery_rent(vwdiyQuery_rent vwdiyQuery_rent)
+        {
+            base.AddObject("vwdiyQuery_rent", vwdiyQuery_rent);
         }
     
         /// <summary>
@@ -3097,6 +3336,286 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="szEIPAppModel", Name="bnbaseInfo_audit")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class bnbaseInfo_audit : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 bnbaseInfo_audit 对象。
+        /// </summary>
+        /// <param name="id">Id 属性的初始值。</param>
+        /// <param name="year">year 属性的初始值。</param>
+        /// <param name="audit_result">audit_result 属性的初始值。</param>
+        /// <param name="auditor">auditor 属性的初始值。</param>
+        /// <param name="audit_dt">audit_dt 属性的初始值。</param>
+        public static bnbaseInfo_audit CreatebnbaseInfo_audit(global::System.Int32 id, global::System.Int32 year, global::System.String audit_result, global::System.String auditor, global::System.DateTime audit_dt)
+        {
+            bnbaseInfo_audit bnbaseInfo_audit = new bnbaseInfo_audit();
+            bnbaseInfo_audit.Id = id;
+            bnbaseInfo_audit.year = year;
+            bnbaseInfo_audit.audit_result = audit_result;
+            bnbaseInfo_audit.auditor = auditor;
+            bnbaseInfo_audit.audit_dt = audit_dt;
+            return bnbaseInfo_audit;
+        }
+
+        #endregion
+
+        #region 简单属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value, "Id");
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 year
+        {
+            get
+            {
+                return _year;
+            }
+            set
+            {
+                OnyearChanging(value);
+                ReportPropertyChanging("year");
+                _year = StructuralObject.SetValidValue(value, "year");
+                ReportPropertyChanged("year");
+                OnyearChanged();
+            }
+        }
+        private global::System.Int32 _year;
+        partial void OnyearChanging(global::System.Int32 value);
+        partial void OnyearChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ltd_Id
+        {
+            get
+            {
+                return _ltd_Id;
+            }
+            set
+            {
+                Onltd_IdChanging(value);
+                ReportPropertyChanging("ltd_Id");
+                _ltd_Id = StructuralObject.SetValidValue(value, "ltd_Id");
+                ReportPropertyChanged("ltd_Id");
+                Onltd_IdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ltd_Id;
+        partial void Onltd_IdChanging(Nullable<global::System.Int32> value);
+        partial void Onltd_IdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ltd_name
+        {
+            get
+            {
+                return _ltd_name;
+            }
+            set
+            {
+                Onltd_nameChanging(value);
+                ReportPropertyChanging("ltd_name");
+                _ltd_name = StructuralObject.SetValidValue(value, true, "ltd_name");
+                ReportPropertyChanged("ltd_name");
+                Onltd_nameChanged();
+            }
+        }
+        private global::System.String _ltd_name;
+        partial void Onltd_nameChanging(global::System.String value);
+        partial void Onltd_nameChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String audit_result
+        {
+            get
+            {
+                return _audit_result;
+            }
+            set
+            {
+                Onaudit_resultChanging(value);
+                ReportPropertyChanging("audit_result");
+                _audit_result = StructuralObject.SetValidValue(value, false, "audit_result");
+                ReportPropertyChanged("audit_result");
+                Onaudit_resultChanged();
+            }
+        }
+        private global::System.String _audit_result;
+        partial void Onaudit_resultChanging(global::System.String value);
+        partial void Onaudit_resultChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String audit_desp
+        {
+            get
+            {
+                return _audit_desp;
+            }
+            set
+            {
+                Onaudit_despChanging(value);
+                ReportPropertyChanging("audit_desp");
+                _audit_desp = StructuralObject.SetValidValue(value, true, "audit_desp");
+                ReportPropertyChanged("audit_desp");
+                Onaudit_despChanged();
+            }
+        }
+        private global::System.String _audit_desp;
+        partial void Onaudit_despChanging(global::System.String value);
+        partial void Onaudit_despChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Guid> audit_bsO_Id
+        {
+            get
+            {
+                return _audit_bsO_Id;
+            }
+            set
+            {
+                Onaudit_bsO_IdChanging(value);
+                ReportPropertyChanging("audit_bsO_Id");
+                _audit_bsO_Id = StructuralObject.SetValidValue(value, "audit_bsO_Id");
+                ReportPropertyChanged("audit_bsO_Id");
+                Onaudit_bsO_IdChanged();
+            }
+        }
+        private Nullable<global::System.Guid> _audit_bsO_Id;
+        partial void Onaudit_bsO_IdChanging(Nullable<global::System.Guid> value);
+        partial void Onaudit_bsO_IdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String audit_bsO_Name
+        {
+            get
+            {
+                return _audit_bsO_Name;
+            }
+            set
+            {
+                Onaudit_bsO_NameChanging(value);
+                ReportPropertyChanging("audit_bsO_Name");
+                _audit_bsO_Name = StructuralObject.SetValidValue(value, true, "audit_bsO_Name");
+                ReportPropertyChanged("audit_bsO_Name");
+                Onaudit_bsO_NameChanged();
+            }
+        }
+        private global::System.String _audit_bsO_Name;
+        partial void Onaudit_bsO_NameChanging(global::System.String value);
+        partial void Onaudit_bsO_NameChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String auditor
+        {
+            get
+            {
+                return _auditor;
+            }
+            set
+            {
+                OnauditorChanging(value);
+                ReportPropertyChanging("auditor");
+                _auditor = StructuralObject.SetValidValue(value, false, "auditor");
+                ReportPropertyChanged("auditor");
+                OnauditorChanged();
+            }
+        }
+        private global::System.String _auditor;
+        partial void OnauditorChanging(global::System.String value);
+        partial void OnauditorChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime audit_dt
+        {
+            get
+            {
+                return _audit_dt;
+            }
+            set
+            {
+                Onaudit_dtChanging(value);
+                ReportPropertyChanging("audit_dt");
+                _audit_dt = StructuralObject.SetValidValue(value, "audit_dt");
+                ReportPropertyChanged("audit_dt");
+                Onaudit_dtChanged();
+            }
+        }
+        private global::System.DateTime _audit_dt;
+        partial void Onaudit_dtChanging(global::System.DateTime value);
+        partial void Onaudit_dtChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="szEIPAppModel", Name="bntask")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -3858,16 +4377,16 @@ namespace Dao.QyBllApp
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("szEIPAppModel", "FK_bntask_audit_bsLtdInfo", "bsLtdInfo")]
-        public bsLtdInfo bsLtdInfo
+        [EdmRelationshipNavigationPropertyAttribute("szEIPAppModel", "FK_bntask_audit_bsLtdInfo", "tA1企业基本信息表")]
+        public tA1企业基本信息表 tA1企业基本信息表
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<bsLtdInfo>("szEIPAppModel.FK_bntask_audit_bsLtdInfo", "bsLtdInfo").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tA1企业基本信息表>("szEIPAppModel.FK_bntask_audit_bsLtdInfo", "tA1企业基本信息表").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<bsLtdInfo>("szEIPAppModel.FK_bntask_audit_bsLtdInfo", "bsLtdInfo").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tA1企业基本信息表>("szEIPAppModel.FK_bntask_audit_bsLtdInfo", "tA1企业基本信息表").Value = value;
             }
         }
         /// <summary>
@@ -3875,17 +4394,17 @@ namespace Dao.QyBllApp
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<bsLtdInfo> bsLtdInfoReference
+        public EntityReference<tA1企业基本信息表> tA1企业基本信息表Reference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<bsLtdInfo>("szEIPAppModel.FK_bntask_audit_bsLtdInfo", "bsLtdInfo");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tA1企业基本信息表>("szEIPAppModel.FK_bntask_audit_bsLtdInfo", "tA1企业基本信息表");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<bsLtdInfo>("szEIPAppModel.FK_bntask_audit_bsLtdInfo", "bsLtdInfo", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<tA1企业基本信息表>("szEIPAppModel.FK_bntask_audit_bsLtdInfo", "tA1企业基本信息表", value);
                 }
             }
         }
@@ -4161,6 +4680,54 @@ namespace Dao.QyBllApp
         private global::System.String _task_name;
         partial void Ontask_nameChanging(global::System.String value);
         partial void Ontask_nameChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> publish_dt
+        {
+            get
+            {
+                return _publish_dt;
+            }
+            set
+            {
+                Onpublish_dtChanging(value);
+                ReportPropertyChanging("publish_dt");
+                _publish_dt = StructuralObject.SetValidValue(value, "publish_dt");
+                ReportPropertyChanged("publish_dt");
+                Onpublish_dtChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _publish_dt;
+        partial void Onpublish_dtChanging(Nullable<global::System.DateTime> value);
+        partial void Onpublish_dtChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String publisher
+        {
+            get
+            {
+                return _publisher;
+            }
+            set
+            {
+                OnpublisherChanging(value);
+                ReportPropertyChanging("publisher");
+                _publisher = StructuralObject.SetValidValue(value, true, "publisher");
+                ReportPropertyChanged("publisher");
+                OnpublisherChanged();
+            }
+        }
+        private global::System.String _publisher;
+        partial void OnpublisherChanging(global::System.String value);
+        partial void OnpublisherChanged();
 
         #endregion
 
@@ -4210,16 +4777,16 @@ namespace Dao.QyBllApp
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("szEIPAppModel", "FK_bntask_notice_list_bsLtdInfo", "bsLtdInfo")]
-        public bsLtdInfo bsLtdInfo
+        [EdmRelationshipNavigationPropertyAttribute("szEIPAppModel", "FK_bntask_notice_list_bsLtdInfo", "tA1企业基本信息表")]
+        public tA1企业基本信息表 tA1企业基本信息表
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<bsLtdInfo>("szEIPAppModel.FK_bntask_notice_list_bsLtdInfo", "bsLtdInfo").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tA1企业基本信息表>("szEIPAppModel.FK_bntask_notice_list_bsLtdInfo", "tA1企业基本信息表").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<bsLtdInfo>("szEIPAppModel.FK_bntask_notice_list_bsLtdInfo", "bsLtdInfo").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tA1企业基本信息表>("szEIPAppModel.FK_bntask_notice_list_bsLtdInfo", "tA1企业基本信息表").Value = value;
             }
         }
         /// <summary>
@@ -4227,17 +4794,17 @@ namespace Dao.QyBllApp
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<bsLtdInfo> bsLtdInfoReference
+        public EntityReference<tA1企业基本信息表> tA1企业基本信息表Reference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<bsLtdInfo>("szEIPAppModel.FK_bntask_notice_list_bsLtdInfo", "bsLtdInfo");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tA1企业基本信息表>("szEIPAppModel.FK_bntask_notice_list_bsLtdInfo", "tA1企业基本信息表");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<bsLtdInfo>("szEIPAppModel.FK_bntask_notice_list_bsLtdInfo", "bsLtdInfo", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<tA1企业基本信息表>("szEIPAppModel.FK_bntask_notice_list_bsLtdInfo", "tA1企业基本信息表", value);
                 }
             }
         }
@@ -7081,24 +7648,48 @@ namespace Dao.QyBllApp
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> ltd_id
+        public Nullable<global::System.Int32> fill_year
         {
             get
             {
-                return _ltd_id;
+                return _fill_year;
             }
             set
             {
-                Onltd_idChanging(value);
-                ReportPropertyChanging("ltd_id");
-                _ltd_id = StructuralObject.SetValidValue(value, "ltd_id");
-                ReportPropertyChanged("ltd_id");
-                Onltd_idChanged();
+                Onfill_yearChanging(value);
+                ReportPropertyChanging("fill_year");
+                _fill_year = StructuralObject.SetValidValue(value, "fill_year");
+                ReportPropertyChanged("fill_year");
+                Onfill_yearChanged();
             }
         }
-        private Nullable<global::System.Int32> _ltd_id;
-        partial void Onltd_idChanging(Nullable<global::System.Int32> value);
-        partial void Onltd_idChanged();
+        private Nullable<global::System.Int32> _fill_year;
+        partial void Onfill_yearChanging(Nullable<global::System.Int32> value);
+        partial void Onfill_yearChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> tA1Id
+        {
+            get
+            {
+                return _tA1Id;
+            }
+            set
+            {
+                OntA1IdChanging(value);
+                ReportPropertyChanging("tA1Id");
+                _tA1Id = StructuralObject.SetValidValue(value, "tA1Id");
+                ReportPropertyChanged("tA1Id");
+                OntA1IdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _tA1Id;
+        partial void OntA1IdChanging(Nullable<global::System.Int32> value);
+        partial void OntA1IdChanged();
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -7273,6 +7864,30 @@ namespace Dao.QyBllApp
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
+        public global::System.String jyxx_input
+        {
+            get
+            {
+                return _jyxx_input;
+            }
+            set
+            {
+                Onjyxx_inputChanging(value);
+                ReportPropertyChanging("jyxx_input");
+                _jyxx_input = StructuralObject.SetValidValue(value, true, "jyxx_input");
+                ReportPropertyChanged("jyxx_input");
+                Onjyxx_inputChanged();
+            }
+        }
+        private global::System.String _jyxx_input;
+        partial void Onjyxx_inputChanging(global::System.String value);
+        partial void Onjyxx_inputChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
         public global::System.String is_up_yyzz
         {
             get
@@ -7363,6 +7978,30 @@ namespace Dao.QyBllApp
         private global::System.String _is_up_other;
         partial void Onis_up_otherChanging(global::System.String value);
         partial void Onis_up_otherChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String audit_status
+        {
+            get
+            {
+                return _audit_status;
+            }
+            set
+            {
+                Onaudit_statusChanging(value);
+                ReportPropertyChanging("audit_status");
+                _audit_status = StructuralObject.SetValidValue(value, true, "audit_status");
+                ReportPropertyChanged("audit_status");
+                Onaudit_statusChanged();
+            }
+        }
+        private global::System.String _audit_status;
+        partial void Onaudit_statusChanging(global::System.String value);
+        partial void Onaudit_statusChanged();
 
         #endregion
 
@@ -7374,16 +8013,16 @@ namespace Dao.QyBllApp
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("szEIPAppModel", "FK_bsLtd_Base_fill_bsLtdinfo", "bsLtdInfo")]
-        public bsLtdInfo bsLtdInfo
+        [EdmRelationshipNavigationPropertyAttribute("szEIPAppModel", "FK_bsLtd_Base_fill_bsLtdinfo", "tA1企业基本信息表")]
+        public tA1企业基本信息表 tA1企业基本信息表
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<bsLtdInfo>("szEIPAppModel.FK_bsLtd_Base_fill_bsLtdinfo", "bsLtdInfo").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tA1企业基本信息表>("szEIPAppModel.FK_bsLtd_Base_fill_bsLtdinfo", "tA1企业基本信息表").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<bsLtdInfo>("szEIPAppModel.FK_bsLtd_Base_fill_bsLtdinfo", "bsLtdInfo").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tA1企业基本信息表>("szEIPAppModel.FK_bsLtd_Base_fill_bsLtdinfo", "tA1企业基本信息表").Value = value;
             }
         }
         /// <summary>
@@ -7391,17 +8030,17 @@ namespace Dao.QyBllApp
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<bsLtdInfo> bsLtdInfoReference
+        public EntityReference<tA1企业基本信息表> tA1企业基本信息表Reference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<bsLtdInfo>("szEIPAppModel.FK_bsLtd_Base_fill_bsLtdinfo", "bsLtdInfo");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tA1企业基本信息表>("szEIPAppModel.FK_bsLtd_Base_fill_bsLtdinfo", "tA1企业基本信息表");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<bsLtdInfo>("szEIPAppModel.FK_bsLtd_Base_fill_bsLtdinfo", "bsLtdInfo", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<tA1企业基本信息表>("szEIPAppModel.FK_bsLtd_Base_fill_bsLtdinfo", "tA1企业基本信息表", value);
                 }
             }
         }
@@ -7467,24 +8106,48 @@ namespace Dao.QyBllApp
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> ltd_Id
+        public Nullable<global::System.Int32> tA1Id
         {
             get
             {
-                return _ltd_Id;
+                return _tA1Id;
             }
             set
             {
-                Onltd_IdChanging(value);
-                ReportPropertyChanging("ltd_Id");
-                _ltd_Id = StructuralObject.SetValidValue(value, "ltd_Id");
-                ReportPropertyChanged("ltd_Id");
-                Onltd_IdChanged();
+                OntA1IdChanging(value);
+                ReportPropertyChanging("tA1Id");
+                _tA1Id = StructuralObject.SetValidValue(value, "tA1Id");
+                ReportPropertyChanged("tA1Id");
+                OntA1IdChanged();
             }
         }
-        private Nullable<global::System.Int32> _ltd_Id;
-        partial void Onltd_IdChanging(Nullable<global::System.Int32> value);
-        partial void Onltd_IdChanged();
+        private Nullable<global::System.Int32> _tA1Id;
+        partial void OntA1IdChanging(Nullable<global::System.Int32> value);
+        partial void OntA1IdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> up_year
+        {
+            get
+            {
+                return _up_year;
+            }
+            set
+            {
+                Onup_yearChanging(value);
+                ReportPropertyChanging("up_year");
+                _up_year = StructuralObject.SetValidValue(value, "up_year");
+                ReportPropertyChanged("up_year");
+                Onup_yearChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _up_year;
+        partial void Onup_yearChanging(Nullable<global::System.Int32> value);
+        partial void Onup_yearChanged();
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -7587,7 +8250,7 @@ namespace Dao.QyBllApp
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String up_dt
+        public Nullable<global::System.DateTime> up_dt
         {
             get
             {
@@ -7597,13 +8260,13 @@ namespace Dao.QyBllApp
             {
                 Onup_dtChanging(value);
                 ReportPropertyChanging("up_dt");
-                _up_dt = StructuralObject.SetValidValue(value, true, "up_dt");
+                _up_dt = StructuralObject.SetValidValue(value, "up_dt");
                 ReportPropertyChanged("up_dt");
                 Onup_dtChanged();
             }
         }
-        private global::System.String _up_dt;
-        partial void Onup_dtChanging(global::System.String value);
+        private Nullable<global::System.DateTime> _up_dt;
+        partial void Onup_dtChanging(Nullable<global::System.DateTime> value);
         partial void Onup_dtChanged();
     
         /// <summary>
@@ -7611,7 +8274,7 @@ namespace Dao.QyBllApp
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String file_size
+        public Nullable<global::System.Int32> file_size
         {
             get
             {
@@ -7621,14 +8284,38 @@ namespace Dao.QyBllApp
             {
                 Onfile_sizeChanging(value);
                 ReportPropertyChanging("file_size");
-                _file_size = StructuralObject.SetValidValue(value, true, "file_size");
+                _file_size = StructuralObject.SetValidValue(value, "file_size");
                 ReportPropertyChanged("file_size");
                 Onfile_sizeChanged();
             }
         }
-        private global::System.String _file_size;
-        partial void Onfile_sizeChanging(global::System.String value);
+        private Nullable<global::System.Int32> _file_size;
+        partial void Onfile_sizeChanging(Nullable<global::System.Int32> value);
         partial void Onfile_sizeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String file_path
+        {
+            get
+            {
+                return _file_path;
+            }
+            set
+            {
+                Onfile_pathChanging(value);
+                ReportPropertyChanging("file_path");
+                _file_path = StructuralObject.SetValidValue(value, true, "file_path");
+                ReportPropertyChanged("file_path");
+                Onfile_pathChanged();
+            }
+        }
+        private global::System.String _file_path;
+        partial void Onfile_pathChanging(global::System.String value);
+        partial void Onfile_pathChanged();
 
         #endregion
 
@@ -7640,16 +8327,16 @@ namespace Dao.QyBllApp
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("szEIPAppModel", "FK_bsLtd_cred_phonto_bsLtd_cred_phonto", "bsLtdInfo")]
-        public bsLtdInfo bsLtdInfo
+        [EdmRelationshipNavigationPropertyAttribute("szEIPAppModel", "FK_bsLtd_cred_phonto_bsLtd_cred_phonto", "tA1企业基本信息表")]
+        public tA1企业基本信息表 tA1企业基本信息表
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<bsLtdInfo>("szEIPAppModel.FK_bsLtd_cred_phonto_bsLtd_cred_phonto", "bsLtdInfo").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tA1企业基本信息表>("szEIPAppModel.FK_bsLtd_cred_phonto_bsLtd_cred_phonto", "tA1企业基本信息表").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<bsLtdInfo>("szEIPAppModel.FK_bsLtd_cred_phonto_bsLtd_cred_phonto", "bsLtdInfo").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tA1企业基本信息表>("szEIPAppModel.FK_bsLtd_cred_phonto_bsLtd_cred_phonto", "tA1企业基本信息表").Value = value;
             }
         }
         /// <summary>
@@ -7657,17 +8344,17 @@ namespace Dao.QyBllApp
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<bsLtdInfo> bsLtdInfoReference
+        public EntityReference<tA1企业基本信息表> tA1企业基本信息表Reference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<bsLtdInfo>("szEIPAppModel.FK_bsLtd_cred_phonto_bsLtd_cred_phonto", "bsLtdInfo");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tA1企业基本信息表>("szEIPAppModel.FK_bsLtd_cred_phonto_bsLtd_cred_phonto", "tA1企业基本信息表");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<bsLtdInfo>("szEIPAppModel.FK_bsLtd_cred_phonto_bsLtd_cred_phonto", "bsLtdInfo", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<tA1企业基本信息表>("szEIPAppModel.FK_bsLtd_cred_phonto_bsLtd_cred_phonto", "tA1企业基本信息表", value);
                 }
             }
         }
@@ -7895,6 +8582,30 @@ namespace Dao.QyBllApp
         private global::System.String _rank_pj;
         partial void Onrank_pjChanging(global::System.String value);
         partial void Onrank_pjChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String allContent
+        {
+            get
+            {
+                return _allContent;
+            }
+            set
+            {
+                OnallContentChanging(value);
+                ReportPropertyChanging("allContent");
+                _allContent = StructuralObject.SetValidValue(value, true, "allContent");
+                ReportPropertyChanged("allContent");
+                OnallContentChanged();
+            }
+        }
+        private global::System.String _allContent;
+        partial void OnallContentChanging(global::System.String value);
+        partial void OnallContentChanged();
 
         #endregion
 
@@ -7906,16 +8617,16 @@ namespace Dao.QyBllApp
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("szEIPAppModel", "FK_bsLtd_pjdj_bsLtdInfo", "bsLtdInfo")]
-        public bsLtdInfo bsLtdInfo
+        [EdmRelationshipNavigationPropertyAttribute("szEIPAppModel", "FK_bsLtd_pjdj_tA1", "tA1企业基本信息表")]
+        public tA1企业基本信息表 tA1企业基本信息表
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<bsLtdInfo>("szEIPAppModel.FK_bsLtd_pjdj_bsLtdInfo", "bsLtdInfo").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tA1企业基本信息表>("szEIPAppModel.FK_bsLtd_pjdj_tA1", "tA1企业基本信息表").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<bsLtdInfo>("szEIPAppModel.FK_bsLtd_pjdj_bsLtdInfo", "bsLtdInfo").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tA1企业基本信息表>("szEIPAppModel.FK_bsLtd_pjdj_tA1", "tA1企业基本信息表").Value = value;
             }
         }
         /// <summary>
@@ -7923,17 +8634,17 @@ namespace Dao.QyBllApp
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<bsLtdInfo> bsLtdInfoReference
+        public EntityReference<tA1企业基本信息表> tA1企业基本信息表Reference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<bsLtdInfo>("szEIPAppModel.FK_bsLtd_pjdj_bsLtdInfo", "bsLtdInfo");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tA1企业基本信息表>("szEIPAppModel.FK_bsLtd_pjdj_tA1", "tA1企业基本信息表");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<bsLtdInfo>("szEIPAppModel.FK_bsLtd_pjdj_bsLtdInfo", "bsLtdInfo", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<tA1企业基本信息表>("szEIPAppModel.FK_bsLtd_pjdj_tA1", "tA1企业基本信息表", value);
                 }
             }
         }
@@ -8789,402 +9500,6 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="szEIPAppModel", Name="bsltd_legal_person_land")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class bsltd_legal_person_land : EntityObject
-    {
-        #region 工厂方法
-    
-        /// <summary>
-        /// 创建新的 bsltd_legal_person_land 对象。
-        /// </summary>
-        /// <param name="id">Id 属性的初始值。</param>
-        public static bsltd_legal_person_land Createbsltd_legal_person_land(global::System.Int32 id)
-        {
-            bsltd_legal_person_land bsltd_legal_person_land = new bsltd_legal_person_land();
-            bsltd_legal_person_land.Id = id;
-            return bsltd_legal_person_land;
-        }
-
-        #endregion
-
-        #region 简单属性
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 Id
-        {
-            get
-            {
-                return _Id;
-            }
-            set
-            {
-                if (_Id != value)
-                {
-                    OnIdChanging(value);
-                    ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value, "Id");
-                    ReportPropertyChanged("Id");
-                    OnIdChanged();
-                }
-            }
-        }
-        private global::System.Int32 _Id;
-        partial void OnIdChanging(global::System.Int32 value);
-        partial void OnIdChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> year
-        {
-            get
-            {
-                return _year;
-            }
-            set
-            {
-                OnyearChanging(value);
-                ReportPropertyChanging("year");
-                _year = StructuralObject.SetValidValue(value, "year");
-                ReportPropertyChanged("year");
-                OnyearChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _year;
-        partial void OnyearChanging(Nullable<global::System.Int32> value);
-        partial void OnyearChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String legal_person_name
-        {
-            get
-            {
-                return _legal_person_name;
-            }
-            set
-            {
-                Onlegal_person_nameChanging(value);
-                ReportPropertyChanging("legal_person_name");
-                _legal_person_name = StructuralObject.SetValidValue(value, true, "legal_person_name");
-                ReportPropertyChanged("legal_person_name");
-                Onlegal_person_nameChanged();
-            }
-        }
-        private global::System.String _legal_person_name;
-        partial void Onlegal_person_nameChanging(global::System.String value);
-        partial void Onlegal_person_nameChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String legal_person_tel
-        {
-            get
-            {
-                return _legal_person_tel;
-            }
-            set
-            {
-                Onlegal_person_telChanging(value);
-                ReportPropertyChanging("legal_person_tel");
-                _legal_person_tel = StructuralObject.SetValidValue(value, true, "legal_person_tel");
-                ReportPropertyChanged("legal_person_tel");
-                Onlegal_person_telChanged();
-            }
-        }
-        private global::System.String _legal_person_tel;
-        partial void Onlegal_person_telChanging(global::System.String value);
-        partial void Onlegal_person_telChanged();
-
-        #endregion
-
-        #region 导航属性
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("szEIPAppModel", "FK_bsltd_legan_person_landdetail_bsltd_legal_person_land", "bsltd_legan_person_landdetail")]
-        public EntityCollection<bsltd_legan_person_landdetail> bsltd_legan_person_landdetail
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<bsltd_legan_person_landdetail>("szEIPAppModel.FK_bsltd_legan_person_landdetail_bsltd_legal_person_land", "bsltd_legan_person_landdetail");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<bsltd_legan_person_landdetail>("szEIPAppModel.FK_bsltd_legan_person_landdetail_bsltd_legal_person_land", "bsltd_legan_person_landdetail", value);
-                }
-            }
-        }
-
-        #endregion
-
-    }
-    
-    /// <summary>
-    /// 没有元数据文档可用。
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="szEIPAppModel", Name="bsltd_legan_person_landdetail")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class bsltd_legan_person_landdetail : EntityObject
-    {
-        #region 工厂方法
-    
-        /// <summary>
-        /// 创建新的 bsltd_legan_person_landdetail 对象。
-        /// </summary>
-        /// <param name="id">Id 属性的初始值。</param>
-        public static bsltd_legan_person_landdetail Createbsltd_legan_person_landdetail(global::System.Int32 id)
-        {
-            bsltd_legan_person_landdetail bsltd_legan_person_landdetail = new bsltd_legan_person_landdetail();
-            bsltd_legan_person_landdetail.Id = id;
-            return bsltd_legan_person_landdetail;
-        }
-
-        #endregion
-
-        #region 简单属性
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 Id
-        {
-            get
-            {
-                return _Id;
-            }
-            set
-            {
-                if (_Id != value)
-                {
-                    OnIdChanging(value);
-                    ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value, "Id");
-                    ReportPropertyChanged("Id");
-                    OnIdChanged();
-                }
-            }
-        }
-        private global::System.Int32 _Id;
-        partial void OnIdChanging(global::System.Int32 value);
-        partial void OnIdChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> legal_person_id
-        {
-            get
-            {
-                return _legal_person_id;
-            }
-            set
-            {
-                Onlegal_person_idChanging(value);
-                ReportPropertyChanging("legal_person_id");
-                _legal_person_id = StructuralObject.SetValidValue(value, "legal_person_id");
-                ReportPropertyChanged("legal_person_id");
-                Onlegal_person_idChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _legal_person_id;
-        partial void Onlegal_person_idChanging(Nullable<global::System.Int32> value);
-        partial void Onlegal_person_idChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ltd_name
-        {
-            get
-            {
-                return _ltd_name;
-            }
-            set
-            {
-                Onltd_nameChanging(value);
-                ReportPropertyChanging("ltd_name");
-                _ltd_name = StructuralObject.SetValidValue(value, true, "ltd_name");
-                ReportPropertyChanged("ltd_name");
-                Onltd_nameChanged();
-            }
-        }
-        private global::System.String _ltd_name;
-        partial void Onltd_nameChanging(global::System.String value);
-        partial void Onltd_nameChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String is_gy
-        {
-            get
-            {
-                return _is_gy;
-            }
-            set
-            {
-                Onis_gyChanging(value);
-                ReportPropertyChanging("is_gy");
-                _is_gy = StructuralObject.SetValidValue(value, true, "is_gy");
-                ReportPropertyChanged("is_gy");
-                Onis_gyChanged();
-            }
-        }
-        private global::System.String _is_gy;
-        partial void Onis_gyChanging(global::System.String value);
-        partial void Onis_gyChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ltd_tyxydm
-        {
-            get
-            {
-                return _ltd_tyxydm;
-            }
-            set
-            {
-                Onltd_tyxydmChanging(value);
-                ReportPropertyChanging("ltd_tyxydm");
-                _ltd_tyxydm = StructuralObject.SetValidValue(value, true, "ltd_tyxydm");
-                ReportPropertyChanged("ltd_tyxydm");
-                Onltd_tyxydmChanged();
-            }
-        }
-        private global::System.String _ltd_tyxydm;
-        partial void Onltd_tyxydmChanging(global::System.String value);
-        partial void Onltd_tyxydmChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ltd_rent_owner
-        {
-            get
-            {
-                return _ltd_rent_owner;
-            }
-            set
-            {
-                Onltd_rent_ownerChanging(value);
-                ReportPropertyChanging("ltd_rent_owner");
-                _ltd_rent_owner = StructuralObject.SetValidValue(value, true, "ltd_rent_owner");
-                ReportPropertyChanged("ltd_rent_owner");
-                Onltd_rent_ownerChanged();
-            }
-        }
-        private global::System.String _ltd_rent_owner;
-        partial void Onltd_rent_ownerChanging(global::System.String value);
-        partial void Onltd_rent_ownerChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Decimal> area_land
-        {
-            get
-            {
-                return _area_land;
-            }
-            set
-            {
-                Onarea_landChanging(value);
-                ReportPropertyChanging("area_land");
-                _area_land = StructuralObject.SetValidValue(value, "area_land");
-                ReportPropertyChanged("area_land");
-                Onarea_landChanged();
-            }
-        }
-        private Nullable<global::System.Decimal> _area_land;
-        partial void Onarea_landChanging(Nullable<global::System.Decimal> value);
-        partial void Onarea_landChanged();
-
-        #endregion
-
-        #region 导航属性
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("szEIPAppModel", "FK_bsltd_legan_person_landdetail_bsltd_legal_person_land", "bsltd_legal_person_land")]
-        public bsltd_legal_person_land bsltd_legal_person_land
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<bsltd_legal_person_land>("szEIPAppModel.FK_bsltd_legan_person_landdetail_bsltd_legal_person_land", "bsltd_legal_person_land").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<bsltd_legal_person_land>("szEIPAppModel.FK_bsltd_legan_person_landdetail_bsltd_legal_person_land", "bsltd_legal_person_land").Value = value;
-            }
-        }
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<bsltd_legal_person_land> bsltd_legal_person_landReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<bsltd_legal_person_land>("szEIPAppModel.FK_bsltd_legan_person_landdetail_bsltd_legal_person_land", "bsltd_legal_person_land");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<bsltd_legal_person_land>("szEIPAppModel.FK_bsltd_legan_person_landdetail_bsltd_legal_person_land", "bsltd_legal_person_land", value);
-                }
-            }
-        }
-
-        #endregion
-
-    }
-    
-    /// <summary>
-    /// 没有元数据文档可用。
-    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="szEIPAppModel", Name="bsltd_not_up_list")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -9637,6 +9952,30 @@ namespace Dao.QyBllApp
         private global::System.Int32 _Ltd_Id;
         partial void OnLtd_IdChanging(global::System.Int32 value);
         partial void OnLtd_IdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> year
+        {
+            get
+            {
+                return _year;
+            }
+            set
+            {
+                OnyearChanging(value);
+                ReportPropertyChanging("year");
+                _year = StructuralObject.SetValidValue(value, "year");
+                ReportPropertyChanged("year");
+                OnyearChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _year;
+        partial void OnyearChanging(Nullable<global::System.Int32> value);
+        partial void OnyearChanged();
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -10416,50 +10755,6 @@ namespace Dao.QyBllApp
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("szEIPAppModel", "FK_bntask_audit_bsLtdInfo", "bntask_audit")]
-        public EntityCollection<bntask_audit> bntask_audit
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<bntask_audit>("szEIPAppModel.FK_bntask_audit_bsLtdInfo", "bntask_audit");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<bntask_audit>("szEIPAppModel.FK_bntask_audit_bsLtdInfo", "bntask_audit", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("szEIPAppModel", "FK_bntask_notice_list_bsLtdInfo", "bntask_notice_list")]
-        public EntityCollection<bntask_notice_list> bntask_notice_list
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<bntask_notice_list>("szEIPAppModel.FK_bntask_notice_list_bsLtdInfo", "bntask_notice_list");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<bntask_notice_list>("szEIPAppModel.FK_bntask_notice_list_bsLtdInfo", "bntask_notice_list", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("szEIPAppModel", "FK_bsltd_base_audit_bsLtdInfo", "bsltd_base_audit")]
         public EntityCollection<bsltd_base_audit> bsltd_base_audit
         {
@@ -10472,72 +10767,6 @@ namespace Dao.QyBllApp
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<bsltd_base_audit>("szEIPAppModel.FK_bsltd_base_audit_bsLtdInfo", "bsltd_base_audit", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("szEIPAppModel", "FK_bsLtd_Base_fill_bsLtdinfo", "bsLtd_Base_fill")]
-        public EntityCollection<bsLtd_Base_fill> bsLtd_Base_fill
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<bsLtd_Base_fill>("szEIPAppModel.FK_bsLtd_Base_fill_bsLtdinfo", "bsLtd_Base_fill");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<bsLtd_Base_fill>("szEIPAppModel.FK_bsLtd_Base_fill_bsLtdinfo", "bsLtd_Base_fill", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("szEIPAppModel", "FK_bsLtd_cred_phonto_bsLtd_cred_phonto", "bsLtd_cred_photo")]
-        public EntityCollection<bsLtd_cred_photo> bsLtd_cred_photo
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<bsLtd_cred_photo>("szEIPAppModel.FK_bsLtd_cred_phonto_bsLtd_cred_phonto", "bsLtd_cred_photo");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<bsLtd_cred_photo>("szEIPAppModel.FK_bsLtd_cred_phonto_bsLtd_cred_phonto", "bsLtd_cred_photo", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("szEIPAppModel", "FK_bsLtd_pjdj_bsLtdInfo", "bsLtd_eval_rank")]
-        public EntityCollection<bsLtd_eval_rank> bsLtd_eval_rank
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<bsLtd_eval_rank>("szEIPAppModel.FK_bsLtd_pjdj_bsLtdInfo", "bsLtd_eval_rank");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<bsLtd_eval_rank>("szEIPAppModel.FK_bsLtd_pjdj_bsLtdInfo", "bsLtd_eval_rank", value);
                 }
             }
         }
@@ -10665,6 +10894,182 @@ namespace Dao.QyBllApp
         private global::System.String _LtDesp;
         partial void OnLtDespChanging(global::System.String value);
         partial void OnLtDespChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="szEIPAppModel", Name="bsquery_diy")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class bsquery_diy : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 bsquery_diy 对象。
+        /// </summary>
+        /// <param name="id">Id 属性的初始值。</param>
+        public static bsquery_diy Createbsquery_diy(global::System.Int32 id)
+        {
+            bsquery_diy bsquery_diy = new bsquery_diy();
+            bsquery_diy.Id = id;
+            return bsquery_diy;
+        }
+
+        #endregion
+
+        #region 简单属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value, "Id");
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Guid> bsU_Id
+        {
+            get
+            {
+                return _bsU_Id;
+            }
+            set
+            {
+                OnbsU_IdChanging(value);
+                ReportPropertyChanging("bsU_Id");
+                _bsU_Id = StructuralObject.SetValidValue(value, "bsU_Id");
+                ReportPropertyChanged("bsU_Id");
+                OnbsU_IdChanged();
+            }
+        }
+        private Nullable<global::System.Guid> _bsU_Id;
+        partial void OnbsU_IdChanging(Nullable<global::System.Guid> value);
+        partial void OnbsU_IdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String query_name
+        {
+            get
+            {
+                return _query_name;
+            }
+            set
+            {
+                Onquery_nameChanging(value);
+                ReportPropertyChanging("query_name");
+                _query_name = StructuralObject.SetValidValue(value, true, "query_name");
+                ReportPropertyChanged("query_name");
+                Onquery_nameChanged();
+            }
+        }
+        private global::System.String _query_name;
+        partial void Onquery_nameChanging(global::System.String value);
+        partial void Onquery_nameChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String owner_rent_type
+        {
+            get
+            {
+                return _owner_rent_type;
+            }
+            set
+            {
+                Onowner_rent_typeChanging(value);
+                ReportPropertyChanging("owner_rent_type");
+                _owner_rent_type = StructuralObject.SetValidValue(value, true, "owner_rent_type");
+                ReportPropertyChanged("owner_rent_type");
+                Onowner_rent_typeChanged();
+            }
+        }
+        private global::System.String _owner_rent_type;
+        partial void Onowner_rent_typeChanging(global::System.String value);
+        partial void Onowner_rent_typeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String query_condition_items
+        {
+            get
+            {
+                return _query_condition_items;
+            }
+            set
+            {
+                Onquery_condition_itemsChanging(value);
+                ReportPropertyChanging("query_condition_items");
+                _query_condition_items = StructuralObject.SetValidValue(value, true, "query_condition_items");
+                ReportPropertyChanged("query_condition_items");
+                Onquery_condition_itemsChanged();
+            }
+        }
+        private global::System.String _query_condition_items;
+        partial void Onquery_condition_itemsChanging(global::System.String value);
+        partial void Onquery_condition_itemsChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String query_items
+        {
+            get
+            {
+                return _query_items;
+            }
+            set
+            {
+                Onquery_itemsChanging(value);
+                ReportPropertyChanging("query_items");
+                _query_items = StructuralObject.SetValidValue(value, true, "query_items");
+                ReportPropertyChanged("query_items");
+                Onquery_itemsChanged();
+            }
+        }
+        private global::System.String _query_items;
+        partial void Onquery_itemsChanging(global::System.String value);
+        partial void Onquery_itemsChanged();
 
         #endregion
 
@@ -13606,6 +14011,126 @@ namespace Dao.QyBllApp
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
+        public Nullable<global::System.Int32> year
+        {
+            get
+            {
+                return _year;
+            }
+            set
+            {
+                OnyearChanging(value);
+                ReportPropertyChanging("year");
+                _year = StructuralObject.SetValidValue(value, "year");
+                ReportPropertyChanged("year");
+                OnyearChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _year;
+        partial void OnyearChanging(Nullable<global::System.Int32> value);
+        partial void OnyearChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FzCylR1
+        {
+            get
+            {
+                return _FzCylR1;
+            }
+            set
+            {
+                OnFzCylR1Changing(value);
+                ReportPropertyChanging("FzCylR1");
+                _FzCylR1 = StructuralObject.SetValidValue(value, true, "FzCylR1");
+                ReportPropertyChanged("FzCylR1");
+                OnFzCylR1Changed();
+            }
+        }
+        private global::System.String _FzCylR1;
+        partial void OnFzCylR1Changing(global::System.String value);
+        partial void OnFzCylR1Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FzCylR2
+        {
+            get
+            {
+                return _FzCylR2;
+            }
+            set
+            {
+                OnFzCylR2Changing(value);
+                ReportPropertyChanging("FzCylR2");
+                _FzCylR2 = StructuralObject.SetValidValue(value, true, "FzCylR2");
+                ReportPropertyChanged("FzCylR2");
+                OnFzCylR2Changed();
+            }
+        }
+        private global::System.String _FzCylR2;
+        partial void OnFzCylR2Changing(global::System.String value);
+        partial void OnFzCylR2Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FzCylR3
+        {
+            get
+            {
+                return _FzCylR3;
+            }
+            set
+            {
+                OnFzCylR3Changing(value);
+                ReportPropertyChanging("FzCylR3");
+                _FzCylR3 = StructuralObject.SetValidValue(value, true, "FzCylR3");
+                ReportPropertyChanged("FzCylR3");
+                OnFzCylR3Changed();
+            }
+        }
+        private global::System.String _FzCylR3;
+        partial void OnFzCylR3Changing(global::System.String value);
+        partial void OnFzCylR3Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> submit_dt
+        {
+            get
+            {
+                return _submit_dt;
+            }
+            set
+            {
+                Onsubmit_dtChanging(value);
+                ReportPropertyChanging("submit_dt");
+                _submit_dt = StructuralObject.SetValidValue(value, "submit_dt");
+                ReportPropertyChanged("submit_dt");
+                Onsubmit_dtChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _submit_dt;
+        partial void Onsubmit_dtChanging(Nullable<global::System.DateTime> value);
+        partial void Onsubmit_dtChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
         public global::System.String audit_status
         {
             get
@@ -13624,6 +14149,144 @@ namespace Dao.QyBllApp
         private global::System.String _audit_status;
         partial void Onaudit_statusChanging(global::System.String value);
         partial void Onaudit_statusChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String fill_status
+        {
+            get
+            {
+                return _fill_status;
+            }
+            set
+            {
+                Onfill_statusChanging(value);
+                ReportPropertyChanging("fill_status");
+                _fill_status = StructuralObject.SetValidValue(value, true, "fill_status");
+                ReportPropertyChanged("fill_status");
+                Onfill_statusChanged();
+            }
+        }
+        private global::System.String _fill_status;
+        partial void Onfill_statusChanging(global::System.String value);
+        partial void Onfill_statusChanged();
+
+        #endregion
+
+        #region 导航属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("szEIPAppModel", "FK_bntask_audit_bsLtdInfo", "bntask_audit")]
+        public EntityCollection<bntask_audit> bntask_audit
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<bntask_audit>("szEIPAppModel.FK_bntask_audit_bsLtdInfo", "bntask_audit");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<bntask_audit>("szEIPAppModel.FK_bntask_audit_bsLtdInfo", "bntask_audit", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("szEIPAppModel", "FK_bntask_notice_list_bsLtdInfo", "bntask_notice_list")]
+        public EntityCollection<bntask_notice_list> bntask_notice_list
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<bntask_notice_list>("szEIPAppModel.FK_bntask_notice_list_bsLtdInfo", "bntask_notice_list");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<bntask_notice_list>("szEIPAppModel.FK_bntask_notice_list_bsLtdInfo", "bntask_notice_list", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("szEIPAppModel", "FK_bsLtd_Base_fill_bsLtdinfo", "bsLtd_Base_fill")]
+        public EntityCollection<bsLtd_Base_fill> bsLtd_Base_fill
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<bsLtd_Base_fill>("szEIPAppModel.FK_bsLtd_Base_fill_bsLtdinfo", "bsLtd_Base_fill");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<bsLtd_Base_fill>("szEIPAppModel.FK_bsLtd_Base_fill_bsLtdinfo", "bsLtd_Base_fill", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("szEIPAppModel", "FK_bsLtd_cred_phonto_bsLtd_cred_phonto", "bsLtd_cred_photo")]
+        public EntityCollection<bsLtd_cred_photo> bsLtd_cred_photo
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<bsLtd_cred_photo>("szEIPAppModel.FK_bsLtd_cred_phonto_bsLtd_cred_phonto", "bsLtd_cred_photo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<bsLtd_cred_photo>("szEIPAppModel.FK_bsLtd_cred_phonto_bsLtd_cred_phonto", "bsLtd_cred_photo", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("szEIPAppModel", "FK_bsLtd_pjdj_tA1", "bsLtd_eval_rank")]
+        public EntityCollection<bsLtd_eval_rank> bsLtd_eval_rank
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<bsLtd_eval_rank>("szEIPAppModel.FK_bsLtd_pjdj_tA1", "bsLtd_eval_rank");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<bsLtd_eval_rank>("szEIPAppModel.FK_bsLtd_pjdj_tA1", "bsLtd_eval_rank", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -13680,6 +14343,30 @@ namespace Dao.QyBllApp
         private global::System.Int32 _Id;
         partial void OnIdChanging(global::System.Int32 value);
         partial void OnIdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> tA1Id
+        {
+            get
+            {
+                return _tA1Id;
+            }
+            set
+            {
+                OntA1IdChanging(value);
+                ReportPropertyChanging("tA1Id");
+                _tA1Id = StructuralObject.SetValidValue(value, "tA1Id");
+                ReportPropertyChanged("tA1Id");
+                OntA1IdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _tA1Id;
+        partial void OntA1IdChanging(Nullable<global::System.Int32> value);
+        partial void OntA1IdChanged();
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -13758,24 +14445,24 @@ namespace Dao.QyBllApp
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String audit_status
+        public global::System.String year
         {
             get
             {
-                return _audit_status;
+                return _year;
             }
             set
             {
-                Onaudit_statusChanging(value);
-                ReportPropertyChanging("audit_status");
-                _audit_status = StructuralObject.SetValidValue(value, true, "audit_status");
-                ReportPropertyChanged("audit_status");
-                Onaudit_statusChanged();
+                OnyearChanging(value);
+                ReportPropertyChanging("year");
+                _year = StructuralObject.SetValidValue(value, true, "year");
+                ReportPropertyChanged("year");
+                OnyearChanged();
             }
         }
-        private global::System.String _audit_status;
-        partial void Onaudit_statusChanging(global::System.String value);
-        partial void Onaudit_statusChanged();
+        private global::System.String _year;
+        partial void OnyearChanging(global::System.String value);
+        partial void OnyearChanged();
 
         #endregion
 
@@ -13838,24 +14525,48 @@ namespace Dao.QyBllApp
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> No
+        public Nullable<global::System.Int32> tA1Id
         {
             get
             {
-                return _No;
+                return _tA1Id;
             }
             set
             {
-                OnNoChanging(value);
-                ReportPropertyChanging("No");
-                _No = StructuralObject.SetValidValue(value, "No");
-                ReportPropertyChanged("No");
-                OnNoChanged();
+                OntA1IdChanging(value);
+                ReportPropertyChanging("tA1Id");
+                _tA1Id = StructuralObject.SetValidValue(value, "tA1Id");
+                ReportPropertyChanged("tA1Id");
+                OntA1IdChanged();
             }
         }
-        private Nullable<global::System.Int32> _No;
-        partial void OnNoChanging(Nullable<global::System.Int32> value);
-        partial void OnNoChanged();
+        private Nullable<global::System.Int32> _tA1Id;
+        partial void OntA1IdChanging(Nullable<global::System.Int32> value);
+        partial void OntA1IdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> year
+        {
+            get
+            {
+                return _year;
+            }
+            set
+            {
+                OnyearChanging(value);
+                ReportPropertyChanging("year");
+                _year = StructuralObject.SetValidValue(value, "year");
+                ReportPropertyChanged("year");
+                OnyearChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _year;
+        partial void OnyearChanging(Nullable<global::System.Int32> value);
+        partial void OnyearChanged();
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -14102,24 +14813,96 @@ namespace Dao.QyBllApp
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String audit_status
+        public global::System.String LatLng
         {
             get
             {
-                return _audit_status;
+                return _LatLng;
             }
             set
             {
-                Onaudit_statusChanging(value);
-                ReportPropertyChanging("audit_status");
-                _audit_status = StructuralObject.SetValidValue(value, true, "audit_status");
-                ReportPropertyChanged("audit_status");
-                Onaudit_statusChanged();
+                OnLatLngChanging(value);
+                ReportPropertyChanging("LatLng");
+                _LatLng = StructuralObject.SetValidValue(value, true, "LatLng");
+                ReportPropertyChanged("LatLng");
+                OnLatLngChanged();
             }
         }
-        private global::System.String _audit_status;
-        partial void Onaudit_statusChanging(global::System.String value);
-        partial void Onaudit_statusChanged();
+        private global::System.String _LatLng;
+        partial void OnLatLngChanging(global::System.String value);
+        partial void OnLatLngChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String fill_status
+        {
+            get
+            {
+                return _fill_status;
+            }
+            set
+            {
+                Onfill_statusChanging(value);
+                ReportPropertyChanging("fill_status");
+                _fill_status = StructuralObject.SetValidValue(value, true, "fill_status");
+                ReportPropertyChanged("fill_status");
+                Onfill_statusChanged();
+            }
+        }
+        private global::System.String _fill_status;
+        partial void Onfill_statusChanging(global::System.String value);
+        partial void Onfill_statusChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> delFlag
+        {
+            get
+            {
+                return _delFlag;
+            }
+            set
+            {
+                OndelFlagChanging(value);
+                ReportPropertyChanging("delFlag");
+                _delFlag = StructuralObject.SetValidValue(value, "delFlag");
+                ReportPropertyChanged("delFlag");
+                OndelFlagChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _delFlag;
+        partial void OndelFlagChanging(Nullable<global::System.Boolean> value);
+        partial void OndelFlagChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String delReason
+        {
+            get
+            {
+                return _delReason;
+            }
+            set
+            {
+                OndelReasonChanging(value);
+                ReportPropertyChanging("delReason");
+                _delReason = StructuralObject.SetValidValue(value, true, "delReason");
+                ReportPropertyChanged("delReason");
+                OndelReasonChanged();
+            }
+        }
+        private global::System.String _delReason;
+        partial void OndelReasonChanging(global::System.String value);
+        partial void OndelReasonChanged();
 
         #endregion
 
@@ -14176,6 +14959,54 @@ namespace Dao.QyBllApp
         private global::System.Int32 _id;
         partial void OnidChanging(global::System.Int32 value);
         partial void OnidChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> tA1Id
+        {
+            get
+            {
+                return _tA1Id;
+            }
+            set
+            {
+                OntA1IdChanging(value);
+                ReportPropertyChanging("tA1Id");
+                _tA1Id = StructuralObject.SetValidValue(value, "tA1Id");
+                ReportPropertyChanged("tA1Id");
+                OntA1IdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _tA1Id;
+        partial void OntA1IdChanging(Nullable<global::System.Int32> value);
+        partial void OntA1IdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> year
+        {
+            get
+            {
+                return _year;
+            }
+            set
+            {
+                OnyearChanging(value);
+                ReportPropertyChanging("year");
+                _year = StructuralObject.SetValidValue(value, "year");
+                ReportPropertyChanged("year");
+                OnyearChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _year;
+        partial void OnyearChanging(Nullable<global::System.Int32> value);
+        partial void OnyearChanged();
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -14542,24 +15373,24 @@ namespace Dao.QyBllApp
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String audit_status
+        public global::System.String fill_status
         {
             get
             {
-                return _audit_status;
+                return _fill_status;
             }
             set
             {
-                Onaudit_statusChanging(value);
-                ReportPropertyChanging("audit_status");
-                _audit_status = StructuralObject.SetValidValue(value, true, "audit_status");
-                ReportPropertyChanged("audit_status");
-                Onaudit_statusChanged();
+                Onfill_statusChanging(value);
+                ReportPropertyChanging("fill_status");
+                _fill_status = StructuralObject.SetValidValue(value, true, "fill_status");
+                ReportPropertyChanged("fill_status");
+                Onfill_statusChanged();
             }
         }
-        private global::System.String _audit_status;
-        partial void Onaudit_statusChanging(global::System.String value);
-        partial void Onaudit_statusChanged();
+        private global::System.String _fill_status;
+        partial void Onfill_statusChanging(global::System.String value);
+        partial void Onfill_statusChanged();
 
         #endregion
 
@@ -14616,6 +15447,54 @@ namespace Dao.QyBllApp
         private global::System.Int32 _id;
         partial void OnidChanging(global::System.Int32 value);
         partial void OnidChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> tA1Id
+        {
+            get
+            {
+                return _tA1Id;
+            }
+            set
+            {
+                OntA1IdChanging(value);
+                ReportPropertyChanging("tA1Id");
+                _tA1Id = StructuralObject.SetValidValue(value, "tA1Id");
+                ReportPropertyChanged("tA1Id");
+                OntA1IdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _tA1Id;
+        partial void OntA1IdChanging(Nullable<global::System.Int32> value);
+        partial void OntA1IdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> year
+        {
+            get
+            {
+                return _year;
+            }
+            set
+            {
+                OnyearChanging(value);
+                ReportPropertyChanging("year");
+                _year = StructuralObject.SetValidValue(value, "year");
+                ReportPropertyChanged("year");
+                OnyearChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _year;
+        partial void OnyearChanging(Nullable<global::System.Int32> value);
+        partial void OnyearChanged();
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -14958,24 +15837,24 @@ namespace Dao.QyBllApp
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String audit_status
+        public global::System.String fill_status
         {
             get
             {
-                return _audit_status;
+                return _fill_status;
             }
             set
             {
-                Onaudit_statusChanging(value);
-                ReportPropertyChanging("audit_status");
-                _audit_status = StructuralObject.SetValidValue(value, true, "audit_status");
-                ReportPropertyChanged("audit_status");
-                Onaudit_statusChanged();
+                Onfill_statusChanging(value);
+                ReportPropertyChanging("fill_status");
+                _fill_status = StructuralObject.SetValidValue(value, true, "fill_status");
+                ReportPropertyChanged("fill_status");
+                Onfill_statusChanged();
             }
         }
-        private global::System.String _audit_status;
-        partial void Onaudit_statusChanging(global::System.String value);
-        partial void Onaudit_statusChanged();
+        private global::System.String _fill_status;
+        partial void Onfill_statusChanging(global::System.String value);
+        partial void Onfill_statusChanged();
 
         #endregion
 
@@ -15054,6 +15933,30 @@ namespace Dao.QyBllApp
         private global::System.Int32 _id;
         partial void OnidChanging(global::System.Int32 value);
         partial void OnidChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> tA1Id
+        {
+            get
+            {
+                return _tA1Id;
+            }
+            set
+            {
+                OntA1IdChanging(value);
+                ReportPropertyChanging("tA1Id");
+                _tA1Id = StructuralObject.SetValidValue(value, "tA1Id");
+                ReportPropertyChanged("tA1Id");
+                OntA1IdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _tA1Id;
+        partial void OntA1IdChanging(Nullable<global::System.Int32> value);
+        partial void OntA1IdChanged();
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -15318,30 +16221,6 @@ namespace Dao.QyBllApp
         private global::System.String _法人联系电话;
         partial void On法人联系电话Changing(global::System.String value);
         partial void On法人联系电话Changed();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String audit_status
-        {
-            get
-            {
-                return _audit_status;
-            }
-            set
-            {
-                Onaudit_statusChanging(value);
-                ReportPropertyChanging("audit_status");
-                _audit_status = StructuralObject.SetValidValue(value, true, "audit_status");
-                ReportPropertyChanged("audit_status");
-                Onaudit_statusChanged();
-            }
-        }
-        private global::System.String _audit_status;
-        partial void Onaudit_statusChanging(global::System.String value);
-        partial void Onaudit_statusChanged();
 
         #endregion
 
@@ -15404,7 +16283,31 @@ namespace Dao.QyBllApp
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String 年度
+        public Nullable<global::System.Int32> tA1Id
+        {
+            get
+            {
+                return _tA1Id;
+            }
+            set
+            {
+                OntA1IdChanging(value);
+                ReportPropertyChanging("tA1Id");
+                _tA1Id = StructuralObject.SetValidValue(value, "tA1Id");
+                ReportPropertyChanged("tA1Id");
+                OntA1IdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _tA1Id;
+        partial void OntA1IdChanging(Nullable<global::System.Int32> value);
+        partial void OntA1IdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> 年度
         {
             get
             {
@@ -15414,13 +16317,13 @@ namespace Dao.QyBllApp
             {
                 On年度Changing(value);
                 ReportPropertyChanging("年度");
-                _年度 = StructuralObject.SetValidValue(value, true, "年度");
+                _年度 = StructuralObject.SetValidValue(value, "年度");
                 ReportPropertyChanged("年度");
                 On年度Changed();
             }
         }
-        private global::System.String _年度;
-        partial void On年度Changing(global::System.String value);
+        private Nullable<global::System.Int32> _年度;
+        partial void On年度Changing(Nullable<global::System.Int32> value);
         partial void On年度Changed();
     
         /// <summary>
@@ -15956,24 +16859,24 @@ namespace Dao.QyBllApp
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String audit_status
+        public global::System.String fill_status
         {
             get
             {
-                return _audit_status;
+                return _fill_status;
             }
             set
             {
-                Onaudit_statusChanging(value);
-                ReportPropertyChanging("audit_status");
-                _audit_status = StructuralObject.SetValidValue(value, true, "audit_status");
-                ReportPropertyChanged("audit_status");
-                Onaudit_statusChanged();
+                Onfill_statusChanging(value);
+                ReportPropertyChanging("fill_status");
+                _fill_status = StructuralObject.SetValidValue(value, true, "fill_status");
+                ReportPropertyChanged("fill_status");
+                Onfill_statusChanged();
             }
         }
-        private global::System.String _audit_status;
-        partial void Onaudit_statusChanging(global::System.String value);
-        partial void Onaudit_statusChanged();
+        private global::System.String _fill_status;
+        partial void Onfill_statusChanging(global::System.String value);
+        partial void Onfill_statusChanged();
 
         #endregion
 
@@ -16030,6 +16933,30 @@ namespace Dao.QyBllApp
         private global::System.Int32 _id;
         partial void OnidChanging(global::System.Int32 value);
         partial void OnidChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> tA1Id
+        {
+            get
+            {
+                return _tA1Id;
+            }
+            set
+            {
+                OntA1IdChanging(value);
+                ReportPropertyChanging("tA1Id");
+                _tA1Id = StructuralObject.SetValidValue(value, "tA1Id");
+                ReportPropertyChanged("tA1Id");
+                OntA1IdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _tA1Id;
+        partial void OntA1IdChanging(Nullable<global::System.Int32> value);
+        partial void OntA1IdChanged();
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -16342,30 +17269,6 @@ namespace Dao.QyBllApp
         private Nullable<global::System.Decimal> _地块中总用水量;
         partial void On地块中总用水量Changing(Nullable<global::System.Decimal> value);
         partial void On地块中总用水量Changed();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String audit_status
-        {
-            get
-            {
-                return _audit_status;
-            }
-            set
-            {
-                Onaudit_statusChanging(value);
-                ReportPropertyChanging("audit_status");
-                _audit_status = StructuralObject.SetValidValue(value, true, "audit_status");
-                ReportPropertyChanged("audit_status");
-                Onaudit_statusChanged();
-            }
-        }
-        private global::System.String _audit_status;
-        partial void Onaudit_statusChanging(global::System.String value);
-        partial void Onaudit_statusChanged();
 
         #endregion
 
@@ -16422,6 +17325,30 @@ namespace Dao.QyBllApp
         private global::System.Int32 _id;
         partial void OnidChanging(global::System.Int32 value);
         partial void OnidChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> tA1Id
+        {
+            get
+            {
+                return _tA1Id;
+            }
+            set
+            {
+                OntA1IdChanging(value);
+                ReportPropertyChanging("tA1Id");
+                _tA1Id = StructuralObject.SetValidValue(value, "tA1Id");
+                ReportPropertyChanged("tA1Id");
+                OntA1IdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _tA1Id;
+        partial void OntA1IdChanging(Nullable<global::System.Int32> value);
+        partial void OntA1IdChanged();
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -16806,30 +17733,6 @@ namespace Dao.QyBllApp
         private Nullable<global::System.Decimal> _用水量;
         partial void On用水量Changing(Nullable<global::System.Decimal> value);
         partial void On用水量Changed();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String audit_status
-        {
-            get
-            {
-                return _audit_status;
-            }
-            set
-            {
-                Onaudit_statusChanging(value);
-                ReportPropertyChanging("audit_status");
-                _audit_status = StructuralObject.SetValidValue(value, true, "audit_status");
-                ReportPropertyChanged("audit_status");
-                Onaudit_statusChanged();
-            }
-        }
-        private global::System.String _audit_status;
-        partial void Onaudit_statusChanging(global::System.String value);
-        partial void Onaudit_statusChanged();
 
         #endregion
 
@@ -17998,6 +18901,30 @@ namespace Dao.QyBllApp
         private global::System.Int32 _id;
         partial void OnidChanging(global::System.Int32 value);
         partial void OnidChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Guid> bsO_Id
+        {
+            get
+            {
+                return _bsO_Id;
+            }
+            set
+            {
+                OnbsO_IdChanging(value);
+                ReportPropertyChanging("bsO_Id");
+                _bsO_Id = StructuralObject.SetValidValue(value, "bsO_Id");
+                ReportPropertyChanged("bsO_Id");
+                OnbsO_IdChanged();
+            }
+        }
+        private Nullable<global::System.Guid> _bsO_Id;
+        partial void OnbsO_IdChanging(Nullable<global::System.Guid> value);
+        partial void OnbsO_IdChanged();
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -26094,6 +27021,4206 @@ namespace Dao.QyBllApp
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="szEIPAppModel", Name="vw_bsltd_legal_person_land")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class vw_bsltd_legal_person_land : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 vw_bsltd_legal_person_land 对象。
+        /// </summary>
+        /// <param name="id">Id 属性的初始值。</param>
+        /// <param name="phone">phone 属性的初始值。</param>
+        public static vw_bsltd_legal_person_land Createvw_bsltd_legal_person_land(global::System.Int32 id, global::System.String phone)
+        {
+            vw_bsltd_legal_person_land vw_bsltd_legal_person_land = new vw_bsltd_legal_person_land();
+            vw_bsltd_legal_person_land.Id = id;
+            vw_bsltd_legal_person_land.phone = phone;
+            return vw_bsltd_legal_person_land;
+        }
+
+        #endregion
+
+        #region 简单属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value, "Id");
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> year
+        {
+            get
+            {
+                return _year;
+            }
+            set
+            {
+                OnyearChanging(value);
+                ReportPropertyChanging("year");
+                _year = StructuralObject.SetValidValue(value, "year");
+                ReportPropertyChanged("year");
+                OnyearChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _year;
+        partial void OnyearChanging(Nullable<global::System.Int32> value);
+        partial void OnyearChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 法人姓名
+        {
+            get
+            {
+                return _法人姓名;
+            }
+            set
+            {
+                On法人姓名Changing(value);
+                ReportPropertyChanging("法人姓名");
+                _法人姓名 = StructuralObject.SetValidValue(value, true, "法人姓名");
+                ReportPropertyChanged("法人姓名");
+                On法人姓名Changed();
+            }
+        }
+        private global::System.String _法人姓名;
+        partial void On法人姓名Changing(global::System.String value);
+        partial void On法人姓名Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String phone
+        {
+            get
+            {
+                return _phone;
+            }
+            set
+            {
+                if (_phone != value)
+                {
+                    OnphoneChanging(value);
+                    ReportPropertyChanging("phone");
+                    _phone = StructuralObject.SetValidValue(value, false, "phone");
+                    ReportPropertyChanged("phone");
+                    OnphoneChanged();
+                }
+            }
+        }
+        private global::System.String _phone;
+        partial void OnphoneChanging(global::System.String value);
+        partial void OnphoneChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="szEIPAppModel", Name="vw_bsltd_legan_person_landdetail")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class vw_bsltd_legan_person_landdetail : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 vw_bsltd_legan_person_landdetail 对象。
+        /// </summary>
+        /// <param name="id">id 属性的初始值。</param>
+        public static vw_bsltd_legan_person_landdetail Createvw_bsltd_legan_person_landdetail(global::System.Int32 id)
+        {
+            vw_bsltd_legan_person_landdetail vw_bsltd_legan_person_landdetail = new vw_bsltd_legan_person_landdetail();
+            vw_bsltd_legan_person_landdetail.id = id;
+            return vw_bsltd_legan_person_landdetail;
+        }
+
+        #endregion
+
+        #region 简单属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value, "id");
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id;
+        partial void OnidChanging(global::System.Int32 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 法人姓名
+        {
+            get
+            {
+                return _法人姓名;
+            }
+            set
+            {
+                On法人姓名Changing(value);
+                ReportPropertyChanging("法人姓名");
+                _法人姓名 = StructuralObject.SetValidValue(value, true, "法人姓名");
+                ReportPropertyChanged("法人姓名");
+                On法人姓名Changed();
+            }
+        }
+        private global::System.String _法人姓名;
+        partial void On法人姓名Changing(global::System.String value);
+        partial void On法人姓名Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 纳税人名称
+        {
+            get
+            {
+                return _纳税人名称;
+            }
+            set
+            {
+                On纳税人名称Changing(value);
+                ReportPropertyChanging("纳税人名称");
+                _纳税人名称 = StructuralObject.SetValidValue(value, true, "纳税人名称");
+                ReportPropertyChanged("纳税人名称");
+                On纳税人名称Changed();
+            }
+        }
+        private global::System.String _纳税人名称;
+        partial void On纳税人名称Changing(global::System.String value);
+        partial void On纳税人名称Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 类型
+        {
+            get
+            {
+                return _类型;
+            }
+            set
+            {
+                On类型Changing(value);
+                ReportPropertyChanging("类型");
+                _类型 = StructuralObject.SetValidValue(value, true, "类型");
+                ReportPropertyChanged("类型");
+                On类型Changed();
+            }
+        }
+        private global::System.String _类型;
+        partial void On类型Changing(global::System.String value);
+        partial void On类型Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 组织机构代码
+        {
+            get
+            {
+                return _组织机构代码;
+            }
+            set
+            {
+                On组织机构代码Changing(value);
+                ReportPropertyChanging("组织机构代码");
+                _组织机构代码 = StructuralObject.SetValidValue(value, true, "组织机构代码");
+                ReportPropertyChanged("组织机构代码");
+                On组织机构代码Changed();
+            }
+        }
+        private global::System.String _组织机构代码;
+        partial void On组织机构代码Changing(global::System.String value);
+        partial void On组织机构代码Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 租赁性质
+        {
+            get
+            {
+                return _租赁性质;
+            }
+            set
+            {
+                On租赁性质Changing(value);
+                ReportPropertyChanging("租赁性质");
+                _租赁性质 = StructuralObject.SetValidValue(value, true, "租赁性质");
+                ReportPropertyChanged("租赁性质");
+                On租赁性质Changed();
+            }
+        }
+        private global::System.String _租赁性质;
+        partial void On租赁性质Changing(global::System.String value);
+        partial void On租赁性质Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 实际用地面积
+        {
+            get
+            {
+                return _实际用地面积;
+            }
+            set
+            {
+                On实际用地面积Changing(value);
+                ReportPropertyChanging("实际用地面积");
+                _实际用地面积 = StructuralObject.SetValidValue(value, "实际用地面积");
+                ReportPropertyChanged("实际用地面积");
+                On实际用地面积Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _实际用地面积;
+        partial void On实际用地面积Changing(Nullable<global::System.Decimal> value);
+        partial void On实际用地面积Changed();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="szEIPAppModel", Name="vw_bsltd_not_up_list")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class vw_bsltd_not_up_list : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 vw_bsltd_not_up_list 对象。
+        /// </summary>
+        /// <param name="id">Id 属性的初始值。</param>
+        public static vw_bsltd_not_up_list Createvw_bsltd_not_up_list(global::System.Int32 id)
+        {
+            vw_bsltd_not_up_list vw_bsltd_not_up_list = new vw_bsltd_not_up_list();
+            vw_bsltd_not_up_list.Id = id;
+            return vw_bsltd_not_up_list;
+        }
+
+        #endregion
+
+        #region 简单属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value, "Id");
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ltd_name
+        {
+            get
+            {
+                return _ltd_name;
+            }
+            set
+            {
+                Onltd_nameChanging(value);
+                ReportPropertyChanging("ltd_name");
+                _ltd_name = StructuralObject.SetValidValue(value, true, "ltd_name");
+                ReportPropertyChanged("ltd_name");
+                Onltd_nameChanged();
+            }
+        }
+        private global::System.String _ltd_name;
+        partial void Onltd_nameChanging(global::System.String value);
+        partial void Onltd_nameChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ltd_tyxydm
+        {
+            get
+            {
+                return _ltd_tyxydm;
+            }
+            set
+            {
+                Onltd_tyxydmChanging(value);
+                ReportPropertyChanging("ltd_tyxydm");
+                _ltd_tyxydm = StructuralObject.SetValidValue(value, true, "ltd_tyxydm");
+                ReportPropertyChanged("ltd_tyxydm");
+                Onltd_tyxydmChanged();
+            }
+        }
+        private global::System.String _ltd_tyxydm;
+        partial void Onltd_tyxydmChanging(global::System.String value);
+        partial void Onltd_tyxydmChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String audit_status
+        {
+            get
+            {
+                return _audit_status;
+            }
+            set
+            {
+                Onaudit_statusChanging(value);
+                ReportPropertyChanging("audit_status");
+                _audit_status = StructuralObject.SetValidValue(value, true, "audit_status");
+                ReportPropertyChanged("audit_status");
+                Onaudit_statusChanged();
+            }
+        }
+        private global::System.String _audit_status;
+        partial void Onaudit_statusChanging(global::System.String value);
+        partial void Onaudit_statusChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="szEIPAppModel", Name="vw_dk_eval_Owner")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class vw_dk_eval_Owner : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 vw_dk_eval_Owner 对象。
+        /// </summary>
+        /// <param name="id">Id 属性的初始值。</param>
+        /// <param name="纳税人名称">纳税人名称 属性的初始值。</param>
+        public static vw_dk_eval_Owner Createvw_dk_eval_Owner(global::System.Int32 id, global::System.String 纳税人名称)
+        {
+            vw_dk_eval_Owner vw_dk_eval_Owner = new vw_dk_eval_Owner();
+            vw_dk_eval_Owner.Id = id;
+            vw_dk_eval_Owner.纳税人名称 = 纳税人名称;
+            return vw_dk_eval_Owner;
+        }
+
+        #endregion
+
+        #region 简单属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value, "Id");
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String 纳税人名称
+        {
+            get
+            {
+                return _纳税人名称;
+            }
+            set
+            {
+                if (_纳税人名称 != value)
+                {
+                    On纳税人名称Changing(value);
+                    ReportPropertyChanging("纳税人名称");
+                    _纳税人名称 = StructuralObject.SetValidValue(value, false, "纳税人名称");
+                    ReportPropertyChanged("纳税人名称");
+                    On纳税人名称Changed();
+                }
+            }
+        }
+        private global::System.String _纳税人名称;
+        partial void On纳税人名称Changing(global::System.String value);
+        partial void On纳税人名称Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> year
+        {
+            get
+            {
+                return _year;
+            }
+            set
+            {
+                OnyearChanging(value);
+                ReportPropertyChanging("year");
+                _year = StructuralObject.SetValidValue(value, "year");
+                ReportPropertyChanged("year");
+                OnyearChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _year;
+        partial void OnyearChanging(Nullable<global::System.Int32> value);
+        partial void OnyearChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 注册地址
+        {
+            get
+            {
+                return _注册地址;
+            }
+            set
+            {
+                On注册地址Changing(value);
+                ReportPropertyChanging("注册地址");
+                _注册地址 = StructuralObject.SetValidValue(value, true, "注册地址");
+                ReportPropertyChanged("注册地址");
+                On注册地址Changed();
+            }
+        }
+        private global::System.String _注册地址;
+        partial void On注册地址Changing(global::System.String value);
+        partial void On注册地址Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 组织机构代码
+        {
+            get
+            {
+                return _组织机构代码;
+            }
+            set
+            {
+                On组织机构代码Changing(value);
+                ReportPropertyChanging("组织机构代码");
+                _组织机构代码 = StructuralObject.SetValidValue(value, true, "组织机构代码");
+                ReportPropertyChanged("组织机构代码");
+                On组织机构代码Changed();
+            }
+        }
+        private global::System.String _组织机构代码;
+        partial void On组织机构代码Changing(global::System.String value);
+        partial void On组织机构代码Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 租赁性质
+        {
+            get
+            {
+                return _租赁性质;
+            }
+            set
+            {
+                On租赁性质Changing(value);
+                ReportPropertyChanging("租赁性质");
+                _租赁性质 = StructuralObject.SetValidValue(value, true, "租赁性质");
+                ReportPropertyChanged("租赁性质");
+                On租赁性质Changed();
+            }
+        }
+        private global::System.String _租赁性质;
+        partial void On租赁性质Changing(global::System.String value);
+        partial void On租赁性质Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 是否工业
+        {
+            get
+            {
+                return _是否工业;
+            }
+            set
+            {
+                On是否工业Changing(value);
+                ReportPropertyChanging("是否工业");
+                _是否工业 = StructuralObject.SetValidValue(value, true, "是否工业");
+                ReportPropertyChanged("是否工业");
+                On是否工业Changed();
+            }
+        }
+        private global::System.String _是否工业;
+        partial void On是否工业Changing(global::System.String value);
+        partial void On是否工业Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 填表人姓名
+        {
+            get
+            {
+                return _填表人姓名;
+            }
+            set
+            {
+                On填表人姓名Changing(value);
+                ReportPropertyChanging("填表人姓名");
+                _填表人姓名 = StructuralObject.SetValidValue(value, true, "填表人姓名");
+                ReportPropertyChanged("填表人姓名");
+                On填表人姓名Changed();
+            }
+        }
+        private global::System.String _填表人姓名;
+        partial void On填表人姓名Changing(global::System.String value);
+        partial void On填表人姓名Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 填表人手机
+        {
+            get
+            {
+                return _填表人手机;
+            }
+            set
+            {
+                On填表人手机Changing(value);
+                ReportPropertyChanging("填表人手机");
+                _填表人手机 = StructuralObject.SetValidValue(value, true, "填表人手机");
+                ReportPropertyChanged("填表人手机");
+                On填表人手机Changed();
+            }
+        }
+        private global::System.String _填表人手机;
+        partial void On填表人手机Changing(global::System.String value);
+        partial void On填表人手机Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 电表号
+        {
+            get
+            {
+                return _电表号;
+            }
+            set
+            {
+                On电表号Changing(value);
+                ReportPropertyChanging("电表号");
+                _电表号 = StructuralObject.SetValidValue(value, true, "电表号");
+                ReportPropertyChanged("电表号");
+                On电表号Changed();
+            }
+        }
+        private global::System.String _电表号;
+        partial void On电表号Changing(global::System.String value);
+        partial void On电表号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 本年度用电量度
+        {
+            get
+            {
+                return _本年度用电量度;
+            }
+            set
+            {
+                On本年度用电量度Changing(value);
+                ReportPropertyChanging("本年度用电量度");
+                _本年度用电量度 = StructuralObject.SetValidValue(value, "本年度用电量度");
+                ReportPropertyChanged("本年度用电量度");
+                On本年度用电量度Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _本年度用电量度;
+        partial void On本年度用电量度Changing(Nullable<global::System.Decimal> value);
+        partial void On本年度用电量度Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 水表号
+        {
+            get
+            {
+                return _水表号;
+            }
+            set
+            {
+                On水表号Changing(value);
+                ReportPropertyChanging("水表号");
+                _水表号 = StructuralObject.SetValidValue(value, true, "水表号");
+                ReportPropertyChanged("水表号");
+                On水表号Changed();
+            }
+        }
+        private global::System.String _水表号;
+        partial void On水表号Changing(global::System.String value);
+        partial void On水表号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 本年度用水量
+        {
+            get
+            {
+                return _本年度用水量;
+            }
+            set
+            {
+                On本年度用水量Changing(value);
+                ReportPropertyChanging("本年度用水量");
+                _本年度用水量 = StructuralObject.SetValidValue(value, "本年度用水量");
+                ReportPropertyChanged("本年度用水量");
+                On本年度用水量Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _本年度用水量;
+        partial void On本年度用水量Changing(Nullable<global::System.Decimal> value);
+        partial void On本年度用水量Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 集约利用地块编号
+        {
+            get
+            {
+                return _集约利用地块编号;
+            }
+            set
+            {
+                On集约利用地块编号Changing(value);
+                ReportPropertyChanging("集约利用地块编号");
+                _集约利用地块编号 = StructuralObject.SetValidValue(value, true, "集约利用地块编号");
+                ReportPropertyChanged("集约利用地块编号");
+                On集约利用地块编号Changed();
+            }
+        }
+        private global::System.String _集约利用地块编号;
+        partial void On集约利用地块编号Changing(global::System.String value);
+        partial void On集约利用地块编号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 土地持证面积
+        {
+            get
+            {
+                return _土地持证面积;
+            }
+            set
+            {
+                On土地持证面积Changing(value);
+                ReportPropertyChanging("土地持证面积");
+                _土地持证面积 = StructuralObject.SetValidValue(value, "土地持证面积");
+                ReportPropertyChanged("土地持证面积");
+                On土地持证面积Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _土地持证面积;
+        partial void On土地持证面积Changing(Nullable<global::System.Decimal> value);
+        partial void On土地持证面积Changed();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="szEIPAppModel", Name="vw_dk_eval_Rent")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class vw_dk_eval_Rent : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 vw_dk_eval_Rent 对象。
+        /// </summary>
+        /// <param name="id">Id 属性的初始值。</param>
+        /// <param name="纳税人名称">纳税人名称 属性的初始值。</param>
+        /// <param name="租赁性质">租赁性质 属性的初始值。</param>
+        /// <param name="集约利用地块编号">集约利用地块编号 属性的初始值。</param>
+        /// <param name="本地块租赁房屋面积">本地块租赁房屋面积 属性的初始值。</param>
+        public static vw_dk_eval_Rent Createvw_dk_eval_Rent(global::System.Int32 id, global::System.String 纳税人名称, global::System.String 租赁性质, global::System.String 集约利用地块编号, global::System.Decimal 本地块租赁房屋面积)
+        {
+            vw_dk_eval_Rent vw_dk_eval_Rent = new vw_dk_eval_Rent();
+            vw_dk_eval_Rent.Id = id;
+            vw_dk_eval_Rent.纳税人名称 = 纳税人名称;
+            vw_dk_eval_Rent.租赁性质 = 租赁性质;
+            vw_dk_eval_Rent.集约利用地块编号 = 集约利用地块编号;
+            vw_dk_eval_Rent.本地块租赁房屋面积 = 本地块租赁房屋面积;
+            return vw_dk_eval_Rent;
+        }
+
+        #endregion
+
+        #region 简单属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value, "Id");
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String 纳税人名称
+        {
+            get
+            {
+                return _纳税人名称;
+            }
+            set
+            {
+                if (_纳税人名称 != value)
+                {
+                    On纳税人名称Changing(value);
+                    ReportPropertyChanging("纳税人名称");
+                    _纳税人名称 = StructuralObject.SetValidValue(value, false, "纳税人名称");
+                    ReportPropertyChanged("纳税人名称");
+                    On纳税人名称Changed();
+                }
+            }
+        }
+        private global::System.String _纳税人名称;
+        partial void On纳税人名称Changing(global::System.String value);
+        partial void On纳税人名称Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> year
+        {
+            get
+            {
+                return _year;
+            }
+            set
+            {
+                OnyearChanging(value);
+                ReportPropertyChanging("year");
+                _year = StructuralObject.SetValidValue(value, "year");
+                ReportPropertyChanged("year");
+                OnyearChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _year;
+        partial void OnyearChanging(Nullable<global::System.Int32> value);
+        partial void OnyearChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 注册地址
+        {
+            get
+            {
+                return _注册地址;
+            }
+            set
+            {
+                On注册地址Changing(value);
+                ReportPropertyChanging("注册地址");
+                _注册地址 = StructuralObject.SetValidValue(value, true, "注册地址");
+                ReportPropertyChanged("注册地址");
+                On注册地址Changed();
+            }
+        }
+        private global::System.String _注册地址;
+        partial void On注册地址Changing(global::System.String value);
+        partial void On注册地址Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 组织机构代码
+        {
+            get
+            {
+                return _组织机构代码;
+            }
+            set
+            {
+                On组织机构代码Changing(value);
+                ReportPropertyChanging("组织机构代码");
+                _组织机构代码 = StructuralObject.SetValidValue(value, true, "组织机构代码");
+                ReportPropertyChanged("组织机构代码");
+                On组织机构代码Changed();
+            }
+        }
+        private global::System.String _组织机构代码;
+        partial void On组织机构代码Changing(global::System.String value);
+        partial void On组织机构代码Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 是否工业
+        {
+            get
+            {
+                return _是否工业;
+            }
+            set
+            {
+                On是否工业Changing(value);
+                ReportPropertyChanging("是否工业");
+                _是否工业 = StructuralObject.SetValidValue(value, true, "是否工业");
+                ReportPropertyChanged("是否工业");
+                On是否工业Changed();
+            }
+        }
+        private global::System.String _是否工业;
+        partial void On是否工业Changing(global::System.String value);
+        partial void On是否工业Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 填表人姓名
+        {
+            get
+            {
+                return _填表人姓名;
+            }
+            set
+            {
+                On填表人姓名Changing(value);
+                ReportPropertyChanging("填表人姓名");
+                _填表人姓名 = StructuralObject.SetValidValue(value, true, "填表人姓名");
+                ReportPropertyChanged("填表人姓名");
+                On填表人姓名Changed();
+            }
+        }
+        private global::System.String _填表人姓名;
+        partial void On填表人姓名Changing(global::System.String value);
+        partial void On填表人姓名Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 填表人手机
+        {
+            get
+            {
+                return _填表人手机;
+            }
+            set
+            {
+                On填表人手机Changing(value);
+                ReportPropertyChanging("填表人手机");
+                _填表人手机 = StructuralObject.SetValidValue(value, true, "填表人手机");
+                ReportPropertyChanged("填表人手机");
+                On填表人手机Changed();
+            }
+        }
+        private global::System.String _填表人手机;
+        partial void On填表人手机Changing(global::System.String value);
+        partial void On填表人手机Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 电表号
+        {
+            get
+            {
+                return _电表号;
+            }
+            set
+            {
+                On电表号Changing(value);
+                ReportPropertyChanging("电表号");
+                _电表号 = StructuralObject.SetValidValue(value, true, "电表号");
+                ReportPropertyChanged("电表号");
+                On电表号Changed();
+            }
+        }
+        private global::System.String _电表号;
+        partial void On电表号Changing(global::System.String value);
+        partial void On电表号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 本年度用电量度
+        {
+            get
+            {
+                return _本年度用电量度;
+            }
+            set
+            {
+                On本年度用电量度Changing(value);
+                ReportPropertyChanging("本年度用电量度");
+                _本年度用电量度 = StructuralObject.SetValidValue(value, "本年度用电量度");
+                ReportPropertyChanged("本年度用电量度");
+                On本年度用电量度Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _本年度用电量度;
+        partial void On本年度用电量度Changing(Nullable<global::System.Decimal> value);
+        partial void On本年度用电量度Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 水表号
+        {
+            get
+            {
+                return _水表号;
+            }
+            set
+            {
+                On水表号Changing(value);
+                ReportPropertyChanging("水表号");
+                _水表号 = StructuralObject.SetValidValue(value, true, "水表号");
+                ReportPropertyChanged("水表号");
+                On水表号Changed();
+            }
+        }
+        private global::System.String _水表号;
+        partial void On水表号Changing(global::System.String value);
+        partial void On水表号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 本年度用水量
+        {
+            get
+            {
+                return _本年度用水量;
+            }
+            set
+            {
+                On本年度用水量Changing(value);
+                ReportPropertyChanging("本年度用水量");
+                _本年度用水量 = StructuralObject.SetValidValue(value, "本年度用水量");
+                ReportPropertyChanged("本年度用水量");
+                On本年度用水量Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _本年度用水量;
+        partial void On本年度用水量Changing(Nullable<global::System.Decimal> value);
+        partial void On本年度用水量Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String 租赁性质
+        {
+            get
+            {
+                return _租赁性质;
+            }
+            set
+            {
+                if (_租赁性质 != value)
+                {
+                    On租赁性质Changing(value);
+                    ReportPropertyChanging("租赁性质");
+                    _租赁性质 = StructuralObject.SetValidValue(value, false, "租赁性质");
+                    ReportPropertyChanged("租赁性质");
+                    On租赁性质Changed();
+                }
+            }
+        }
+        private global::System.String _租赁性质;
+        partial void On租赁性质Changing(global::System.String value);
+        partial void On租赁性质Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String 集约利用地块编号
+        {
+            get
+            {
+                return _集约利用地块编号;
+            }
+            set
+            {
+                if (_集约利用地块编号 != value)
+                {
+                    On集约利用地块编号Changing(value);
+                    ReportPropertyChanging("集约利用地块编号");
+                    _集约利用地块编号 = StructuralObject.SetValidValue(value, false, "集约利用地块编号");
+                    ReportPropertyChanged("集约利用地块编号");
+                    On集约利用地块编号Changed();
+                }
+            }
+        }
+        private global::System.String _集约利用地块编号;
+        partial void On集约利用地块编号Changing(global::System.String value);
+        partial void On集约利用地块编号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal 本地块租赁房屋面积
+        {
+            get
+            {
+                return _本地块租赁房屋面积;
+            }
+            set
+            {
+                if (_本地块租赁房屋面积 != value)
+                {
+                    On本地块租赁房屋面积Changing(value);
+                    ReportPropertyChanging("本地块租赁房屋面积");
+                    _本地块租赁房屋面积 = StructuralObject.SetValidValue(value, "本地块租赁房屋面积");
+                    ReportPropertyChanged("本地块租赁房屋面积");
+                    On本地块租赁房屋面积Changed();
+                }
+            }
+        }
+        private global::System.Decimal _本地块租赁房屋面积;
+        partial void On本地块租赁房屋面积Changing(global::System.Decimal value);
+        partial void On本地块租赁房屋面积Changed();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="szEIPAppModel", Name="vw_dk_eval_total")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class vw_dk_eval_total : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 vw_dk_eval_total 对象。
+        /// </summary>
+        /// <param name="id">Id 属性的初始值。</param>
+        public static vw_dk_eval_total Createvw_dk_eval_total(global::System.Int32 id)
+        {
+            vw_dk_eval_total vw_dk_eval_total = new vw_dk_eval_total();
+            vw_dk_eval_total.Id = id;
+            return vw_dk_eval_total;
+        }
+
+        #endregion
+
+        #region 简单属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value, "Id");
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> year
+        {
+            get
+            {
+                return _year;
+            }
+            set
+            {
+                OnyearChanging(value);
+                ReportPropertyChanging("year");
+                _year = StructuralObject.SetValidValue(value, "year");
+                ReportPropertyChanged("year");
+                OnyearChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _year;
+        partial void OnyearChanging(Nullable<global::System.Int32> value);
+        partial void OnyearChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> tA1Id
+        {
+            get
+            {
+                return _tA1Id;
+            }
+            set
+            {
+                OntA1IdChanging(value);
+                ReportPropertyChanging("tA1Id");
+                _tA1Id = StructuralObject.SetValidValue(value, "tA1Id");
+                ReportPropertyChanged("tA1Id");
+                OntA1IdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _tA1Id;
+        partial void OntA1IdChanging(Nullable<global::System.Int32> value);
+        partial void OntA1IdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 纳税人名称
+        {
+            get
+            {
+                return _纳税人名称;
+            }
+            set
+            {
+                On纳税人名称Changing(value);
+                ReportPropertyChanging("纳税人名称");
+                _纳税人名称 = StructuralObject.SetValidValue(value, true, "纳税人名称");
+                ReportPropertyChanged("纳税人名称");
+                On纳税人名称Changed();
+            }
+        }
+        private global::System.String _纳税人名称;
+        partial void On纳税人名称Changing(global::System.String value);
+        partial void On纳税人名称Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 集约利用地块编号
+        {
+            get
+            {
+                return _集约利用地块编号;
+            }
+            set
+            {
+                On集约利用地块编号Changing(value);
+                ReportPropertyChanging("集约利用地块编号");
+                _集约利用地块编号 = StructuralObject.SetValidValue(value, true, "集约利用地块编号");
+                ReportPropertyChanged("集约利用地块编号");
+                On集约利用地块编号Changed();
+            }
+        }
+        private global::System.String _集约利用地块编号;
+        partial void On集约利用地块编号Changing(global::System.String value);
+        partial void On集约利用地块编号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 实际用地面积
+        {
+            get
+            {
+                return _实际用地面积;
+            }
+            set
+            {
+                On实际用地面积Changing(value);
+                ReportPropertyChanging("实际用地面积");
+                _实际用地面积 = StructuralObject.SetValidValue(value, "实际用地面积");
+                ReportPropertyChanged("实际用地面积");
+                On实际用地面积Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _实际用地面积;
+        partial void On实际用地面积Changing(Nullable<global::System.Decimal> value);
+        partial void On实际用地面积Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 土地持证面积
+        {
+            get
+            {
+                return _土地持证面积;
+            }
+            set
+            {
+                On土地持证面积Changing(value);
+                ReportPropertyChanging("土地持证面积");
+                _土地持证面积 = StructuralObject.SetValidValue(value, "土地持证面积");
+                ReportPropertyChanged("土地持证面积");
+                On土地持证面积Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _土地持证面积;
+        partial void On土地持证面积Changing(Nullable<global::System.Decimal> value);
+        partial void On土地持证面积Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 实际房屋面积
+        {
+            get
+            {
+                return _实际房屋面积;
+            }
+            set
+            {
+                On实际房屋面积Changing(value);
+                ReportPropertyChanging("实际房屋面积");
+                _实际房屋面积 = StructuralObject.SetValidValue(value, "实际房屋面积");
+                ReportPropertyChanged("实际房屋面积");
+                On实际房屋面积Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _实际房屋面积;
+        partial void On实际房屋面积Changing(Nullable<global::System.Decimal> value);
+        partial void On实际房屋面积Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 电表号
+        {
+            get
+            {
+                return _电表号;
+            }
+            set
+            {
+                On电表号Changing(value);
+                ReportPropertyChanging("电表号");
+                _电表号 = StructuralObject.SetValidValue(value, true, "电表号");
+                ReportPropertyChanged("电表号");
+                On电表号Changed();
+            }
+        }
+        private global::System.String _电表号;
+        partial void On电表号Changing(global::System.String value);
+        partial void On电表号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 本年度用电量度
+        {
+            get
+            {
+                return _本年度用电量度;
+            }
+            set
+            {
+                On本年度用电量度Changing(value);
+                ReportPropertyChanging("本年度用电量度");
+                _本年度用电量度 = StructuralObject.SetValidValue(value, "本年度用电量度");
+                ReportPropertyChanged("本年度用电量度");
+                On本年度用电量度Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _本年度用电量度;
+        partial void On本年度用电量度Changing(Nullable<global::System.Decimal> value);
+        partial void On本年度用电量度Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 水表号
+        {
+            get
+            {
+                return _水表号;
+            }
+            set
+            {
+                On水表号Changing(value);
+                ReportPropertyChanging("水表号");
+                _水表号 = StructuralObject.SetValidValue(value, true, "水表号");
+                ReportPropertyChanged("水表号");
+                On水表号Changed();
+            }
+        }
+        private global::System.String _水表号;
+        partial void On水表号Changing(global::System.String value);
+        partial void On水表号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 本年度用水量
+        {
+            get
+            {
+                return _本年度用水量;
+            }
+            set
+            {
+                On本年度用水量Changing(value);
+                ReportPropertyChanging("本年度用水量");
+                _本年度用水量 = StructuralObject.SetValidValue(value, "本年度用水量");
+                ReportPropertyChanged("本年度用水量");
+                On本年度用水量Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _本年度用水量;
+        partial void On本年度用水量Changing(Nullable<global::System.Decimal> value);
+        partial void On本年度用水量Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> dk_ltd_count
+        {
+            get
+            {
+                return _dk_ltd_count;
+            }
+            set
+            {
+                Ondk_ltd_countChanging(value);
+                ReportPropertyChanging("dk_ltd_count");
+                _dk_ltd_count = StructuralObject.SetValidValue(value, "dk_ltd_count");
+                ReportPropertyChanged("dk_ltd_count");
+                Ondk_ltd_countChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _dk_ltd_count;
+        partial void Ondk_ltd_countChanging(Nullable<global::System.Int32> value);
+        partial void Ondk_ltd_countChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> dk_ltd_gy_count
+        {
+            get
+            {
+                return _dk_ltd_gy_count;
+            }
+            set
+            {
+                Ondk_ltd_gy_countChanging(value);
+                ReportPropertyChanging("dk_ltd_gy_count");
+                _dk_ltd_gy_count = StructuralObject.SetValidValue(value, "dk_ltd_gy_count");
+                ReportPropertyChanged("dk_ltd_gy_count");
+                Ondk_ltd_gy_countChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _dk_ltd_gy_count;
+        partial void Ondk_ltd_gy_countChanging(Nullable<global::System.Int32> value);
+        partial void Ondk_ltd_gy_countChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="szEIPAppModel", Name="vw_ltd_up_eval_info")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class vw_ltd_up_eval_info : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 vw_ltd_up_eval_info 对象。
+        /// </summary>
+        /// <param name="id">id 属性的初始值。</param>
+        /// <param name="纳税人名称">纳税人名称 属性的初始值。</param>
+        public static vw_ltd_up_eval_info Createvw_ltd_up_eval_info(global::System.Int32 id, global::System.String 纳税人名称)
+        {
+            vw_ltd_up_eval_info vw_ltd_up_eval_info = new vw_ltd_up_eval_info();
+            vw_ltd_up_eval_info.id = id;
+            vw_ltd_up_eval_info.纳税人名称 = 纳税人名称;
+            return vw_ltd_up_eval_info;
+        }
+
+        #endregion
+
+        #region 简单属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value, "id");
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id;
+        partial void OnidChanging(global::System.Int32 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> year
+        {
+            get
+            {
+                return _year;
+            }
+            set
+            {
+                OnyearChanging(value);
+                ReportPropertyChanging("year");
+                _year = StructuralObject.SetValidValue(value, "year");
+                ReportPropertyChanged("year");
+                OnyearChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _year;
+        partial void OnyearChanging(Nullable<global::System.Int32> value);
+        partial void OnyearChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String 纳税人名称
+        {
+            get
+            {
+                return _纳税人名称;
+            }
+            set
+            {
+                if (_纳税人名称 != value)
+                {
+                    On纳税人名称Changing(value);
+                    ReportPropertyChanging("纳税人名称");
+                    _纳税人名称 = StructuralObject.SetValidValue(value, false, "纳税人名称");
+                    ReportPropertyChanged("纳税人名称");
+                    On纳税人名称Changed();
+                }
+            }
+        }
+        private global::System.String _纳税人名称;
+        partial void On纳税人名称Changing(global::System.String value);
+        partial void On纳税人名称Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 集约利用地块编号
+        {
+            get
+            {
+                return _集约利用地块编号;
+            }
+            set
+            {
+                On集约利用地块编号Changing(value);
+                ReportPropertyChanging("集约利用地块编号");
+                _集约利用地块编号 = StructuralObject.SetValidValue(value, true, "集约利用地块编号");
+                ReportPropertyChanged("集约利用地块编号");
+                On集约利用地块编号Changed();
+            }
+        }
+        private global::System.String _集约利用地块编号;
+        partial void On集约利用地块编号Changing(global::System.String value);
+        partial void On集约利用地块编号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 土地持证面积
+        {
+            get
+            {
+                return _土地持证面积;
+            }
+            set
+            {
+                On土地持证面积Changing(value);
+                ReportPropertyChanging("土地持证面积");
+                _土地持证面积 = StructuralObject.SetValidValue(value, "土地持证面积");
+                ReportPropertyChanged("土地持证面积");
+                On土地持证面积Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _土地持证面积;
+        partial void On土地持证面积Changing(Nullable<global::System.Decimal> value);
+        partial void On土地持证面积Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 房产持证面积
+        {
+            get
+            {
+                return _房产持证面积;
+            }
+            set
+            {
+                On房产持证面积Changing(value);
+                ReportPropertyChanging("房产持证面积");
+                _房产持证面积 = StructuralObject.SetValidValue(value, "房产持证面积");
+                ReportPropertyChanged("房产持证面积");
+                On房产持证面积Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _房产持证面积;
+        partial void On房产持证面积Changing(Nullable<global::System.Decimal> value);
+        partial void On房产持证面积Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 实际房屋面积
+        {
+            get
+            {
+                return _实际房屋面积;
+            }
+            set
+            {
+                On实际房屋面积Changing(value);
+                ReportPropertyChanging("实际房屋面积");
+                _实际房屋面积 = StructuralObject.SetValidValue(value, "实际房屋面积");
+                ReportPropertyChanged("实际房屋面积");
+                On实际房屋面积Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _实际房屋面积;
+        partial void On实际房屋面积Changing(Nullable<global::System.Decimal> value);
+        partial void On实际房屋面积Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 电表号
+        {
+            get
+            {
+                return _电表号;
+            }
+            set
+            {
+                On电表号Changing(value);
+                ReportPropertyChanging("电表号");
+                _电表号 = StructuralObject.SetValidValue(value, true, "电表号");
+                ReportPropertyChanged("电表号");
+                On电表号Changed();
+            }
+        }
+        private global::System.String _电表号;
+        partial void On电表号Changing(global::System.String value);
+        partial void On电表号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 本年度用电量度
+        {
+            get
+            {
+                return _本年度用电量度;
+            }
+            set
+            {
+                On本年度用电量度Changing(value);
+                ReportPropertyChanging("本年度用电量度");
+                _本年度用电量度 = StructuralObject.SetValidValue(value, "本年度用电量度");
+                ReportPropertyChanged("本年度用电量度");
+                On本年度用电量度Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _本年度用电量度;
+        partial void On本年度用电量度Changing(Nullable<global::System.Decimal> value);
+        partial void On本年度用电量度Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 水表号
+        {
+            get
+            {
+                return _水表号;
+            }
+            set
+            {
+                On水表号Changing(value);
+                ReportPropertyChanging("水表号");
+                _水表号 = StructuralObject.SetValidValue(value, true, "水表号");
+                ReportPropertyChanged("水表号");
+                On水表号Changed();
+            }
+        }
+        private global::System.String _水表号;
+        partial void On水表号Changing(global::System.String value);
+        partial void On水表号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 本年度用水量
+        {
+            get
+            {
+                return _本年度用水量;
+            }
+            set
+            {
+                On本年度用水量Changing(value);
+                ReportPropertyChanging("本年度用水量");
+                _本年度用水量 = StructuralObject.SetValidValue(value, "本年度用水量");
+                ReportPropertyChanged("本年度用水量");
+                On本年度用水量Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _本年度用水量;
+        partial void On本年度用水量Changing(Nullable<global::System.Decimal> value);
+        partial void On本年度用水量Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> preElec
+        {
+            get
+            {
+                return _preElec;
+            }
+            set
+            {
+                OnpreElecChanging(value);
+                ReportPropertyChanging("preElec");
+                _preElec = StructuralObject.SetValidValue(value, "preElec");
+                ReportPropertyChanged("preElec");
+                OnpreElecChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _preElec;
+        partial void OnpreElecChanging(Nullable<global::System.Int32> value);
+        partial void OnpreElecChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> preWater
+        {
+            get
+            {
+                return _preWater;
+            }
+            set
+            {
+                OnpreWaterChanging(value);
+                ReportPropertyChanging("preWater");
+                _preWater = StructuralObject.SetValidValue(value, "preWater");
+                ReportPropertyChanged("preWater");
+                OnpreWaterChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _preWater;
+        partial void OnpreWaterChanging(Nullable<global::System.Int32> value);
+        partial void OnpreWaterChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="szEIPAppModel", Name="vw_ltd_up_eval_info_detail")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class vw_ltd_up_eval_info_detail : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 vw_ltd_up_eval_info_detail 对象。
+        /// </summary>
+        /// <param name="id">id 属性的初始值。</param>
+        /// <param name="纳税人名称">纳税人名称 属性的初始值。</param>
+        public static vw_ltd_up_eval_info_detail Createvw_ltd_up_eval_info_detail(global::System.Int32 id, global::System.String 纳税人名称)
+        {
+            vw_ltd_up_eval_info_detail vw_ltd_up_eval_info_detail = new vw_ltd_up_eval_info_detail();
+            vw_ltd_up_eval_info_detail.id = id;
+            vw_ltd_up_eval_info_detail.纳税人名称 = 纳税人名称;
+            return vw_ltd_up_eval_info_detail;
+        }
+
+        #endregion
+
+        #region 简单属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value, "id");
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id;
+        partial void OnidChanging(global::System.Int32 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> year
+        {
+            get
+            {
+                return _year;
+            }
+            set
+            {
+                OnyearChanging(value);
+                ReportPropertyChanging("year");
+                _year = StructuralObject.SetValidValue(value, "year");
+                ReportPropertyChanged("year");
+                OnyearChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _year;
+        partial void OnyearChanging(Nullable<global::System.Int32> value);
+        partial void OnyearChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String 纳税人名称
+        {
+            get
+            {
+                return _纳税人名称;
+            }
+            set
+            {
+                if (_纳税人名称 != value)
+                {
+                    On纳税人名称Changing(value);
+                    ReportPropertyChanging("纳税人名称");
+                    _纳税人名称 = StructuralObject.SetValidValue(value, false, "纳税人名称");
+                    ReportPropertyChanged("纳税人名称");
+                    On纳税人名称Changed();
+                }
+            }
+        }
+        private global::System.String _纳税人名称;
+        partial void On纳税人名称Changing(global::System.String value);
+        partial void On纳税人名称Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 集约利用地块编号
+        {
+            get
+            {
+                return _集约利用地块编号;
+            }
+            set
+            {
+                On集约利用地块编号Changing(value);
+                ReportPropertyChanging("集约利用地块编号");
+                _集约利用地块编号 = StructuralObject.SetValidValue(value, true, "集约利用地块编号");
+                ReportPropertyChanged("集约利用地块编号");
+                On集约利用地块编号Changed();
+            }
+        }
+        private global::System.String _集约利用地块编号;
+        partial void On集约利用地块编号Changing(global::System.String value);
+        partial void On集约利用地块编号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 土地持证面积
+        {
+            get
+            {
+                return _土地持证面积;
+            }
+            set
+            {
+                On土地持证面积Changing(value);
+                ReportPropertyChanging("土地持证面积");
+                _土地持证面积 = StructuralObject.SetValidValue(value, "土地持证面积");
+                ReportPropertyChanged("土地持证面积");
+                On土地持证面积Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _土地持证面积;
+        partial void On土地持证面积Changing(Nullable<global::System.Decimal> value);
+        partial void On土地持证面积Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 房产持证面积
+        {
+            get
+            {
+                return _房产持证面积;
+            }
+            set
+            {
+                On房产持证面积Changing(value);
+                ReportPropertyChanging("房产持证面积");
+                _房产持证面积 = StructuralObject.SetValidValue(value, "房产持证面积");
+                ReportPropertyChanged("房产持证面积");
+                On房产持证面积Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _房产持证面积;
+        partial void On房产持证面积Changing(Nullable<global::System.Decimal> value);
+        partial void On房产持证面积Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 实际房屋面积
+        {
+            get
+            {
+                return _实际房屋面积;
+            }
+            set
+            {
+                On实际房屋面积Changing(value);
+                ReportPropertyChanging("实际房屋面积");
+                _实际房屋面积 = StructuralObject.SetValidValue(value, "实际房屋面积");
+                ReportPropertyChanged("实际房屋面积");
+                On实际房屋面积Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _实际房屋面积;
+        partial void On实际房屋面积Changing(Nullable<global::System.Decimal> value);
+        partial void On实际房屋面积Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 电表号
+        {
+            get
+            {
+                return _电表号;
+            }
+            set
+            {
+                On电表号Changing(value);
+                ReportPropertyChanging("电表号");
+                _电表号 = StructuralObject.SetValidValue(value, true, "电表号");
+                ReportPropertyChanged("电表号");
+                On电表号Changed();
+            }
+        }
+        private global::System.String _电表号;
+        partial void On电表号Changing(global::System.String value);
+        partial void On电表号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 本年度用电量度
+        {
+            get
+            {
+                return _本年度用电量度;
+            }
+            set
+            {
+                On本年度用电量度Changing(value);
+                ReportPropertyChanging("本年度用电量度");
+                _本年度用电量度 = StructuralObject.SetValidValue(value, "本年度用电量度");
+                ReportPropertyChanged("本年度用电量度");
+                On本年度用电量度Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _本年度用电量度;
+        partial void On本年度用电量度Changing(Nullable<global::System.Decimal> value);
+        partial void On本年度用电量度Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 水表号
+        {
+            get
+            {
+                return _水表号;
+            }
+            set
+            {
+                On水表号Changing(value);
+                ReportPropertyChanging("水表号");
+                _水表号 = StructuralObject.SetValidValue(value, true, "水表号");
+                ReportPropertyChanged("水表号");
+                On水表号Changed();
+            }
+        }
+        private global::System.String _水表号;
+        partial void On水表号Changing(global::System.String value);
+        partial void On水表号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 本年度用水量
+        {
+            get
+            {
+                return _本年度用水量;
+            }
+            set
+            {
+                On本年度用水量Changing(value);
+                ReportPropertyChanging("本年度用水量");
+                _本年度用水量 = StructuralObject.SetValidValue(value, "本年度用水量");
+                ReportPropertyChanged("本年度用水量");
+                On本年度用水量Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _本年度用水量;
+        partial void On本年度用水量Changing(Nullable<global::System.Decimal> value);
+        partial void On本年度用水量Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> preElec
+        {
+            get
+            {
+                return _preElec;
+            }
+            set
+            {
+                OnpreElecChanging(value);
+                ReportPropertyChanging("preElec");
+                _preElec = StructuralObject.SetValidValue(value, "preElec");
+                ReportPropertyChanged("preElec");
+                OnpreElecChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _preElec;
+        partial void OnpreElecChanging(Nullable<global::System.Int32> value);
+        partial void OnpreElecChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> preWater
+        {
+            get
+            {
+                return _preWater;
+            }
+            set
+            {
+                OnpreWaterChanging(value);
+                ReportPropertyChanging("preWater");
+                _preWater = StructuralObject.SetValidValue(value, "preWater");
+                ReportPropertyChanged("preWater");
+                OnpreWaterChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _preWater;
+        partial void OnpreWaterChanging(Nullable<global::System.Int32> value);
+        partial void OnpreWaterChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="szEIPAppModel", Name="vwdiyQuery_Owner")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class vwdiyQuery_Owner : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 vwdiyQuery_Owner 对象。
+        /// </summary>
+        /// <param name="纳税人名称">纳税人名称 属性的初始值。</param>
+        public static vwdiyQuery_Owner CreatevwdiyQuery_Owner(global::System.String 纳税人名称)
+        {
+            vwdiyQuery_Owner vwdiyQuery_Owner = new vwdiyQuery_Owner();
+            vwdiyQuery_Owner.纳税人名称 = 纳税人名称;
+            return vwdiyQuery_Owner;
+        }
+
+        #endregion
+
+        #region 简单属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                OnIdChanging(value);
+                ReportPropertyChanging("Id");
+                _Id = StructuralObject.SetValidValue(value, "Id");
+                ReportPropertyChanged("Id");
+                OnIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Id;
+        partial void OnIdChanging(Nullable<global::System.Int32> value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String 纳税人名称
+        {
+            get
+            {
+                return _纳税人名称;
+            }
+            set
+            {
+                if (_纳税人名称 != value)
+                {
+                    On纳税人名称Changing(value);
+                    ReportPropertyChanging("纳税人名称");
+                    _纳税人名称 = StructuralObject.SetValidValue(value, false, "纳税人名称");
+                    ReportPropertyChanged("纳税人名称");
+                    On纳税人名称Changed();
+                }
+            }
+        }
+        private global::System.String _纳税人名称;
+        partial void On纳税人名称Changing(global::System.String value);
+        partial void On纳税人名称Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 纳税人识别号
+        {
+            get
+            {
+                return _纳税人识别号;
+            }
+            set
+            {
+                On纳税人识别号Changing(value);
+                ReportPropertyChanging("纳税人识别号");
+                _纳税人识别号 = StructuralObject.SetValidValue(value, true, "纳税人识别号");
+                ReportPropertyChanged("纳税人识别号");
+                On纳税人识别号Changed();
+            }
+        }
+        private global::System.String _纳税人识别号;
+        partial void On纳税人识别号Changing(global::System.String value);
+        partial void On纳税人识别号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 组织机构代码
+        {
+            get
+            {
+                return _组织机构代码;
+            }
+            set
+            {
+                On组织机构代码Changing(value);
+                ReportPropertyChanging("组织机构代码");
+                _组织机构代码 = StructuralObject.SetValidValue(value, true, "组织机构代码");
+                ReportPropertyChanged("组织机构代码");
+                On组织机构代码Changed();
+            }
+        }
+        private global::System.String _组织机构代码;
+        partial void On组织机构代码Changing(global::System.String value);
+        partial void On组织机构代码Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 海关代码
+        {
+            get
+            {
+                return _海关代码;
+            }
+            set
+            {
+                On海关代码Changing(value);
+                ReportPropertyChanging("海关代码");
+                _海关代码 = StructuralObject.SetValidValue(value, true, "海关代码");
+                ReportPropertyChanged("海关代码");
+                On海关代码Changed();
+            }
+        }
+        private global::System.String _海关代码;
+        partial void On海关代码Changing(global::System.String value);
+        partial void On海关代码Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 法人姓名
+        {
+            get
+            {
+                return _法人姓名;
+            }
+            set
+            {
+                On法人姓名Changing(value);
+                ReportPropertyChanging("法人姓名");
+                _法人姓名 = StructuralObject.SetValidValue(value, true, "法人姓名");
+                ReportPropertyChanged("法人姓名");
+                On法人姓名Changed();
+            }
+        }
+        private global::System.String _法人姓名;
+        partial void On法人姓名Changing(global::System.String value);
+        partial void On法人姓名Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 法人身份证号
+        {
+            get
+            {
+                return _法人身份证号;
+            }
+            set
+            {
+                On法人身份证号Changing(value);
+                ReportPropertyChanging("法人身份证号");
+                _法人身份证号 = StructuralObject.SetValidValue(value, true, "法人身份证号");
+                ReportPropertyChanged("法人身份证号");
+                On法人身份证号Changed();
+            }
+        }
+        private global::System.String _法人身份证号;
+        partial void On法人身份证号Changing(global::System.String value);
+        partial void On法人身份证号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 类型
+        {
+            get
+            {
+                return _类型;
+            }
+            set
+            {
+                On类型Changing(value);
+                ReportPropertyChanging("类型");
+                _类型 = StructuralObject.SetValidValue(value, true, "类型");
+                ReportPropertyChanged("类型");
+                On类型Changed();
+            }
+        }
+        private global::System.String _类型;
+        partial void On类型Changing(global::System.String value);
+        partial void On类型Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 注册类型
+        {
+            get
+            {
+                return _注册类型;
+            }
+            set
+            {
+                On注册类型Changing(value);
+                ReportPropertyChanging("注册类型");
+                _注册类型 = StructuralObject.SetValidValue(value, true, "注册类型");
+                ReportPropertyChanged("注册类型");
+                On注册类型Changed();
+            }
+        }
+        private global::System.String _注册类型;
+        partial void On注册类型Changing(global::System.String value);
+        partial void On注册类型Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 注册资金
+        {
+            get
+            {
+                return _注册资金;
+            }
+            set
+            {
+                On注册资金Changing(value);
+                ReportPropertyChanging("注册资金");
+                _注册资金 = StructuralObject.SetValidValue(value, true, "注册资金");
+                ReportPropertyChanged("注册资金");
+                On注册资金Changed();
+            }
+        }
+        private global::System.String _注册资金;
+        partial void On注册资金Changing(global::System.String value);
+        partial void On注册资金Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 运营类型
+        {
+            get
+            {
+                return _运营类型;
+            }
+            set
+            {
+                On运营类型Changing(value);
+                ReportPropertyChanging("运营类型");
+                _运营类型 = StructuralObject.SetValidValue(value, true, "运营类型");
+                ReportPropertyChanged("运营类型");
+                On运营类型Changed();
+            }
+        }
+        private global::System.String _运营类型;
+        partial void On运营类型Changing(global::System.String value);
+        partial void On运营类型Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 行业类型大类
+        {
+            get
+            {
+                return _行业类型大类;
+            }
+            set
+            {
+                On行业类型大类Changing(value);
+                ReportPropertyChanging("行业类型大类");
+                _行业类型大类 = StructuralObject.SetValidValue(value, true, "行业类型大类");
+                ReportPropertyChanged("行业类型大类");
+                On行业类型大类Changed();
+            }
+        }
+        private global::System.String _行业类型大类;
+        partial void On行业类型大类Changing(global::System.String value);
+        partial void On行业类型大类Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 行业类型细分
+        {
+            get
+            {
+                return _行业类型细分;
+            }
+            set
+            {
+                On行业类型细分Changing(value);
+                ReportPropertyChanging("行业类型细分");
+                _行业类型细分 = StructuralObject.SetValidValue(value, true, "行业类型细分");
+                ReportPropertyChanged("行业类型细分");
+                On行业类型细分Changed();
+            }
+        }
+        private global::System.String _行业类型细分;
+        partial void On行业类型细分Changing(global::System.String value);
+        partial void On行业类型细分Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 注册地址
+        {
+            get
+            {
+                return _注册地址;
+            }
+            set
+            {
+                On注册地址Changing(value);
+                ReportPropertyChanging("注册地址");
+                _注册地址 = StructuralObject.SetValidValue(value, true, "注册地址");
+                ReportPropertyChanged("注册地址");
+                On注册地址Changed();
+            }
+        }
+        private global::System.String _注册地址;
+        partial void On注册地址Changing(global::System.String value);
+        partial void On注册地址Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 集约利用地块编号
+        {
+            get
+            {
+                return _集约利用地块编号;
+            }
+            set
+            {
+                On集约利用地块编号Changing(value);
+                ReportPropertyChanging("集约利用地块编号");
+                _集约利用地块编号 = StructuralObject.SetValidValue(value, true, "集约利用地块编号");
+                ReportPropertyChanged("集约利用地块编号");
+                On集约利用地块编号Changed();
+            }
+        }
+        private global::System.String _集约利用地块编号;
+        partial void On集约利用地块编号Changing(global::System.String value);
+        partial void On集约利用地块编号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 租赁性质
+        {
+            get
+            {
+                return _租赁性质;
+            }
+            set
+            {
+                On租赁性质Changing(value);
+                ReportPropertyChanging("租赁性质");
+                _租赁性质 = StructuralObject.SetValidValue(value, true, "租赁性质");
+                ReportPropertyChanged("租赁性质");
+                On租赁性质Changed();
+            }
+        }
+        private global::System.String _租赁性质;
+        partial void On租赁性质Changing(global::System.String value);
+        partial void On租赁性质Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 所属管理区
+        {
+            get
+            {
+                return _所属管理区;
+            }
+            set
+            {
+                On所属管理区Changing(value);
+                ReportPropertyChanging("所属管理区");
+                _所属管理区 = StructuralObject.SetValidValue(value, true, "所属管理区");
+                ReportPropertyChanged("所属管理区");
+                On所属管理区Changed();
+            }
+        }
+        private global::System.String _所属管理区;
+        partial void On所属管理区Changing(global::System.String value);
+        partial void On所属管理区Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 所属社区
+        {
+            get
+            {
+                return _所属社区;
+            }
+            set
+            {
+                On所属社区Changing(value);
+                ReportPropertyChanging("所属社区");
+                _所属社区 = StructuralObject.SetValidValue(value, true, "所属社区");
+                ReportPropertyChanged("所属社区");
+                On所属社区Changed();
+            }
+        }
+        private global::System.String _所属社区;
+        partial void On所属社区Changing(global::System.String value);
+        partial void On所属社区Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> year
+        {
+            get
+            {
+                return _year;
+            }
+            set
+            {
+                OnyearChanging(value);
+                ReportPropertyChanging("year");
+                _year = StructuralObject.SetValidValue(value, "year");
+                ReportPropertyChanged("year");
+                OnyearChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _year;
+        partial void OnyearChanging(Nullable<global::System.Int32> value);
+        partial void OnyearChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 经营方式
+        {
+            get
+            {
+                return _经营方式;
+            }
+            set
+            {
+                On经营方式Changing(value);
+                ReportPropertyChanging("经营方式");
+                _经营方式 = StructuralObject.SetValidValue(value, true, "经营方式");
+                ReportPropertyChanged("经营方式");
+                On经营方式Changed();
+            }
+        }
+        private global::System.String _经营方式;
+        partial void On经营方式Changing(global::System.String value);
+        partial void On经营方式Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 土地购置类型
+        {
+            get
+            {
+                return _土地购置类型;
+            }
+            set
+            {
+                On土地购置类型Changing(value);
+                ReportPropertyChanging("土地购置类型");
+                _土地购置类型 = StructuralObject.SetValidValue(value, true, "土地购置类型");
+                ReportPropertyChanged("土地购置类型");
+                On土地购置类型Changed();
+            }
+        }
+        private global::System.String _土地购置类型;
+        partial void On土地购置类型Changing(global::System.String value);
+        partial void On土地购置类型Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 土地购置日期
+        {
+            get
+            {
+                return _土地购置日期;
+            }
+            set
+            {
+                On土地购置日期Changing(value);
+                ReportPropertyChanging("土地购置日期");
+                _土地购置日期 = StructuralObject.SetValidValue(value, true, "土地购置日期");
+                ReportPropertyChanged("土地购置日期");
+                On土地购置日期Changed();
+            }
+        }
+        private global::System.String _土地购置日期;
+        partial void On土地购置日期Changing(global::System.String value);
+        partial void On土地购置日期Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 测绘土地面积
+        {
+            get
+            {
+                return _测绘土地面积;
+            }
+            set
+            {
+                On测绘土地面积Changing(value);
+                ReportPropertyChanging("测绘土地面积");
+                _测绘土地面积 = StructuralObject.SetValidValue(value, "测绘土地面积");
+                ReportPropertyChanged("测绘土地面积");
+                On测绘土地面积Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _测绘土地面积;
+        partial void On测绘土地面积Changing(Nullable<global::System.Decimal> value);
+        partial void On测绘土地面积Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 实际用地面积
+        {
+            get
+            {
+                return _实际用地面积;
+            }
+            set
+            {
+                On实际用地面积Changing(value);
+                ReportPropertyChanging("实际用地面积");
+                _实际用地面积 = StructuralObject.SetValidValue(value, "实际用地面积");
+                ReportPropertyChanged("实际用地面积");
+                On实际用地面积Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _实际用地面积;
+        partial void On实际用地面积Changing(Nullable<global::System.Decimal> value);
+        partial void On实际用地面积Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 土地持证面积
+        {
+            get
+            {
+                return _土地持证面积;
+            }
+            set
+            {
+                On土地持证面积Changing(value);
+                ReportPropertyChanging("土地持证面积");
+                _土地持证面积 = StructuralObject.SetValidValue(value, "土地持证面积");
+                ReportPropertyChanged("土地持证面积");
+                On土地持证面积Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _土地持证面积;
+        partial void On土地持证面积Changing(Nullable<global::System.Decimal> value);
+        partial void On土地持证面积Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 实际房屋面积
+        {
+            get
+            {
+                return _实际房屋面积;
+            }
+            set
+            {
+                On实际房屋面积Changing(value);
+                ReportPropertyChanging("实际房屋面积");
+                _实际房屋面积 = StructuralObject.SetValidValue(value, "实际房屋面积");
+                ReportPropertyChanged("实际房屋面积");
+                On实际房屋面积Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _实际房屋面积;
+        partial void On实际房屋面积Changing(Nullable<global::System.Decimal> value);
+        partial void On实际房屋面积Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 房产持证面积
+        {
+            get
+            {
+                return _房产持证面积;
+            }
+            set
+            {
+                On房产持证面积Changing(value);
+                ReportPropertyChanging("房产持证面积");
+                _房产持证面积 = StructuralObject.SetValidValue(value, "房产持证面积");
+                ReportPropertyChanged("房产持证面积");
+                On房产持证面积Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _房产持证面积;
+        partial void On房产持证面积Changing(Nullable<global::System.Decimal> value);
+        partial void On房产持证面积Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 无土地权证说明
+        {
+            get
+            {
+                return _无土地权证说明;
+            }
+            set
+            {
+                On无土地权证说明Changing(value);
+                ReportPropertyChanging("无土地权证说明");
+                _无土地权证说明 = StructuralObject.SetValidValue(value, true, "无土地权证说明");
+                ReportPropertyChanged("无土地权证说明");
+                On无土地权证说明Changed();
+            }
+        }
+        private global::System.String _无土地权证说明;
+        partial void On无土地权证说明Changing(global::System.String value);
+        partial void On无土地权证说明Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 无房产权证说明
+        {
+            get
+            {
+                return _无房产权证说明;
+            }
+            set
+            {
+                On无房产权证说明Changing(value);
+                ReportPropertyChanging("无房产权证说明");
+                _无房产权证说明 = StructuralObject.SetValidValue(value, true, "无房产权证说明");
+                ReportPropertyChanged("无房产权证说明");
+                On无房产权证说明Changed();
+            }
+        }
+        private global::System.String _无房产权证说明;
+        partial void On无房产权证说明Changing(global::System.String value);
+        partial void On无房产权证说明Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 实际经营地址
+        {
+            get
+            {
+                return _实际经营地址;
+            }
+            set
+            {
+                On实际经营地址Changing(value);
+                ReportPropertyChanging("实际经营地址");
+                _实际经营地址 = StructuralObject.SetValidValue(value, true, "实际经营地址");
+                ReportPropertyChanged("实际经营地址");
+                On实际经营地址Changed();
+            }
+        }
+        private global::System.String _实际经营地址;
+        partial void On实际经营地址Changing(global::System.String value);
+        partial void On实际经营地址Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 行政人员姓名
+        {
+            get
+            {
+                return _行政人员姓名;
+            }
+            set
+            {
+                On行政人员姓名Changing(value);
+                ReportPropertyChanging("行政人员姓名");
+                _行政人员姓名 = StructuralObject.SetValidValue(value, true, "行政人员姓名");
+                ReportPropertyChanged("行政人员姓名");
+                On行政人员姓名Changed();
+            }
+        }
+        private global::System.String _行政人员姓名;
+        partial void On行政人员姓名Changing(global::System.String value);
+        partial void On行政人员姓名Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 行政人员电话
+        {
+            get
+            {
+                return _行政人员电话;
+            }
+            set
+            {
+                On行政人员电话Changing(value);
+                ReportPropertyChanging("行政人员电话");
+                _行政人员电话 = StructuralObject.SetValidValue(value, true, "行政人员电话");
+                ReportPropertyChanged("行政人员电话");
+                On行政人员电话Changed();
+            }
+        }
+        private global::System.String _行政人员电话;
+        partial void On行政人员电话Changing(global::System.String value);
+        partial void On行政人员电话Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 填表人姓名
+        {
+            get
+            {
+                return _填表人姓名;
+            }
+            set
+            {
+                On填表人姓名Changing(value);
+                ReportPropertyChanging("填表人姓名");
+                _填表人姓名 = StructuralObject.SetValidValue(value, true, "填表人姓名");
+                ReportPropertyChanged("填表人姓名");
+                On填表人姓名Changed();
+            }
+        }
+        private global::System.String _填表人姓名;
+        partial void On填表人姓名Changing(global::System.String value);
+        partial void On填表人姓名Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 填表人手机
+        {
+            get
+            {
+                return _填表人手机;
+            }
+            set
+            {
+                On填表人手机Changing(value);
+                ReportPropertyChanging("填表人手机");
+                _填表人手机 = StructuralObject.SetValidValue(value, true, "填表人手机");
+                ReportPropertyChanged("填表人手机");
+                On填表人手机Changed();
+            }
+        }
+        private global::System.String _填表人手机;
+        partial void On填表人手机Changing(global::System.String value);
+        partial void On填表人手机Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 电表使用类型
+        {
+            get
+            {
+                return _电表使用类型;
+            }
+            set
+            {
+                On电表使用类型Changing(value);
+                ReportPropertyChanging("电表使用类型");
+                _电表使用类型 = StructuralObject.SetValidValue(value, true, "电表使用类型");
+                ReportPropertyChanged("电表使用类型");
+                On电表使用类型Changed();
+            }
+        }
+        private global::System.String _电表使用类型;
+        partial void On电表使用类型Changing(global::System.String value);
+        partial void On电表使用类型Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 无电表用电说明
+        {
+            get
+            {
+                return _无电表用电说明;
+            }
+            set
+            {
+                On无电表用电说明Changing(value);
+                ReportPropertyChanging("无电表用电说明");
+                _无电表用电说明 = StructuralObject.SetValidValue(value, true, "无电表用电说明");
+                ReportPropertyChanged("无电表用电说明");
+                On无电表用电说明Changed();
+            }
+        }
+        private global::System.String _无电表用电说明;
+        partial void On无电表用电说明Changing(global::System.String value);
+        partial void On无电表用电说明Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 本年度用电量度
+        {
+            get
+            {
+                return _本年度用电量度;
+            }
+            set
+            {
+                On本年度用电量度Changing(value);
+                ReportPropertyChanging("本年度用电量度");
+                _本年度用电量度 = StructuralObject.SetValidValue(value, "本年度用电量度");
+                ReportPropertyChanged("本年度用电量度");
+                On本年度用电量度Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _本年度用电量度;
+        partial void On本年度用电量度Changing(Nullable<global::System.Decimal> value);
+        partial void On本年度用电量度Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 水表使用类型
+        {
+            get
+            {
+                return _水表使用类型;
+            }
+            set
+            {
+                On水表使用类型Changing(value);
+                ReportPropertyChanging("水表使用类型");
+                _水表使用类型 = StructuralObject.SetValidValue(value, true, "水表使用类型");
+                ReportPropertyChanged("水表使用类型");
+                On水表使用类型Changed();
+            }
+        }
+        private global::System.String _水表使用类型;
+        partial void On水表使用类型Changing(global::System.String value);
+        partial void On水表使用类型Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 水表号
+        {
+            get
+            {
+                return _水表号;
+            }
+            set
+            {
+                On水表号Changing(value);
+                ReportPropertyChanging("水表号");
+                _水表号 = StructuralObject.SetValidValue(value, true, "水表号");
+                ReportPropertyChanged("水表号");
+                On水表号Changed();
+            }
+        }
+        private global::System.String _水表号;
+        partial void On水表号Changing(global::System.String value);
+        partial void On水表号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 无水表用电说明
+        {
+            get
+            {
+                return _无水表用电说明;
+            }
+            set
+            {
+                On无水表用电说明Changing(value);
+                ReportPropertyChanging("无水表用电说明");
+                _无水表用电说明 = StructuralObject.SetValidValue(value, true, "无水表用电说明");
+                ReportPropertyChanged("无水表用电说明");
+                On无水表用电说明Changed();
+            }
+        }
+        private global::System.String _无水表用电说明;
+        partial void On无水表用电说明Changing(global::System.String value);
+        partial void On无水表用电说明Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 本年度用水量
+        {
+            get
+            {
+                return _本年度用水量;
+            }
+            set
+            {
+                On本年度用水量Changing(value);
+                ReportPropertyChanging("本年度用水量");
+                _本年度用水量 = StructuralObject.SetValidValue(value, "本年度用水量");
+                ReportPropertyChanged("本年度用水量");
+                On本年度用水量Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _本年度用水量;
+        partial void On本年度用水量Changing(Nullable<global::System.Decimal> value);
+        partial void On本年度用水量Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> 公司企业人数
+        {
+            get
+            {
+                return _公司企业人数;
+            }
+            set
+            {
+                On公司企业人数Changing(value);
+                ReportPropertyChanging("公司企业人数");
+                _公司企业人数 = StructuralObject.SetValidValue(value, "公司企业人数");
+                ReportPropertyChanged("公司企业人数");
+                On公司企业人数Changed();
+            }
+        }
+        private Nullable<global::System.Int32> _公司企业人数;
+        partial void On公司企业人数Changing(Nullable<global::System.Int32> value);
+        partial void On公司企业人数Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> 其中省外人数
+        {
+            get
+            {
+                return _其中省外人数;
+            }
+            set
+            {
+                On其中省外人数Changing(value);
+                ReportPropertyChanging("其中省外人数");
+                _其中省外人数 = StructuralObject.SetValidValue(value, "其中省外人数");
+                ReportPropertyChanged("其中省外人数");
+                On其中省外人数Changed();
+            }
+        }
+        private Nullable<global::System.Int32> _其中省外人数;
+        partial void On其中省外人数Changing(Nullable<global::System.Int32> value);
+        partial void On其中省外人数Changed();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="szEIPAppModel", Name="vwdiyQuery_rent")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class vwdiyQuery_rent : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 vwdiyQuery_rent 对象。
+        /// </summary>
+        /// <param name="id">Id 属性的初始值。</param>
+        public static vwdiyQuery_rent CreatevwdiyQuery_rent(global::System.Int32 id)
+        {
+            vwdiyQuery_rent vwdiyQuery_rent = new vwdiyQuery_rent();
+            vwdiyQuery_rent.Id = id;
+            return vwdiyQuery_rent;
+        }
+
+        #endregion
+
+        #region 简单属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value, "Id");
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 纳税人名称
+        {
+            get
+            {
+                return _纳税人名称;
+            }
+            set
+            {
+                On纳税人名称Changing(value);
+                ReportPropertyChanging("纳税人名称");
+                _纳税人名称 = StructuralObject.SetValidValue(value, true, "纳税人名称");
+                ReportPropertyChanged("纳税人名称");
+                On纳税人名称Changed();
+            }
+        }
+        private global::System.String _纳税人名称;
+        partial void On纳税人名称Changing(global::System.String value);
+        partial void On纳税人名称Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 纳税人识别号
+        {
+            get
+            {
+                return _纳税人识别号;
+            }
+            set
+            {
+                On纳税人识别号Changing(value);
+                ReportPropertyChanging("纳税人识别号");
+                _纳税人识别号 = StructuralObject.SetValidValue(value, true, "纳税人识别号");
+                ReportPropertyChanged("纳税人识别号");
+                On纳税人识别号Changed();
+            }
+        }
+        private global::System.String _纳税人识别号;
+        partial void On纳税人识别号Changing(global::System.String value);
+        partial void On纳税人识别号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 组织机构代码
+        {
+            get
+            {
+                return _组织机构代码;
+            }
+            set
+            {
+                On组织机构代码Changing(value);
+                ReportPropertyChanging("组织机构代码");
+                _组织机构代码 = StructuralObject.SetValidValue(value, true, "组织机构代码");
+                ReportPropertyChanged("组织机构代码");
+                On组织机构代码Changed();
+            }
+        }
+        private global::System.String _组织机构代码;
+        partial void On组织机构代码Changing(global::System.String value);
+        partial void On组织机构代码Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 海关代码
+        {
+            get
+            {
+                return _海关代码;
+            }
+            set
+            {
+                On海关代码Changing(value);
+                ReportPropertyChanging("海关代码");
+                _海关代码 = StructuralObject.SetValidValue(value, true, "海关代码");
+                ReportPropertyChanged("海关代码");
+                On海关代码Changed();
+            }
+        }
+        private global::System.String _海关代码;
+        partial void On海关代码Changing(global::System.String value);
+        partial void On海关代码Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 法人姓名
+        {
+            get
+            {
+                return _法人姓名;
+            }
+            set
+            {
+                On法人姓名Changing(value);
+                ReportPropertyChanging("法人姓名");
+                _法人姓名 = StructuralObject.SetValidValue(value, true, "法人姓名");
+                ReportPropertyChanged("法人姓名");
+                On法人姓名Changed();
+            }
+        }
+        private global::System.String _法人姓名;
+        partial void On法人姓名Changing(global::System.String value);
+        partial void On法人姓名Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 法人身份证号
+        {
+            get
+            {
+                return _法人身份证号;
+            }
+            set
+            {
+                On法人身份证号Changing(value);
+                ReportPropertyChanging("法人身份证号");
+                _法人身份证号 = StructuralObject.SetValidValue(value, true, "法人身份证号");
+                ReportPropertyChanged("法人身份证号");
+                On法人身份证号Changed();
+            }
+        }
+        private global::System.String _法人身份证号;
+        partial void On法人身份证号Changing(global::System.String value);
+        partial void On法人身份证号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 类型
+        {
+            get
+            {
+                return _类型;
+            }
+            set
+            {
+                On类型Changing(value);
+                ReportPropertyChanging("类型");
+                _类型 = StructuralObject.SetValidValue(value, true, "类型");
+                ReportPropertyChanged("类型");
+                On类型Changed();
+            }
+        }
+        private global::System.String _类型;
+        partial void On类型Changing(global::System.String value);
+        partial void On类型Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 注册类型
+        {
+            get
+            {
+                return _注册类型;
+            }
+            set
+            {
+                On注册类型Changing(value);
+                ReportPropertyChanging("注册类型");
+                _注册类型 = StructuralObject.SetValidValue(value, true, "注册类型");
+                ReportPropertyChanged("注册类型");
+                On注册类型Changed();
+            }
+        }
+        private global::System.String _注册类型;
+        partial void On注册类型Changing(global::System.String value);
+        partial void On注册类型Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 注册资金
+        {
+            get
+            {
+                return _注册资金;
+            }
+            set
+            {
+                On注册资金Changing(value);
+                ReportPropertyChanging("注册资金");
+                _注册资金 = StructuralObject.SetValidValue(value, true, "注册资金");
+                ReportPropertyChanged("注册资金");
+                On注册资金Changed();
+            }
+        }
+        private global::System.String _注册资金;
+        partial void On注册资金Changing(global::System.String value);
+        partial void On注册资金Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 运营类型
+        {
+            get
+            {
+                return _运营类型;
+            }
+            set
+            {
+                On运营类型Changing(value);
+                ReportPropertyChanging("运营类型");
+                _运营类型 = StructuralObject.SetValidValue(value, true, "运营类型");
+                ReportPropertyChanged("运营类型");
+                On运营类型Changed();
+            }
+        }
+        private global::System.String _运营类型;
+        partial void On运营类型Changing(global::System.String value);
+        partial void On运营类型Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 行业类型大类
+        {
+            get
+            {
+                return _行业类型大类;
+            }
+            set
+            {
+                On行业类型大类Changing(value);
+                ReportPropertyChanging("行业类型大类");
+                _行业类型大类 = StructuralObject.SetValidValue(value, true, "行业类型大类");
+                ReportPropertyChanged("行业类型大类");
+                On行业类型大类Changed();
+            }
+        }
+        private global::System.String _行业类型大类;
+        partial void On行业类型大类Changing(global::System.String value);
+        partial void On行业类型大类Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 行业类型细分
+        {
+            get
+            {
+                return _行业类型细分;
+            }
+            set
+            {
+                On行业类型细分Changing(value);
+                ReportPropertyChanging("行业类型细分");
+                _行业类型细分 = StructuralObject.SetValidValue(value, true, "行业类型细分");
+                ReportPropertyChanged("行业类型细分");
+                On行业类型细分Changed();
+            }
+        }
+        private global::System.String _行业类型细分;
+        partial void On行业类型细分Changing(global::System.String value);
+        partial void On行业类型细分Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 注册地址
+        {
+            get
+            {
+                return _注册地址;
+            }
+            set
+            {
+                On注册地址Changing(value);
+                ReportPropertyChanging("注册地址");
+                _注册地址 = StructuralObject.SetValidValue(value, true, "注册地址");
+                ReportPropertyChanged("注册地址");
+                On注册地址Changed();
+            }
+        }
+        private global::System.String _注册地址;
+        partial void On注册地址Changing(global::System.String value);
+        partial void On注册地址Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 集约利用地块编号
+        {
+            get
+            {
+                return _集约利用地块编号;
+            }
+            set
+            {
+                On集约利用地块编号Changing(value);
+                ReportPropertyChanging("集约利用地块编号");
+                _集约利用地块编号 = StructuralObject.SetValidValue(value, true, "集约利用地块编号");
+                ReportPropertyChanged("集约利用地块编号");
+                On集约利用地块编号Changed();
+            }
+        }
+        private global::System.String _集约利用地块编号;
+        partial void On集约利用地块编号Changing(global::System.String value);
+        partial void On集约利用地块编号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 所属管理区
+        {
+            get
+            {
+                return _所属管理区;
+            }
+            set
+            {
+                On所属管理区Changing(value);
+                ReportPropertyChanging("所属管理区");
+                _所属管理区 = StructuralObject.SetValidValue(value, true, "所属管理区");
+                ReportPropertyChanged("所属管理区");
+                On所属管理区Changed();
+            }
+        }
+        private global::System.String _所属管理区;
+        partial void On所属管理区Changing(global::System.String value);
+        partial void On所属管理区Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 所属社区
+        {
+            get
+            {
+                return _所属社区;
+            }
+            set
+            {
+                On所属社区Changing(value);
+                ReportPropertyChanging("所属社区");
+                _所属社区 = StructuralObject.SetValidValue(value, true, "所属社区");
+                ReportPropertyChanged("所属社区");
+                On所属社区Changed();
+            }
+        }
+        private global::System.String _所属社区;
+        partial void On所属社区Changing(global::System.String value);
+        partial void On所属社区Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> year
+        {
+            get
+            {
+                return _year;
+            }
+            set
+            {
+                OnyearChanging(value);
+                ReportPropertyChanging("year");
+                _year = StructuralObject.SetValidValue(value, "year");
+                ReportPropertyChanged("year");
+                OnyearChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _year;
+        partial void OnyearChanging(Nullable<global::System.Int32> value);
+        partial void OnyearChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 行政人员姓名
+        {
+            get
+            {
+                return _行政人员姓名;
+            }
+            set
+            {
+                On行政人员姓名Changing(value);
+                ReportPropertyChanging("行政人员姓名");
+                _行政人员姓名 = StructuralObject.SetValidValue(value, true, "行政人员姓名");
+                ReportPropertyChanged("行政人员姓名");
+                On行政人员姓名Changed();
+            }
+        }
+        private global::System.String _行政人员姓名;
+        partial void On行政人员姓名Changing(global::System.String value);
+        partial void On行政人员姓名Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 行政人员电话
+        {
+            get
+            {
+                return _行政人员电话;
+            }
+            set
+            {
+                On行政人员电话Changing(value);
+                ReportPropertyChanging("行政人员电话");
+                _行政人员电话 = StructuralObject.SetValidValue(value, true, "行政人员电话");
+                ReportPropertyChanged("行政人员电话");
+                On行政人员电话Changed();
+            }
+        }
+        private global::System.String _行政人员电话;
+        partial void On行政人员电话Changing(global::System.String value);
+        partial void On行政人员电话Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 填表人姓名
+        {
+            get
+            {
+                return _填表人姓名;
+            }
+            set
+            {
+                On填表人姓名Changing(value);
+                ReportPropertyChanging("填表人姓名");
+                _填表人姓名 = StructuralObject.SetValidValue(value, true, "填表人姓名");
+                ReportPropertyChanged("填表人姓名");
+                On填表人姓名Changed();
+            }
+        }
+        private global::System.String _填表人姓名;
+        partial void On填表人姓名Changing(global::System.String value);
+        partial void On填表人姓名Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 填表人手机
+        {
+            get
+            {
+                return _填表人手机;
+            }
+            set
+            {
+                On填表人手机Changing(value);
+                ReportPropertyChanging("填表人手机");
+                _填表人手机 = StructuralObject.SetValidValue(value, true, "填表人手机");
+                ReportPropertyChanged("填表人手机");
+                On填表人手机Changed();
+            }
+        }
+        private global::System.String _填表人手机;
+        partial void On填表人手机Changing(global::System.String value);
+        partial void On填表人手机Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 电表使用类型
+        {
+            get
+            {
+                return _电表使用类型;
+            }
+            set
+            {
+                On电表使用类型Changing(value);
+                ReportPropertyChanging("电表使用类型");
+                _电表使用类型 = StructuralObject.SetValidValue(value, true, "电表使用类型");
+                ReportPropertyChanged("电表使用类型");
+                On电表使用类型Changed();
+            }
+        }
+        private global::System.String _电表使用类型;
+        partial void On电表使用类型Changing(global::System.String value);
+        partial void On电表使用类型Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 无电表用电说明
+        {
+            get
+            {
+                return _无电表用电说明;
+            }
+            set
+            {
+                On无电表用电说明Changing(value);
+                ReportPropertyChanging("无电表用电说明");
+                _无电表用电说明 = StructuralObject.SetValidValue(value, true, "无电表用电说明");
+                ReportPropertyChanged("无电表用电说明");
+                On无电表用电说明Changed();
+            }
+        }
+        private global::System.String _无电表用电说明;
+        partial void On无电表用电说明Changing(global::System.String value);
+        partial void On无电表用电说明Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 本年度用电量度
+        {
+            get
+            {
+                return _本年度用电量度;
+            }
+            set
+            {
+                On本年度用电量度Changing(value);
+                ReportPropertyChanging("本年度用电量度");
+                _本年度用电量度 = StructuralObject.SetValidValue(value, "本年度用电量度");
+                ReportPropertyChanged("本年度用电量度");
+                On本年度用电量度Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _本年度用电量度;
+        partial void On本年度用电量度Changing(Nullable<global::System.Decimal> value);
+        partial void On本年度用电量度Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 水表使用类型
+        {
+            get
+            {
+                return _水表使用类型;
+            }
+            set
+            {
+                On水表使用类型Changing(value);
+                ReportPropertyChanging("水表使用类型");
+                _水表使用类型 = StructuralObject.SetValidValue(value, true, "水表使用类型");
+                ReportPropertyChanged("水表使用类型");
+                On水表使用类型Changed();
+            }
+        }
+        private global::System.String _水表使用类型;
+        partial void On水表使用类型Changing(global::System.String value);
+        partial void On水表使用类型Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 水表号
+        {
+            get
+            {
+                return _水表号;
+            }
+            set
+            {
+                On水表号Changing(value);
+                ReportPropertyChanging("水表号");
+                _水表号 = StructuralObject.SetValidValue(value, true, "水表号");
+                ReportPropertyChanged("水表号");
+                On水表号Changed();
+            }
+        }
+        private global::System.String _水表号;
+        partial void On水表号Changing(global::System.String value);
+        partial void On水表号Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 无水表用电说明
+        {
+            get
+            {
+                return _无水表用电说明;
+            }
+            set
+            {
+                On无水表用电说明Changing(value);
+                ReportPropertyChanging("无水表用电说明");
+                _无水表用电说明 = StructuralObject.SetValidValue(value, true, "无水表用电说明");
+                ReportPropertyChanged("无水表用电说明");
+                On无水表用电说明Changed();
+            }
+        }
+        private global::System.String _无水表用电说明;
+        partial void On无水表用电说明Changing(global::System.String value);
+        partial void On无水表用电说明Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 本年度用水量
+        {
+            get
+            {
+                return _本年度用水量;
+            }
+            set
+            {
+                On本年度用水量Changing(value);
+                ReportPropertyChanging("本年度用水量");
+                _本年度用水量 = StructuralObject.SetValidValue(value, "本年度用水量");
+                ReportPropertyChanged("本年度用水量");
+                On本年度用水量Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _本年度用水量;
+        partial void On本年度用水量Changing(Nullable<global::System.Decimal> value);
+        partial void On本年度用水量Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> 公司企业人数
+        {
+            get
+            {
+                return _公司企业人数;
+            }
+            set
+            {
+                On公司企业人数Changing(value);
+                ReportPropertyChanging("公司企业人数");
+                _公司企业人数 = StructuralObject.SetValidValue(value, "公司企业人数");
+                ReportPropertyChanged("公司企业人数");
+                On公司企业人数Changed();
+            }
+        }
+        private Nullable<global::System.Int32> _公司企业人数;
+        partial void On公司企业人数Changing(Nullable<global::System.Int32> value);
+        partial void On公司企业人数Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> 其中省外人数
+        {
+            get
+            {
+                return _其中省外人数;
+            }
+            set
+            {
+                On其中省外人数Changing(value);
+                ReportPropertyChanging("其中省外人数");
+                _其中省外人数 = StructuralObject.SetValidValue(value, "其中省外人数");
+                ReportPropertyChanged("其中省外人数");
+                On其中省外人数Changed();
+            }
+        }
+        private Nullable<global::System.Int32> _其中省外人数;
+        partial void On其中省外人数Changing(Nullable<global::System.Int32> value);
+        partial void On其中省外人数Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 租户名称
+        {
+            get
+            {
+                return _租户名称;
+            }
+            set
+            {
+                On租户名称Changing(value);
+                ReportPropertyChanging("租户名称");
+                _租户名称 = StructuralObject.SetValidValue(value, true, "租户名称");
+                ReportPropertyChanged("租户名称");
+                On租户名称Changed();
+            }
+        }
+        private global::System.String _租户名称;
+        partial void On租户名称Changing(global::System.String value);
+        partial void On租户名称Changed();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="szEIPAppModel", Name="vwLtdJcSj")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -28360,10 +33487,12 @@ namespace Dao.QyBllApp
         /// <summary>
         /// 创建新的 vwTaskReview 对象。
         /// </summary>
+        /// <param name="id">id 属性的初始值。</param>
         /// <param name="year">year 属性的初始值。</param>
-        public static vwTaskReview CreatevwTaskReview(global::System.String year)
+        public static vwTaskReview CreatevwTaskReview(global::System.Int32 id, global::System.String year)
         {
             vwTaskReview vwTaskReview = new vwTaskReview();
+            vwTaskReview.id = id;
             vwTaskReview.year = year;
             return vwTaskReview;
         }
@@ -28371,6 +33500,33 @@ namespace Dao.QyBllApp
         #endregion
 
         #region 简单属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value, "id");
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id;
+        partial void OnidChanging(global::System.Int32 value);
+        partial void OnidChanged();
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -28542,6 +33698,126 @@ namespace Dao.QyBllApp
         private global::System.String _flow_status;
         partial void Onflow_statusChanging(global::System.String value);
         partial void Onflow_statusChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> bntask_id
+        {
+            get
+            {
+                return _bntask_id;
+            }
+            set
+            {
+                Onbntask_idChanging(value);
+                ReportPropertyChanging("bntask_id");
+                _bntask_id = StructuralObject.SetValidValue(value, "bntask_id");
+                ReportPropertyChanged("bntask_id");
+                Onbntask_idChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _bntask_id;
+        partial void Onbntask_idChanging(Nullable<global::System.Int32> value);
+        partial void Onbntask_idChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ltd_id
+        {
+            get
+            {
+                return _ltd_id;
+            }
+            set
+            {
+                Onltd_idChanging(value);
+                ReportPropertyChanging("ltd_id");
+                _ltd_id = StructuralObject.SetValidValue(value, "ltd_id");
+                ReportPropertyChanged("ltd_id");
+                Onltd_idChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ltd_id;
+        partial void Onltd_idChanging(Nullable<global::System.Int32> value);
+        partial void Onltd_idChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> publish_dt
+        {
+            get
+            {
+                return _publish_dt;
+            }
+            set
+            {
+                Onpublish_dtChanging(value);
+                ReportPropertyChanging("publish_dt");
+                _publish_dt = StructuralObject.SetValidValue(value, "publish_dt");
+                ReportPropertyChanged("publish_dt");
+                Onpublish_dtChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _publish_dt;
+        partial void Onpublish_dtChanging(Nullable<global::System.DateTime> value);
+        partial void Onpublish_dtChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> deadline
+        {
+            get
+            {
+                return _deadline;
+            }
+            set
+            {
+                OndeadlineChanging(value);
+                ReportPropertyChanging("deadline");
+                _deadline = StructuralObject.SetValidValue(value, "deadline");
+                ReportPropertyChanged("deadline");
+                OndeadlineChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _deadline;
+        partial void OndeadlineChanging(Nullable<global::System.DateTime> value);
+        partial void OndeadlineChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> status_dt
+        {
+            get
+            {
+                return _status_dt;
+            }
+            set
+            {
+                Onstatus_dtChanging(value);
+                ReportPropertyChanging("status_dt");
+                _status_dt = StructuralObject.SetValidValue(value, "status_dt");
+                ReportPropertyChanged("status_dt");
+                Onstatus_dtChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _status_dt;
+        partial void Onstatus_dtChanging(Nullable<global::System.DateTime> value);
+        partial void Onstatus_dtChanged();
 
         #endregion
 

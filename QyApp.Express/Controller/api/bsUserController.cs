@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using QyTech.Core.ExController;
-using QyExpress.Dao;
+using qyExpress.Dao;
 using QyTech.Core.BLL;
 using QyTech.Core;
 using QyTech.Core.Common;
@@ -468,11 +468,47 @@ namespace QyExpress.Controllers.api
             }
         }
 
-        public override string Audit( string sessionid, string idValue, int YesOrNo, string AuditDesp)
+        //public override string Audit(string sessionid, string idValue, int YesOrNo, string AuditDesp)
+        //{
+        //    return base.Audit(sessionid, idValue, YesOrNo, AuditDesp);
+        //}
+        public override string Audit(string sessionid, string idValues, string result, string desp)
         {
-            return base.Audit(sessionid, idValue, YesOrNo, AuditDesp);
+            return base.Audit(sessionid, idValues, result, desp);
         }
+        public string Register(string strjson)
+        {
+            if (strjson == null || strjson.Equals(""))
+            {
+                return jsonMsgHelper.Create(1, null, "参数为空,请核实参数");
+            }
+            try
+            {
+                string ret = "";
+                bsUser obj = JsonHelper.DeserializeJsonToObject<bsUser>(strjson);
+                obj.bsU_Id = Guid.NewGuid();
+                obj.UserType = "webreg";
+                obj.AccountStatus = "正常";
+                obj.RegDt = DateTime.Now;
+                obj.IsSysUser = false;
+                obj.bsS_Code = WebSiteParams.currSoftCustCode;
+                //obj.bsO_Name = "";
+                obj.bsS_Code = WebSiteParams.currSoftCustCode;
+                obj.LoginPwd = LockerHelper.MD5(obj.LoginPwd);
+                obj.ValidDate = obj.RegDt.Value.AddYears(10);
+                ret = EntityManager_Static.Add<bsUser>(DbContext, obj);
 
+                if (ret == "")
+                    return jsonMsgHelper.Create(0, "", "注册成功！");
+                else
+                    return jsonMsgHelper.Create(1, "", "注册失败！");
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error("Add:" + ex.Message);
+                return jsonMsgHelper.Create(1, "", ex.Message);
+            }
+        }
         public override string Add(string sessionid, string strjson)
         {
             if (strjson == null || strjson.Equals(""))

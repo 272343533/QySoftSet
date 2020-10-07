@@ -63,16 +63,16 @@
     <Reference Include="QyTech.Core">
       <HintPath>..\WebPub\QyTech.Core.dll</HintPath>
     </Reference>
-    <Reference Include="QyTech.Core.ExController">
-      <HintPath>..\WebPub\QyTech.Core.ExController.dll</HintPath>
-    </Reference>
-    <Reference Include="QyTech.DbFac, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="QyTech.Core.ExController, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\WebPub\QyTech.DbFac.dll</HintPath>
+      <HintPath>..\WebPub\QyTech.Core.ExController.dll</HintPath>
     </Reference>
     <Reference Include="QyTech.ExcelOper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\WebPub\QyTech.ExcelOper.dll</HintPath>
+    </Reference>
+    <Reference Include="QyTech.ExpressContr">
+      <HintPath>..\WebPub\QyTech.ExpressContr.dll</HintPath>
     </Reference>
     <Reference Include="QyTech.Json, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

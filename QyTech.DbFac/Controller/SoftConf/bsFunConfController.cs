@@ -55,7 +55,7 @@ namespace QyExpress.Controllers.api
                     nodes.Add(n);
                 }
             }
-            catch (Exception ex)
+            catch 
             { }
             string json = jsonMsgHelper.Create(0, nodes, "");
             return json;

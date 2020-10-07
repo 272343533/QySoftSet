@@ -18,8 +18,8 @@ namespace QyExpress
             : base()
         {
             DbContext = new qyExpress.Dao.qyExpressEntities();
-            objNameSpace = "QyExpress.Dao";
-            ObjectClassFullName = StrForReplaceObject + ", QyExpress.Dao, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null";
+            objNameSpace = "qyExpress.Dao";
+            ObjectClassFullName = StrForReplaceObject + ", qyExpress.Dao, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null";
         }
 
 

@@ -64,6 +64,21 @@
           <Property Name="msg_answer_phone" Type="varchar" MaxLength="20" />
           <Property Name="attach_files" Type="varchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="bnbaseInfo_audit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="year" Type="int" Nullable="false" />
+          <Property Name="ltd_Id" Type="int" />
+          <Property Name="ltd_name" Type="varchar" MaxLength="100" />
+          <Property Name="audit_result" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="audit_desp" Type="varchar" MaxLength="200" />
+          <Property Name="audit_bsO_Id" Type="uniqueidentifier" />
+          <Property Name="audit_bsO_Name" Type="varchar" MaxLength="100" />
+          <Property Name="auditor" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="audit_dt" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="bntask">
           <Key>
             <PropertyRef Name="Id" />
@@ -112,6 +127,8 @@
           <Property Name="status_dt" Type="datetime" />
           <Property Name="deadline" Type="date" />
           <Property Name="task_name" Type="varchar" MaxLength="100" />
+          <Property Name="publish_dt" Type="date" />
+          <Property Name="publisher" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="bntask_upfiles">
           <Key>
@@ -260,8 +277,9 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="ltd_id" Type="int" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fill_year" Type="int" />
+          <Property Name="tA1Id" Type="int" />
           <Property Name="ltd_name" Type="varchar" MaxLength="100" />
           <Property Name="ltd_nsrsbh" Type="varchar" MaxLength="50" />
           <Property Name="ltd_tyxydm" Type="varchar" MaxLength="50" />
@@ -269,23 +287,27 @@
           <Property Name="base_info_input" Type="varchar" MaxLength="10" />
           <Property Name="position_input" Type="varchar" MaxLength="10" />
           <Property Name="rent_input" Type="varchar" MaxLength="10" />
+          <Property Name="jyxx_input" Type="varchar" MaxLength="10" />
           <Property Name="is_up_yyzz" Type="varchar" MaxLength="10" />
           <Property Name="is_up_land" Type="varchar" MaxLength="10" />
           <Property Name="is_up_building" Type="varchar" MaxLength="10" />
           <Property Name="is_up_other" Type="varchar" MaxLength="10" />
+          <Property Name="audit_status" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="bsLtd_cred_photo">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="ltd_Id" Type="int" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tA1Id" Type="int" />
+          <Property Name="up_year" Type="int" />
           <Property Name="ltd_name" Type="varchar" MaxLength="100" />
           <Property Name="photo_type" Type="varchar" MaxLength="50" />
           <Property Name="file_name" Type="varchar" MaxLength="1000" />
-          <Property Name="file_type" Type="nchar" MaxLength="10" />
-          <Property Name="up_dt" Type="nchar" MaxLength="10" />
-          <Property Name="file_size" Type="nchar" MaxLength="10" />
+          <Property Name="file_type" Type="varchar" MaxLength="50" />
+          <Property Name="up_dt" Type="datetime" />
+          <Property Name="file_size" Type="int" />
+          <Property Name="file_path" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="bsLtd_eval_rank">
           <Key>
@@ -299,6 +321,7 @@
           <Property Name="area_pj" Type="decimal" Precision="18" Scale="2" />
           <Property Name="area_fc" Type="decimal" Precision="18" Scale="2" />
           <Property Name="rank_pj" Type="varchar" MaxLength="10" />
+          <Property Name="allContent" Type="varchar" MaxLength="800" />
         </EntityType>
         <EntityType Name="bsLtd_eval_upinfo">
           <Key>
@@ -339,27 +362,6 @@
           <Property Name="water_total_last_year" Type="decimal" Precision="18" Scale="2" />
           <Property Name="water_total_this_year" Type="nchar" MaxLength="10" />
         </EntityType>
-        <EntityType Name="bsltd_legal_person_land">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="year" Type="int" />
-          <Property Name="legal_person_name" Type="varchar" MaxLength="50" />
-          <Property Name="legal_person_tel" Type="varchar" MaxLength="20" />
-        </EntityType>
-        <EntityType Name="bsltd_legan_person_landdetail">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="legal_person_id" Type="int" />
-          <Property Name="ltd_name" Type="varchar" MaxLength="100" />
-          <Property Name="is_gy" Type="varchar" MaxLength="10" />
-          <Property Name="ltd_tyxydm" Type="varchar" MaxLength="50" />
-          <Property Name="ltd_rent_owner" Type="varchar" MaxLength="10" />
-          <Property Name="area_land" Type="decimal" Precision="18" Scale="2" />
-        </EntityType>
         <EntityType Name="bsltd_not_up_list">
           <Key>
             <PropertyRef Name="ltd_id" />
@@ -388,7 +390,8 @@
           <Key>
             <PropertyRef Name="Ltd_Id" />
           </Key>
-          <Property Name="Ltd_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ltd_Id" Type="int" Nullable="false" />
+          <Property Name="year" Type="int" />
           <Property Name="序号" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="纳税人识别号" Type="varchar" MaxLength="50" />
           <Property Name="纳税人名称" Type="varchar" MaxLength="100" />
@@ -428,6 +431,17 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="LtDesp" Type="varchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="bsquery_diy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bsU_Id" Type="uniqueidentifier" />
+          <Property Name="query_name" Type="varchar" MaxLength="50" />
+          <Property Name="owner_rent_type" Type="varchar" MaxLength="50" />
+          <Property Name="query_condition_items" Type="varchar" MaxLength="8000" />
+          <Property Name="query_items" Type="varchar" MaxLength="8000" />
         </EntityType>
         <EntityType Name="bsTableImportType">
           <Key>
@@ -555,24 +569,32 @@
           <Property Name="行业类型大类" Type="varchar" MaxLength="250" />
           <Property Name="行业类型细分" Type="varchar" MaxLength="250" />
           <Property Name="注册地址" Type="varchar" MaxLength="150" />
+          <Property Name="year" Type="int" />
+          <Property Name="FzCylR1" Type="varchar" MaxLength="50" />
+          <Property Name="FzCylR2" Type="varchar" MaxLength="50" />
+          <Property Name="FzCylR3" Type="varchar" MaxLength="50" />
+          <Property Name="submit_dt" Type="datetime" />
           <Property Name="audit_status" Type="varchar" MaxLength="10" />
+          <Property Name="fill_status" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="tA2企业曾用名信息表">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tA1Id" Type="int" />
           <Property Name="纳税人名称" Type="varchar" MaxLength="100" />
           <Property Name="纳税人识别号" Type="varchar" MaxLength="50" />
           <Property Name="曾用名" Type="varchar" MaxLength="100" />
-          <Property Name="audit_status" Type="varchar" MaxLength="10" />
+          <Property Name="year" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="tA3企业基本信息关联表">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="No" Type="int" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tA1Id" Type="int" />
+          <Property Name="year" Type="int" />
           <Property Name="纳税人名称" Type="varchar" MaxLength="100" />
           <Property Name="纳税人识别号" Type="varchar" MaxLength="50" />
           <Property Name="集约利用系统虚拟地块号" Type="nvarchar" MaxLength="255" />
@@ -583,17 +605,22 @@
           <Property Name="本地块序号" Type="float" />
           <Property Name="所属管理区" Type="nvarchar" MaxLength="255" />
           <Property Name="所属社区" Type="nvarchar" MaxLength="255" />
-          <Property Name="audit_status" Type="varchar" MaxLength="10" />
+          <Property Name="LatLng" Type="varchar" MaxLength="50" />
+          <Property Name="fill_status" Type="varchar" MaxLength="10" />
+          <Property Name="delFlag" Type="bit" />
+          <Property Name="delReason" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="tB1地主地块数据">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tA1Id" Type="int" />
+          <Property Name="year" Type="int" />
           <Property Name="纳税人名称" Type="varchar" MaxLength="100" />
           <Property Name="纳税人识别号" Type="varchar" MaxLength="50" />
           <Property Name="租赁性质" Type="varchar" MaxLength="50" />
-          <Property Name="集约利用地块编号" Type="varchar" MaxLength="20" />
+          <Property Name="集约利用地块编号" Type="varchar" MaxLength="100" />
           <Property Name="经营方式" Type="varchar" MaxLength="255" />
           <Property Name="土地购置类型" Type="varchar" MaxLength="30" />
           <Property Name="土地购置日期" Type="varchar" MaxLength="30" />
@@ -605,13 +632,15 @@
           <Property Name="无土地权证说明" Type="varchar" MaxLength="500" />
           <Property Name="无房产权证说明" Type="varchar" MaxLength="500" />
           <Property Name="实际经营地址" Type="varchar" MaxLength="200" />
-          <Property Name="audit_status" Type="varchar" MaxLength="10" />
+          <Property Name="fill_status" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="tB2租户地块数据年度">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tA1Id" Type="int" />
+          <Property Name="year" Type="int" />
           <Property Name="纳税人名称" Type="varchar" MaxLength="100" />
           <Property Name="纳税人识别号" Type="varchar" MaxLength="50" />
           <Property Name="曾用名" Type="nvarchar" MaxLength="200" />
@@ -626,13 +655,14 @@
           <Property Name="本地块租赁房屋面积" Type="decimal" Precision="15" Scale="2" />
           <Property Name="房屋合同截止日期" Type="datetime" />
           <Property Name="当年地主是否认定" Type="varchar" MaxLength="20" />
-          <Property Name="audit_status" Type="varchar" MaxLength="10" />
+          <Property Name="fill_status" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tC地主核实租赁关系年度">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tA1Id" Type="int" />
           <Property Name="年度" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="纳税人名称" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="纳税人识别号" Type="varchar" MaxLength="50" Nullable="false" />
@@ -644,14 +674,14 @@
           <Property Name="房屋合同截止日期" Type="datetime" Nullable="false" />
           <Property Name="法人姓名" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="法人联系电话" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="audit_status" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="tD企业集约利用信息填报表年度">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="年度" Type="varchar" MaxLength="10" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tA1Id" Type="int" />
+          <Property Name="年度" Type="int" />
           <Property Name="纳税人名称" Type="varchar" MaxLength="100" />
           <Property Name="纳税人识别号" Type="varchar" MaxLength="50" />
           <Property Name="组织机构代码" Type="nvarchar" MaxLength="50" />
@@ -674,13 +704,14 @@
           <Property Name="本年度用水量" Type="decimal" Precision="15" Scale="2" />
           <Property Name="公司企业人数" Type="int" />
           <Property Name="其中省外人数" Type="int" />
-          <Property Name="audit_status" Type="varchar" MaxLength="10" />
+          <Property Name="fill_status" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="tE1地块年度综合评价表年度">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tA1Id" Type="int" />
           <Property Name="年度" Type="varchar" MaxLength="10" />
           <Property Name="纳税人名称" Type="varchar" MaxLength="100" />
           <Property Name="纳税人识别号" Type="varchar" MaxLength="50" />
@@ -694,13 +725,13 @@
           <Property Name="地块中总用电量" Type="decimal" Precision="15" Scale="2" />
           <Property Name="地块中所有水表号" Type="varchar" MaxLength="300" />
           <Property Name="地块中总用水量" Type="decimal" Precision="15" Scale="2" />
-          <Property Name="audit_status" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="tE2企业综合评价表年度">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tA1Id" Type="int" />
           <Property Name="年度" Type="varchar" MaxLength="10" />
           <Property Name="纳税人名称" Type="varchar" MaxLength="100" />
           <Property Name="纳税人识别号" Type="varchar" MaxLength="50" />
@@ -717,7 +748,6 @@
           <Property Name="水表号" Type="varchar" MaxLength="400" />
           <Property Name="用电量" Type="decimal" Precision="18" Scale="2" />
           <Property Name="用水量" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="audit_status" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="tmpLtdXx">
           <Key>
@@ -773,7 +803,8 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bsO_Id" Type="uniqueidentifier" />
           <Property Name="年度" Type="varchar" MaxLength="10" />
           <Property Name="纳税人名称" Type="varchar" MaxLength="100" />
           <Property Name="纳税人识别号" Type="varchar" MaxLength="50" />
@@ -1369,6 +1400,258 @@
           <Property Name="M1_Out" Type="varchar" MaxLength="255" />
         </EntityType>
         <!--生成过程中发现错误:
+警告 6002: 表/视图“EIPlat.dbo.vw_bsltd_legal_person_land”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="vw_bsltd_legal_person_land">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="phone" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="year" Type="int" />
+          <Property Name="法人姓名" Type="varchar" MaxLength="30" />
+          <Property Name="phone" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“EIPlat.dbo.vw_bsltd_legan_person_landdetail”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="vw_bsltd_legan_person_landdetail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="法人姓名" Type="varchar" MaxLength="30" />
+          <Property Name="纳税人名称" Type="varchar" MaxLength="100" />
+          <Property Name="类型" Type="varchar" MaxLength="50" />
+          <Property Name="组织机构代码" Type="varchar" MaxLength="50" />
+          <Property Name="租赁性质" Type="varchar" MaxLength="50" />
+          <Property Name="实际用地面积" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“EIPlat.dbo.vw_bsltd_not_up_list”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="vw_bsltd_not_up_list">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ltd_name" Type="varchar" MaxLength="100" />
+          <Property Name="ltd_tyxydm" Type="varchar" MaxLength="50" />
+          <Property Name="audit_status" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“EIPlat.dbo.vw_dk_eval_Owner”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="vw_dk_eval_Owner">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="纳税人名称" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="纳税人名称" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="year" Type="int" />
+          <Property Name="注册地址" Type="varchar" MaxLength="150" />
+          <Property Name="组织机构代码" Type="varchar" MaxLength="50" />
+          <Property Name="租赁性质" Type="varchar" MaxLength="50" />
+          <Property Name="是否工业" Type="varchar" MaxLength="8" />
+          <Property Name="填表人姓名" Type="varchar" MaxLength="20" />
+          <Property Name="填表人手机" Type="varchar" MaxLength="20" />
+          <Property Name="电表号" Type="varchar" MaxLength="200" />
+          <Property Name="本年度用电量度" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="水表号" Type="varchar" MaxLength="200" />
+          <Property Name="本年度用水量" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="集约利用地块编号" Type="nvarchar" MaxLength="255" />
+          <Property Name="土地持证面积" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“EIPlat.dbo.vw_dk_eval_Rent”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="vw_dk_eval_Rent">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="纳税人名称" />
+            <PropertyRef Name="租赁性质" />
+            <PropertyRef Name="集约利用地块编号" />
+            <PropertyRef Name="本地块租赁房屋面积" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="纳税人名称" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="year" Type="int" />
+          <Property Name="注册地址" Type="varchar" MaxLength="150" />
+          <Property Name="组织机构代码" Type="varchar" MaxLength="50" />
+          <Property Name="是否工业" Type="varchar" MaxLength="8" />
+          <Property Name="填表人姓名" Type="varchar" MaxLength="20" />
+          <Property Name="填表人手机" Type="varchar" MaxLength="20" />
+          <Property Name="电表号" Type="varchar" MaxLength="200" />
+          <Property Name="本年度用电量度" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="水表号" Type="varchar" MaxLength="200" />
+          <Property Name="本年度用水量" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="租赁性质" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="集约利用地块编号" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="本地块租赁房屋面积" Type="decimal" Precision="15" Scale="2" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“EIPlat.dbo.vw_dk_eval_total”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="vw_dk_eval_total">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="year" Type="int" />
+          <Property Name="tA1Id" Type="int" />
+          <Property Name="纳税人名称" Type="varchar" MaxLength="100" />
+          <Property Name="集约利用地块编号" Type="nvarchar" MaxLength="255" />
+          <Property Name="实际用地面积" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="土地持证面积" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="实际房屋面积" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="电表号" Type="varchar" MaxLength="200" />
+          <Property Name="本年度用电量度" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="水表号" Type="varchar" MaxLength="200" />
+          <Property Name="本年度用水量" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="dk_ltd_count" Type="int" />
+          <Property Name="dk_ltd_gy_count" Type="int" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6013: 表/视图“EIPlat.dbo.vw_dk_Rent_Count”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+        <EntityType Name="vw_dk_Rent_Count">
+          <Property Name="tA1Id" Type="int" />
+          <Property Name="dk_ltd_count" Type="int" />
+          <Property Name="集约利用地块编号" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <!--生成过程中发现错误:
+警告 6013: 表/视图“EIPlat.dbo.vw_dk_Rent_GY_Count”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+        <EntityType Name="vw_dk_Rent_GY_Count">
+          <Property Name="tA1Id" Type="int" />
+          <Property Name="dk_ltd_gy_count" Type="int" />
+          <Property Name="集约利用地块编号" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“EIPlat.dbo.vw_ltd_up_eval_info”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="vw_ltd_up_eval_info">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="纳税人名称" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="year" Type="int" />
+          <Property Name="纳税人名称" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="集约利用地块编号" Type="varchar" MaxLength="100" />
+          <Property Name="土地持证面积" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="房产持证面积" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="实际房屋面积" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="电表号" Type="varchar" MaxLength="200" />
+          <Property Name="本年度用电量度" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="水表号" Type="varchar" MaxLength="200" />
+          <Property Name="本年度用水量" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="preElec" Type="int" />
+          <Property Name="preWater" Type="int" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“EIPlat.dbo.vw_ltd_up_eval_info_detail”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="vw_ltd_up_eval_info_detail">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="纳税人名称" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="year" Type="int" />
+          <Property Name="纳税人名称" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="集约利用地块编号" Type="varchar" MaxLength="100" />
+          <Property Name="土地持证面积" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="房产持证面积" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="实际房屋面积" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="电表号" Type="varchar" MaxLength="200" />
+          <Property Name="本年度用电量度" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="水表号" Type="varchar" MaxLength="200" />
+          <Property Name="本年度用水量" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="preElec" Type="int" />
+          <Property Name="preWater" Type="int" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“EIPlat.dbo.vwdiyQuery_Owner”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="vwdiyQuery_Owner">
+          <Key>
+            <PropertyRef Name="纳税人名称" />
+          </Key>
+          <Property Name="Id" Type="int" />
+          <Property Name="纳税人名称" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="纳税人识别号" Type="varchar" MaxLength="50" />
+          <Property Name="组织机构代码" Type="varchar" MaxLength="50" />
+          <Property Name="海关代码" Type="varchar" MaxLength="50" />
+          <Property Name="法人姓名" Type="varchar" MaxLength="30" />
+          <Property Name="法人身份证号" Type="varchar" MaxLength="50" />
+          <Property Name="类型" Type="varchar" MaxLength="50" />
+          <Property Name="注册类型" Type="varchar" MaxLength="50" />
+          <Property Name="注册资金" Type="varchar" MaxLength="50" />
+          <Property Name="运营类型" Type="varchar" MaxLength="50" />
+          <Property Name="行业类型大类" Type="varchar" MaxLength="250" />
+          <Property Name="行业类型细分" Type="varchar" MaxLength="250" />
+          <Property Name="注册地址" Type="varchar" MaxLength="150" />
+          <Property Name="集约利用地块编号" Type="nvarchar" MaxLength="255" />
+          <Property Name="租赁性质" Type="nvarchar" MaxLength="255" />
+          <Property Name="所属管理区" Type="nvarchar" MaxLength="255" />
+          <Property Name="所属社区" Type="nvarchar" MaxLength="255" />
+          <Property Name="year" Type="int" />
+          <Property Name="经营方式" Type="varchar" MaxLength="255" />
+          <Property Name="土地购置类型" Type="varchar" MaxLength="30" />
+          <Property Name="土地购置日期" Type="varchar" MaxLength="30" />
+          <Property Name="测绘土地面积" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="实际用地面积" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="土地持证面积" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="实际房屋面积" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="房产持证面积" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="无土地权证说明" Type="varchar" MaxLength="500" />
+          <Property Name="无房产权证说明" Type="varchar" MaxLength="500" />
+          <Property Name="实际经营地址" Type="varchar" MaxLength="200" />
+          <Property Name="行政人员姓名" Type="varchar" MaxLength="20" />
+          <Property Name="行政人员电话" Type="varchar" MaxLength="20" />
+          <Property Name="填表人姓名" Type="varchar" MaxLength="20" />
+          <Property Name="填表人手机" Type="varchar" MaxLength="20" />
+          <Property Name="电表使用类型" Type="varchar" MaxLength="20" />
+          <Property Name="无电表用电说明" Type="varchar" MaxLength="200" />
+          <Property Name="本年度用电量度" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="水表使用类型" Type="varchar" MaxLength="20" />
+          <Property Name="水表号" Type="varchar" MaxLength="200" />
+          <Property Name="无水表用电说明" Type="varchar" MaxLength="20" />
+          <Property Name="本年度用水量" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="公司企业人数" Type="int" />
+          <Property Name="其中省外人数" Type="int" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“EIPlat.dbo.vwdiyQuery_rent”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="vwdiyQuery_rent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="纳税人名称" Type="varchar" MaxLength="100" />
+          <Property Name="纳税人识别号" Type="varchar" MaxLength="50" />
+          <Property Name="组织机构代码" Type="varchar" MaxLength="50" />
+          <Property Name="海关代码" Type="varchar" MaxLength="50" />
+          <Property Name="法人姓名" Type="varchar" MaxLength="30" />
+          <Property Name="法人身份证号" Type="varchar" MaxLength="50" />
+          <Property Name="类型" Type="varchar" MaxLength="50" />
+          <Property Name="注册类型" Type="varchar" MaxLength="50" />
+          <Property Name="注册资金" Type="varchar" MaxLength="50" />
+          <Property Name="运营类型" Type="varchar" MaxLength="50" />
+          <Property Name="行业类型大类" Type="varchar" MaxLength="250" />
+          <Property Name="行业类型细分" Type="varchar" MaxLength="250" />
+          <Property Name="注册地址" Type="varchar" MaxLength="150" />
+          <Property Name="集约利用地块编号" Type="nvarchar" MaxLength="255" />
+          <Property Name="所属管理区" Type="nvarchar" MaxLength="255" />
+          <Property Name="所属社区" Type="nvarchar" MaxLength="255" />
+          <Property Name="year" Type="int" />
+          <Property Name="行政人员姓名" Type="varchar" MaxLength="20" />
+          <Property Name="行政人员电话" Type="varchar" MaxLength="20" />
+          <Property Name="填表人姓名" Type="varchar" MaxLength="20" />
+          <Property Name="填表人手机" Type="varchar" MaxLength="20" />
+          <Property Name="电表使用类型" Type="varchar" MaxLength="20" />
+          <Property Name="无电表用电说明" Type="varchar" MaxLength="200" />
+          <Property Name="本年度用电量度" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="水表使用类型" Type="varchar" MaxLength="20" />
+          <Property Name="水表号" Type="varchar" MaxLength="200" />
+          <Property Name="无水表用电说明" Type="varchar" MaxLength="20" />
+          <Property Name="本年度用水量" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="公司企业人数" Type="int" />
+          <Property Name="其中省外人数" Type="int" />
+          <Property Name="租户名称" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--生成过程中发现错误:
 警告 6002: 表/视图“EIPlat.dbo.vwLtdJcSj”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="vwLtdJcSj">
           <Key>
@@ -1483,8 +1766,10 @@
 警告 6002: 表/视图“EIPlat.dbo.vwTaskReview”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="vwTaskReview">
           <Key>
+            <PropertyRef Name="id" />
             <PropertyRef Name="year" />
           </Key>
+          <Property Name="id" Type="int" Nullable="false" />
           <Property Name="year" Type="varchar" MaxLength="4" Nullable="false" />
           <Property Name="task_name" Type="varchar" MaxLength="100" />
           <Property Name="ltd_name" Type="varchar" MaxLength="100" />
@@ -1492,6 +1777,11 @@
           <Property Name="ltd_contacter" Type="varchar" MaxLength="20" />
           <Property Name="ltd_contact_mphone" Type="varchar" MaxLength="20" />
           <Property Name="flow_status" Type="varchar" MaxLength="10" />
+          <Property Name="bntask_id" Type="int" />
+          <Property Name="ltd_id" Type="int" />
+          <Property Name="publish_dt" Type="date" />
+          <Property Name="deadline" Type="date" />
+          <Property Name="status_dt" Type="datetime" />
         </EntityType>
         <!--生成过程中发现错误:
 警告 6002: 表/视图“EIPlat.sde.dbtune”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
@@ -1619,11 +1909,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_bntask_audit_bsLtdInfo">
-          <End Role="bsLtdInfo" Type="Self.bsLtdInfo" Multiplicity="0..1" />
+          <End Role="tA1企业基本信息表" Type="Self.tA1企业基本信息表" Multiplicity="0..1" />
           <End Role="bntask_audit" Type="Self.bntask_audit" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="bsLtdInfo">
-              <PropertyRef Name="Ltd_Id" />
+            <Principal Role="tA1企业基本信息表">
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="bntask_audit">
               <PropertyRef Name="ltd_Id" />
@@ -1631,11 +1921,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_bntask_notice_list_bsLtdInfo">
-          <End Role="bsLtdInfo" Type="Self.bsLtdInfo" Multiplicity="0..1" />
+          <End Role="tA1企业基本信息表" Type="Self.tA1企业基本信息表" Multiplicity="0..1" />
           <End Role="bntask_notice_list" Type="Self.bntask_notice_list" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="bsLtdInfo">
-              <PropertyRef Name="Ltd_Id" />
+            <Principal Role="tA1企业基本信息表">
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="bntask_notice_list">
               <PropertyRef Name="ltd_id" />
@@ -1707,26 +1997,26 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_bsLtd_Base_fill_bsLtdinfo">
-          <End Role="bsLtdInfo" Type="Self.bsLtdInfo" Multiplicity="0..1" />
+          <End Role="tA1企业基本信息表" Type="Self.tA1企业基本信息表" Multiplicity="0..1" />
           <End Role="bsLtd_Base_fill" Type="Self.bsLtd_Base_fill" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="bsLtdInfo">
-              <PropertyRef Name="Ltd_Id" />
+            <Principal Role="tA1企业基本信息表">
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="bsLtd_Base_fill">
-              <PropertyRef Name="ltd_id" />
+              <PropertyRef Name="tA1Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_bsLtd_cred_phonto_bsLtd_cred_phonto">
-          <End Role="bsLtdInfo" Type="Self.bsLtdInfo" Multiplicity="0..1" />
+          <End Role="tA1企业基本信息表" Type="Self.tA1企业基本信息表" Multiplicity="0..1" />
           <End Role="bsLtd_cred_photo" Type="Self.bsLtd_cred_photo" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="bsLtdInfo">
-              <PropertyRef Name="Ltd_Id" />
+            <Principal Role="tA1企业基本信息表">
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="bsLtd_cred_photo">
-              <PropertyRef Name="ltd_Id" />
+              <PropertyRef Name="tA1Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1754,24 +2044,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_bsltd_legan_person_landdetail_bsltd_legal_person_land">
-          <End Role="bsltd_legal_person_land" Type="Self.bsltd_legal_person_land" Multiplicity="0..1" />
-          <End Role="bsltd_legan_person_landdetail" Type="Self.bsltd_legan_person_landdetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="bsltd_legal_person_land">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="bsltd_legan_person_landdetail">
-              <PropertyRef Name="legal_person_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_bsLtd_pjdj_bsLtdInfo">
-          <End Role="bsLtdInfo" Type="Self.bsLtdInfo" Multiplicity="0..1" />
+        <Association Name="FK_bsLtd_pjdj_tA1">
+          <End Role="tA1企业基本信息表" Type="Self.tA1企业基本信息表" Multiplicity="0..1" />
           <End Role="bsLtd_eval_rank" Type="Self.bsLtd_eval_rank" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="bsLtdInfo">
-              <PropertyRef Name="Ltd_Id" />
+            <Principal Role="tA1企业基本信息表">
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="bsLtd_eval_rank">
               <PropertyRef Name="Ltd_Id" />
@@ -1784,6 +2062,7 @@
           <EntitySet Name="blCityPlan" EntityType="Self.blCityPlan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="blLayer" EntityType="Self.blLayer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bnannounce" EntityType="Self.bnannounce" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bnbaseInfo_audit" EntityType="Self.bnbaseInfo_audit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bntask" EntityType="Self.bntask" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bntask_audit" EntityType="Self.bntask_audit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bntask_notice_list" EntityType="Self.bntask_notice_list" Schema="dbo" store:Type="Tables" />
@@ -1802,12 +2081,11 @@
           <EntitySet Name="bsLtd_eval_rank" EntityType="Self.bsLtd_eval_rank" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bsLtd_eval_upinfo" EntityType="Self.bsLtd_eval_upinfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bsltd_eval_upinfoDetail" EntityType="Self.bsltd_eval_upinfoDetail" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="bsltd_legal_person_land" EntityType="Self.bsltd_legal_person_land" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="bsltd_legan_person_landdetail" EntityType="Self.bsltd_legan_person_landdetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bsltd_not_up_list" EntityType="Self.bsltd_not_up_list" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bsLtdIndustries" EntityType="Self.bsLtdIndustries" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bsLtdInfo" EntityType="Self.bsLtdInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bsLtdIntroduce" EntityType="Self.bsLtdIntroduce" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bsquery_diy" EntityType="Self.bsquery_diy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bsTableImportType" EntityType="Self.bsTableImportType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bsTestRecord" EntityType="Self.bsTestRecord" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bsTotalResult" EntityType="Self.bsTotalResult" Schema="dbo" store:Type="Tables" />
@@ -1856,6 +2134,206 @@
           <EntitySet Name="城市规划" EntityType="Self.城市规划" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="房屋建筑" EntityType="Self.房屋建筑" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="企业范围" EntityType="Self.企业范围" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_bsltd_legal_person_land" EntityType="Self.vw_bsltd_legal_person_land" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vw_bsltd_legal_person_land].[Id] AS [Id], 
+[vw_bsltd_legal_person_land].[year] AS [year], 
+[vw_bsltd_legal_person_land].[法人姓名] AS [法人姓名], 
+[vw_bsltd_legal_person_land].[phone] AS [phone]
+FROM [dbo].[vw_bsltd_legal_person_land] AS [vw_bsltd_legal_person_land]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_bsltd_legan_person_landdetail" EntityType="Self.vw_bsltd_legan_person_landdetail" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vw_bsltd_legan_person_landdetail].[id] AS [id], 
+[vw_bsltd_legan_person_landdetail].[法人姓名] AS [法人姓名], 
+[vw_bsltd_legan_person_landdetail].[纳税人名称] AS [纳税人名称], 
+[vw_bsltd_legan_person_landdetail].[类型] AS [类型], 
+[vw_bsltd_legan_person_landdetail].[组织机构代码] AS [组织机构代码], 
+[vw_bsltd_legan_person_landdetail].[租赁性质] AS [租赁性质], 
+[vw_bsltd_legan_person_landdetail].[实际用地面积] AS [实际用地面积]
+FROM [dbo].[vw_bsltd_legan_person_landdetail] AS [vw_bsltd_legan_person_landdetail]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_bsltd_not_up_list" EntityType="Self.vw_bsltd_not_up_list" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vw_bsltd_not_up_list].[Id] AS [Id], 
+[vw_bsltd_not_up_list].[ltd_name] AS [ltd_name], 
+[vw_bsltd_not_up_list].[ltd_tyxydm] AS [ltd_tyxydm], 
+[vw_bsltd_not_up_list].[audit_status] AS [audit_status]
+FROM [dbo].[vw_bsltd_not_up_list] AS [vw_bsltd_not_up_list]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_dk_eval_Owner" EntityType="Self.vw_dk_eval_Owner" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vw_dk_eval_Owner].[Id] AS [Id], 
+[vw_dk_eval_Owner].[纳税人名称] AS [纳税人名称], 
+[vw_dk_eval_Owner].[year] AS [year], 
+[vw_dk_eval_Owner].[注册地址] AS [注册地址], 
+[vw_dk_eval_Owner].[组织机构代码] AS [组织机构代码], 
+[vw_dk_eval_Owner].[租赁性质] AS [租赁性质], 
+[vw_dk_eval_Owner].[是否工业] AS [是否工业], 
+[vw_dk_eval_Owner].[填表人姓名] AS [填表人姓名], 
+[vw_dk_eval_Owner].[填表人手机] AS [填表人手机], 
+[vw_dk_eval_Owner].[电表号] AS [电表号], 
+[vw_dk_eval_Owner].[本年度用电量度] AS [本年度用电量度], 
+[vw_dk_eval_Owner].[水表号] AS [水表号], 
+[vw_dk_eval_Owner].[本年度用水量] AS [本年度用水量], 
+[vw_dk_eval_Owner].[集约利用地块编号] AS [集约利用地块编号], 
+[vw_dk_eval_Owner].[土地持证面积] AS [土地持证面积]
+FROM [dbo].[vw_dk_eval_Owner] AS [vw_dk_eval_Owner]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_dk_eval_Rent" EntityType="Self.vw_dk_eval_Rent" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vw_dk_eval_Rent].[Id] AS [Id], 
+[vw_dk_eval_Rent].[纳税人名称] AS [纳税人名称], 
+[vw_dk_eval_Rent].[year] AS [year], 
+[vw_dk_eval_Rent].[注册地址] AS [注册地址], 
+[vw_dk_eval_Rent].[组织机构代码] AS [组织机构代码], 
+[vw_dk_eval_Rent].[是否工业] AS [是否工业], 
+[vw_dk_eval_Rent].[填表人姓名] AS [填表人姓名], 
+[vw_dk_eval_Rent].[填表人手机] AS [填表人手机], 
+[vw_dk_eval_Rent].[电表号] AS [电表号], 
+[vw_dk_eval_Rent].[本年度用电量度] AS [本年度用电量度], 
+[vw_dk_eval_Rent].[水表号] AS [水表号], 
+[vw_dk_eval_Rent].[本年度用水量] AS [本年度用水量], 
+[vw_dk_eval_Rent].[租赁性质] AS [租赁性质], 
+[vw_dk_eval_Rent].[集约利用地块编号] AS [集约利用地块编号], 
+[vw_dk_eval_Rent].[本地块租赁房屋面积] AS [本地块租赁房屋面积]
+FROM [dbo].[vw_dk_eval_Rent] AS [vw_dk_eval_Rent]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_dk_eval_total" EntityType="Self.vw_dk_eval_total" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vw_dk_eval_total].[Id] AS [Id], 
+[vw_dk_eval_total].[year] AS [year], 
+[vw_dk_eval_total].[tA1Id] AS [tA1Id], 
+[vw_dk_eval_total].[纳税人名称] AS [纳税人名称], 
+[vw_dk_eval_total].[集约利用地块编号] AS [集约利用地块编号], 
+[vw_dk_eval_total].[实际用地面积] AS [实际用地面积], 
+[vw_dk_eval_total].[土地持证面积] AS [土地持证面积], 
+[vw_dk_eval_total].[实际房屋面积] AS [实际房屋面积], 
+[vw_dk_eval_total].[电表号] AS [电表号], 
+[vw_dk_eval_total].[本年度用电量度] AS [本年度用电量度], 
+[vw_dk_eval_total].[水表号] AS [水表号], 
+[vw_dk_eval_total].[本年度用水量] AS [本年度用水量], 
+[vw_dk_eval_total].[dk_ltd_count] AS [dk_ltd_count], 
+[vw_dk_eval_total].[dk_ltd_gy_count] AS [dk_ltd_gy_count]
+FROM [dbo].[vw_dk_eval_total] AS [vw_dk_eval_total]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_ltd_up_eval_info" EntityType="Self.vw_ltd_up_eval_info" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vw_ltd_up_eval_info].[id] AS [id], 
+[vw_ltd_up_eval_info].[year] AS [year], 
+[vw_ltd_up_eval_info].[纳税人名称] AS [纳税人名称], 
+[vw_ltd_up_eval_info].[集约利用地块编号] AS [集约利用地块编号], 
+[vw_ltd_up_eval_info].[土地持证面积] AS [土地持证面积], 
+[vw_ltd_up_eval_info].[房产持证面积] AS [房产持证面积], 
+[vw_ltd_up_eval_info].[实际房屋面积] AS [实际房屋面积], 
+[vw_ltd_up_eval_info].[电表号] AS [电表号], 
+[vw_ltd_up_eval_info].[本年度用电量度] AS [本年度用电量度], 
+[vw_ltd_up_eval_info].[水表号] AS [水表号], 
+[vw_ltd_up_eval_info].[本年度用水量] AS [本年度用水量], 
+[vw_ltd_up_eval_info].[preElec] AS [preElec], 
+[vw_ltd_up_eval_info].[preWater] AS [preWater]
+FROM [dbo].[vw_ltd_up_eval_info] AS [vw_ltd_up_eval_info]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_ltd_up_eval_info_detail" EntityType="Self.vw_ltd_up_eval_info_detail" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vw_ltd_up_eval_info_detail].[id] AS [id], 
+[vw_ltd_up_eval_info_detail].[year] AS [year], 
+[vw_ltd_up_eval_info_detail].[纳税人名称] AS [纳税人名称], 
+[vw_ltd_up_eval_info_detail].[集约利用地块编号] AS [集约利用地块编号], 
+[vw_ltd_up_eval_info_detail].[土地持证面积] AS [土地持证面积], 
+[vw_ltd_up_eval_info_detail].[房产持证面积] AS [房产持证面积], 
+[vw_ltd_up_eval_info_detail].[实际房屋面积] AS [实际房屋面积], 
+[vw_ltd_up_eval_info_detail].[电表号] AS [电表号], 
+[vw_ltd_up_eval_info_detail].[本年度用电量度] AS [本年度用电量度], 
+[vw_ltd_up_eval_info_detail].[水表号] AS [水表号], 
+[vw_ltd_up_eval_info_detail].[本年度用水量] AS [本年度用水量], 
+[vw_ltd_up_eval_info_detail].[preElec] AS [preElec], 
+[vw_ltd_up_eval_info_detail].[preWater] AS [preWater]
+FROM [dbo].[vw_ltd_up_eval_info_detail] AS [vw_ltd_up_eval_info_detail]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwdiyQuery_Owner" EntityType="Self.vwdiyQuery_Owner" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vwdiyQuery_Owner].[Id] AS [Id], 
+[vwdiyQuery_Owner].[纳税人名称] AS [纳税人名称], 
+[vwdiyQuery_Owner].[纳税人识别号] AS [纳税人识别号], 
+[vwdiyQuery_Owner].[组织机构代码] AS [组织机构代码], 
+[vwdiyQuery_Owner].[海关代码] AS [海关代码], 
+[vwdiyQuery_Owner].[法人姓名] AS [法人姓名], 
+[vwdiyQuery_Owner].[法人身份证号] AS [法人身份证号], 
+[vwdiyQuery_Owner].[类型] AS [类型], 
+[vwdiyQuery_Owner].[注册类型] AS [注册类型], 
+[vwdiyQuery_Owner].[注册资金] AS [注册资金], 
+[vwdiyQuery_Owner].[运营类型] AS [运营类型], 
+[vwdiyQuery_Owner].[行业类型大类] AS [行业类型大类], 
+[vwdiyQuery_Owner].[行业类型细分] AS [行业类型细分], 
+[vwdiyQuery_Owner].[注册地址] AS [注册地址], 
+[vwdiyQuery_Owner].[集约利用地块编号] AS [集约利用地块编号], 
+[vwdiyQuery_Owner].[租赁性质] AS [租赁性质], 
+[vwdiyQuery_Owner].[所属管理区] AS [所属管理区], 
+[vwdiyQuery_Owner].[所属社区] AS [所属社区], 
+[vwdiyQuery_Owner].[year] AS [year], 
+[vwdiyQuery_Owner].[经营方式] AS [经营方式], 
+[vwdiyQuery_Owner].[土地购置类型] AS [土地购置类型], 
+[vwdiyQuery_Owner].[土地购置日期] AS [土地购置日期], 
+[vwdiyQuery_Owner].[测绘土地面积] AS [测绘土地面积], 
+[vwdiyQuery_Owner].[实际用地面积] AS [实际用地面积], 
+[vwdiyQuery_Owner].[土地持证面积] AS [土地持证面积], 
+[vwdiyQuery_Owner].[实际房屋面积] AS [实际房屋面积], 
+[vwdiyQuery_Owner].[房产持证面积] AS [房产持证面积], 
+[vwdiyQuery_Owner].[无土地权证说明] AS [无土地权证说明], 
+[vwdiyQuery_Owner].[无房产权证说明] AS [无房产权证说明], 
+[vwdiyQuery_Owner].[实际经营地址] AS [实际经营地址], 
+[vwdiyQuery_Owner].[行政人员姓名] AS [行政人员姓名], 
+[vwdiyQuery_Owner].[行政人员电话] AS [行政人员电话], 
+[vwdiyQuery_Owner].[填表人姓名] AS [填表人姓名], 
+[vwdiyQuery_Owner].[填表人手机] AS [填表人手机], 
+[vwdiyQuery_Owner].[电表使用类型] AS [电表使用类型], 
+[vwdiyQuery_Owner].[无电表用电说明] AS [无电表用电说明], 
+[vwdiyQuery_Owner].[本年度用电量度] AS [本年度用电量度], 
+[vwdiyQuery_Owner].[水表使用类型] AS [水表使用类型], 
+[vwdiyQuery_Owner].[水表号] AS [水表号], 
+[vwdiyQuery_Owner].[无水表用电说明] AS [无水表用电说明], 
+[vwdiyQuery_Owner].[本年度用水量] AS [本年度用水量], 
+[vwdiyQuery_Owner].[公司企业人数] AS [公司企业人数], 
+[vwdiyQuery_Owner].[其中省外人数] AS [其中省外人数]
+FROM [dbo].[vwdiyQuery_Owner] AS [vwdiyQuery_Owner]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwdiyQuery_rent" EntityType="Self.vwdiyQuery_rent" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vwdiyQuery_rent].[Id] AS [Id], 
+[vwdiyQuery_rent].[纳税人名称] AS [纳税人名称], 
+[vwdiyQuery_rent].[纳税人识别号] AS [纳税人识别号], 
+[vwdiyQuery_rent].[组织机构代码] AS [组织机构代码], 
+[vwdiyQuery_rent].[海关代码] AS [海关代码], 
+[vwdiyQuery_rent].[法人姓名] AS [法人姓名], 
+[vwdiyQuery_rent].[法人身份证号] AS [法人身份证号], 
+[vwdiyQuery_rent].[类型] AS [类型], 
+[vwdiyQuery_rent].[注册类型] AS [注册类型], 
+[vwdiyQuery_rent].[注册资金] AS [注册资金], 
+[vwdiyQuery_rent].[运营类型] AS [运营类型], 
+[vwdiyQuery_rent].[行业类型大类] AS [行业类型大类], 
+[vwdiyQuery_rent].[行业类型细分] AS [行业类型细分], 
+[vwdiyQuery_rent].[注册地址] AS [注册地址], 
+[vwdiyQuery_rent].[集约利用地块编号] AS [集约利用地块编号], 
+[vwdiyQuery_rent].[所属管理区] AS [所属管理区], 
+[vwdiyQuery_rent].[所属社区] AS [所属社区], 
+[vwdiyQuery_rent].[year] AS [year], 
+[vwdiyQuery_rent].[行政人员姓名] AS [行政人员姓名], 
+[vwdiyQuery_rent].[行政人员电话] AS [行政人员电话], 
+[vwdiyQuery_rent].[填表人姓名] AS [填表人姓名], 
+[vwdiyQuery_rent].[填表人手机] AS [填表人手机], 
+[vwdiyQuery_rent].[电表使用类型] AS [电表使用类型], 
+[vwdiyQuery_rent].[无电表用电说明] AS [无电表用电说明], 
+[vwdiyQuery_rent].[本年度用电量度] AS [本年度用电量度], 
+[vwdiyQuery_rent].[水表使用类型] AS [水表使用类型], 
+[vwdiyQuery_rent].[水表号] AS [水表号], 
+[vwdiyQuery_rent].[无水表用电说明] AS [无水表用电说明], 
+[vwdiyQuery_rent].[本年度用水量] AS [本年度用水量], 
+[vwdiyQuery_rent].[公司企业人数] AS [公司企业人数], 
+[vwdiyQuery_rent].[其中省外人数] AS [其中省外人数], 
+[vwdiyQuery_rent].[租户名称] AS [租户名称]
+FROM [dbo].[vwdiyQuery_rent] AS [vwdiyQuery_rent]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vwLtdJcSj" EntityType="Self.vwLtdJcSj" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [vwLtdJcSj].[Id] AS [Id], 
@@ -1960,13 +2438,19 @@ FROM [dbo].[vwQuery2Group] AS [vwQuery2Group]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwTaskReview" EntityType="Self.vwTaskReview" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
+[vwTaskReview].[id] AS [id], 
 [vwTaskReview].[year] AS [year], 
 [vwTaskReview].[task_name] AS [task_name], 
 [vwTaskReview].[ltd_name] AS [ltd_name], 
 [vwTaskReview].[reg_address] AS [reg_address], 
 [vwTaskReview].[ltd_contacter] AS [ltd_contacter], 
 [vwTaskReview].[ltd_contact_mphone] AS [ltd_contact_mphone], 
-[vwTaskReview].[flow_status] AS [flow_status]
+[vwTaskReview].[flow_status] AS [flow_status], 
+[vwTaskReview].[bntask_id] AS [bntask_id], 
+[vwTaskReview].[ltd_id] AS [ltd_id], 
+[vwTaskReview].[publish_dt] AS [publish_dt], 
+[vwTaskReview].[deadline] AS [deadline], 
+[vwTaskReview].[status_dt] AS [status_dt]
 FROM [dbo].[vwTaskReview] AS [vwTaskReview]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="dbtune" EntityType="Self.dbtune" store:Type="Views" store:Schema="sde">
@@ -2007,11 +2491,11 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             <End Role="bntask_audit" EntitySet="bntask_audit" />
           </AssociationSet>
           <AssociationSet Name="FK_bntask_audit_bsLtdInfo" Association="Self.FK_bntask_audit_bsLtdInfo">
-            <End Role="bsLtdInfo" EntitySet="bsLtdInfo" />
+            <End Role="tA1企业基本信息表" EntitySet="tA1企业基本信息表" />
             <End Role="bntask_audit" EntitySet="bntask_audit" />
           </AssociationSet>
           <AssociationSet Name="FK_bntask_notice_list_bsLtdInfo" Association="Self.FK_bntask_notice_list_bsLtdInfo">
-            <End Role="bsLtdInfo" EntitySet="bsLtdInfo" />
+            <End Role="tA1企业基本信息表" EntitySet="tA1企业基本信息表" />
             <End Role="bntask_notice_list" EntitySet="bntask_notice_list" />
           </AssociationSet>
           <AssociationSet Name="FK_bntask_notice_list_task" Association="Self.FK_bntask_notice_list_task">
@@ -2035,11 +2519,11 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             <End Role="bsltd_base_audit" EntitySet="bsltd_base_audit" />
           </AssociationSet>
           <AssociationSet Name="FK_bsLtd_Base_fill_bsLtdinfo" Association="Self.FK_bsLtd_Base_fill_bsLtdinfo">
-            <End Role="bsLtdInfo" EntitySet="bsLtdInfo" />
+            <End Role="tA1企业基本信息表" EntitySet="tA1企业基本信息表" />
             <End Role="bsLtd_Base_fill" EntitySet="bsLtd_Base_fill" />
           </AssociationSet>
           <AssociationSet Name="FK_bsLtd_cred_phonto_bsLtd_cred_phonto" Association="Self.FK_bsLtd_cred_phonto_bsLtd_cred_phonto">
-            <End Role="bsLtdInfo" EntitySet="bsLtdInfo" />
+            <End Role="tA1企业基本信息表" EntitySet="tA1企业基本信息表" />
             <End Role="bsLtd_cred_photo" EntitySet="bsLtd_cred_photo" />
           </AssociationSet>
           <AssociationSet Name="FK_bsLtd_eval_upinfo_bsLtdInfo" Association="Self.FK_bsLtd_eval_upinfo_bsLtdInfo">
@@ -2050,12 +2534,8 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             <End Role="bsLtdInfo" EntitySet="bsLtdInfo" />
             <End Role="bsltd_eval_upinfoDetail" EntitySet="bsltd_eval_upinfoDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK_bsltd_legan_person_landdetail_bsltd_legal_person_land" Association="Self.FK_bsltd_legan_person_landdetail_bsltd_legal_person_land">
-            <End Role="bsltd_legal_person_land" EntitySet="bsltd_legal_person_land" />
-            <End Role="bsltd_legan_person_landdetail" EntitySet="bsltd_legan_person_landdetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_bsLtd_pjdj_bsLtdInfo" Association="Self.FK_bsLtd_pjdj_bsLtdInfo">
-            <End Role="bsLtdInfo" EntitySet="bsLtdInfo" />
+          <AssociationSet Name="FK_bsLtd_pjdj_tA1" Association="Self.FK_bsLtd_pjdj_tA1">
+            <End Role="tA1企业基本信息表" EntitySet="tA1企业基本信息表" />
             <End Role="bsLtd_eval_rank" EntitySet="bsLtd_eval_rank" />
           </AssociationSet>
         </EntityContainer>
@@ -2069,6 +2549,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <EntitySet Name="blCityPlan" EntityType="szEIPAppModel.blCityPlan" />
           <EntitySet Name="blLayer" EntityType="szEIPAppModel.blLayer" />
           <EntitySet Name="bnannounce" EntityType="szEIPAppModel.bnannounce" />
+          <EntitySet Name="bnbaseInfo_audit" EntityType="szEIPAppModel.bnbaseInfo_audit" />
           <EntitySet Name="bntask" EntityType="szEIPAppModel.bntask" />
           <EntitySet Name="bntask_audit" EntityType="szEIPAppModel.bntask_audit" />
           <EntitySet Name="bntask_notice_list" EntityType="szEIPAppModel.bntask_notice_list" />
@@ -2087,12 +2568,11 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <EntitySet Name="bsLtd_eval_rank" EntityType="szEIPAppModel.bsLtd_eval_rank" />
           <EntitySet Name="bsLtd_eval_upinfo" EntityType="szEIPAppModel.bsLtd_eval_upinfo" />
           <EntitySet Name="bsltd_eval_upinfoDetail" EntityType="szEIPAppModel.bsltd_eval_upinfoDetail" />
-          <EntitySet Name="bsltd_legal_person_land" EntityType="szEIPAppModel.bsltd_legal_person_land" />
-          <EntitySet Name="bsltd_legan_person_landdetail" EntityType="szEIPAppModel.bsltd_legan_person_landdetail" />
           <EntitySet Name="bsltd_not_up_list" EntityType="szEIPAppModel.bsltd_not_up_list" />
           <EntitySet Name="bsLtdIndustries" EntityType="szEIPAppModel.bsLtdIndustries" />
           <EntitySet Name="bsLtdInfo" EntityType="szEIPAppModel.bsLtdInfo" />
           <EntitySet Name="bsLtdIntroduce" EntityType="szEIPAppModel.bsLtdIntroduce" />
+          <EntitySet Name="bsquery_diy" EntityType="szEIPAppModel.bsquery_diy" />
           <EntitySet Name="bsTableImportType" EntityType="szEIPAppModel.bsTableImportType" />
           <EntitySet Name="bsTestRecord" EntityType="szEIPAppModel.bsTestRecord" />
           <EntitySet Name="bsTotalResult" EntityType="szEIPAppModel.bsTotalResult" />
@@ -2141,6 +2621,16 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <EntitySet Name="城市规划" EntityType="szEIPAppModel.城市规划" />
           <EntitySet Name="房屋建筑" EntityType="szEIPAppModel.房屋建筑" />
           <EntitySet Name="企业范围" EntityType="szEIPAppModel.企业范围" />
+          <EntitySet Name="vw_bsltd_legal_person_land" EntityType="szEIPAppModel.vw_bsltd_legal_person_land" />
+          <EntitySet Name="vw_bsltd_legan_person_landdetail" EntityType="szEIPAppModel.vw_bsltd_legan_person_landdetail" />
+          <EntitySet Name="vw_bsltd_not_up_list" EntityType="szEIPAppModel.vw_bsltd_not_up_list" />
+          <EntitySet Name="vw_dk_eval_Owner" EntityType="szEIPAppModel.vw_dk_eval_Owner" />
+          <EntitySet Name="vw_dk_eval_Rent" EntityType="szEIPAppModel.vw_dk_eval_Rent" />
+          <EntitySet Name="vw_dk_eval_total" EntityType="szEIPAppModel.vw_dk_eval_total" />
+          <EntitySet Name="vw_ltd_up_eval_info" EntityType="szEIPAppModel.vw_ltd_up_eval_info" />
+          <EntitySet Name="vw_ltd_up_eval_info_detail" EntityType="szEIPAppModel.vw_ltd_up_eval_info_detail" />
+          <EntitySet Name="vwdiyQuery_Owner" EntityType="szEIPAppModel.vwdiyQuery_Owner" />
+          <EntitySet Name="vwdiyQuery_rent" EntityType="szEIPAppModel.vwdiyQuery_rent" />
           <EntitySet Name="vwLtdJcSj" EntityType="szEIPAppModel.vwLtdJcSj" />
           <EntitySet Name="vwlyLtdBaseInfoForKFQInterface" EntityType="szEIPAppModel.vwlyLtdBaseInfoForKFQInterface" />
           <EntitySet Name="vwQuery2Group" EntityType="szEIPAppModel.vwQuery2Group" />
@@ -2161,11 +2651,11 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             <End Role="bntask_upfiles" EntitySet="bntask_upfiles" />
           </AssociationSet>
           <AssociationSet Name="FK_bntask_audit_bsLtdInfo" Association="szEIPAppModel.FK_bntask_audit_bsLtdInfo">
-            <End Role="bsLtdInfo" EntitySet="bsLtdInfo" />
+            <End Role="tA1企业基本信息表" EntitySet="tA1企业基本信息表" />
             <End Role="bntask_audit" EntitySet="bntask_audit" />
           </AssociationSet>
           <AssociationSet Name="FK_bntask_notice_list_bsLtdInfo" Association="szEIPAppModel.FK_bntask_notice_list_bsLtdInfo">
-            <End Role="bsLtdInfo" EntitySet="bsLtdInfo" />
+            <End Role="tA1企业基本信息表" EntitySet="tA1企业基本信息表" />
             <End Role="bntask_notice_list" EntitySet="bntask_notice_list" />
           </AssociationSet>
           <AssociationSet Name="FK_bsaddress_list_bsaddress_group" Association="szEIPAppModel.FK_bsaddress_list_bsaddress_group">
@@ -2181,15 +2671,15 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             <End Role="bsltd_base_audit" EntitySet="bsltd_base_audit" />
           </AssociationSet>
           <AssociationSet Name="FK_bsLtd_Base_fill_bsLtdinfo" Association="szEIPAppModel.FK_bsLtd_Base_fill_bsLtdinfo">
-            <End Role="bsLtdInfo" EntitySet="bsLtdInfo" />
+            <End Role="tA1企业基本信息表" EntitySet="tA1企业基本信息表" />
             <End Role="bsLtd_Base_fill" EntitySet="bsLtd_Base_fill" />
           </AssociationSet>
           <AssociationSet Name="FK_bsLtd_cred_phonto_bsLtd_cred_phonto" Association="szEIPAppModel.FK_bsLtd_cred_phonto_bsLtd_cred_phonto">
-            <End Role="bsLtdInfo" EntitySet="bsLtdInfo" />
+            <End Role="tA1企业基本信息表" EntitySet="tA1企业基本信息表" />
             <End Role="bsLtd_cred_photo" EntitySet="bsLtd_cred_photo" />
           </AssociationSet>
-          <AssociationSet Name="FK_bsLtd_pjdj_bsLtdInfo" Association="szEIPAppModel.FK_bsLtd_pjdj_bsLtdInfo">
-            <End Role="bsLtdInfo" EntitySet="bsLtdInfo" />
+          <AssociationSet Name="FK_bsLtd_pjdj_tA1" Association="szEIPAppModel.FK_bsLtd_pjdj_tA1">
+            <End Role="tA1企业基本信息表" EntitySet="tA1企业基本信息表" />
             <End Role="bsLtd_eval_rank" EntitySet="bsLtd_eval_rank" />
           </AssociationSet>
           <AssociationSet Name="FK_bsLtd_eval_upinfo_bsLtdInfo" Association="szEIPAppModel.FK_bsLtd_eval_upinfo_bsLtdInfo">
@@ -2199,10 +2689,6 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <AssociationSet Name="FK_bsltd_eval_upinfoDetail_bsLtdInfo" Association="szEIPAppModel.FK_bsltd_eval_upinfoDetail_bsLtdInfo">
             <End Role="bsLtdInfo" EntitySet="bsLtdInfo" />
             <End Role="bsltd_eval_upinfoDetail" EntitySet="bsltd_eval_upinfoDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_bsltd_legan_person_landdetail_bsltd_legal_person_land" Association="szEIPAppModel.FK_bsltd_legan_person_landdetail_bsltd_legal_person_land">
-            <End Role="bsltd_legal_person_land" EntitySet="bsltd_legal_person_land" />
-            <End Role="bsltd_legan_person_landdetail" EntitySet="bsltd_legan_person_landdetail" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="bcContentIndex">
@@ -2264,6 +2750,21 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="msg_answer_phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="attach_files" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="bnbaseInfo_audit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="year" Type="Int32" Nullable="false" />
+          <Property Name="ltd_Id" Type="Int32" />
+          <Property Name="ltd_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="audit_result" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="audit_desp" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="audit_bsO_Id" Type="Guid" />
+          <Property Name="audit_bsO_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="auditor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="audit_dt" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
         <EntityType Name="bntask">
           <Key>
             <PropertyRef Name="Id" />
@@ -2301,7 +2802,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="auditor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="audit_dt" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="bntask" Relationship="szEIPAppModel.FK_bntask_audit_bntask" FromRole="bntask_audit" ToRole="bntask" />
-          <NavigationProperty Name="bsLtdInfo" Relationship="szEIPAppModel.FK_bntask_audit_bsLtdInfo" FromRole="bntask_audit" ToRole="bsLtdInfo" />
+          <NavigationProperty Name="tA1企业基本信息表" Relationship="szEIPAppModel.FK_bntask_audit_bsLtdInfo" FromRole="bntask_audit" ToRole="tA1企业基本信息表" />
         </EntityType>
         <EntityType Name="bntask_notice_list">
           <Key>
@@ -2317,8 +2818,10 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="status_dt" Type="DateTime" Precision="3" />
           <Property Name="deadline" Type="DateTime" Precision="0" />
           <Property Name="task_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="publish_dt" Type="DateTime" Precision="0" />
+          <Property Name="publisher" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="bntask" Relationship="szEIPAppModel.FK_bntask_notice_list_task" FromRole="bntask_notice_list" ToRole="bntask" />
-          <NavigationProperty Name="bsLtdInfo" Relationship="szEIPAppModel.FK_bntask_notice_list_bsLtdInfo" FromRole="bntask_notice_list" ToRole="bsLtdInfo" />
+          <NavigationProperty Name="tA1企业基本信息表" Relationship="szEIPAppModel.FK_bntask_notice_list_bsLtdInfo" FromRole="bntask_notice_list" ToRole="tA1企业基本信息表" />
         </EntityType>
         <EntityType Name="bntask_upfiles">
           <Key>
@@ -2473,8 +2976,9 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="ltd_id" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fill_year" Type="Int32" />
+          <Property Name="tA1Id" Type="Int32" />
           <Property Name="ltd_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ltd_nsrsbh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ltd_tyxydm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -2482,25 +2986,29 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="base_info_input" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="position_input" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="rent_input" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="jyxx_input" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="is_up_yyzz" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="is_up_land" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="is_up_building" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="is_up_other" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="bsLtdInfo" Relationship="szEIPAppModel.FK_bsLtd_Base_fill_bsLtdinfo" FromRole="bsLtd_Base_fill" ToRole="bsLtdInfo" />
+          <Property Name="audit_status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tA1企业基本信息表" Relationship="szEIPAppModel.FK_bsLtd_Base_fill_bsLtdinfo" FromRole="bsLtd_Base_fill" ToRole="tA1企业基本信息表" />
         </EntityType>
         <EntityType Name="bsLtd_cred_photo">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="ltd_Id" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tA1Id" Type="Int32" />
+          <Property Name="up_year" Type="Int32" />
           <Property Name="ltd_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="photo_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="file_name" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Name="file_type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="up_dt" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="file_size" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="bsLtdInfo" Relationship="szEIPAppModel.FK_bsLtd_cred_phonto_bsLtd_cred_phonto" FromRole="bsLtd_cred_photo" ToRole="bsLtdInfo" />
+          <Property Name="file_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="up_dt" Type="DateTime" Precision="3" />
+          <Property Name="file_size" Type="Int32" />
+          <Property Name="file_path" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tA1企业基本信息表" Relationship="szEIPAppModel.FK_bsLtd_cred_phonto_bsLtd_cred_phonto" FromRole="bsLtd_cred_photo" ToRole="tA1企业基本信息表" />
         </EntityType>
         <EntityType Name="bsLtd_eval_rank">
           <Key>
@@ -2514,7 +3022,8 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="area_pj" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="area_fc" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="rank_pj" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="bsLtdInfo" Relationship="szEIPAppModel.FK_bsLtd_pjdj_bsLtdInfo" FromRole="bsLtd_eval_rank" ToRole="bsLtdInfo" />
+          <Property Name="allContent" Type="String" MaxLength="800" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tA1企业基本信息表" Relationship="szEIPAppModel.FK_bsLtd_pjdj_tA1" FromRole="bsLtd_eval_rank" ToRole="tA1企业基本信息表" />
         </EntityType>
         <EntityType Name="bsLtd_eval_upinfo">
           <Key>
@@ -2557,29 +3066,6 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="water_total_this_year" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="bsLtdInfo" Relationship="szEIPAppModel.FK_bsltd_eval_upinfoDetail_bsLtdInfo" FromRole="bsltd_eval_upinfoDetail" ToRole="bsLtdInfo" />
         </EntityType>
-        <EntityType Name="bsltd_legal_person_land">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="year" Type="Int32" />
-          <Property Name="legal_person_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="legal_person_tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="bsltd_legan_person_landdetail" Relationship="szEIPAppModel.FK_bsltd_legan_person_landdetail_bsltd_legal_person_land" FromRole="bsltd_legal_person_land" ToRole="bsltd_legan_person_landdetail" />
-        </EntityType>
-        <EntityType Name="bsltd_legan_person_landdetail">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="legal_person_id" Type="Int32" />
-          <Property Name="ltd_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="is_gy" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="ltd_tyxydm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ltd_rent_owner" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="area_land" Type="Decimal" Precision="18" Scale="2" />
-          <NavigationProperty Name="bsltd_legal_person_land" Relationship="szEIPAppModel.FK_bsltd_legan_person_landdetail_bsltd_legal_person_land" FromRole="bsltd_legan_person_landdetail" ToRole="bsltd_legal_person_land" />
-        </EntityType>
         <EntityType Name="bsltd_not_up_list">
           <Key>
             <PropertyRef Name="ltd_id" />
@@ -2608,7 +3094,8 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Key>
             <PropertyRef Name="Ltd_Id" />
           </Key>
-          <Property Name="Ltd_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ltd_Id" Type="Int32" Nullable="false" />
+          <Property Name="year" Type="Int32" />
           <Property Name="序号" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="纳税人识别号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="纳税人名称" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -2641,12 +3128,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="高新技术企业发证日期" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="规上企业年度" Type="Int32" />
           <Property Name="登记日期" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="bntask_audit" Relationship="szEIPAppModel.FK_bntask_audit_bsLtdInfo" FromRole="bsLtdInfo" ToRole="bntask_audit" />
-          <NavigationProperty Name="bntask_notice_list" Relationship="szEIPAppModel.FK_bntask_notice_list_bsLtdInfo" FromRole="bsLtdInfo" ToRole="bntask_notice_list" />
           <NavigationProperty Name="bsltd_base_audit" Relationship="szEIPAppModel.FK_bsltd_base_audit_bsLtdInfo" FromRole="bsLtdInfo" ToRole="bsltd_base_audit" />
-          <NavigationProperty Name="bsLtd_Base_fill" Relationship="szEIPAppModel.FK_bsLtd_Base_fill_bsLtdinfo" FromRole="bsLtdInfo" ToRole="bsLtd_Base_fill" />
-          <NavigationProperty Name="bsLtd_cred_photo" Relationship="szEIPAppModel.FK_bsLtd_cred_phonto_bsLtd_cred_phonto" FromRole="bsLtdInfo" ToRole="bsLtd_cred_photo" />
-          <NavigationProperty Name="bsLtd_eval_rank" Relationship="szEIPAppModel.FK_bsLtd_pjdj_bsLtdInfo" FromRole="bsLtdInfo" ToRole="bsLtd_eval_rank" />
           <NavigationProperty Name="bsLtd_eval_upinfo" Relationship="szEIPAppModel.FK_bsLtd_eval_upinfo_bsLtdInfo" FromRole="bsLtdInfo" ToRole="bsLtd_eval_upinfo" />
           <NavigationProperty Name="bsltd_eval_upinfoDetail" Relationship="szEIPAppModel.FK_bsltd_eval_upinfoDetail_bsLtdInfo" FromRole="bsLtdInfo" ToRole="bsltd_eval_upinfoDetail" />
         </EntityType>
@@ -2656,6 +3138,17 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="LtDesp" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="bsquery_diy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bsU_Id" Type="Guid" />
+          <Property Name="query_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="owner_rent_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="query_condition_items" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="query_items" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="bsTableImportType">
           <Key>
@@ -2783,24 +3276,37 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="行业类型大类" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="行业类型细分" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="注册地址" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="year" Type="Int32" />
+          <Property Name="FzCylR1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FzCylR2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FzCylR3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="submit_dt" Type="DateTime" Precision="3" />
           <Property Name="audit_status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fill_status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="bntask_audit" Relationship="szEIPAppModel.FK_bntask_audit_bsLtdInfo" FromRole="tA1企业基本信息表" ToRole="bntask_audit" />
+          <NavigationProperty Name="bntask_notice_list" Relationship="szEIPAppModel.FK_bntask_notice_list_bsLtdInfo" FromRole="tA1企业基本信息表" ToRole="bntask_notice_list" />
+          <NavigationProperty Name="bsLtd_Base_fill" Relationship="szEIPAppModel.FK_bsLtd_Base_fill_bsLtdinfo" FromRole="tA1企业基本信息表" ToRole="bsLtd_Base_fill" />
+          <NavigationProperty Name="bsLtd_cred_photo" Relationship="szEIPAppModel.FK_bsLtd_cred_phonto_bsLtd_cred_phonto" FromRole="tA1企业基本信息表" ToRole="bsLtd_cred_photo" />
+          <NavigationProperty Name="bsLtd_eval_rank" Relationship="szEIPAppModel.FK_bsLtd_pjdj_tA1" FromRole="tA1企业基本信息表" ToRole="bsLtd_eval_rank" />
         </EntityType>
         <EntityType Name="tA2企业曾用名信息表">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tA1Id" Type="Int32" />
           <Property Name="纳税人名称" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="纳税人识别号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="曾用名" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="audit_status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="year" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="tA3企业基本信息关联表">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="No" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tA1Id" Type="Int32" />
+          <Property Name="year" Type="Int32" />
           <Property Name="纳税人名称" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="纳税人识别号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="集约利用系统虚拟地块号" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -2811,17 +3317,22 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="本地块序号" Type="Double" />
           <Property Name="所属管理区" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="所属社区" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="audit_status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LatLng" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fill_status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="delFlag" Type="Boolean" />
+          <Property Name="delReason" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tB1地主地块数据">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tA1Id" Type="Int32" />
+          <Property Name="year" Type="Int32" />
           <Property Name="纳税人名称" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="纳税人识别号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="租赁性质" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="集约利用地块编号" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="集约利用地块编号" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="经营方式" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="土地购置类型" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="土地购置日期" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
@@ -2833,13 +3344,15 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="无土地权证说明" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="无房产权证说明" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="实际经营地址" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="audit_status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fill_status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tB2租户地块数据年度">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tA1Id" Type="Int32" />
+          <Property Name="year" Type="Int32" />
           <Property Name="纳税人名称" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="纳税人识别号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="曾用名" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
@@ -2854,13 +3367,14 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="本地块租赁房屋面积" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="房屋合同截止日期" Type="DateTime" Precision="3" />
           <Property Name="当年地主是否认定" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="audit_status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fill_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tC地主核实租赁关系年度">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tA1Id" Type="Int32" />
           <Property Name="年度" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="纳税人名称" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="纳税人识别号" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -2872,14 +3386,14 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="房屋合同截止日期" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="法人姓名" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="法人联系电话" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="audit_status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tD企业集约利用信息填报表年度">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="年度" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tA1Id" Type="Int32" />
+          <Property Name="年度" Type="Int32" />
           <Property Name="纳税人名称" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="纳税人识别号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="组织机构代码" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -2902,13 +3416,14 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="本年度用水量" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="公司企业人数" Type="Int32" />
           <Property Name="其中省外人数" Type="Int32" />
-          <Property Name="audit_status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fill_status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tE1地块年度综合评价表年度">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tA1Id" Type="Int32" />
           <Property Name="年度" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="纳税人名称" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="纳税人识别号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -2922,13 +3437,13 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="地块中总用电量" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="地块中所有水表号" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="地块中总用水量" Type="Decimal" Precision="15" Scale="2" />
-          <Property Name="audit_status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tE2企业综合评价表年度">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tA1Id" Type="Int32" />
           <Property Name="年度" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="纳税人名称" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="纳税人识别号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -2945,7 +3460,6 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="水表号" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
           <Property Name="用电量" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="用水量" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="audit_status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tmpLtdXx">
           <Key>
@@ -3001,7 +3515,8 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bsO_Id" Type="Guid" />
           <Property Name="年度" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="纳税人名称" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="纳税人识别号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -3596,6 +4111,224 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="SHAPE_Area" Type="Double" />
           <Property Name="M1_Out" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="vw_bsltd_legal_person_land">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="phone" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="year" Type="Int32" />
+          <Property Name="法人姓名" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_bsltd_legan_person_landdetail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="法人姓名" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="纳税人名称" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="类型" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="组织机构代码" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="租赁性质" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="实际用地面积" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="vw_bsltd_not_up_list">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ltd_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ltd_tyxydm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="audit_status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_dk_eval_Owner">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="纳税人名称" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="纳税人名称" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="year" Type="Int32" />
+          <Property Name="注册地址" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="组织机构代码" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="租赁性质" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="是否工业" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="填表人姓名" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="填表人手机" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="电表号" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="本年度用电量度" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="水表号" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="本年度用水量" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="集约利用地块编号" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="土地持证面积" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="vw_dk_eval_Rent">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="纳税人名称" />
+            <PropertyRef Name="租赁性质" />
+            <PropertyRef Name="集约利用地块编号" />
+            <PropertyRef Name="本地块租赁房屋面积" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="纳税人名称" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="year" Type="Int32" />
+          <Property Name="注册地址" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="组织机构代码" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="是否工业" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="填表人姓名" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="填表人手机" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="电表号" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="本年度用电量度" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="水表号" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="本年度用水量" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="租赁性质" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="集约利用地块编号" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="本地块租赁房屋面积" Type="Decimal" Nullable="false" Precision="15" Scale="2" />
+        </EntityType>
+        <EntityType Name="vw_dk_eval_total">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="year" Type="Int32" />
+          <Property Name="tA1Id" Type="Int32" />
+          <Property Name="纳税人名称" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="集约利用地块编号" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="实际用地面积" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="土地持证面积" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="实际房屋面积" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="电表号" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="本年度用电量度" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="水表号" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="本年度用水量" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="dk_ltd_count" Type="Int32" />
+          <Property Name="dk_ltd_gy_count" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vw_ltd_up_eval_info">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="纳税人名称" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="year" Type="Int32" />
+          <Property Name="纳税人名称" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="集约利用地块编号" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="土地持证面积" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="房产持证面积" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="实际房屋面积" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="电表号" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="本年度用电量度" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="水表号" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="本年度用水量" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="preElec" Type="Int32" />
+          <Property Name="preWater" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vw_ltd_up_eval_info_detail">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="纳税人名称" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="year" Type="Int32" />
+          <Property Name="纳税人名称" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="集约利用地块编号" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="土地持证面积" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="房产持证面积" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="实际房屋面积" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="电表号" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="本年度用电量度" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="水表号" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="本年度用水量" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="preElec" Type="Int32" />
+          <Property Name="preWater" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vwdiyQuery_Owner">
+          <Key>
+            <PropertyRef Name="纳税人名称" />
+          </Key>
+          <Property Name="Id" Type="Int32" />
+          <Property Name="纳税人名称" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="纳税人识别号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="组织机构代码" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="海关代码" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="法人姓名" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="法人身份证号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="类型" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="注册类型" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="注册资金" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="运营类型" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="行业类型大类" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="行业类型细分" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="注册地址" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="集约利用地块编号" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="租赁性质" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="所属管理区" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="所属社区" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="year" Type="Int32" />
+          <Property Name="经营方式" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="土地购置类型" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="土地购置日期" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="测绘土地面积" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="实际用地面积" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="土地持证面积" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="实际房屋面积" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="房产持证面积" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="无土地权证说明" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="无房产权证说明" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="实际经营地址" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="行政人员姓名" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="行政人员电话" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="填表人姓名" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="填表人手机" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="电表使用类型" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="无电表用电说明" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="本年度用电量度" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="水表使用类型" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="水表号" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="无水表用电说明" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="本年度用水量" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="公司企业人数" Type="Int32" />
+          <Property Name="其中省外人数" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vwdiyQuery_rent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="纳税人名称" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="纳税人识别号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="组织机构代码" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="海关代码" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="法人姓名" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="法人身份证号" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="类型" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="注册类型" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="注册资金" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="运营类型" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="行业类型大类" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="行业类型细分" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="注册地址" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="集约利用地块编号" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="所属管理区" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="所属社区" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="year" Type="Int32" />
+          <Property Name="行政人员姓名" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="行政人员电话" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="填表人姓名" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="填表人手机" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="电表使用类型" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="无电表用电说明" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="本年度用电量度" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="水表使用类型" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="水表号" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="无水表用电说明" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="本年度用水量" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="公司企业人数" Type="Int32" />
+          <Property Name="其中省外人数" Type="Int32" />
+          <Property Name="租户名称" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="vwLtdJcSj">
           <Key>
             <PropertyRef Name="Id" />
@@ -3703,8 +4436,10 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
         </EntityType>
         <EntityType Name="vwTaskReview">
           <Key>
+            <PropertyRef Name="id" />
             <PropertyRef Name="year" />
           </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="year" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
           <Property Name="task_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ltd_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -3712,6 +4447,11 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <Property Name="ltd_contacter" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="ltd_contact_mphone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="flow_status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="bntask_id" Type="Int32" />
+          <Property Name="ltd_id" Type="Int32" />
+          <Property Name="publish_dt" Type="DateTime" Precision="0" />
+          <Property Name="deadline" Type="DateTime" Precision="0" />
+          <Property Name="status_dt" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="dbtune">
           <Key>
@@ -3807,11 +4547,11 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_bntask_audit_bsLtdInfo">
-          <End Type="szEIPAppModel.bsLtdInfo" Role="bsLtdInfo" Multiplicity="0..1" />
+          <End Type="szEIPAppModel.tA1企业基本信息表" Role="tA1企业基本信息表" Multiplicity="0..1" />
           <End Type="szEIPAppModel.bntask_audit" Role="bntask_audit" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="bsLtdInfo">
-              <PropertyRef Name="Ltd_Id" />
+            <Principal Role="tA1企业基本信息表">
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="bntask_audit">
               <PropertyRef Name="ltd_Id" />
@@ -3819,11 +4559,11 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_bntask_notice_list_bsLtdInfo">
-          <End Type="szEIPAppModel.bsLtdInfo" Role="bsLtdInfo" Multiplicity="0..1" />
+          <End Type="szEIPAppModel.tA1企业基本信息表" Role="tA1企业基本信息表" Multiplicity="0..1" />
           <End Type="szEIPAppModel.bntask_notice_list" Role="bntask_notice_list" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="bsLtdInfo">
-              <PropertyRef Name="Ltd_Id" />
+            <Principal Role="tA1企业基本信息表">
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="bntask_notice_list">
               <PropertyRef Name="ltd_id" />
@@ -3867,35 +4607,35 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_bsLtd_Base_fill_bsLtdinfo">
-          <End Type="szEIPAppModel.bsLtdInfo" Role="bsLtdInfo" Multiplicity="0..1" />
+          <End Type="szEIPAppModel.tA1企业基本信息表" Role="tA1企业基本信息表" Multiplicity="0..1" />
           <End Type="szEIPAppModel.bsLtd_Base_fill" Role="bsLtd_Base_fill" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="bsLtdInfo">
-              <PropertyRef Name="Ltd_Id" />
+            <Principal Role="tA1企业基本信息表">
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="bsLtd_Base_fill">
-              <PropertyRef Name="ltd_id" />
+              <PropertyRef Name="tA1Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_bsLtd_cred_phonto_bsLtd_cred_phonto">
-          <End Type="szEIPAppModel.bsLtdInfo" Role="bsLtdInfo" Multiplicity="0..1" />
+          <End Type="szEIPAppModel.tA1企业基本信息表" Role="tA1企业基本信息表" Multiplicity="0..1" />
           <End Type="szEIPAppModel.bsLtd_cred_photo" Role="bsLtd_cred_photo" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="bsLtdInfo">
-              <PropertyRef Name="Ltd_Id" />
+            <Principal Role="tA1企业基本信息表">
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="bsLtd_cred_photo">
-              <PropertyRef Name="ltd_Id" />
+              <PropertyRef Name="tA1Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_bsLtd_pjdj_bsLtdInfo">
-          <End Type="szEIPAppModel.bsLtdInfo" Role="bsLtdInfo" Multiplicity="0..1" />
+        <Association Name="FK_bsLtd_pjdj_tA1">
+          <End Type="szEIPAppModel.tA1企业基本信息表" Role="tA1企业基本信息表" Multiplicity="0..1" />
           <End Type="szEIPAppModel.bsLtd_eval_rank" Role="bsLtd_eval_rank" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="bsLtdInfo">
-              <PropertyRef Name="Ltd_Id" />
+            <Principal Role="tA1企业基本信息表">
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="bsLtd_eval_rank">
               <PropertyRef Name="Ltd_Id" />
@@ -3923,18 +4663,6 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             </Principal>
             <Dependent Role="bsltd_eval_upinfoDetail">
               <PropertyRef Name="ltd_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_bsltd_legan_person_landdetail_bsltd_legal_person_land">
-          <End Type="szEIPAppModel.bsltd_legal_person_land" Role="bsltd_legal_person_land" Multiplicity="0..1" />
-          <End Type="szEIPAppModel.bsltd_legan_person_landdetail" Role="bsltd_legan_person_landdetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="bsltd_legal_person_land">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="bsltd_legan_person_landdetail">
-              <PropertyRef Name="legal_person_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4008,6 +4736,22 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="bnbaseInfo_audit">
+            <EntityTypeMapping TypeName="szEIPAppModel.bnbaseInfo_audit">
+              <MappingFragment StoreEntitySet="bnbaseInfo_audit">
+                <ScalarProperty Name="audit_dt" ColumnName="audit_dt" />
+                <ScalarProperty Name="auditor" ColumnName="auditor" />
+                <ScalarProperty Name="audit_bsO_Name" ColumnName="audit_bsO_Name" />
+                <ScalarProperty Name="audit_bsO_Id" ColumnName="audit_bsO_Id" />
+                <ScalarProperty Name="audit_desp" ColumnName="audit_desp" />
+                <ScalarProperty Name="audit_result" ColumnName="audit_result" />
+                <ScalarProperty Name="ltd_name" ColumnName="ltd_name" />
+                <ScalarProperty Name="ltd_Id" ColumnName="ltd_Id" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="bntask">
             <EntityTypeMapping TypeName="szEIPAppModel.bntask">
               <MappingFragment StoreEntitySet="bntask">
@@ -4047,6 +4791,8 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <EntitySetMapping Name="bntask_notice_list">
             <EntityTypeMapping TypeName="szEIPAppModel.bntask_notice_list">
               <MappingFragment StoreEntitySet="bntask_notice_list">
+                <ScalarProperty Name="publisher" ColumnName="publisher" />
+                <ScalarProperty Name="publish_dt" ColumnName="publish_dt" />
                 <ScalarProperty Name="task_name" ColumnName="task_name" />
                 <ScalarProperty Name="deadline" ColumnName="deadline" />
                 <ScalarProperty Name="status_dt" ColumnName="status_dt" />
@@ -4216,10 +4962,12 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <EntitySetMapping Name="bsLtd_Base_fill">
             <EntityTypeMapping TypeName="szEIPAppModel.bsLtd_Base_fill">
               <MappingFragment StoreEntitySet="bsLtd_Base_fill">
+                <ScalarProperty Name="audit_status" ColumnName="audit_status" />
                 <ScalarProperty Name="is_up_other" ColumnName="is_up_other" />
                 <ScalarProperty Name="is_up_building" ColumnName="is_up_building" />
                 <ScalarProperty Name="is_up_land" ColumnName="is_up_land" />
                 <ScalarProperty Name="is_up_yyzz" ColumnName="is_up_yyzz" />
+                <ScalarProperty Name="jyxx_input" ColumnName="jyxx_input" />
                 <ScalarProperty Name="rent_input" ColumnName="rent_input" />
                 <ScalarProperty Name="position_input" ColumnName="position_input" />
                 <ScalarProperty Name="base_info_input" ColumnName="base_info_input" />
@@ -4227,7 +4975,8 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
                 <ScalarProperty Name="ltd_tyxydm" ColumnName="ltd_tyxydm" />
                 <ScalarProperty Name="ltd_nsrsbh" ColumnName="ltd_nsrsbh" />
                 <ScalarProperty Name="ltd_name" ColumnName="ltd_name" />
-                <ScalarProperty Name="ltd_id" ColumnName="ltd_id" />
+                <ScalarProperty Name="tA1Id" ColumnName="tA1Id" />
+                <ScalarProperty Name="fill_year" ColumnName="fill_year" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -4235,13 +4984,15 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <EntitySetMapping Name="bsLtd_cred_photo">
             <EntityTypeMapping TypeName="szEIPAppModel.bsLtd_cred_photo">
               <MappingFragment StoreEntitySet="bsLtd_cred_photo">
+                <ScalarProperty Name="file_path" ColumnName="file_path" />
                 <ScalarProperty Name="file_size" ColumnName="file_size" />
                 <ScalarProperty Name="up_dt" ColumnName="up_dt" />
                 <ScalarProperty Name="file_type" ColumnName="file_type" />
                 <ScalarProperty Name="file_name" ColumnName="file_name" />
                 <ScalarProperty Name="photo_type" ColumnName="photo_type" />
                 <ScalarProperty Name="ltd_name" ColumnName="ltd_name" />
-                <ScalarProperty Name="ltd_Id" ColumnName="ltd_Id" />
+                <ScalarProperty Name="up_year" ColumnName="up_year" />
+                <ScalarProperty Name="tA1Id" ColumnName="tA1Id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -4249,6 +5000,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <EntitySetMapping Name="bsLtd_eval_rank">
             <EntityTypeMapping TypeName="szEIPAppModel.bsLtd_eval_rank">
               <MappingFragment StoreEntitySet="bsLtd_eval_rank">
+                <ScalarProperty Name="allContent" ColumnName="allContent" />
                 <ScalarProperty Name="rank_pj" ColumnName="rank_pj" />
                 <ScalarProperty Name="area_fc" ColumnName="area_fc" />
                 <ScalarProperty Name="area_pj" ColumnName="area_pj" />
@@ -4297,29 +5049,6 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
                 <ScalarProperty Name="is_gy" ColumnName="is_gy" />
                 <ScalarProperty Name="ltd_name" ColumnName="ltd_name" />
                 <ScalarProperty Name="ltd_id" ColumnName="ltd_id" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="bsltd_legal_person_land">
-            <EntityTypeMapping TypeName="szEIPAppModel.bsltd_legal_person_land">
-              <MappingFragment StoreEntitySet="bsltd_legal_person_land">
-                <ScalarProperty Name="legal_person_tel" ColumnName="legal_person_tel" />
-                <ScalarProperty Name="legal_person_name" ColumnName="legal_person_name" />
-                <ScalarProperty Name="year" ColumnName="year" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="bsltd_legan_person_landdetail">
-            <EntityTypeMapping TypeName="szEIPAppModel.bsltd_legan_person_landdetail">
-              <MappingFragment StoreEntitySet="bsltd_legan_person_landdetail">
-                <ScalarProperty Name="area_land" ColumnName="area_land" />
-                <ScalarProperty Name="ltd_rent_owner" ColumnName="ltd_rent_owner" />
-                <ScalarProperty Name="ltd_tyxydm" ColumnName="ltd_tyxydm" />
-                <ScalarProperty Name="is_gy" ColumnName="is_gy" />
-                <ScalarProperty Name="ltd_name" ColumnName="ltd_name" />
-                <ScalarProperty Name="legal_person_id" ColumnName="legal_person_id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -4385,6 +5114,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
                 <ScalarProperty Name="纳税人名称" ColumnName="纳税人名称" />
                 <ScalarProperty Name="纳税人识别号" ColumnName="纳税人识别号" />
                 <ScalarProperty Name="序号" ColumnName="序号" />
+                <ScalarProperty Name="year" ColumnName="year" />
                 <ScalarProperty Name="Ltd_Id" ColumnName="Ltd_Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -4393,6 +5123,18 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
             <EntityTypeMapping TypeName="szEIPAppModel.bsLtdIntroduce">
               <MappingFragment StoreEntitySet="bsLtdIntroduce">
                 <ScalarProperty Name="LtDesp" ColumnName="LtDesp" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bsquery_diy">
+            <EntityTypeMapping TypeName="szEIPAppModel.bsquery_diy">
+              <MappingFragment StoreEntitySet="bsquery_diy">
+                <ScalarProperty Name="query_items" ColumnName="query_items" />
+                <ScalarProperty Name="query_condition_items" ColumnName="query_condition_items" />
+                <ScalarProperty Name="owner_rent_type" ColumnName="owner_rent_type" />
+                <ScalarProperty Name="query_name" ColumnName="query_name" />
+                <ScalarProperty Name="bsU_Id" ColumnName="bsU_Id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -4516,7 +5258,13 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <EntitySetMapping Name="tA1企业基本信息表">
             <EntityTypeMapping TypeName="szEIPAppModel.tA1企业基本信息表">
               <MappingFragment StoreEntitySet="tA1企业基本信息表">
+                <ScalarProperty Name="fill_status" ColumnName="fill_status" />
                 <ScalarProperty Name="audit_status" ColumnName="audit_status" />
+                <ScalarProperty Name="submit_dt" ColumnName="submit_dt" />
+                <ScalarProperty Name="FzCylR3" ColumnName="FzCylR3" />
+                <ScalarProperty Name="FzCylR2" ColumnName="FzCylR2" />
+                <ScalarProperty Name="FzCylR1" ColumnName="FzCylR1" />
+                <ScalarProperty Name="year" ColumnName="year" />
                 <ScalarProperty Name="注册地址" ColumnName="注册地址" />
                 <ScalarProperty Name="行业类型细分" ColumnName="行业类型细分" />
                 <ScalarProperty Name="行业类型大类" ColumnName="行业类型大类" />
@@ -4537,10 +5285,11 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <EntitySetMapping Name="tA2企业曾用名信息表">
             <EntityTypeMapping TypeName="szEIPAppModel.tA2企业曾用名信息表">
               <MappingFragment StoreEntitySet="tA2企业曾用名信息表">
-                <ScalarProperty Name="audit_status" ColumnName="audit_status" />
+                <ScalarProperty Name="year" ColumnName="year" />
                 <ScalarProperty Name="曾用名" ColumnName="曾用名" />
                 <ScalarProperty Name="纳税人识别号" ColumnName="纳税人识别号" />
                 <ScalarProperty Name="纳税人名称" ColumnName="纳税人名称" />
+                <ScalarProperty Name="tA1Id" ColumnName="tA1Id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -4548,7 +5297,10 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <EntitySetMapping Name="tA3企业基本信息关联表">
             <EntityTypeMapping TypeName="szEIPAppModel.tA3企业基本信息关联表">
               <MappingFragment StoreEntitySet="tA3企业基本信息关联表">
-                <ScalarProperty Name="audit_status" ColumnName="audit_status" />
+                <ScalarProperty Name="delReason" ColumnName="delReason" />
+                <ScalarProperty Name="delFlag" ColumnName="delFlag" />
+                <ScalarProperty Name="fill_status" ColumnName="fill_status" />
+                <ScalarProperty Name="LatLng" ColumnName="LatLng" />
                 <ScalarProperty Name="所属社区" ColumnName="所属社区" />
                 <ScalarProperty Name="所属管理区" ColumnName="所属管理区" />
                 <ScalarProperty Name="本地块序号" ColumnName="本地块序号" />
@@ -4559,7 +5311,8 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
                 <ScalarProperty Name="集约利用系统虚拟地块号" ColumnName="集约利用系统虚拟地块号" />
                 <ScalarProperty Name="纳税人识别号" ColumnName="纳税人识别号" />
                 <ScalarProperty Name="纳税人名称" ColumnName="纳税人名称" />
-                <ScalarProperty Name="No" ColumnName="No" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="tA1Id" ColumnName="tA1Id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -4567,7 +5320,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <EntitySetMapping Name="tB1地主地块数据">
             <EntityTypeMapping TypeName="szEIPAppModel.tB1地主地块数据">
               <MappingFragment StoreEntitySet="tB1地主地块数据">
-                <ScalarProperty Name="audit_status" ColumnName="audit_status" />
+                <ScalarProperty Name="fill_status" ColumnName="fill_status" />
                 <ScalarProperty Name="实际经营地址" ColumnName="实际经营地址" />
                 <ScalarProperty Name="无房产权证说明" ColumnName="无房产权证说明" />
                 <ScalarProperty Name="无土地权证说明" ColumnName="无土地权证说明" />
@@ -4583,6 +5336,8 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
                 <ScalarProperty Name="租赁性质" ColumnName="租赁性质" />
                 <ScalarProperty Name="纳税人识别号" ColumnName="纳税人识别号" />
                 <ScalarProperty Name="纳税人名称" ColumnName="纳税人名称" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="tA1Id" ColumnName="tA1Id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -4590,7 +5345,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <EntitySetMapping Name="tB2租户地块数据年度">
             <EntityTypeMapping TypeName="szEIPAppModel.tB2租户地块数据年度">
               <MappingFragment StoreEntitySet="tB2租户地块数据年度">
-                <ScalarProperty Name="audit_status" ColumnName="audit_status" />
+                <ScalarProperty Name="fill_status" ColumnName="fill_status" />
                 <ScalarProperty Name="当年地主是否认定" ColumnName="当年地主是否认定" />
                 <ScalarProperty Name="房屋合同截止日期" ColumnName="房屋合同截止日期" />
                 <ScalarProperty Name="本地块租赁房屋面积" ColumnName="本地块租赁房屋面积" />
@@ -4605,6 +5360,8 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
                 <ScalarProperty Name="曾用名" ColumnName="曾用名" />
                 <ScalarProperty Name="纳税人识别号" ColumnName="纳税人识别号" />
                 <ScalarProperty Name="纳税人名称" ColumnName="纳税人名称" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="tA1Id" ColumnName="tA1Id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -4612,7 +5369,6 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <EntitySetMapping Name="tC地主核实租赁关系年度">
             <EntityTypeMapping TypeName="szEIPAppModel.tC地主核实租赁关系年度">
               <MappingFragment StoreEntitySet="tC地主核实租赁关系年度">
-                <ScalarProperty Name="audit_status" ColumnName="audit_status" />
                 <ScalarProperty Name="法人联系电话" ColumnName="法人联系电话" />
                 <ScalarProperty Name="法人姓名" ColumnName="法人姓名" />
                 <ScalarProperty Name="房屋合同截止日期" ColumnName="房屋合同截止日期" />
@@ -4624,6 +5380,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
                 <ScalarProperty Name="纳税人识别号" ColumnName="纳税人识别号" />
                 <ScalarProperty Name="纳税人名称" ColumnName="纳税人名称" />
                 <ScalarProperty Name="年度" ColumnName="年度" />
+                <ScalarProperty Name="tA1Id" ColumnName="tA1Id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -4631,7 +5388,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <EntitySetMapping Name="tD企业集约利用信息填报表年度">
             <EntityTypeMapping TypeName="szEIPAppModel.tD企业集约利用信息填报表年度">
               <MappingFragment StoreEntitySet="tD企业集约利用信息填报表年度">
-                <ScalarProperty Name="audit_status" ColumnName="audit_status" />
+                <ScalarProperty Name="fill_status" ColumnName="fill_status" />
                 <ScalarProperty Name="其中省外人数" ColumnName="其中省外人数" />
                 <ScalarProperty Name="公司企业人数" ColumnName="公司企业人数" />
                 <ScalarProperty Name="本年度用水量" ColumnName="本年度用水量" />
@@ -4655,6 +5412,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
                 <ScalarProperty Name="纳税人识别号" ColumnName="纳税人识别号" />
                 <ScalarProperty Name="纳税人名称" ColumnName="纳税人名称" />
                 <ScalarProperty Name="年度" ColumnName="年度" />
+                <ScalarProperty Name="tA1Id" ColumnName="tA1Id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -4662,7 +5420,6 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <EntitySetMapping Name="tE1地块年度综合评价表年度">
             <EntityTypeMapping TypeName="szEIPAppModel.tE1地块年度综合评价表年度">
               <MappingFragment StoreEntitySet="tE1地块年度综合评价表年度">
-                <ScalarProperty Name="audit_status" ColumnName="audit_status" />
                 <ScalarProperty Name="地块中总用水量" ColumnName="地块中总用水量" />
                 <ScalarProperty Name="地块中所有水表号" ColumnName="地块中所有水表号" />
                 <ScalarProperty Name="地块中总用电量" ColumnName="地块中总用电量" />
@@ -4676,6 +5433,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
                 <ScalarProperty Name="纳税人识别号" ColumnName="纳税人识别号" />
                 <ScalarProperty Name="纳税人名称" ColumnName="纳税人名称" />
                 <ScalarProperty Name="年度" ColumnName="年度" />
+                <ScalarProperty Name="tA1Id" ColumnName="tA1Id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -4683,7 +5441,6 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <EntitySetMapping Name="tE2企业综合评价表年度">
             <EntityTypeMapping TypeName="szEIPAppModel.tE2企业综合评价表年度">
               <MappingFragment StoreEntitySet="tE2企业综合评价表年度">
-                <ScalarProperty Name="audit_status" ColumnName="audit_status" />
                 <ScalarProperty Name="用水量" ColumnName="用水量" />
                 <ScalarProperty Name="用电量" ColumnName="用电量" />
                 <ScalarProperty Name="水表号" ColumnName="水表号" />
@@ -4700,6 +5457,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
                 <ScalarProperty Name="纳税人识别号" ColumnName="纳税人识别号" />
                 <ScalarProperty Name="纳税人名称" ColumnName="纳税人名称" />
                 <ScalarProperty Name="年度" ColumnName="年度" />
+                <ScalarProperty Name="tA1Id" ColumnName="tA1Id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -4764,6 +5522,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
                 <ScalarProperty Name="纳税人识别号" ColumnName="纳税人识别号" />
                 <ScalarProperty Name="纳税人名称" ColumnName="纳税人名称" />
                 <ScalarProperty Name="年度" ColumnName="年度" />
+                <ScalarProperty Name="bsO_Id" ColumnName="bsO_Id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -5384,6 +6143,226 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="vw_bsltd_legal_person_land">
+            <EntityTypeMapping TypeName="szEIPAppModel.vw_bsltd_legal_person_land">
+              <MappingFragment StoreEntitySet="vw_bsltd_legal_person_land">
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="法人姓名" ColumnName="法人姓名" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_bsltd_legan_person_landdetail">
+            <EntityTypeMapping TypeName="szEIPAppModel.vw_bsltd_legan_person_landdetail">
+              <MappingFragment StoreEntitySet="vw_bsltd_legan_person_landdetail">
+                <ScalarProperty Name="实际用地面积" ColumnName="实际用地面积" />
+                <ScalarProperty Name="租赁性质" ColumnName="租赁性质" />
+                <ScalarProperty Name="组织机构代码" ColumnName="组织机构代码" />
+                <ScalarProperty Name="类型" ColumnName="类型" />
+                <ScalarProperty Name="纳税人名称" ColumnName="纳税人名称" />
+                <ScalarProperty Name="法人姓名" ColumnName="法人姓名" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_bsltd_not_up_list">
+            <EntityTypeMapping TypeName="szEIPAppModel.vw_bsltd_not_up_list">
+              <MappingFragment StoreEntitySet="vw_bsltd_not_up_list">
+                <ScalarProperty Name="audit_status" ColumnName="audit_status" />
+                <ScalarProperty Name="ltd_tyxydm" ColumnName="ltd_tyxydm" />
+                <ScalarProperty Name="ltd_name" ColumnName="ltd_name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_dk_eval_Owner">
+            <EntityTypeMapping TypeName="szEIPAppModel.vw_dk_eval_Owner">
+              <MappingFragment StoreEntitySet="vw_dk_eval_Owner">
+                <ScalarProperty Name="土地持证面积" ColumnName="土地持证面积" />
+                <ScalarProperty Name="集约利用地块编号" ColumnName="集约利用地块编号" />
+                <ScalarProperty Name="本年度用水量" ColumnName="本年度用水量" />
+                <ScalarProperty Name="水表号" ColumnName="水表号" />
+                <ScalarProperty Name="本年度用电量度" ColumnName="本年度用电量度" />
+                <ScalarProperty Name="电表号" ColumnName="电表号" />
+                <ScalarProperty Name="填表人手机" ColumnName="填表人手机" />
+                <ScalarProperty Name="填表人姓名" ColumnName="填表人姓名" />
+                <ScalarProperty Name="是否工业" ColumnName="是否工业" />
+                <ScalarProperty Name="租赁性质" ColumnName="租赁性质" />
+                <ScalarProperty Name="组织机构代码" ColumnName="组织机构代码" />
+                <ScalarProperty Name="注册地址" ColumnName="注册地址" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="纳税人名称" ColumnName="纳税人名称" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_dk_eval_Rent">
+            <EntityTypeMapping TypeName="szEIPAppModel.vw_dk_eval_Rent">
+              <MappingFragment StoreEntitySet="vw_dk_eval_Rent">
+                <ScalarProperty Name="本地块租赁房屋面积" ColumnName="本地块租赁房屋面积" />
+                <ScalarProperty Name="集约利用地块编号" ColumnName="集约利用地块编号" />
+                <ScalarProperty Name="租赁性质" ColumnName="租赁性质" />
+                <ScalarProperty Name="本年度用水量" ColumnName="本年度用水量" />
+                <ScalarProperty Name="水表号" ColumnName="水表号" />
+                <ScalarProperty Name="本年度用电量度" ColumnName="本年度用电量度" />
+                <ScalarProperty Name="电表号" ColumnName="电表号" />
+                <ScalarProperty Name="填表人手机" ColumnName="填表人手机" />
+                <ScalarProperty Name="填表人姓名" ColumnName="填表人姓名" />
+                <ScalarProperty Name="是否工业" ColumnName="是否工业" />
+                <ScalarProperty Name="组织机构代码" ColumnName="组织机构代码" />
+                <ScalarProperty Name="注册地址" ColumnName="注册地址" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="纳税人名称" ColumnName="纳税人名称" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_dk_eval_total">
+            <EntityTypeMapping TypeName="szEIPAppModel.vw_dk_eval_total">
+              <MappingFragment StoreEntitySet="vw_dk_eval_total">
+                <ScalarProperty Name="dk_ltd_gy_count" ColumnName="dk_ltd_gy_count" />
+                <ScalarProperty Name="dk_ltd_count" ColumnName="dk_ltd_count" />
+                <ScalarProperty Name="本年度用水量" ColumnName="本年度用水量" />
+                <ScalarProperty Name="水表号" ColumnName="水表号" />
+                <ScalarProperty Name="本年度用电量度" ColumnName="本年度用电量度" />
+                <ScalarProperty Name="电表号" ColumnName="电表号" />
+                <ScalarProperty Name="实际房屋面积" ColumnName="实际房屋面积" />
+                <ScalarProperty Name="土地持证面积" ColumnName="土地持证面积" />
+                <ScalarProperty Name="实际用地面积" ColumnName="实际用地面积" />
+                <ScalarProperty Name="集约利用地块编号" ColumnName="集约利用地块编号" />
+                <ScalarProperty Name="纳税人名称" ColumnName="纳税人名称" />
+                <ScalarProperty Name="tA1Id" ColumnName="tA1Id" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_ltd_up_eval_info">
+            <EntityTypeMapping TypeName="szEIPAppModel.vw_ltd_up_eval_info">
+              <MappingFragment StoreEntitySet="vw_ltd_up_eval_info">
+                <ScalarProperty Name="preWater" ColumnName="preWater" />
+                <ScalarProperty Name="preElec" ColumnName="preElec" />
+                <ScalarProperty Name="本年度用水量" ColumnName="本年度用水量" />
+                <ScalarProperty Name="水表号" ColumnName="水表号" />
+                <ScalarProperty Name="本年度用电量度" ColumnName="本年度用电量度" />
+                <ScalarProperty Name="电表号" ColumnName="电表号" />
+                <ScalarProperty Name="实际房屋面积" ColumnName="实际房屋面积" />
+                <ScalarProperty Name="房产持证面积" ColumnName="房产持证面积" />
+                <ScalarProperty Name="土地持证面积" ColumnName="土地持证面积" />
+                <ScalarProperty Name="集约利用地块编号" ColumnName="集约利用地块编号" />
+                <ScalarProperty Name="纳税人名称" ColumnName="纳税人名称" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_ltd_up_eval_info_detail">
+            <EntityTypeMapping TypeName="szEIPAppModel.vw_ltd_up_eval_info_detail">
+              <MappingFragment StoreEntitySet="vw_ltd_up_eval_info_detail">
+                <ScalarProperty Name="preWater" ColumnName="preWater" />
+                <ScalarProperty Name="preElec" ColumnName="preElec" />
+                <ScalarProperty Name="本年度用水量" ColumnName="本年度用水量" />
+                <ScalarProperty Name="水表号" ColumnName="水表号" />
+                <ScalarProperty Name="本年度用电量度" ColumnName="本年度用电量度" />
+                <ScalarProperty Name="电表号" ColumnName="电表号" />
+                <ScalarProperty Name="实际房屋面积" ColumnName="实际房屋面积" />
+                <ScalarProperty Name="房产持证面积" ColumnName="房产持证面积" />
+                <ScalarProperty Name="土地持证面积" ColumnName="土地持证面积" />
+                <ScalarProperty Name="集约利用地块编号" ColumnName="集约利用地块编号" />
+                <ScalarProperty Name="纳税人名称" ColumnName="纳税人名称" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwdiyQuery_Owner">
+            <EntityTypeMapping TypeName="szEIPAppModel.vwdiyQuery_Owner">
+              <MappingFragment StoreEntitySet="vwdiyQuery_Owner">
+                <ScalarProperty Name="其中省外人数" ColumnName="其中省外人数" />
+                <ScalarProperty Name="公司企业人数" ColumnName="公司企业人数" />
+                <ScalarProperty Name="本年度用水量" ColumnName="本年度用水量" />
+                <ScalarProperty Name="无水表用电说明" ColumnName="无水表用电说明" />
+                <ScalarProperty Name="水表号" ColumnName="水表号" />
+                <ScalarProperty Name="水表使用类型" ColumnName="水表使用类型" />
+                <ScalarProperty Name="本年度用电量度" ColumnName="本年度用电量度" />
+                <ScalarProperty Name="无电表用电说明" ColumnName="无电表用电说明" />
+                <ScalarProperty Name="电表使用类型" ColumnName="电表使用类型" />
+                <ScalarProperty Name="填表人手机" ColumnName="填表人手机" />
+                <ScalarProperty Name="填表人姓名" ColumnName="填表人姓名" />
+                <ScalarProperty Name="行政人员电话" ColumnName="行政人员电话" />
+                <ScalarProperty Name="行政人员姓名" ColumnName="行政人员姓名" />
+                <ScalarProperty Name="实际经营地址" ColumnName="实际经营地址" />
+                <ScalarProperty Name="无房产权证说明" ColumnName="无房产权证说明" />
+                <ScalarProperty Name="无土地权证说明" ColumnName="无土地权证说明" />
+                <ScalarProperty Name="房产持证面积" ColumnName="房产持证面积" />
+                <ScalarProperty Name="实际房屋面积" ColumnName="实际房屋面积" />
+                <ScalarProperty Name="土地持证面积" ColumnName="土地持证面积" />
+                <ScalarProperty Name="实际用地面积" ColumnName="实际用地面积" />
+                <ScalarProperty Name="测绘土地面积" ColumnName="测绘土地面积" />
+                <ScalarProperty Name="土地购置日期" ColumnName="土地购置日期" />
+                <ScalarProperty Name="土地购置类型" ColumnName="土地购置类型" />
+                <ScalarProperty Name="经营方式" ColumnName="经营方式" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="所属社区" ColumnName="所属社区" />
+                <ScalarProperty Name="所属管理区" ColumnName="所属管理区" />
+                <ScalarProperty Name="租赁性质" ColumnName="租赁性质" />
+                <ScalarProperty Name="集约利用地块编号" ColumnName="集约利用地块编号" />
+                <ScalarProperty Name="注册地址" ColumnName="注册地址" />
+                <ScalarProperty Name="行业类型细分" ColumnName="行业类型细分" />
+                <ScalarProperty Name="行业类型大类" ColumnName="行业类型大类" />
+                <ScalarProperty Name="运营类型" ColumnName="运营类型" />
+                <ScalarProperty Name="注册资金" ColumnName="注册资金" />
+                <ScalarProperty Name="注册类型" ColumnName="注册类型" />
+                <ScalarProperty Name="类型" ColumnName="类型" />
+                <ScalarProperty Name="法人身份证号" ColumnName="法人身份证号" />
+                <ScalarProperty Name="法人姓名" ColumnName="法人姓名" />
+                <ScalarProperty Name="海关代码" ColumnName="海关代码" />
+                <ScalarProperty Name="组织机构代码" ColumnName="组织机构代码" />
+                <ScalarProperty Name="纳税人识别号" ColumnName="纳税人识别号" />
+                <ScalarProperty Name="纳税人名称" ColumnName="纳税人名称" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwdiyQuery_rent">
+            <EntityTypeMapping TypeName="szEIPAppModel.vwdiyQuery_rent">
+              <MappingFragment StoreEntitySet="vwdiyQuery_rent">
+                <ScalarProperty Name="租户名称" ColumnName="租户名称" />
+                <ScalarProperty Name="其中省外人数" ColumnName="其中省外人数" />
+                <ScalarProperty Name="公司企业人数" ColumnName="公司企业人数" />
+                <ScalarProperty Name="本年度用水量" ColumnName="本年度用水量" />
+                <ScalarProperty Name="无水表用电说明" ColumnName="无水表用电说明" />
+                <ScalarProperty Name="水表号" ColumnName="水表号" />
+                <ScalarProperty Name="水表使用类型" ColumnName="水表使用类型" />
+                <ScalarProperty Name="本年度用电量度" ColumnName="本年度用电量度" />
+                <ScalarProperty Name="无电表用电说明" ColumnName="无电表用电说明" />
+                <ScalarProperty Name="电表使用类型" ColumnName="电表使用类型" />
+                <ScalarProperty Name="填表人手机" ColumnName="填表人手机" />
+                <ScalarProperty Name="填表人姓名" ColumnName="填表人姓名" />
+                <ScalarProperty Name="行政人员电话" ColumnName="行政人员电话" />
+                <ScalarProperty Name="行政人员姓名" ColumnName="行政人员姓名" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="所属社区" ColumnName="所属社区" />
+                <ScalarProperty Name="所属管理区" ColumnName="所属管理区" />
+                <ScalarProperty Name="集约利用地块编号" ColumnName="集约利用地块编号" />
+                <ScalarProperty Name="注册地址" ColumnName="注册地址" />
+                <ScalarProperty Name="行业类型细分" ColumnName="行业类型细分" />
+                <ScalarProperty Name="行业类型大类" ColumnName="行业类型大类" />
+                <ScalarProperty Name="运营类型" ColumnName="运营类型" />
+                <ScalarProperty Name="注册资金" ColumnName="注册资金" />
+                <ScalarProperty Name="注册类型" ColumnName="注册类型" />
+                <ScalarProperty Name="类型" ColumnName="类型" />
+                <ScalarProperty Name="法人身份证号" ColumnName="法人身份证号" />
+                <ScalarProperty Name="法人姓名" ColumnName="法人姓名" />
+                <ScalarProperty Name="海关代码" ColumnName="海关代码" />
+                <ScalarProperty Name="组织机构代码" ColumnName="组织机构代码" />
+                <ScalarProperty Name="纳税人识别号" ColumnName="纳税人识别号" />
+                <ScalarProperty Name="纳税人名称" ColumnName="纳税人名称" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="vwLtdJcSj">
             <EntityTypeMapping TypeName="szEIPAppModel.vwLtdJcSj">
               <MappingFragment StoreEntitySet="vwLtdJcSj">
@@ -5495,6 +6474,11 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
           <EntitySetMapping Name="vwTaskReview">
             <EntityTypeMapping TypeName="szEIPAppModel.vwTaskReview">
               <MappingFragment StoreEntitySet="vwTaskReview">
+                <ScalarProperty Name="status_dt" ColumnName="status_dt" />
+                <ScalarProperty Name="deadline" ColumnName="deadline" />
+                <ScalarProperty Name="publish_dt" ColumnName="publish_dt" />
+                <ScalarProperty Name="ltd_id" ColumnName="ltd_id" />
+                <ScalarProperty Name="bntask_id" ColumnName="bntask_id" />
                 <ScalarProperty Name="flow_status" ColumnName="flow_status" />
                 <ScalarProperty Name="ltd_contact_mphone" ColumnName="ltd_contact_mphone" />
                 <ScalarProperty Name="ltd_contacter" ColumnName="ltd_contacter" />
@@ -5502,6 +6486,7 @@ FROM [sde].[ST_SPATIAL_REFERENCE_SYSTEMS] AS [ST_SPATIAL_REFERENCE_SYSTEMS]</Def
                 <ScalarProperty Name="ltd_name" ColumnName="ltd_name" />
                 <ScalarProperty Name="task_name" ColumnName="task_name" />
                 <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

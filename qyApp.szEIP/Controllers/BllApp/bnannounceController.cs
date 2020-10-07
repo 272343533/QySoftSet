@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using QyTech.Core.ExController;
-using QyExpress.Dao;
+using qyExpress.Dao;
 using QyTech.Core.BLL;
 using QyTech.Core;
 using QyTech.Core.Common;
@@ -38,7 +38,6 @@ namespace QyExpress.Controllers.BllApp
         {
             LogHelper.Info(sessionid);
             LogHelper.Info(strjson);
-            string ret = "";
             strjson = strjson.Replace("|||amp;", "&");
             strjson = strjson.Replace("|||lt;", "<");
             strjson = strjson.Replace("|||gt;", ">");

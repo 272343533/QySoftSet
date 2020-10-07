@@ -1,32 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+
 using System.Web.Mvc;
-using System.Reflection;
-using log4net;
-using System.Collections;
-
-
-
-using System.Web;
 
 using System.Web.Routing;
-using System.Web.SessionState;
-
-
-
-
-using QyTech.Core.Helpers;
-using QyTech.Core;
 
 using QyTech.Core.BLL;
-using QyTech.Json;
-using QyTech.Core.Common;
-using QyTech.Core.ExController.Bll;
-using QyTech.Core.ExController;
 
-using qyExpress.Dao;
 
 namespace QyTech.Core.ExController
 {
@@ -71,7 +50,7 @@ namespace QyTech.Core.ExController
                 IController controller = GetControllerInstance(requestContext, controllerType);
                 return controller;
             }
-            catch (Exception ex)
+            catch
             {
                 return null;
             }
