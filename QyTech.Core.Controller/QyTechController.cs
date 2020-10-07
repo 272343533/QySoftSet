@@ -169,7 +169,7 @@ namespace QyTech.Core.ExController
             string currUrl_CA= (InCName + "/" + InAName).ToLower();
 
           
-           if (!bsSessionManager.GetUrlWithoutSession().Contains(currUrl_CA))
+           if (!bsSessionManager.GetUrlWithoutSession().Contains(currUrl_CA) && ((InAName+"OOOOOOO").Substring(0,6).ToLower()!= "upload"))
             {
                 #region cookie使用 目前用session方式，cookie已注释
                 //if (LoginHelper.IsLogin())
@@ -215,19 +215,11 @@ namespace QyTech.Core.ExController
                 #endregion
 
                 #region 用户登录验证 可通过webconfig配置取消，设为调试模式
-                if (filterContext.ActionParameters.ContainsKey("sessionid"))//需要sessionid参数
+                if (filterContext.ActionParameters.ContainsKey("sessionid"))//需要sessionid参数,传了就用，
                 {
-                    if (WebSiteParams.currAppRunV.Substring(0,5) != "debug")
+                    if (filterContext.ActionParameters["sessionid"] != null)
                     {
-                        if (filterContext.ActionParameters["sessionid"] == null)//传入了sessionid参数
-                        {
-                            //需要sessioniid，但是没有给
-                            LogHelper.Info(Request.Url.ToString(), "没有登录信息，需转登录界面");
-                            HttpContext.Response.Redirect("http://119.3.21.35:9001/", true);
-                            return;
-                            //base.OnActionExecuting(filterContext);
-                        }
-                        else if (filterContext.ActionParameters["sessionid"].ToString().Length > 24)//form传过来的
+                        if (filterContext.ActionParameters["sessionid"].ToString().Length > 24)//form传过来的
                         {
                             LoginUser = EManager_.GetByPk<bsUser>("bsU_Id", Guid.Parse(filterContext.ActionParameters["sessionid"].ToString()));
                         }
@@ -252,14 +244,27 @@ namespace QyTech.Core.ExController
                         //}
                     }
                 }
-                #endregion
+                else if (!(WebSiteParams.currAppRunV.Substring(0, 5).ToLower() == "debug"
+                        || WebSiteParams.currCFilterSession.Contains(InCName)
+                        || WebSiteParams.currCAFilterSession.Contains(InCName + "/" + InAName))) //没传就看是否需要，
+                {
 
+                    //需要sessioniid，但是没有给
+                    LogHelper.Info(Request.Url.ToString(), "没有登录信息，需转登录界面");
+                    HttpContext.Response.Redirect("http://119.3.21.35:9001/", true);
+                    return;
+                    //base.OnActionExecuting(filterContext);
+
+                }
+
+                #endregion
+          
                 //日志记录
                 AddLogFun(currUrl_CA, "");
-
-                //如果是动态路由，则需要判断在哪，如果不是，则应该直接调用对应的方法
-                //可是bst对象需要
-                if (RouteData.Values["dynamicRoute"] != null) //没有控制器，则为动态路由
+            }
+            //如果是动态路由，则需要判断在哪，如果不是，则应该直接调用对应的方法
+            //可是bst对象需要
+            if (RouteData.Values["dynamicRoute"] != null) //没有控制器，则为动态路由
                 {
                     //需要判断是UI还是DAO，无论是谁，操作的最终都是一个表的信息
                     object accessobj = null;
@@ -319,7 +324,7 @@ namespace QyTech.Core.ExController
                         LogHelper.Error(ex.Message);
                     }
                 }
-            }
+           
         }
 
 
